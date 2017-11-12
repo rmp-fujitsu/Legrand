@@ -1,0 +1,25 @@
+<!-- Répartition géographique des incidents en cours -->
+<div id="container_map" class="container-fluid">
+	<div class="row">
+		<div id="menu_map" class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+			<div class="row no-margin">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h5 class="panel-title"><i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp; ${i18n("in_progress_inter_title", "Interventions en cours")}</h5>
+					</div>
+					<div class="panel-body">
+						<p class="text-success text-right">
+							<i class="fa fa-arrow-circle-o-down fa-lg" aria-hidden="true"></i> <em>${i18n("filter_click_txt", "Click pour filtre")}</em>
+						</p>
+						<li><button href="#pan_map" onClick="showSLA('all');" class="btn_no_style text-left"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/cf68e8b0-25ca-11e7-8331-0639651b3341/multiple_marker.png" title="${i18n('all_title', 'Tous')}" alt="${i18n('all_alt', 'Tous')}">&nbsp;&nbsp;&nbsp;${i18n("all_btn", "Tous")}</button></li>
+						<li><button href="#pan_map" onClick="showSLA('overSLA');" class="btn_no_style text-left"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/d548f7c0-25ca-11e7-9176-0619bd984419/marker_red.png" title="${i18n('overSLA_title', 'Tous')}" alt="${i18n('overSLA_alt', 'Tous')}">&nbsp;&nbsp;&nbsp;${i18n("overSLA_btn", "Hors délai")}</button></li>
+						<li><button href="#pan_map" onClick="showSLA('soonOverSLA');" class="btn_no_style text-left"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/d7e8cff0-25ca-11e7-8331-0639651b3341/marker_yellow.png" title="${i18n('soonOverSLA_title', 'Tous')}" alt="${i18n('soonOverSLA_alt', 'Tous')}">&nbsp;&nbsp;&nbsp;${i18n("soonOverSLA_btn", "Fin proche")}</button></li>
+						<li><button href="#pan_map" onClick="showSLA('onTimeSLA');" class="btn_no_style text-left"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/d2790ee0-25ca-11e7-b214-066d75fba2ef/marker_green.png" title="${i18n('onTimeSLA_title', 'Tous')}" alt="${i18n('onTimeSLA_alt', 'Tous')}">&nbsp;&nbsp;&nbsp;${i18n("onTimeSLA_btn", "Dans les temps")}</button></li>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="pan_map" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 height-600">
+		</div>
+	</div>
+</div>

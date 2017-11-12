@@ -1,0 +1,39 @@
+[{
+        "title" : "Home",
+        "image" : "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/326649?P_mode=${P_mode}"
+    }, {
+        "title" : "Ouverture ticket",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/326692?P_mode=${P_mode}"
+    }, {
+        "title" : "Suivi demandes",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/328697?P_mode=${P_mode}"
+    }, {
+        "title" : "Mes actions",
+        "visible" : "${has_right('399418')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/330811?P_mode=${P_mode}"
+    }, {
+        "title" : "Tableaux de bord",
+        "visible" : "${has_right('392101')=='false' && has_right('399418')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/327295?P_mode=${P_mode}"
+    }, {
+        "title" : "Tutoriels",
+        "visible" : "${has_right('380783')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/331344?P_mode=${P_mode}"
+    }, {
+        "title" : "Vue Stocks",
+        "visible" : "${has_right('392101')=='false' && has_right('384675')=='false' && has_right('396042')=='false' && has_right('399418')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/332420?P_mode=${P_mode}"
+    }, {
+        "title" : "Gestion Compte",
+        "visible" : "${has_right('391720')=='true' || has_right('380783')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/328048?P_mode=${P_mode}"
+    }
+]
+
+// 380783 => RMS - Designers
+// 399418 => Vivarte - Support Desk
+// 384643 => Vivarte - IT Managers
+// 392101 => Vivarte - Local users
+// 384675 => Region-Division Managers
+// 391720 => SDMO Fujitsu

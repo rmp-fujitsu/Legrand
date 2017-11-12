@@ -1,0 +1,10 @@
+var my_notation = {};
+	my_notation.WO_number = $("#id_number_detail").val();
+	my_notation.notation = $("#id_selectedNotation").val();
+	my_notation.opened_date = $("#id_opened_detail").val();
+     my_notation.closed_date = $("#id_closed_detail").val();
+	my_notation.comment = $("#id_comment").val();
+	RMPApplication.set("my_notation",my_notation);
+	$("#id_rowSatisfaction").attr('readonly', 'readonly');
+alert("Votre évaluation a bien été prise en compte");
+true;

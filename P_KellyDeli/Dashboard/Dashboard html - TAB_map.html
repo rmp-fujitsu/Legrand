@@ -1,0 +1,25 @@
+<!--  <h3>Répartition géographique des incidents en cours</h3> -->
+<div id="container_map" class="container-fluid">
+	<div class="row">
+		<div id="menu_map" class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+			<div class="row no-margin">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h5 class="panel-title"><i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp; ${i18n('text_id1', 'Interventions en cours')}</h5>
+					</div>
+					<div class="panel-body">
+						<p class="text-success text-right">
+							<i class="fa fa-arrow-circle-o-down fa-lg" aria-hidden="true"></i> <em>${i18n('text_id2', 'Click pour filtre')}</em>
+						</p>
+						<li><a href="#pan_map" onclick="showSLA('all');"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/2b53b910-0f10-11e7-8bf9-02b3a23437c9/multiple_marker.png" title="${i18n('title_id1', 'Tous')}" alt="${i18n('alt_id1', 'Tous')}">&nbsp;&nbsp;&nbsp;${i18n('text_id3', 'Tous')}</a></li>
+						<li><a href="#pan_map" onclick="showSLA('overSLA');"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/2b6c9840-0f10-11e7-8bf9-02b3a23437c9/marker_red.png" title="${i18n('title_id2', 'Hors délai')}" alt="${i18n('alt_id2', 'Hors délai')}">&nbsp;&nbsp;&nbsp;${i18n('text_id4', 'Hors délai')}</a></li>
+						<li><a href="#pan_map" onclick="showSLA('soonOverSLA');"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/2b6d0d70-0f10-11e7-8bf9-02b3a23437c9/marker_yellow.png" title="${i18n('title_id3', 'Fin proche')}" alt="${i18n('alt_id3', 'Fin proche')}">&nbsp;&nbsp;&nbsp;${i18n('text_id5', 'Fin proche')}</a></li>
+						<li><a href="#pan_map" onclick="showSLA('onTimeSLA');"><img src="https://live.runmyprocess.com/live/112501480325272109/upload/2b6bade0-0f10-11e7-8bf9-02b3a23437c9/marker_green.png" title="${i18n('title_id4', 'Dans les temps')}" alt="${i18n('alt_id4', 'Dans les temps')}">&nbsp;&nbsp;&nbsp;${i18n('text_id6', 'Dans les temps')}</a></li>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="pan_map" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 height-600">
+		</div>
+	</div>
+</div>

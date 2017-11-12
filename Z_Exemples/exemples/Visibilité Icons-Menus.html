@@ -1,0 +1,30 @@
+ <!-- displayme_${has_right('384643')&&has_right('380783')} -->
+
+ <!-- HTML widget: Multiple lane_id 
+ <div class="home_app">
+    <ul>
+ 		<li class="displayme_${has_right('384643')=='true' || has_right('380783')=='true'}">
+ 			<a href="https://live.runmyprocess.com/live/118401384890522564/appli/92814?P_mode=${P_mode}">My Tasks</a>
+ 		</li>
+ 		<li class="level1 displayme_${has_right('380783')}">
+			<a href="https://live.runmyprocess.com/live/118401384890522564/appli/92853?P_mode=${P_mode}">My Requests</a>
+		</li>
+	</ul>
+  -->
+
+ <!-- Menu bar: Multiple lane_id 
+{
+		"title" : "Home",
+		"visible" : "${has_right('384643') == 'true' || ${has_right('380783') == 'true'}"}
+		
+}
+-->
+
+<!-- Javascript
+if(${has_right("380783")}) {
+	html_links = html_links + id_html_link_report_dof_requests.getHtml();
+
+	id_test.setText("B");
+	true;
+}
+-->

@@ -1,0 +1,53 @@
+<!-- Breakdown rate statistics -->
+<div class="container bootcards-container">
+  
+  <div id="id_breakdownRow" class="row">
+    <div class="bootcards-cards">
+      <div class="col-sm-6">
+        <div>
+          <div class="panel-heading">
+            <!-- <h3 class="panel-title">Taux de panne MAGASIN</h3>     -->
+            <div class="rating-block">
+              <h4 class="title-form-1">Taux de panne MAGASIN</h4>
+            </div>
+          </div>
+          <div id="id_tauxPanne">
+            <!--bar chart-->
+            <div id="chartTauxPanne" class="bootcards-chart-canvas"></div>
+
+            <div class="panel-footer">
+              <button class="btn btn-default btn-block" onClick="toggleChartData(event)">
+                <i class="fa fa-table"></i> Voir les données
+              </button>        
+            </div>
+          </div>      
+    
+          <!-- breakdown data table -->
+          <div class="panel panel-default bootcards-table" style="display:none">
+            <div class="panel-heading">
+              <h3 class="panel-title">Taux de panne MAGASIN</h3>                           
+            </div>  
+            <table class="table table-hover">
+              <thead>       
+                <tr class="active"><th>Période</th><th>En cours</th><th>Précédent</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Mois</td><td>2.04</td><td>2.50</td></tr>
+                <tr><td>Trimestre</td><td>2.37</td><td>2.42</td></tr>
+                <tr><td>Année</td><td>2.40</td><td>2.43</td></tr>
+              </tbody>
+            </table>
+            <div class="panel-footer">
+              <button class="btn btn-default btn-block" onClick="toggleChartData(event, barChartTauxPanne)">
+                <i class="fa fa-bar-chart-o"></i>Voir le graphe
+              </button>
+            </div>
+            <!--     <div class="panel-footer">
+              <small class="pull-left"></small>
+            </div>   -->
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

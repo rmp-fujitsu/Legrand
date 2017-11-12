@@ -1,0 +1,17 @@
+	RMS - Designer                      => "${has_right('405201')}",
+
+    Everybody                           => "${has_right('405200')}",
+    RMSDEMO - Local Users               => "${has_right('405229')}",
+    RMSDEMO - Region-Division Managers  => "${has_right('405110')}",
+    RMSDEMO - Country Managers          => "${has_right('405230')}",
+    RMSDEMO - Affiliate Managers        => "${has_right('405160')}",
+    RMSDEMO - Desk Support              => "${has_right('405161')}",
+    RMSDEMO - IT Group Managers         => "${has_right('405202')}",
+    RMSDEMO - SDMO Fujitsu              => "${has_right('405111')}",
+    
+    // RMSDEMO - Ouverture Ticket          => "${has_right('')}",
+    RMSDEMO - IMAC - Requestor          => "${has_right('405162')}",
+    RMS - RMSDEMO                       => "${has_right('405227')}",
+
+
+

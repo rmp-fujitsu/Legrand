@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns="SmartBarcode"
+		targetNamespace="SmartBarcode"
+		elementFormDefault="qualified">
+
+<xsd:complexType name="BarcodeType" mixed="true">
+	<xsd:attribute name="type">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="EAN-8"/>
+				<xsd:enumeration value="EAN-13"/>
+				<xsd:enumeration value="UPC A"/>
+				<xsd:enumeration value="UPC E"/>
+				<xsd:enumeration value="Code39"/>
+				<xsd:enumeration value="Codabar"/>
+				<xsd:enumeration value="Interleaved2of5"/>
+				<xsd:enumeration value="Code128"/>
+				<xsd:enumeration value="4stateAU"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
+	<xsd:attribute name="height" type="xsd:string"/>
+	<xsd:attribute name="module" type="xsd:string"/>
+	<xsd:attribute name="start">
+		<xsd:simpleType>
+			<xsd:annotation>
+				<xsd:documentation>Starting stop-symbol for Code128</xsd:documentation>
+			</xsd:annotation>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="A"/>
+				<xsd:enumeration value="B"/>
+				<xsd:enumeration value="C"/>
+				<xsd:enumeration value="D"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
+	<xsd:attribute name="stop">
+		<xsd:simpleType>
+			<xsd:annotation>
+				<xsd:documentation>Trailing stop-symbol for Code128</xsd:documentation>
+			</xsd:annotation>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="A"/>
+				<xsd:enumeration value="B"/>
+				<xsd:enumeration value="C"/>
+				<xsd:enumeration value="D"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
+	<xsd:attribute name="subset" type="xsd:string"/>
+	<xsd:attribute name="makeUCC" type="xsd:string"/>
+	<!-- Attributes for Australia post 4-state barcode -->
+	<xsd:attribute name="FCC">
+		<xsd:simpleType>
+			<xsd:annotation>
+				<xsd:documentation>A two digit number identifying type of the barcode to be generated. Mandatory parameter. Possible values are:
+					11 - "Standard Customer Barcode"
+					45 - "Reply Paid Barcode"
+					59 - "Customer Barcode 2"
+					62 - "Customer Barcode 3"
+					Two last barcode types could carry customer information and therefore should be used in conjunction with CI and CIencoding parameters (see below).
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="11"/>
+				<xsd:enumeration value="45"/>
+				<xsd:enumeration value="59"/>
+				<xsd:enumeration value="62"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
+	<!-- "DPID" - an eigth-digit number representing the "Delivery Point Identifier" (mandatory). -->
+	<xsd:attribute name="DPID"/>
+	<!-- "CI" - a "Customer Information" field (optional; used with Customer Barcodes 2 or 3). -->
+	<xsd:attribute name="CI"/>
+	<!-- "CIencoding" - customer encoding type: defines how information supplied in a "CI" parameter should be treated. -->
+	<xsd:attribute name="CIencoding"/>
+	
+</xsd:complexType>
+
+<xsd:element name="barcode" type="BarcodeType"/>
+
+</xsd:schema>

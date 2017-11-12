@@ -1,0 +1,9 @@
+Reference;Famille;Description;R�f�rence_Commande;Type;Site_de_destination;Date_d_integration;Date_de_sortie;Date_de_commande;Date_de_livraison_estimee;Date_livraison_effective
+C;Imprimante Ticket;EPSON TMH 6000 III;1;Ouverture;Nice;01/06/2016;03/06/2016;25/05/2016;05/06/2016;
+D;Imprimante Ticket;EPSON TMH 6000 IV;2;Remodeling;Bordeaux;05/06/2016;;30/05/2016;;
+E;POS;Fujitsu TPX;1;Ouverture;Nice;01/06/2016;03/06/2016;25/05/2016;05/06/2016;
+F;POS;Fujitsu TPX II;2;Remodeling;Bordeaux;05/06/2016;;30/05/2016;;
+G;Douchette;QuickScan;1;Ouverture;Nice;01/06/2016;03/06/2016;25/05/2016;05/06/2016;
+G;Douchette;QuickScan;2;Remodeling;Bordeaux;05/06/2016;;30/05/2016;;
+A;Bundle;Bundle CEC;3;Approvisionnement;Sennonches;;;15/06/2016;15/07/2016;
+E;POS;Fujitsu TPX;3;Approvisionnement;Sennonches;;;15/06/2016;15/07/2016;
