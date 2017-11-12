@@ -1,0 +1,678 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SightCall Visual Interactions</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta content="adfadfadsfi34/sdfadfadf=" name="csrf-token">
+    <base href="/">
+<meta name="livesight-frontend/config/environment" content="%7B%22modulePrefix%22%3A%22livesight-frontend%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/%22%2C%22local_storage_schema_version%22%3A%220.2%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22ENABLE_DS_FILTER%22%3Atrue%2C%22_ENABLE_LEGACY_VIEW_SUPPORT%22%3Atrue%7D%2C%22flashMessageDefaults%22%3A%7B%22injectionFactories%22%3A%5B%22route%22%2C%22controller%22%2C%22view%22%2C%22component%22%5D%2C%22sticky%22%3Afalse%2C%22defaultTimeout%22%3A5000%2C%22preventDuplicates%22%3Afalse%2C%22timeout%22%3A3000%2C%22extendedTimeout%22%3A0%2C%22priority%22%3A100%2C%22showProgress%22%3Afalse%2C%22type%22%3A%22info%22%2C%22types%22%3A%5B%22success%22%2C%22info%22%2C%22warning%22%2C%22danger%22%2C%22alert%22%2C%22secondary%22%5D%7D%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-inline%27%20%27unsafe-eval%27%20https%3A//download.rtccloud.net/js/webappid/mv2xue1px16a/env/qualif%20http%3A//*%3A8000/%20http%3A//*%3A35729%20https%3A//static.rtccloud.net%20http%3A//localhost%3A4200/scripts/popup.js%20https%3A//api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js%22%2C%22font-src%22%3A%22%27self%27%20%27unsafe-inline%27%20%27unsafe-eval%27%20http%3A//fonts.gstatic.com%22%2C%22style-src%22%3A%22%27self%27%20%27unsafe-inline%27%20%27unsafe-eval%27%20https%3A//static.rtccloud.net%20http%3A//fonts.googleapis.com%22%2C%22img-src%22%3A%22*%22%2C%22media-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%20wss%3A//*%3A34679%20https%3A//sightcall-dev-ed.my.salesforce.com/services/apexrest/SightCall/LiveSight%20https%3A//sightcall-dev-ed--sightcall.na31.visual.force.com%20http%3A//api-dev.livesight.net/api/v1/public/proxy%20https%3A//*.rtccloud.net%20http%3A//www.telize.com/geoip%20https%3A//www.telize.com/geoip%22%2C%22object-src%22%3A%22*%22%7D%2C%22api_path%22%3A%22/api/v1.6/%22%2C%22i18n%22%3A%7B%22defaultLocale%22%3A%22en%22%7D%2C%22APP%22%3A%7B%22name%22%3A%22livesight-frontend%22%2C%22version%22%3A%221.7.31+14098218%22%7D%2C%22ember-simple-auth%22%3A%7B%22authenticationRoute%22%3A%22login%22%2C%22baseURL%22%3A%22/%22%2C%22routeAfterAuthentication%22%3A%22index%22%2C%22routeIfAlreadyAuthenticated%22%3A%22index%22%7D%2C%22ember-cli-mirage%22%3A%7B%22enabled%22%3Afalse%7D%2C%22exportApplicationGlobal%22%3Afalse%2C%22browserify%22%3A%7B%22tests%22%3Atrue%7D%7D">
+
+    <link rel="icon" type="image/png" href="img/favicon-abe404dd7c1dd638105dbae56905c668.png">
+
+    <link rel="stylesheet" href="assets/core-dc6668b1dbad311f40315d69ad5dac6a.css" type="text/css" media="all" integrity="sha256-rmnMRll6SqXwnY8+GjHc579PUN5yKYUWTlGG8p3zRt8= sha512-JIKq2hBj/WmFcKNRCM6baarHwe55ruBrtWxvqrkF5ba7CO3ri1Bci51zq6jXWzmdY3kjZXWVeSLtUOYI3M+t/w==">
+    <link rel="stylesheet" href="assets/main-6a5e2de5059ac1f8ab0fa78d84076f1c.css" type="text/css" media="all">
+    <link rel="stylesheet" href="assets/host-1ec0923e071106456533417907f47122.css" type="text/css" media="all" integrity="sha256-zm/AakaEyyvGPMQhkm4rhVtW3l+rOM3oNi1wNP/bSyU= sha512-7mRKXbrDuBOSuebEzg9o17FrgyxZOIv9tS+3ejF/+7I2rWzUN62T94tqNj1+1NhIb2NYgiSdTi8ZK/fNFPiNHA==">
+    
+    <link rel="stylesheet" href="assets/flag-icon.min-0468dfee42bd025c702ae00e6fec59e9.css" type="text/css" media="all" integrity="sha256-4Mm/ekC2BjkPlHJ3IBVXpObeuKasUnCtUqG8KpctjsM= sha512-Kr0zV71OG2KVTHFnCHHccI+3melPJbu/xPhJOK983MVj/1aigFkqktSzJahWSTkJllaLeSGJQY57xW9E3ndmDw==">
+    <link rel="stylesheet" href="assets/vendor-de1fde0d882099a0564231023c74ab50.css" integrity="sha256-UPD5AxyFAC3uC0Yh99LbeOn9ZXq8UDxgtWhftFM9mxc= sha512-DxoKflR3E+2IzQWMqB+g9bmjIYAXGvkwhAGVS+BH3KEdYFnlfPVZec2D6kJQ/HaxuEFySLV9NtKGcsgdWrDNEA==">
+    <link rel="stylesheet" href="assets/livesight-frontend-6dbdf824653246217447069dffac77b6.css" integrity="sha256-jbYWBNH/A+vQ5qmsXJBdQ0t+G35ELNTodkn0uWHvaDk= sha512-wAzvKnHgsLAt2Y9kf/2qMu/bCD/in4H48POd6eePfeU0Gd3eWpB3EZ4ztcM1b0jJs6kpr88aA2SSDPVKakpIcg==">
+    <link rel="stylesheet" href="assets/jquery-ui-764cc941a3dd98e509763e3e7ad5be6f.css" integrity="sha256-CiS8AvBviV8UQXCRsiAWQbWQZJGyVjI761SaVFaRDaU= sha512-I+Jbt9upmRB5Hw1z4DoxtG4436vDpO0mgnThWTjO8WJA4u71OgPWZ/g+aAHcBKq1bSnDiUdbgLIkQrCTC2FM4g==">
+    <style class="style-custom">#main header {
+        background-color: #EB5135;
+}</style>
+    
+  <script src="https://static.rtccloud.net/ui/2.0.15/RtccUi.js"></script><link id="rtcc-css" type="text/css" rel="stylesheet" href="https://static.rtccloud.net/ui/2.0.15/css/rtcc.css"></head>
+  <body class="ember-application" scheme="orange" style="background-image:url(//static.rtccloud.net/livesight.net/b80037453e82a7abfef2ee7dea670cbb)">
+
+    
+    <script>
+    var rtcc = false;
+    var call = false;
+    </script>
+
+    <script src="assets/vendor-324b3a0120a73f9fb4edb37d97a9bb2d.js"></script>
+    <script src="assets/livesight-frontend-76a620bc8cf521728855a9dfcc75b322.js"></script>
+
+    
+  
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div><!--Generated by Shared Task -- If you update this file here, it will be overwritten-->
+<div id="main" class="host reduced " style="padding-right: 0px; height: 454px;">
+    <header>
+<!---->
+    <div id="ember1347" class="ember-view topPopOver mediaDevices" style=""><span data-ember-action="1348">
+<span class="icon"></span>
+    <a class="opener"></a>
+</span>  
+<div id="devices-content" class="content" style="display: none;">
+	<label class="video">
+        <span>Video Input</span>
+        <select id="ember1368" class="input-video ember-view"><!----><option value="0">FJ Camera</option></select>
+    </label>
+
+     <label class="audio-in">
+        <span>Audio Input</span>
+        <select id="ember1369" class="input-audio-in ember-view"><!----><option value="0">Microphone (Realtek High Definition Audio)</option></select>
+    </label>
+
+    <label class="audio-out">
+        <span>Audio Output</span>
+        <select id="ember1370" class="input-audio-out ember-view"><!----><option value="0">B24-8 TE Pro (Intel(R) Display Audio)</option><option value="1">Speakers (Realtek High Definition Audio)</option></select>
+    </label>
+
+<!----></div></div>
+        
+    <div id="agent-status-icon" class="ember-view topPopOver status incall"><span class="icon"></span>
+<p id="agent-presence">In a call</p>
+<a class="opener" data-ember-action="1379"></a>
+<div id="status-content" class="content statusMenu" style="display: none;">
+    <ul id="agent-presence-options">
+<!---->         <li class="disconnect">
+            <a data-ember-action="1380">
+                <span class="icon"></span>
+                Disconnect
+            </a>
+        </li>
+    </ul>
+</div></div>
+
+    <div id="ember1389" class="ember-view topPopOver pincode advanced digits" style="display: block;"><span data-ember-action="1396">
+    <span class="number">479032</span>
+    <a class="opener"></a>
+</span>
+<div id="status-code" class="content" style="display: none;">
+  <div id="ember1405" class="ember-view usecase-start" style="display: none;"><label class="usecase">
+    Scenario
+    <input type="text" readonly="">
+</label>
+
+<!---->
+<label class="media nomode">
+    Notification
+    <select id="ember1735" class="selectMedia ember-view"><!----><option value="sms">SMS</option><option value="email">Email</option><option value="url">Url</option><option value="code">Code</option></select>
+</label>
+
+<!---->
+<!---->
+<div class="intl-tel-input allow-dropdown"><div class="flag-container"><div class="selected-flag" tabindex="0" title="France: +33"><div class="iti-flag fr"></div><div class="iti-arrow"></div></div><ul class="country-list hide"><li class="country" data-dial-code="93" data-country-code="af"><div class="flag-box"><div class="iti-flag af"></div></div><span class="country-name">Afghanistan (&#8235;افغانستان&#8236;&lrm;)</span><span class="dial-code">+93</span></li><li class="country" data-dial-code="355" data-country-code="al"><div class="flag-box"><div class="iti-flag al"></div></div><span class="country-name">Albania (Shqipëri)</span><span class="dial-code">+355</span></li><li class="country" data-dial-code="213" data-country-code="dz"><div class="flag-box"><div class="iti-flag dz"></div></div><span class="country-name">Algeria (&#8235;الجزائر&#8236;&lrm;)</span><span class="dial-code">+213</span></li><li class="country" data-dial-code="1684" data-country-code="as"><div class="flag-box"><div class="iti-flag as"></div></div><span class="country-name">American Samoa</span><span class="dial-code">+1684</span></li><li class="country" data-dial-code="376" data-country-code="ad"><div class="flag-box"><div class="iti-flag ad"></div></div><span class="country-name">Andorra</span><span class="dial-code">+376</span></li><li class="country" data-dial-code="244" data-country-code="ao"><div class="flag-box"><div class="iti-flag ao"></div></div><span class="country-name">Angola</span><span class="dial-code">+244</span></li><li class="country" data-dial-code="1264" data-country-code="ai"><div class="flag-box"><div class="iti-flag ai"></div></div><span class="country-name">Anguilla</span><span class="dial-code">+1264</span></li><li class="country" data-dial-code="1268" data-country-code="ag"><div class="flag-box"><div class="iti-flag ag"></div></div><span class="country-name">Antigua and Barbuda</span><span class="dial-code">+1268</span></li><li class="country" data-dial-code="54" data-country-code="ar"><div class="flag-box"><div class="iti-flag ar"></div></div><span class="country-name">Argentina</span><span class="dial-code">+54</span></li><li class="country" data-dial-code="374" data-country-code="am"><div class="flag-box"><div class="iti-flag am"></div></div><span class="country-name">Armenia (Հայաստան)</span><span class="dial-code">+374</span></li><li class="country" data-dial-code="297" data-country-code="aw"><div class="flag-box"><div class="iti-flag aw"></div></div><span class="country-name">Aruba</span><span class="dial-code">+297</span></li><li class="country" data-dial-code="61" data-country-code="au"><div class="flag-box"><div class="iti-flag au"></div></div><span class="country-name">Australia</span><span class="dial-code">+61</span></li><li class="country" data-dial-code="43" data-country-code="at"><div class="flag-box"><div class="iti-flag at"></div></div><span class="country-name">Austria (Österreich)</span><span class="dial-code">+43</span></li><li class="country" data-dial-code="994" data-country-code="az"><div class="flag-box"><div class="iti-flag az"></div></div><span class="country-name">Azerbaijan (Azərbaycan)</span><span class="dial-code">+994</span></li><li class="country" data-dial-code="1242" data-country-code="bs"><div class="flag-box"><div class="iti-flag bs"></div></div><span class="country-name">Bahamas</span><span class="dial-code">+1242</span></li><li class="country" data-dial-code="973" data-country-code="bh"><div class="flag-box"><div class="iti-flag bh"></div></div><span class="country-name">Bahrain (&#8235;البحرين&#8236;&lrm;)</span><span class="dial-code">+973</span></li><li class="country" data-dial-code="880" data-country-code="bd"><div class="flag-box"><div class="iti-flag bd"></div></div><span class="country-name">Bangladesh (বাংলাদেশ)</span><span class="dial-code">+880</span></li><li class="country" data-dial-code="1246" data-country-code="bb"><div class="flag-box"><div class="iti-flag bb"></div></div><span class="country-name">Barbados</span><span class="dial-code">+1246</span></li><li class="country" data-dial-code="375" data-country-code="by"><div class="flag-box"><div class="iti-flag by"></div></div><span class="country-name">Belarus (Беларусь)</span><span class="dial-code">+375</span></li><li class="country" data-dial-code="32" data-country-code="be"><div class="flag-box"><div class="iti-flag be"></div></div><span class="country-name">Belgium (België)</span><span class="dial-code">+32</span></li><li class="country" data-dial-code="501" data-country-code="bz"><div class="flag-box"><div class="iti-flag bz"></div></div><span class="country-name">Belize</span><span class="dial-code">+501</span></li><li class="country" data-dial-code="229" data-country-code="bj"><div class="flag-box"><div class="iti-flag bj"></div></div><span class="country-name">Benin (Bénin)</span><span class="dial-code">+229</span></li><li class="country" data-dial-code="1441" data-country-code="bm"><div class="flag-box"><div class="iti-flag bm"></div></div><span class="country-name">Bermuda</span><span class="dial-code">+1441</span></li><li class="country" data-dial-code="975" data-country-code="bt"><div class="flag-box"><div class="iti-flag bt"></div></div><span class="country-name">Bhutan (འབྲུག)</span><span class="dial-code">+975</span></li><li class="country" data-dial-code="591" data-country-code="bo"><div class="flag-box"><div class="iti-flag bo"></div></div><span class="country-name">Bolivia</span><span class="dial-code">+591</span></li><li class="country" data-dial-code="387" data-country-code="ba"><div class="flag-box"><div class="iti-flag ba"></div></div><span class="country-name">Bosnia and Herzegovina (Босна и Херцеговина)</span><span class="dial-code">+387</span></li><li class="country" data-dial-code="267" data-country-code="bw"><div class="flag-box"><div class="iti-flag bw"></div></div><span class="country-name">Botswana</span><span class="dial-code">+267</span></li><li class="country" data-dial-code="55" data-country-code="br"><div class="flag-box"><div class="iti-flag br"></div></div><span class="country-name">Brazil (Brasil)</span><span class="dial-code">+55</span></li><li class="country" data-dial-code="246" data-country-code="io"><div class="flag-box"><div class="iti-flag io"></div></div><span class="country-name">British Indian Ocean Territory</span><span class="dial-code">+246</span></li><li class="country" data-dial-code="1284" data-country-code="vg"><div class="flag-box"><div class="iti-flag vg"></div></div><span class="country-name">British Virgin Islands</span><span class="dial-code">+1284</span></li><li class="country" data-dial-code="673" data-country-code="bn"><div class="flag-box"><div class="iti-flag bn"></div></div><span class="country-name">Brunei</span><span class="dial-code">+673</span></li><li class="country" data-dial-code="359" data-country-code="bg"><div class="flag-box"><div class="iti-flag bg"></div></div><span class="country-name">Bulgaria (България)</span><span class="dial-code">+359</span></li><li class="country" data-dial-code="226" data-country-code="bf"><div class="flag-box"><div class="iti-flag bf"></div></div><span class="country-name">Burkina Faso</span><span class="dial-code">+226</span></li><li class="country" data-dial-code="257" data-country-code="bi"><div class="flag-box"><div class="iti-flag bi"></div></div><span class="country-name">Burundi (Uburundi)</span><span class="dial-code">+257</span></li><li class="country" data-dial-code="855" data-country-code="kh"><div class="flag-box"><div class="iti-flag kh"></div></div><span class="country-name">Cambodia (កម្ពុជា)</span><span class="dial-code">+855</span></li><li class="country" data-dial-code="237" data-country-code="cm"><div class="flag-box"><div class="iti-flag cm"></div></div><span class="country-name">Cameroon (Cameroun)</span><span class="dial-code">+237</span></li><li class="country" data-dial-code="1" data-country-code="ca"><div class="flag-box"><div class="iti-flag ca"></div></div><span class="country-name">Canada</span><span class="dial-code">+1</span></li><li class="country" data-dial-code="238" data-country-code="cv"><div class="flag-box"><div class="iti-flag cv"></div></div><span class="country-name">Cape Verde (Kabu Verdi)</span><span class="dial-code">+238</span></li><li class="country" data-dial-code="599" data-country-code="bq"><div class="flag-box"><div class="iti-flag bq"></div></div><span class="country-name">Caribbean Netherlands</span><span class="dial-code">+599</span></li><li class="country" data-dial-code="1345" data-country-code="ky"><div class="flag-box"><div class="iti-flag ky"></div></div><span class="country-name">Cayman Islands</span><span class="dial-code">+1345</span></li><li class="country" data-dial-code="236" data-country-code="cf"><div class="flag-box"><div class="iti-flag cf"></div></div><span class="country-name">Central African Republic (République centrafricaine)</span><span class="dial-code">+236</span></li><li class="country" data-dial-code="235" data-country-code="td"><div class="flag-box"><div class="iti-flag td"></div></div><span class="country-name">Chad (Tchad)</span><span class="dial-code">+235</span></li><li class="country" data-dial-code="56" data-country-code="cl"><div class="flag-box"><div class="iti-flag cl"></div></div><span class="country-name">Chile</span><span class="dial-code">+56</span></li><li class="country" data-dial-code="86" data-country-code="cn"><div class="flag-box"><div class="iti-flag cn"></div></div><span class="country-name">China (中国)</span><span class="dial-code">+86</span></li><li class="country" data-dial-code="61" data-country-code="cx"><div class="flag-box"><div class="iti-flag cx"></div></div><span class="country-name">Christmas Island</span><span class="dial-code">+61</span></li><li class="country" data-dial-code="61" data-country-code="cc"><div class="flag-box"><div class="iti-flag cc"></div></div><span class="country-name">Cocos (Keeling) Islands</span><span class="dial-code">+61</span></li><li class="country" data-dial-code="57" data-country-code="co"><div class="flag-box"><div class="iti-flag co"></div></div><span class="country-name">Colombia</span><span class="dial-code">+57</span></li><li class="country" data-dial-code="269" data-country-code="km"><div class="flag-box"><div class="iti-flag km"></div></div><span class="country-name">Comoros (&#8235;جزر القمر&#8236;&lrm;)</span><span class="dial-code">+269</span></li><li class="country" data-dial-code="243" data-country-code="cd"><div class="flag-box"><div class="iti-flag cd"></div></div><span class="country-name">Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)</span><span class="dial-code">+243</span></li><li class="country" data-dial-code="242" data-country-code="cg"><div class="flag-box"><div class="iti-flag cg"></div></div><span class="country-name">Congo (Republic) (Congo-Brazzaville)</span><span class="dial-code">+242</span></li><li class="country" data-dial-code="682" data-country-code="ck"><div class="flag-box"><div class="iti-flag ck"></div></div><span class="country-name">Cook Islands</span><span class="dial-code">+682</span></li><li class="country" data-dial-code="506" data-country-code="cr"><div class="flag-box"><div class="iti-flag cr"></div></div><span class="country-name">Costa Rica</span><span class="dial-code">+506</span></li><li class="country" data-dial-code="225" data-country-code="ci"><div class="flag-box"><div class="iti-flag ci"></div></div><span class="country-name">Côte d’Ivoire</span><span class="dial-code">+225</span></li><li class="country" data-dial-code="385" data-country-code="hr"><div class="flag-box"><div class="iti-flag hr"></div></div><span class="country-name">Croatia (Hrvatska)</span><span class="dial-code">+385</span></li><li class="country" data-dial-code="53" data-country-code="cu"><div class="flag-box"><div class="iti-flag cu"></div></div><span class="country-name">Cuba</span><span class="dial-code">+53</span></li><li class="country" data-dial-code="599" data-country-code="cw"><div class="flag-box"><div class="iti-flag cw"></div></div><span class="country-name">Curaçao</span><span class="dial-code">+599</span></li><li class="country" data-dial-code="357" data-country-code="cy"><div class="flag-box"><div class="iti-flag cy"></div></div><span class="country-name">Cyprus (Κύπρος)</span><span class="dial-code">+357</span></li><li class="country" data-dial-code="420" data-country-code="cz"><div class="flag-box"><div class="iti-flag cz"></div></div><span class="country-name">Czech Republic (Česká republika)</span><span class="dial-code">+420</span></li><li class="country" data-dial-code="45" data-country-code="dk"><div class="flag-box"><div class="iti-flag dk"></div></div><span class="country-name">Denmark (Danmark)</span><span class="dial-code">+45</span></li><li class="country" data-dial-code="253" data-country-code="dj"><div class="flag-box"><div class="iti-flag dj"></div></div><span class="country-name">Djibouti</span><span class="dial-code">+253</span></li><li class="country" data-dial-code="1767" data-country-code="dm"><div class="flag-box"><div class="iti-flag dm"></div></div><span class="country-name">Dominica</span><span class="dial-code">+1767</span></li><li class="country" data-dial-code="1" data-country-code="do"><div class="flag-box"><div class="iti-flag do"></div></div><span class="country-name">Dominican Republic (República Dominicana)</span><span class="dial-code">+1</span></li><li class="country" data-dial-code="593" data-country-code="ec"><div class="flag-box"><div class="iti-flag ec"></div></div><span class="country-name">Ecuador</span><span class="dial-code">+593</span></li><li class="country" data-dial-code="20" data-country-code="eg"><div class="flag-box"><div class="iti-flag eg"></div></div><span class="country-name">Egypt (&#8235;مصر&#8236;&lrm;)</span><span class="dial-code">+20</span></li><li class="country" data-dial-code="503" data-country-code="sv"><div class="flag-box"><div class="iti-flag sv"></div></div><span class="country-name">El Salvador</span><span class="dial-code">+503</span></li><li class="country" data-dial-code="240" data-country-code="gq"><div class="flag-box"><div class="iti-flag gq"></div></div><span class="country-name">Equatorial Guinea (Guinea Ecuatorial)</span><span class="dial-code">+240</span></li><li class="country" data-dial-code="291" data-country-code="er"><div class="flag-box"><div class="iti-flag er"></div></div><span class="country-name">Eritrea</span><span class="dial-code">+291</span></li><li class="country" data-dial-code="372" data-country-code="ee"><div class="flag-box"><div class="iti-flag ee"></div></div><span class="country-name">Estonia (Eesti)</span><span class="dial-code">+372</span></li><li class="country" data-dial-code="251" data-country-code="et"><div class="flag-box"><div class="iti-flag et"></div></div><span class="country-name">Ethiopia</span><span class="dial-code">+251</span></li><li class="country" data-dial-code="500" data-country-code="fk"><div class="flag-box"><div class="iti-flag fk"></div></div><span class="country-name">Falkland Islands (Islas Malvinas)</span><span class="dial-code">+500</span></li><li class="country" data-dial-code="298" data-country-code="fo"><div class="flag-box"><div class="iti-flag fo"></div></div><span class="country-name">Faroe Islands (Føroyar)</span><span class="dial-code">+298</span></li><li class="country" data-dial-code="679" data-country-code="fj"><div class="flag-box"><div class="iti-flag fj"></div></div><span class="country-name">Fiji</span><span class="dial-code">+679</span></li><li class="country" data-dial-code="358" data-country-code="fi"><div class="flag-box"><div class="iti-flag fi"></div></div><span class="country-name">Finland (Suomi)</span><span class="dial-code">+358</span></li><li class="country active" data-dial-code="33" data-country-code="fr"><div class="flag-box"><div class="iti-flag fr"></div></div><span class="country-name">France</span><span class="dial-code">+33</span></li><li class="country" data-dial-code="594" data-country-code="gf"><div class="flag-box"><div class="iti-flag gf"></div></div><span class="country-name">French Guiana (Guyane française)</span><span class="dial-code">+594</span></li><li class="country" data-dial-code="689" data-country-code="pf"><div class="flag-box"><div class="iti-flag pf"></div></div><span class="country-name">French Polynesia (Polynésie française)</span><span class="dial-code">+689</span></li><li class="country" data-dial-code="241" data-country-code="ga"><div class="flag-box"><div class="iti-flag ga"></div></div><span class="country-name">Gabon</span><span class="dial-code">+241</span></li><li class="country" data-dial-code="220" data-country-code="gm"><div class="flag-box"><div class="iti-flag gm"></div></div><span class="country-name">Gambia</span><span class="dial-code">+220</span></li><li class="country" data-dial-code="995" data-country-code="ge"><div class="flag-box"><div class="iti-flag ge"></div></div><span class="country-name">Georgia (საქართველო)</span><span class="dial-code">+995</span></li><li class="country" data-dial-code="49" data-country-code="de"><div class="flag-box"><div class="iti-flag de"></div></div><span class="country-name">Germany (Deutschland)</span><span class="dial-code">+49</span></li><li class="country" data-dial-code="233" data-country-code="gh"><div class="flag-box"><div class="iti-flag gh"></div></div><span class="country-name">Ghana (Gaana)</span><span class="dial-code">+233</span></li><li class="country" data-dial-code="350" data-country-code="gi"><div class="flag-box"><div class="iti-flag gi"></div></div><span class="country-name">Gibraltar</span><span class="dial-code">+350</span></li><li class="country" data-dial-code="30" data-country-code="gr"><div class="flag-box"><div class="iti-flag gr"></div></div><span class="country-name">Greece (Ελλάδα)</span><span class="dial-code">+30</span></li><li class="country" data-dial-code="299" data-country-code="gl"><div class="flag-box"><div class="iti-flag gl"></div></div><span class="country-name">Greenland (Kalaallit Nunaat)</span><span class="dial-code">+299</span></li><li class="country" data-dial-code="1473" data-country-code="gd"><div class="flag-box"><div class="iti-flag gd"></div></div><span class="country-name">Grenada</span><span class="dial-code">+1473</span></li><li class="country" data-dial-code="590" data-country-code="gp"><div class="flag-box"><div class="iti-flag gp"></div></div><span class="country-name">Guadeloupe</span><span class="dial-code">+590</span></li><li class="country" data-dial-code="1671" data-country-code="gu"><div class="flag-box"><div class="iti-flag gu"></div></div><span class="country-name">Guam</span><span class="dial-code">+1671</span></li><li class="country" data-dial-code="502" data-country-code="gt"><div class="flag-box"><div class="iti-flag gt"></div></div><span class="country-name">Guatemala</span><span class="dial-code">+502</span></li><li class="country" data-dial-code="44" data-country-code="gg"><div class="flag-box"><div class="iti-flag gg"></div></div><span class="country-name">Guernsey</span><span class="dial-code">+44</span></li><li class="country" data-dial-code="224" data-country-code="gn"><div class="flag-box"><div class="iti-flag gn"></div></div><span class="country-name">Guinea (Guinée)</span><span class="dial-code">+224</span></li><li class="country" data-dial-code="245" data-country-code="gw"><div class="flag-box"><div class="iti-flag gw"></div></div><span class="country-name">Guinea-Bissau (Guiné Bissau)</span><span class="dial-code">+245</span></li><li class="country" data-dial-code="592" data-country-code="gy"><div class="flag-box"><div class="iti-flag gy"></div></div><span class="country-name">Guyana</span><span class="dial-code">+592</span></li><li class="country" data-dial-code="509" data-country-code="ht"><div class="flag-box"><div class="iti-flag ht"></div></div><span class="country-name">Haiti</span><span class="dial-code">+509</span></li><li class="country" data-dial-code="504" data-country-code="hn"><div class="flag-box"><div class="iti-flag hn"></div></div><span class="country-name">Honduras</span><span class="dial-code">+504</span></li><li class="country" data-dial-code="852" data-country-code="hk"><div class="flag-box"><div class="iti-flag hk"></div></div><span class="country-name">Hong Kong (香港)</span><span class="dial-code">+852</span></li><li class="country" data-dial-code="36" data-country-code="hu"><div class="flag-box"><div class="iti-flag hu"></div></div><span class="country-name">Hungary (Magyarország)</span><span class="dial-code">+36</span></li><li class="country" data-dial-code="354" data-country-code="is"><div class="flag-box"><div class="iti-flag is"></div></div><span class="country-name">Iceland (Ísland)</span><span class="dial-code">+354</span></li><li class="country" data-dial-code="91" data-country-code="in"><div class="flag-box"><div class="iti-flag in"></div></div><span class="country-name">India (भारत)</span><span class="dial-code">+91</span></li><li class="country" data-dial-code="62" data-country-code="id"><div class="flag-box"><div class="iti-flag id"></div></div><span class="country-name">Indonesia</span><span class="dial-code">+62</span></li><li class="country" data-dial-code="98" data-country-code="ir"><div class="flag-box"><div class="iti-flag ir"></div></div><span class="country-name">Iran (&#8235;ایران&#8236;&lrm;)</span><span class="dial-code">+98</span></li><li class="country" data-dial-code="964" data-country-code="iq"><div class="flag-box"><div class="iti-flag iq"></div></div><span class="country-name">Iraq (&#8235;العراق&#8236;&lrm;)</span><span class="dial-code">+964</span></li><li class="country" data-dial-code="353" data-country-code="ie"><div class="flag-box"><div class="iti-flag ie"></div></div><span class="country-name">Ireland</span><span class="dial-code">+353</span></li><li class="country" data-dial-code="44" data-country-code="im"><div class="flag-box"><div class="iti-flag im"></div></div><span class="country-name">Isle of Man</span><span class="dial-code">+44</span></li><li class="country" data-dial-code="972" data-country-code="il"><div class="flag-box"><div class="iti-flag il"></div></div><span class="country-name">Israel (&#8235;ישראל&#8236;&lrm;)</span><span class="dial-code">+972</span></li><li class="country" data-dial-code="39" data-country-code="it"><div class="flag-box"><div class="iti-flag it"></div></div><span class="country-name">Italy (Italia)</span><span class="dial-code">+39</span></li><li class="country" data-dial-code="1876" data-country-code="jm"><div class="flag-box"><div class="iti-flag jm"></div></div><span class="country-name">Jamaica</span><span class="dial-code">+1876</span></li><li class="country" data-dial-code="81" data-country-code="jp"><div class="flag-box"><div class="iti-flag jp"></div></div><span class="country-name">Japan (日本)</span><span class="dial-code">+81</span></li><li class="country" data-dial-code="44" data-country-code="je"><div class="flag-box"><div class="iti-flag je"></div></div><span class="country-name">Jersey</span><span class="dial-code">+44</span></li><li class="country" data-dial-code="962" data-country-code="jo"><div class="flag-box"><div class="iti-flag jo"></div></div><span class="country-name">Jordan (&#8235;الأردن&#8236;&lrm;)</span><span class="dial-code">+962</span></li><li class="country" data-dial-code="7" data-country-code="kz"><div class="flag-box"><div class="iti-flag kz"></div></div><span class="country-name">Kazakhstan (Казахстан)</span><span class="dial-code">+7</span></li><li class="country" data-dial-code="254" data-country-code="ke"><div class="flag-box"><div class="iti-flag ke"></div></div><span class="country-name">Kenya</span><span class="dial-code">+254</span></li><li class="country" data-dial-code="686" data-country-code="ki"><div class="flag-box"><div class="iti-flag ki"></div></div><span class="country-name">Kiribati</span><span class="dial-code">+686</span></li><li class="country" data-dial-code="965" data-country-code="kw"><div class="flag-box"><div class="iti-flag kw"></div></div><span class="country-name">Kuwait (&#8235;الكويت&#8236;&lrm;)</span><span class="dial-code">+965</span></li><li class="country" data-dial-code="996" data-country-code="kg"><div class="flag-box"><div class="iti-flag kg"></div></div><span class="country-name">Kyrgyzstan (Кыргызстан)</span><span class="dial-code">+996</span></li><li class="country" data-dial-code="856" data-country-code="la"><div class="flag-box"><div class="iti-flag la"></div></div><span class="country-name">Laos (ລາວ)</span><span class="dial-code">+856</span></li><li class="country" data-dial-code="371" data-country-code="lv"><div class="flag-box"><div class="iti-flag lv"></div></div><span class="country-name">Latvia (Latvija)</span><span class="dial-code">+371</span></li><li class="country" data-dial-code="961" data-country-code="lb"><div class="flag-box"><div class="iti-flag lb"></div></div><span class="country-name">Lebanon (&#8235;لبنان&#8236;&lrm;)</span><span class="dial-code">+961</span></li><li class="country" data-dial-code="266" data-country-code="ls"><div class="flag-box"><div class="iti-flag ls"></div></div><span class="country-name">Lesotho</span><span class="dial-code">+266</span></li><li class="country" data-dial-code="231" data-country-code="lr"><div class="flag-box"><div class="iti-flag lr"></div></div><span class="country-name">Liberia</span><span class="dial-code">+231</span></li><li class="country" data-dial-code="218" data-country-code="ly"><div class="flag-box"><div class="iti-flag ly"></div></div><span class="country-name">Libya (&#8235;ليبيا&#8236;&lrm;)</span><span class="dial-code">+218</span></li><li class="country" data-dial-code="423" data-country-code="li"><div class="flag-box"><div class="iti-flag li"></div></div><span class="country-name">Liechtenstein</span><span class="dial-code">+423</span></li><li class="country" data-dial-code="370" data-country-code="lt"><div class="flag-box"><div class="iti-flag lt"></div></div><span class="country-name">Lithuania (Lietuva)</span><span class="dial-code">+370</span></li><li class="country" data-dial-code="352" data-country-code="lu"><div class="flag-box"><div class="iti-flag lu"></div></div><span class="country-name">Luxembourg</span><span class="dial-code">+352</span></li><li class="country" data-dial-code="853" data-country-code="mo"><div class="flag-box"><div class="iti-flag mo"></div></div><span class="country-name">Macau (澳門)</span><span class="dial-code">+853</span></li><li class="country" data-dial-code="389" data-country-code="mk"><div class="flag-box"><div class="iti-flag mk"></div></div><span class="country-name">Macedonia (FYROM) (Македонија)</span><span class="dial-code">+389</span></li><li class="country" data-dial-code="261" data-country-code="mg"><div class="flag-box"><div class="iti-flag mg"></div></div><span class="country-name">Madagascar (Madagasikara)</span><span class="dial-code">+261</span></li><li class="country" data-dial-code="265" data-country-code="mw"><div class="flag-box"><div class="iti-flag mw"></div></div><span class="country-name">Malawi</span><span class="dial-code">+265</span></li><li class="country" data-dial-code="60" data-country-code="my"><div class="flag-box"><div class="iti-flag my"></div></div><span class="country-name">Malaysia</span><span class="dial-code">+60</span></li><li class="country" data-dial-code="960" data-country-code="mv"><div class="flag-box"><div class="iti-flag mv"></div></div><span class="country-name">Maldives</span><span class="dial-code">+960</span></li><li class="country" data-dial-code="223" data-country-code="ml"><div class="flag-box"><div class="iti-flag ml"></div></div><span class="country-name">Mali</span><span class="dial-code">+223</span></li><li class="country" data-dial-code="356" data-country-code="mt"><div class="flag-box"><div class="iti-flag mt"></div></div><span class="country-name">Malta</span><span class="dial-code">+356</span></li><li class="country" data-dial-code="692" data-country-code="mh"><div class="flag-box"><div class="iti-flag mh"></div></div><span class="country-name">Marshall Islands</span><span class="dial-code">+692</span></li><li class="country" data-dial-code="596" data-country-code="mq"><div class="flag-box"><div class="iti-flag mq"></div></div><span class="country-name">Martinique</span><span class="dial-code">+596</span></li><li class="country" data-dial-code="222" data-country-code="mr"><div class="flag-box"><div class="iti-flag mr"></div></div><span class="country-name">Mauritania (&#8235;موريتانيا&#8236;&lrm;)</span><span class="dial-code">+222</span></li><li class="country" data-dial-code="230" data-country-code="mu"><div class="flag-box"><div class="iti-flag mu"></div></div><span class="country-name">Mauritius (Moris)</span><span class="dial-code">+230</span></li><li class="country" data-dial-code="262" data-country-code="yt"><div class="flag-box"><div class="iti-flag yt"></div></div><span class="country-name">Mayotte</span><span class="dial-code">+262</span></li><li class="country" data-dial-code="52" data-country-code="mx"><div class="flag-box"><div class="iti-flag mx"></div></div><span class="country-name">Mexico (México)</span><span class="dial-code">+52</span></li><li class="country" data-dial-code="691" data-country-code="fm"><div class="flag-box"><div class="iti-flag fm"></div></div><span class="country-name">Micronesia</span><span class="dial-code">+691</span></li><li class="country" data-dial-code="373" data-country-code="md"><div class="flag-box"><div class="iti-flag md"></div></div><span class="country-name">Moldova (Republica Moldova)</span><span class="dial-code">+373</span></li><li class="country" data-dial-code="377" data-country-code="mc"><div class="flag-box"><div class="iti-flag mc"></div></div><span class="country-name">Monaco</span><span class="dial-code">+377</span></li><li class="country" data-dial-code="976" data-country-code="mn"><div class="flag-box"><div class="iti-flag mn"></div></div><span class="country-name">Mongolia (Монгол)</span><span class="dial-code">+976</span></li><li class="country" data-dial-code="382" data-country-code="me"><div class="flag-box"><div class="iti-flag me"></div></div><span class="country-name">Montenegro (Crna Gora)</span><span class="dial-code">+382</span></li><li class="country" data-dial-code="1664" data-country-code="ms"><div class="flag-box"><div class="iti-flag ms"></div></div><span class="country-name">Montserrat</span><span class="dial-code">+1664</span></li><li class="country" data-dial-code="212" data-country-code="ma"><div class="flag-box"><div class="iti-flag ma"></div></div><span class="country-name">Morocco (&#8235;المغرب&#8236;&lrm;)</span><span class="dial-code">+212</span></li><li class="country" data-dial-code="258" data-country-code="mz"><div class="flag-box"><div class="iti-flag mz"></div></div><span class="country-name">Mozambique (Moçambique)</span><span class="dial-code">+258</span></li><li class="country" data-dial-code="95" data-country-code="mm"><div class="flag-box"><div class="iti-flag mm"></div></div><span class="country-name">Myanmar (Burma) (မြန်မာ)</span><span class="dial-code">+95</span></li><li class="country" data-dial-code="264" data-country-code="na"><div class="flag-box"><div class="iti-flag na"></div></div><span class="country-name">Namibia (Namibië)</span><span class="dial-code">+264</span></li><li class="country" data-dial-code="674" data-country-code="nr"><div class="flag-box"><div class="iti-flag nr"></div></div><span class="country-name">Nauru</span><span class="dial-code">+674</span></li><li class="country" data-dial-code="977" data-country-code="np"><div class="flag-box"><div class="iti-flag np"></div></div><span class="country-name">Nepal (नेपाल)</span><span class="dial-code">+977</span></li><li class="country" data-dial-code="31" data-country-code="nl"><div class="flag-box"><div class="iti-flag nl"></div></div><span class="country-name">Netherlands (Nederland)</span><span class="dial-code">+31</span></li><li class="country" data-dial-code="687" data-country-code="nc"><div class="flag-box"><div class="iti-flag nc"></div></div><span class="country-name">New Caledonia (Nouvelle-Calédonie)</span><span class="dial-code">+687</span></li><li class="country" data-dial-code="64" data-country-code="nz"><div class="flag-box"><div class="iti-flag nz"></div></div><span class="country-name">New Zealand</span><span class="dial-code">+64</span></li><li class="country" data-dial-code="505" data-country-code="ni"><div class="flag-box"><div class="iti-flag ni"></div></div><span class="country-name">Nicaragua</span><span class="dial-code">+505</span></li><li class="country" data-dial-code="227" data-country-code="ne"><div class="flag-box"><div class="iti-flag ne"></div></div><span class="country-name">Niger (Nijar)</span><span class="dial-code">+227</span></li><li class="country" data-dial-code="234" data-country-code="ng"><div class="flag-box"><div class="iti-flag ng"></div></div><span class="country-name">Nigeria</span><span class="dial-code">+234</span></li><li class="country" data-dial-code="683" data-country-code="nu"><div class="flag-box"><div class="iti-flag nu"></div></div><span class="country-name">Niue</span><span class="dial-code">+683</span></li><li class="country" data-dial-code="672" data-country-code="nf"><div class="flag-box"><div class="iti-flag nf"></div></div><span class="country-name">Norfolk Island</span><span class="dial-code">+672</span></li><li class="country" data-dial-code="850" data-country-code="kp"><div class="flag-box"><div class="iti-flag kp"></div></div><span class="country-name">North Korea (조선 민주주의 인민 공화국)</span><span class="dial-code">+850</span></li><li class="country" data-dial-code="1670" data-country-code="mp"><div class="flag-box"><div class="iti-flag mp"></div></div><span class="country-name">Northern Mariana Islands</span><span class="dial-code">+1670</span></li><li class="country" data-dial-code="47" data-country-code="no"><div class="flag-box"><div class="iti-flag no"></div></div><span class="country-name">Norway (Norge)</span><span class="dial-code">+47</span></li><li class="country" data-dial-code="968" data-country-code="om"><div class="flag-box"><div class="iti-flag om"></div></div><span class="country-name">Oman (&#8235;عُمان&#8236;&lrm;)</span><span class="dial-code">+968</span></li><li class="country" data-dial-code="92" data-country-code="pk"><div class="flag-box"><div class="iti-flag pk"></div></div><span class="country-name">Pakistan (&#8235;پاکستان&#8236;&lrm;)</span><span class="dial-code">+92</span></li><li class="country" data-dial-code="680" data-country-code="pw"><div class="flag-box"><div class="iti-flag pw"></div></div><span class="country-name">Palau</span><span class="dial-code">+680</span></li><li class="country" data-dial-code="970" data-country-code="ps"><div class="flag-box"><div class="iti-flag ps"></div></div><span class="country-name">Palestine (&#8235;فلسطين&#8236;&lrm;)</span><span class="dial-code">+970</span></li><li class="country" data-dial-code="507" data-country-code="pa"><div class="flag-box"><div class="iti-flag pa"></div></div><span class="country-name">Panama (Panamá)</span><span class="dial-code">+507</span></li><li class="country" data-dial-code="675" data-country-code="pg"><div class="flag-box"><div class="iti-flag pg"></div></div><span class="country-name">Papua New Guinea</span><span class="dial-code">+675</span></li><li class="country" data-dial-code="595" data-country-code="py"><div class="flag-box"><div class="iti-flag py"></div></div><span class="country-name">Paraguay</span><span class="dial-code">+595</span></li><li class="country" data-dial-code="51" data-country-code="pe"><div class="flag-box"><div class="iti-flag pe"></div></div><span class="country-name">Peru (Perú)</span><span class="dial-code">+51</span></li><li class="country" data-dial-code="63" data-country-code="ph"><div class="flag-box"><div class="iti-flag ph"></div></div><span class="country-name">Philippines</span><span class="dial-code">+63</span></li><li class="country" data-dial-code="48" data-country-code="pl"><div class="flag-box"><div class="iti-flag pl"></div></div><span class="country-name">Poland (Polska)</span><span class="dial-code">+48</span></li><li class="country" data-dial-code="351" data-country-code="pt"><div class="flag-box"><div class="iti-flag pt"></div></div><span class="country-name">Portugal</span><span class="dial-code">+351</span></li><li class="country" data-dial-code="1" data-country-code="pr"><div class="flag-box"><div class="iti-flag pr"></div></div><span class="country-name">Puerto Rico</span><span class="dial-code">+1</span></li><li class="country" data-dial-code="974" data-country-code="qa"><div class="flag-box"><div class="iti-flag qa"></div></div><span class="country-name">Qatar (&#8235;قطر&#8236;&lrm;)</span><span class="dial-code">+974</span></li><li class="country" data-dial-code="262" data-country-code="re"><div class="flag-box"><div class="iti-flag re"></div></div><span class="country-name">Réunion (La Réunion)</span><span class="dial-code">+262</span></li><li class="country" data-dial-code="40" data-country-code="ro"><div class="flag-box"><div class="iti-flag ro"></div></div><span class="country-name">Romania (România)</span><span class="dial-code">+40</span></li><li class="country" data-dial-code="7" data-country-code="ru"><div class="flag-box"><div class="iti-flag ru"></div></div><span class="country-name">Russia (Россия)</span><span class="dial-code">+7</span></li><li class="country" data-dial-code="250" data-country-code="rw"><div class="flag-box"><div class="iti-flag rw"></div></div><span class="country-name">Rwanda</span><span class="dial-code">+250</span></li><li class="country" data-dial-code="590" data-country-code="bl"><div class="flag-box"><div class="iti-flag bl"></div></div><span class="country-name">Saint Barthélemy (Saint-Barthélemy)</span><span class="dial-code">+590</span></li><li class="country" data-dial-code="290" data-country-code="sh"><div class="flag-box"><div class="iti-flag sh"></div></div><span class="country-name">Saint Helena</span><span class="dial-code">+290</span></li><li class="country" data-dial-code="1869" data-country-code="kn"><div class="flag-box"><div class="iti-flag kn"></div></div><span class="country-name">Saint Kitts and Nevis</span><span class="dial-code">+1869</span></li><li class="country" data-dial-code="1758" data-country-code="lc"><div class="flag-box"><div class="iti-flag lc"></div></div><span class="country-name">Saint Lucia</span><span class="dial-code">+1758</span></li><li class="country" data-dial-code="590" data-country-code="mf"><div class="flag-box"><div class="iti-flag mf"></div></div><span class="country-name">Saint Martin (Saint-Martin (partie française))</span><span class="dial-code">+590</span></li><li class="country" data-dial-code="508" data-country-code="pm"><div class="flag-box"><div class="iti-flag pm"></div></div><span class="country-name">Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)</span><span class="dial-code">+508</span></li><li class="country" data-dial-code="1784" data-country-code="vc"><div class="flag-box"><div class="iti-flag vc"></div></div><span class="country-name">Saint Vincent and the Grenadines</span><span class="dial-code">+1784</span></li><li class="country" data-dial-code="685" data-country-code="ws"><div class="flag-box"><div class="iti-flag ws"></div></div><span class="country-name">Samoa</span><span class="dial-code">+685</span></li><li class="country" data-dial-code="378" data-country-code="sm"><div class="flag-box"><div class="iti-flag sm"></div></div><span class="country-name">San Marino</span><span class="dial-code">+378</span></li><li class="country" data-dial-code="239" data-country-code="st"><div class="flag-box"><div class="iti-flag st"></div></div><span class="country-name">São Tomé and Príncipe (São Tomé e Príncipe)</span><span class="dial-code">+239</span></li><li class="country" data-dial-code="966" data-country-code="sa"><div class="flag-box"><div class="iti-flag sa"></div></div><span class="country-name">Saudi Arabia (&#8235;المملكة العربية السعودية&#8236;&lrm;)</span><span class="dial-code">+966</span></li><li class="country" data-dial-code="221" data-country-code="sn"><div class="flag-box"><div class="iti-flag sn"></div></div><span class="country-name">Senegal (Sénégal)</span><span class="dial-code">+221</span></li><li class="country" data-dial-code="381" data-country-code="rs"><div class="flag-box"><div class="iti-flag rs"></div></div><span class="country-name">Serbia (Србија)</span><span class="dial-code">+381</span></li><li class="country" data-dial-code="248" data-country-code="sc"><div class="flag-box"><div class="iti-flag sc"></div></div><span class="country-name">Seychelles</span><span class="dial-code">+248</span></li><li class="country" data-dial-code="232" data-country-code="sl"><div class="flag-box"><div class="iti-flag sl"></div></div><span class="country-name">Sierra Leone</span><span class="dial-code">+232</span></li><li class="country" data-dial-code="65" data-country-code="sg"><div class="flag-box"><div class="iti-flag sg"></div></div><span class="country-name">Singapore</span><span class="dial-code">+65</span></li><li class="country" data-dial-code="1721" data-country-code="sx"><div class="flag-box"><div class="iti-flag sx"></div></div><span class="country-name">Sint Maarten</span><span class="dial-code">+1721</span></li><li class="country" data-dial-code="421" data-country-code="sk"><div class="flag-box"><div class="iti-flag sk"></div></div><span class="country-name">Slovakia (Slovensko)</span><span class="dial-code">+421</span></li><li class="country" data-dial-code="386" data-country-code="si"><div class="flag-box"><div class="iti-flag si"></div></div><span class="country-name">Slovenia (Slovenija)</span><span class="dial-code">+386</span></li><li class="country" data-dial-code="677" data-country-code="sb"><div class="flag-box"><div class="iti-flag sb"></div></div><span class="country-name">Solomon Islands</span><span class="dial-code">+677</span></li><li class="country" data-dial-code="252" data-country-code="so"><div class="flag-box"><div class="iti-flag so"></div></div><span class="country-name">Somalia (Soomaaliya)</span><span class="dial-code">+252</span></li><li class="country" data-dial-code="27" data-country-code="za"><div class="flag-box"><div class="iti-flag za"></div></div><span class="country-name">South Africa</span><span class="dial-code">+27</span></li><li class="country" data-dial-code="82" data-country-code="kr"><div class="flag-box"><div class="iti-flag kr"></div></div><span class="country-name">South Korea (대한민국)</span><span class="dial-code">+82</span></li><li class="country" data-dial-code="211" data-country-code="ss"><div class="flag-box"><div class="iti-flag ss"></div></div><span class="country-name">South Sudan (&#8235;جنوب السودان&#8236;&lrm;)</span><span class="dial-code">+211</span></li><li class="country" data-dial-code="34" data-country-code="es"><div class="flag-box"><div class="iti-flag es"></div></div><span class="country-name">Spain (España)</span><span class="dial-code">+34</span></li><li class="country" data-dial-code="94" data-country-code="lk"><div class="flag-box"><div class="iti-flag lk"></div></div><span class="country-name">Sri Lanka (ශ්&zwj;රී ලංකාව)</span><span class="dial-code">+94</span></li><li class="country" data-dial-code="249" data-country-code="sd"><div class="flag-box"><div class="iti-flag sd"></div></div><span class="country-name">Sudan (&#8235;السودان&#8236;&lrm;)</span><span class="dial-code">+249</span></li><li class="country" data-dial-code="597" data-country-code="sr"><div class="flag-box"><div class="iti-flag sr"></div></div><span class="country-name">Suriname</span><span class="dial-code">+597</span></li><li class="country" data-dial-code="47" data-country-code="sj"><div class="flag-box"><div class="iti-flag sj"></div></div><span class="country-name">Svalbard and Jan Mayen</span><span class="dial-code">+47</span></li><li class="country" data-dial-code="268" data-country-code="sz"><div class="flag-box"><div class="iti-flag sz"></div></div><span class="country-name">Swaziland</span><span class="dial-code">+268</span></li><li class="country" data-dial-code="46" data-country-code="se"><div class="flag-box"><div class="iti-flag se"></div></div><span class="country-name">Sweden (Sverige)</span><span class="dial-code">+46</span></li><li class="country" data-dial-code="41" data-country-code="ch"><div class="flag-box"><div class="iti-flag ch"></div></div><span class="country-name">Switzerland (Schweiz)</span><span class="dial-code">+41</span></li><li class="country" data-dial-code="963" data-country-code="sy"><div class="flag-box"><div class="iti-flag sy"></div></div><span class="country-name">Syria (&#8235;سوريا&#8236;&lrm;)</span><span class="dial-code">+963</span></li><li class="country" data-dial-code="886" data-country-code="tw"><div class="flag-box"><div class="iti-flag tw"></div></div><span class="country-name">Taiwan (台灣)</span><span class="dial-code">+886</span></li><li class="country" data-dial-code="992" data-country-code="tj"><div class="flag-box"><div class="iti-flag tj"></div></div><span class="country-name">Tajikistan</span><span class="dial-code">+992</span></li><li class="country" data-dial-code="255" data-country-code="tz"><div class="flag-box"><div class="iti-flag tz"></div></div><span class="country-name">Tanzania</span><span class="dial-code">+255</span></li><li class="country" data-dial-code="66" data-country-code="th"><div class="flag-box"><div class="iti-flag th"></div></div><span class="country-name">Thailand (ไทย)</span><span class="dial-code">+66</span></li><li class="country" data-dial-code="670" data-country-code="tl"><div class="flag-box"><div class="iti-flag tl"></div></div><span class="country-name">Timor-Leste</span><span class="dial-code">+670</span></li><li class="country" data-dial-code="228" data-country-code="tg"><div class="flag-box"><div class="iti-flag tg"></div></div><span class="country-name">Togo</span><span class="dial-code">+228</span></li><li class="country" data-dial-code="690" data-country-code="tk"><div class="flag-box"><div class="iti-flag tk"></div></div><span class="country-name">Tokelau</span><span class="dial-code">+690</span></li><li class="country" data-dial-code="676" data-country-code="to"><div class="flag-box"><div class="iti-flag to"></div></div><span class="country-name">Tonga</span><span class="dial-code">+676</span></li><li class="country" data-dial-code="1868" data-country-code="tt"><div class="flag-box"><div class="iti-flag tt"></div></div><span class="country-name">Trinidad and Tobago</span><span class="dial-code">+1868</span></li><li class="country" data-dial-code="216" data-country-code="tn"><div class="flag-box"><div class="iti-flag tn"></div></div><span class="country-name">Tunisia (&#8235;تونس&#8236;&lrm;)</span><span class="dial-code">+216</span></li><li class="country" data-dial-code="90" data-country-code="tr"><div class="flag-box"><div class="iti-flag tr"></div></div><span class="country-name">Turkey (Türkiye)</span><span class="dial-code">+90</span></li><li class="country" data-dial-code="993" data-country-code="tm"><div class="flag-box"><div class="iti-flag tm"></div></div><span class="country-name">Turkmenistan</span><span class="dial-code">+993</span></li><li class="country" data-dial-code="1649" data-country-code="tc"><div class="flag-box"><div class="iti-flag tc"></div></div><span class="country-name">Turks and Caicos Islands</span><span class="dial-code">+1649</span></li><li class="country" data-dial-code="688" data-country-code="tv"><div class="flag-box"><div class="iti-flag tv"></div></div><span class="country-name">Tuvalu</span><span class="dial-code">+688</span></li><li class="country" data-dial-code="1340" data-country-code="vi"><div class="flag-box"><div class="iti-flag vi"></div></div><span class="country-name">U.S. Virgin Islands</span><span class="dial-code">+1340</span></li><li class="country" data-dial-code="256" data-country-code="ug"><div class="flag-box"><div class="iti-flag ug"></div></div><span class="country-name">Uganda</span><span class="dial-code">+256</span></li><li class="country" data-dial-code="380" data-country-code="ua"><div class="flag-box"><div class="iti-flag ua"></div></div><span class="country-name">Ukraine (Україна)</span><span class="dial-code">+380</span></li><li class="country" data-dial-code="971" data-country-code="ae"><div class="flag-box"><div class="iti-flag ae"></div></div><span class="country-name">United Arab Emirates (&#8235;الإمارات العربية المتحدة&#8236;&lrm;)</span><span class="dial-code">+971</span></li><li class="country" data-dial-code="44" data-country-code="gb"><div class="flag-box"><div class="iti-flag gb"></div></div><span class="country-name">United Kingdom</span><span class="dial-code">+44</span></li><li class="country" data-dial-code="1" data-country-code="us"><div class="flag-box"><div class="iti-flag us"></div></div><span class="country-name">United States</span><span class="dial-code">+1</span></li><li class="country" data-dial-code="598" data-country-code="uy"><div class="flag-box"><div class="iti-flag uy"></div></div><span class="country-name">Uruguay</span><span class="dial-code">+598</span></li><li class="country" data-dial-code="998" data-country-code="uz"><div class="flag-box"><div class="iti-flag uz"></div></div><span class="country-name">Uzbekistan (Oʻzbekiston)</span><span class="dial-code">+998</span></li><li class="country" data-dial-code="678" data-country-code="vu"><div class="flag-box"><div class="iti-flag vu"></div></div><span class="country-name">Vanuatu</span><span class="dial-code">+678</span></li><li class="country" data-dial-code="39" data-country-code="va"><div class="flag-box"><div class="iti-flag va"></div></div><span class="country-name">Vatican City (Città del Vaticano)</span><span class="dial-code">+39</span></li><li class="country" data-dial-code="58" data-country-code="ve"><div class="flag-box"><div class="iti-flag ve"></div></div><span class="country-name">Venezuela</span><span class="dial-code">+58</span></li><li class="country" data-dial-code="84" data-country-code="vn"><div class="flag-box"><div class="iti-flag vn"></div></div><span class="country-name">Vietnam (Việt Nam)</span><span class="dial-code">+84</span></li><li class="country" data-dial-code="681" data-country-code="wf"><div class="flag-box"><div class="iti-flag wf"></div></div><span class="country-name">Wallis and Futuna</span><span class="dial-code">+681</span></li><li class="country" data-dial-code="212" data-country-code="eh"><div class="flag-box"><div class="iti-flag eh"></div></div><span class="country-name">Western Sahara (&#8235;الصحراء الغربية&#8236;&lrm;)</span><span class="dial-code">+212</span></li><li class="country" data-dial-code="967" data-country-code="ye"><div class="flag-box"><div class="iti-flag ye"></div></div><span class="country-name">Yemen (&#8235;اليمن&#8236;&lrm;)</span><span class="dial-code">+967</span></li><li class="country" data-dial-code="260" data-country-code="zm"><div class="flag-box"><div class="iti-flag zm"></div></div><span class="country-name">Zambia</span><span class="dial-code">+260</span></li><li class="country" data-dial-code="263" data-country-code="zw"><div class="flag-box"><div class="iti-flag zw"></div></div><span class="country-name">Zimbabwe</span><span class="dial-code">+263</span></li><li class="country" data-dial-code="358" data-country-code="ax"><div class="flag-box"><div class="iti-flag ax"></div></div><span class="country-name">Åland Islands</span><span class="dial-code">+358</span></li></ul></div><input id="dixdigit-phone-sms" class="contact sms ember-view" style="" placeholder="06 12 34 56 78" type="text" autocomplete="off"></div>
+
+<input id="dixdigit-contact" class="contact ember-view" style="display: none;" type="text" placeholder="Phone Number (with Country Code)">
+
+<input id="ember1418" class="reference ember-view" placeholder="Reference" type="text">
+
+<input id="datetimepicker-appointment" class="datetime ember-view" style="display: none;" placeholder="" type="text">
+
+<input id="generate-pin" class="button1 generate ember-view" placeholder="" type="button" value="Send SMS"></div>
+
+  <div id="ember1427" class="ember-view usecase-info" style=""><label class="usecase">
+    <span>Scenario</span>
+    <input type="text" readonly="">
+</label>
+
+<label class="contact">
+    <span>SMS</span>
+    <input type="text" readonly="">
+</label>
+
+<!---->
+<!---->
+
+<label class="reference">
+    <span>Reference</span>
+    <input type="text" readonly="">
+</label>
+
+<!---->
+<input id="new-pin" class="button1 cancel ember-view" style="display: none;" placeholder="" type="button" value="New Scenario">
+
+<input id="resend-pin" class="button1 generate info ember-view" style="display: none;" placeholder="" type="button" value="Send Again">
+
+<input id="cancel-pin" class="button1 cancel ember-view" placeholder="" type="button" value="Cancel"></div>
+</div>
+</div>
+
+    <div id="ember1436" class="ember-view topPopOver conference invitationList" style="display: none;"><span data-ember-action="1437">
+  <span class="icon"></span>
+  <a class="opener"></a>
+  <div class="badge">0</div>
+</span>
+
+<div class="content" style="display: none;">
+<!----></div></div>
+    
+    <div id="ember1446" class="ember-view topPopOver conference invitationForm" style="display: none;"><span data-ember-action="1447">
+<span class="icon"></span>
+	<a class="opener"></a>
+</span>   
+<div class="content" style="display: none;">
+	<h3>Add attendees to this call</h3>
+	<div class="part titleInput">
+		<input class="title" type="text" placeholder="Add a title">
+		<span class="clear" data-ember-action="1448">x</span>
+	</div>
+
+	<div id="ember1457" class="ember-view conference invitation-form-internal part"><h4>Invite Internal Users</h4>
+
+<ul class="selected-member-list">
+<span class="no-selected-member">Select internal users from the team members list</span>
+</ul>
+
+<div class="invite-media">
+	<label><input type="checkbox" class="sms"> Notify by SMS</label>
+	<label><input type="checkbox" class="email"> Notify by Email</label>
+	<label><input type="checkbox" class="console" checked="checked" data-ember-action="1458"> Notify in the console</label>
+</div></div>
+	<div id="ember1467" class="ember-view conference invitation-form-external part"><h4>Invite External Users</h4>
+
+<div class="invite-external-media">
+	<span class="invite-external-media-label">Invite by</span>
+	<input class="button1 email" type="button" value="Email" data-ember-action="1468">
+	<input class="button1 sms" type="button" value="SMS" data-ember-action="1469">
+</div>
+
+<ul class="contact-input-list">
+<!----></ul></div>
+
+	<input type="submit" disabled="" class="submit button1 disabled" value="Send Invite(s)" data-ember-action="1470">
+</div>
+</div>
+
+    <div id="ember1483" class="ember-view topPopOver sms-toggle" style="display: none;"><span data-ember-action="1484">
+    <span class="number">SMS</span>
+    <a class="opener"></a>
+</span>
+<div class="content" style="display: none;">
+<p>App not registered, re-send activation SMS</p>
+<label class="phonenumber">Phone Number <input id="ember1493" type="text" class="ember-view ember-text-field"></label>
+<label class="reference">Reference <input id="ember1494" type="text" class="ember-view ember-text-field"></label>
+<button class="button1" data-ember-action="1495">Send</button>
+</div></div>
+
+    <div id="ember1504" class="ember-view topPopOver pictures" style="display: none;"><span data-ember-action="1505">
+  <span class="icon"></span>
+  <a class="opener"></a>
+  <div class="number_of_images">0</div>
+</span>   
+
+<div class="content" style="display: none;">
+  <ul class="imgList">
+    <li class="nomembers">Pictures taken during a call will appear here.</li>
+  </ul>
+  
+  <div id="ember1514" class="ember-view picture-management-email-form"><!---->
+<div class="toggle emailSettingsButton " data-ember-action="1515">
+  Add Recipient
+</div></div>
+
+  <button disabled="" class="submit disabled" data-ember-action="1516">Submit 0 picture(s)</button>
+
+<!----></div>
+</div>
+    
+    <div id="ember1525" class="ember-view topPopOver consoleLocation" style="display: none;"><span class="icon "></span>
+<a class="opener" data-ember-action="1526"></a>
+
+<div class="content" style="display: none;">
+	<div class="map" style="display: none;">
+		<div id="location-menu">
+			<input id="location-menu-basic" class="" type="button" value="basic" data-ember-action="1527">
+			<input id="location-menu-streets" class="" type="button" value="streets" data-ember-action="1528">
+		</div>
+
+		<div id="location-content-minimap" class="content-map mini">
+			<div id="location-minimap" class="mapcanvas leaflet-container leaflet-fade-anim" style="width: 300px; height: 300px; position: relative;" tabindex="0"><div class="leaflet-map-pane"><div class="leaflet-tile-pane"></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"></div><div class="leaflet-overlay-pane"></div><div class="leaflet-marker-pane"></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out">-</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-grid map-tooltip leaflet-control" style="display: none;"><a class="close" href="#" title="close">close</a><div class="map-tooltip-content"></div></div></div><div class="leaflet-bottom leaflet-left"><div class="leaflet-control-scale leaflet-control"><div class="leaflet-control-scale-line"></div></div><div class="mapbox-logo leaflet-control"></div></div><div class="leaflet-bottom leaflet-right"><div class="map-legends wax-legends leaflet-control" style="display: none;"></div><div class="leaflet-control-attribution leaflet-control leaflet-compact-attribution"></div></div></div></div>
+		</div>
+
+		<div id="gps-position"><!----></div>
+		<div id="gps-accuracy"><!----></div>
+	</div>
+
+	<div class="info">
+		<span class="icon "></span>
+		<span class="message"><!----></span>
+	</div>
+</div>
+
+</div>
+
+    <div id="ember1537" class="ember-view topBar ui-draggable" style="z-index: 14;"><h2>
+	<span class="iconType inCall"></span>
+
+	<span class="icon aphone"></span>
+	<span class="usecaseName">Show Me</span>
+<!---->	<span class="productName"> - INV0012355-Versailles-S10022</span>
+	<span id="ember2504" class="ember-view callIncrementTimer"> - 02:18</span>
+</h2>
+
+</div>
+
+    </header>
+
+    <div class="desktop host modeSlim" id="desktop-content" style="height: 454px;">
+        <img class="logoLiveSight" src="//static.rtccloud.net/livesight.net/b24a043964f8074f39902afeb1275be3">
+        <ul class="notificationsList" id="notificationsList">
+<!---->        </ul>
+        <div id="ember1546" class="ember-view mainBox centeredBox connectionBox" style="display: none;">    <div id="connection-content" class="content">
+        <span class="close" data-ember-action="1551"></span>
+        <p>You are now connected. Your presence is set to <em>Online</em>, you are ready to receive requests from external users.</p><p>To stop to receive requests, set your presence to: <em>Away</em>.</p><p>To log out, set your presence to <em>Disconnect</em>.</p>
+        <input id="connectionDontShowAgain" type="checkbox" class="ember-view ember-checkbox"><label for="connectionDontShowAgain">Don't show me this window again</label>
+    </div></div>
+            <div id="ember2505" class="ember-view mainBox localActionsBox ui-draggable" style="width: 320px; height: 104px;"> <h3 class="ui-draggable-handle">
+    Local
+
+<!---->
+<!---->
+    <span id="ember2506" class="ember-view icon videoFullscreen enabled"><span class="tooltip">Video Fullscreen</span></span>
+    <span id="ember2507" class="ember-view icon videoEnlarge enabled"><span class="tooltip">Video Enlarge</span></span>
+    <span id="ember2508" class="ember-view icon videoReduce enabled"><span class="tooltip">Video Reduce</span></span>
+    <span class="iconLabel"></span>
+</h3>
+<div id="localActionsBox-content" class="content">
+    <div id="ember2509" class="ember-view mainBox popup endConversation hasHangupKeepPincode" style="display: none;"><h4>End the conversation ?</h4>
+<div id="endConversation-buttons" class="buttons but2">
+   <button id="ember2510" class="ember-view icon button1 transparent cancel hangupCancel enabled"><span class="tooltip">Cancel</span></button>
+   
+       <button id="ember2511" class="ember-view icon button1 blue accept hangupKeepPincode enabled"><span class="tooltip">Hang Up <small>Keep CODE</small></span></button>
+       <button id="ember2512" class="ember-view icon button1 blue accept hangupDeletePincode enabled"><span class="tooltip">Hang Up <small>Delete CODE</small></span></button>
+</div>
+</div>
+    <ul>
+        	<li id="ember2514" class="ember-view iconsLine iconsBy6"><ul>
+		<li id="ember2515" class="ember-view icon iconBloc localSound enabled off"><span class="icon" data-ember-action="2516"></span>
+<span class="tooltip"><span>Mute Off</span></span>
+<!---->
+</li>
+		<li id="ember2517" class="ember-view icon iconBloc localVideo enabled off"><span class="icon" data-ember-action="2518"></span>
+<span class="tooltip"><span>Start Camera</span></span>
+<!---->
+</li>
+		<li id="ember2519" class="ember-view icon iconBloc localProfile enabled md"><span class="icon" data-ember-action="2520"></span>
+<span class="tooltip"><span>Quality SD</span></span>
+<!---->
+</li>
+		<li id="ember2521" class="ember-view icon iconBloc localShare enabled off"><span class="icon" data-ember-action="2522"></span>
+<span class="tooltip"><span>Start Share</span></span>
+<!---->
+</li>
+		<li id="ember2524" class="ember-view icon iconBloc noneButton disabled"><span class="icon" data-ember-action="2525"></span>
+<span class="tooltip"><span><!----></span></span>
+<!---->
+</li>
+		<li id="ember2526" class="ember-view icon iconBloc localHangup enabled"><span class="icon" data-ember-action="2527"></span>
+<span class="tooltip"><span>Hang Up</span></span>
+<!---->
+</li>
+</ul></li>
+
+            <div id="ember2528" class="ember-view icon videoZoom enabled"><span class="label">Local</span>
+<input class="slidercontainer" type="range" value="0" min="0" max="100">
+<span class="magnify-plus"></span></div>
+    </ul>
+</div></div>
+            <div id="ember2541" class="ember-view mainBox remoteActionsBox ui-draggable" style="width: 320px; height: 179px; left: 6px; top: 116px;"><h3 class="ui-draggable-handle">Remote
+    <span id="ember2542" class="ember-view icon geolocation remoteGeolocation enabled"><span class="tooltip">Geolocate</span></span>
+    <!---->
+    <span class="iconLabel"></span>
+</h3>
+<div class="content">
+	<div id="ember2543" class="ember-view mainBox indicatorBar" style=""><div class="network-strength network-strength-1">
+	<span class="s0"></span><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span>
+</div>
+
+<div class="sim-carrier">Orange F</div>
+
+<div class="sim-type sim-type-4G"></div> 
+
+<!---->
+<div class="os os-android"></div>
+
+<div class="battery battery-level-normal battery-charging-off">
+	43%
+	<span class="battery-level" style="height: 4px;"></span>
+</div>
+</div>
+    <ul>
+        	<li id="ember2545" class="ember-view iconsLine iconsBy6"><ul>
+		<li id="ember2546" class="ember-view icon iconBloc remoteSound enabled on"><span class="icon" data-ember-action="2547"></span>
+<span class="tooltip"><span>Mute Off</span></span>
+<!---->
+</li>
+		<li id="ember2548" class="ember-view icon iconBloc remoteVideo enabled on"><span class="icon" data-ember-action="2549"></span>
+<span class="tooltip"><span>Stop Camera</span></span>
+<!---->
+</li>
+		<li id="ember2550" class="ember-view icon iconBloc remoteLight enabled off"><span class="icon" data-ember-action="2551"></span>
+<span class="tooltip"><span>Light On</span></span>
+<!---->
+</li>
+		<li id="ember2552" class="ember-view icon iconBloc remotePause enabled off"><span class="icon" data-ember-action="2553"></span>
+<span class="tooltip"><span>Pause Video</span></span>
+<!---->
+</li>
+		<li id="ember2555" class="ember-view icon iconBloc noneButton disabled"><span class="icon" data-ember-action="2556"></span>
+<span class="tooltip"><span><!----></span></span>
+<!---->
+</li>
+		<li id="ember2557" class="ember-view icon iconBloc remoteLayout enabled on"><span class="icon" data-ember-action="2558"></span>
+<span class="tooltip"><span>Switch Camera</span></span>
+<!---->
+</li>
+</ul></li>
+	<li id="ember2560" class="ember-view iconsLine iconsBy6"><ul>
+		<li id="ember2561" class="ember-view icon iconBloc remoteAnnotation disabled drop"><span class="icon" data-ember-action="2562"></span>
+<span class="tooltip"><span><!----></span></span>
+<!---->
+</li>
+		<li id="ember2563" class="ember-view icon iconBloc remoteErase disabled"><span class="icon" data-ember-action="2564"></span>
+<span class="tooltip"><span><!----></span></span>
+<!---->
+</li>
+		<li id="ember2565" class="ember-view icon iconBloc remoteSnapshot enabled off"><span class="icon" data-ember-action="2566"></span>
+<span class="tooltip"><span>Take Snapshot</span></span>
+<!---->
+</li>
+		<li id="ember2567" class="ember-view icon iconBloc remoteGalleryPicture enabled off"><span class="icon" data-ember-action="2568"></span>
+<span class="tooltip"><span>Open Picture Gallery</span></span>
+<!---->
+</li>
+		<li id="ember2570" class="ember-view icon iconBloc noneButton disabled"><span class="icon" data-ember-action="2571"></span>
+<span class="tooltip"><span><!----></span></span>
+<!---->
+</li>
+		<li id="ember2572" class="ember-view icon iconBloc remoteSave enabled save"><span class="icon" data-ember-action="2573"></span>
+<span class="tooltip"><span>Save Picture</span></span>
+<!---->
+</li>
+</ul></li>
+
+        <li id="ember2574" class="ember-view mainBox iconsLine videoBloc" style="display: none;"><h5>Video Controls</h5>
+<ul id="remoteBarVideo-buttons" class="buttons">
+	<li id="ember2575" class="ember-view icon iconBloc button1 playerFastForward enabled"><span class="icon" data-ember-action="2576"></span>
+<span class="tooltip"><span>Fast Forward</span></span>
++30 s
+</li>
+    <li id="ember2577" class="ember-view icon iconBloc button1 playerForward enabled"><span class="icon" data-ember-action="2578"></span>
+<span class="tooltip"><span>Forward</span></span>
++5 s
+</li>
+    <li id="ember2579" class="ember-view icon iconBloc button1 playerPause enabled"><span class="icon" data-ember-action="2580"></span>
+<span class="tooltip"><span>Missing translation: bars.buttons.playerPause.label</span></span>
+<!---->
+</li>
+    <li id="ember2581" class="ember-view icon iconBloc button1 playerRewind enabled"><span class="icon" data-ember-action="2582"></span>
+<span class="tooltip"><span>Rewind</span></span>
+-5 s
+</li>
+    <li id="ember2583" class="ember-view icon iconBloc button1 playerFastRewind enabled"><span class="icon" data-ember-action="2584"></span>
+<span class="tooltip"><span>Fast Rewind</span></span>
+-30 s
+</li>
+</ul></li>
+    </ul>
+
+    <div id="ember2585" class="ember-view mainBox iconsLine coBrowseBloc"><h5>Co-browsing</h5>
+<div class="url2CoBrowse">
+    <input id="cobrowse-input-url" class="urlInput" type="text" placeholder="Enter URL to Co-Browse">
+    <a id="ember2586" class="ember-view icon favoritesIcon favoriteAdd disabled"><span class="tooltip"><!----></span></a>
+    <span id="ember2587" class="ember-view icon opener favoriteToggle enabled"><span></span></span>
+    <div class="favoritesList">
+        <ul class="displayNone">
+        <li id="ember2588" class="ember-view icon cobrowseCurrent disabled" style="display: none;"><a class="url">Current page</a></li>
+
+<!---->        </ul>
+    </div>
+</div>
+<ul class="buttons">
+    <li id="ember2589" class="ember-view icon iconBloc button1 startCoBrowse cobrowseStart disabled"><span class="icon" data-ember-action="2590"></span>
+<span class="tooltip"><span><!----></span></span>
+Start
+</li>
+    <li id="ember2591" class="ember-view icon iconBloc button1 stopCoBrowse cobrowseStop disabled"><span class="icon" data-ember-action="2592"></span>
+<span class="tooltip"><span><!----></span></span>
+Stop
+</li>
+</ul>
+</div>
+
+<!----></div></div>
+
+        <div class="mainBox videoBox ui-draggable" style="opacity: 0; margin-left: -2000px; z-index: 10;">
+    <div class="handle top ui-draggable-handle"></div>
+    <div class="handle left ui-draggable-handle"></div>
+    <div class="handle right ui-draggable-handle"></div>
+    <div class="handle bottom ui-draggable-handle"></div>
+    <div id="video-container" class="content mediaContainer" style="width: 320px; height: 180px;"></div>
+    <div id="driver-container" class="content mediaContainer" style="margin-left: -4000px; width: 320px; height: 180px;"><p>RTCC Driver is running in another window</p></div>
+    <div id="audio-container" class="content mediaContainer" style="margin-left: -4000px; width: 320px; height: 180px;"></div>
+    <div id="cobrowse-container" class="content mediaContainer" style="margin-left: -4000px; width: 320px; height: 180px;"></div>
+ </div>
+
+<!---->
+        <div id="ember1575" class="ember-view" style="display: none;"><div class="mainBox centeredBox chgPasswordBox">
+    <h3>Change your password</h3>
+	<div class="content">
+		<div class="pass">
+			<span class="icon"></span>
+			<input id="ember1576" autofocus="" placeholder="Password" required="" name="password" type="password" class="ember-view ember-text-field">
+		</div>	
+		<div class="pass">
+			<span class="icon"></span>
+			<input id="ember1577" autofocus="" placeholder="Password" required="" name="password_confirmation" type="password" class="ember-view ember-text-field">
+		</div>
+		<div class="buttons clearfix">
+			<button class="button1 transparent cancel" data-ember-action="1578">Cancel </button>
+			<button class="button1 blue change" data-ember-action="1579">Change </button>
+		</div>
+	</div>
+	
+</div>
+</div>
+
+        <div id="ember1588" class="ember-view mainBox centeredBox downloadBox" style="z-index: 15; display: none;"><div class="content">
+    <p>Please Download the latest version of the plugin</p>
+    <p><a id="downloadBox-content" class="button1" data-ember-action="1589">Download</a></p>
+</div></div>
+
+        <div id="ember1598" class="ember-view incomingRequestBox" style="display: none;"><div class="mainBox centeredBox requestBox ">
+    <div class="overlay"></div>
+    
+    
+    <div><h3><span class="icon"></span>Incoming Request - <div id="ember1607" class="ember-view">false
+</div></h3></div>
+    <div id="requestBox-content" class="content">
+        <div id="requestBox-infos" class="infos">
+            <span class="icon null-null"></span>
+            <h4 class="usecase"><!----></h4>
+            <h5 class="product"><!----></h5>
+            <h5 class="reference"><!----></h5>
+
+<!---->        </div>
+        <div id="requestBox-buttons" class="buttons">
+<!---->
+            <button class="button1 blue accept" data-ember-action="1608">Accept</button>
+        </div>
+    </div>
+</div>
+</div>
+
+        <div id="tutorial-popup" class="ember-view" style="display: none;"><!----></div>
+
+		<div id="ember1625" class="ember-view updatePopup" style="display: none;"><span class="close" data-ember-action="1626"></span>
+<h3>
+	<span class="title">Missing translation: pluginUpdate.null.title</span>
+</h3>
+<h4 class="subtitle">Missing translation: pluginUpdate.null.subtitle</h4>
+<img src="/img/loader-horizontal-4ad16242749ea5bbd5e4d37aa2d91136.gif" width="208" height="13" alt="Missing translation: pluginUpdate.alt"></div>
+
+        <div id="ember1635" class="ember-view endCallPopup" style="display: none;"><span class="close" data-ember-action="1636"></span>
+<h3>
+	<span class="usecase">Show Me</span>
+</h3>
+<div class="content">
+	<dl>
+<!----><!---->		<dt class="reference-label">Reference:</dt><dd class="reference-value">INV0012355-Versailles-S10022</dd>
+		<dt class="case-report-label">Case Report ID:</dt><dd class="case-report-value">20170710141455_2013_3434173828</dd>
+		<dt class="os-label">OS:</dt><dd class="os-value">android</dd>
+	</dl>
+	<div class="time">-00:04:07</div>
+</div></div>
+
+        <div id="ember1651" class="ember-view mainBox centeredBox requestBox console-survey" style="display: none;"><div class="overlay"></div>
+<h3></h3>
+<div class="content">
+	<h2 class="title"><!----></h2>
+	<div class="buttons">
+		<button class="button1 transparent cancel" data-ember-action="1652">Cancel</button>
+		<button class="button1 blue accept" data-ember-action="1653"><!----></button>
+	</div>
+</div></div>
+
+        <div id="ember1662" class="ember-view mainBox centeredBox requestBox conference conferenceRequest" style="display: none;"><div class="overlay"></div>
+<h3><span class="icon"></span>Re-join Conference</h3>
+<div class="content">
+	<h4>You have been disconnected<br>from the conference:</h4>
+	
+	<ul>
+<!---->	
+<!---->	
+		<li>Usecase: <!----></li>
+		
+<!---->	</ul>
+	
+	<div class="buttons">
+		<button class="button1 transparent cancel" data-ember-action="1663">Close</button>
+		<button class="button1 blue accept" data-ember-action="1664">Join again</button>
+	</div>
+</div></div>
+
+        <div id="ember1673" class="ember-view mainBox centeredBox requestBox conference invitationRequest" style="display: none;"><div class="overlay"></div>
+<h3><span class="icon"></span>Join Conference</h3>
+<div class="content">
+	<h4><strong><!----></strong>
+		<br>invites you to join the conference:</h4>
+	
+	<ul>
+<!---->	
+<!---->	
+		<li>Usecase: <!----></li>
+		
+<!---->	</ul>
+	
+	<div class="buttons">
+		<button class="button1 transparent cancel" data-ember-action="1674">Close</button>
+		<button class="button1 blue accept" data-ember-action="1675">Join</button>
+	</div>
+</div></div>
+		
+    </div>
+
+    <div id="ember1684" class="ember-view install attMsgBox" style="display: none; height: 504px;"><div class="browser safari mac displayNone">
+    <h3><span class="icon download"></span> Plugin download started</h3>
+    <p><strong>Step1:</strong> Click on the <em>download</em> icon at the top right of your browser main tab.</p>
+    <p><strong>Step2:</strong> Ckick on <em>RTCC_Plugin.pkg</em> file to start the installation.</p>
+    <p><strong>Step3:</strong> After you finished the installation, please restart completely safari (not only this tab)</p>
+    <p><strong>Step4:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/safari-3-50ee4accce068ab17cc6f43f6fe47959.png?c=4">
+</div>
+<div class="browser chrome mac displayNone">
+    <h3><span class="icon download"></span> Download started to your browser</h3>
+    <p><strong>Step1:</strong> Open the <em>RTCCdriver.pkg</em> file at the bottom left of your browser to start the installation.</p>
+    <p><strong>Step2:</strong> After you finished the installation, please restart completely chrome (not only this tab)</p>
+    <p><strong>Step3:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/chrome-1-1b79e5ac29248e03b02812c864b603a6.png">
+</div>
+<div class="browser chrome pc displayBlock">
+    <h3><span class="icon download"></span> Download started to your browser</h3>
+    <p><strong>Step1:</strong> Open the <em>RTCCdriver.exe</em> file at the bottom left of your browser to start the installation.</p>
+    <p><strong>Step2:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/chrome-2-8ada3775b332905e76002591d4ca4806.png">
+</div>
+<div class="browser firefox mac displayNone">
+    <h3><span class="icon download"></span> Plugin download started</h3>
+    <p><strong>Step1:</strong> Select <em>Open</em> with, and click on <em>OK</em>.</p>
+    <p><strong>Step2:</strong> After you finished the installation, please restart completely firefox (not only this tab)</p>
+    <p><strong>Step3:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/firefox-3-3c696aa492f61bd8d757f3f406a675d9.png">
+</div>
+<div class="browser firefox pc displayNone">
+    <h3><span class="icon download"></span> Download and install RTCC Plugin</h3>
+    <p><strong>Step1:</strong> Click on <em>Save File</em> to start the download of the Plugin.</p>
+    <p><strong>Step2:</strong> Click on the <em>download icon</em> <img class="downloadicon" src="/img/install/firefox-4-ee2bbaee2022db587a1832da865ca0b0.png"> to pop up the Plugin file.</p>
+    <p><strong>Step3:</strong> Double-click on <em>RTCC Plugin.msi</em> to initiate the installation of the plugin.</p>
+    <p><strong>Step4:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/firefox-5-5d16c37463dc783d578062132cfd542b.png">
+</div>
+<div class="browser ie pc displayNone">
+    <h3><span class="icon download"></span> Download and install RTCC Plugin</h3>
+    <p><strong>Step1:</strong> Click on <em>run</em>, in the dialog box at the bottom, to start the installation.</p>
+    <p><strong>Step2:</strong>  Follow the installation steps.</p>
+    <img class="illus" src="/img/install/ie-1-6359c9f38ff09e106612f5ab8063f7c2.png">
+</div></div>
+    <div id="ember1693" class="ember-view install chrome-extension displayNone" style="display: none;"><div class="overlay"></div>
+<div class="content">
+	<h2><img width="35" height="35" src="/img/chrome-logo-9ce0e6d551563930489d22511cd4372d.png" alt="Chrome logo">Chrome Extension requested</h2>
+	<p>Please install the SightCall Chrome extension from the Chrome Store.</p>
+	<button class="button2" data-ember-action="1694">install</button>
+</div>
+
+</div>
+
+    <div id="ember1703" class="ember-view trust attMsgBox" style="display: none; height: 504px;"><div class="browser chrome mac displayNone">
+    <img class="arrow up" src="/img/install/trust_arrow_up-94cb0888112956a125316c7d0cc8ccbf.png" alt="" width="68" height="71">
+    <h2>Click on <em>Allow</em> to start the call</h2>
+</div>
+<div class="browser chrome pc displayBlock">
+    <img class="arrow up" src="/img/install/trust_arrow_up-94cb0888112956a125316c7d0cc8ccbf.png" alt="" width="68" height="71">
+    <h2>Click on <em>Allow</em> to start the call</h2>
+</div>
+<div class="browser safari mac displayNone">
+    <img class="arrow up" src="/img/install/trust_arrow_up-94cb0888112956a125316c7d0cc8ccbf.png" alt="" width="68" height="71">
+    <h2>Click on <em>Trust</em> to activate the plugin</h2>
+</div>
+<div class="browser firefox mac displayNone">
+    <h3><span class="icon activate"></span> Activate the Plugin for this page Activate the Plugin for this page</h3>
+    <p><strong>Step1:</strong> Click on <em>Allow</em> at the top right of your browser. Click on <em>Allow</em> at the top right of your browser.</p>
+    <img class="illus illus1" src="/img/install/firefox-6-65bbc52d0633421613d0e53c70f5e26e.png">
+    <p><strong>Step2:</strong> Click on <em>Allow and Remember</em> at the top left of your browser</p>
+    <img class="illus illus2" src="/img/install/firefox-7-65f194e0c52aa0d1ac42db0df064ceb6.png">
+</div>
+<div class="browser firefox pc displayNone">
+    <h3><span class="icon activate"></span> Activate the Plugin for this page Activate the Plugin for this page</h3>
+    <p><strong>Step1:</strong> Click on <em>Allow</em> at the top right of your browser. Click on <em>Allow</em> at the top right of your browser.</p>
+    <img class="illus illus1" src="/img/install/firefox-8-cbaf184c217b12845c3ecfbff1d7126f.png">
+    <p><strong>Step2:</strong> Click on <em>Allow and Remember</em> at the top left of your browser</p>
+    <img class="illus illus2" src="/img/install/firefox-9-ca86d0c89be859e100b05ef72449860a.png">
+</div>
+<div class="browser ie pc displayNone">
+    <h3><span class="icon alert"></span> Your Internet Explorer settings is blocking the RTCC plugin</h3>
+    <p><strong>Step1:</strong> Open your <em>Internet Options</em> menu</p>
+    <p><strong>Step2:</strong> Go on <em>Programs</em> section and click on <em>Manage add-ons</em></p>
+    <img class="illus illus1" src="/img/install/ie-2-793428e1b0dcc07052e136dde4ddc874.png">
+    <p><strong>Step3:</strong> On <em>Show:</em> select <em>All add-ons</em>.</p>
+    <p><strong>Step4:</strong> Click on <em>RTCCplugin</em> to select it.</p>
+    <p><strong>Step5:</strong> Click on <em>Enable</em> to enable the Plugin (add-on).</p>
+    <img class="illus illus2" src="/img/install/ie-3-fef0910e50c8ec79c31a163bbee0a980.png">
+    <p><strong>Step6:</strong> Apply this change in the confirmation pop-up</p>
+    <img class="illus illus3" src="/img/install/ie-4-152ed792a54c4cb8bcb150b50a9b2c53.png">
+</div></div>
+   
+    <div id="chatsPanel" class="ember-view"><div id="team-chat-container" class="panelContent" style="padding-right: 0px; padding-left: 0px; left: 241px;">
+<!----></div></div>
+
+    <div id="ember1724" class="ember-view internalCallBanner ui-draggable displayNone" style="z-index: 12;"><div id="internalCallBanner-buttons" class="buttons">
+    <button class="button1 transparent decline" data-ember-action="1725">Decline</button>
+    <button class="button1 white accept" data-ember-action="1726">Accept</button>
+</div>
+<div class="title">
+    <span class="icon"></span>
+    <h2>Internal Call</h2>
+</div>
+<div class="user">
+    <img class="avatarTeam" width="32" height="32" alt="Avatar" src="">
+    <span class="displayname"><!----></span>
+</div></div>
+
+<!---->
+</div>
+<div id="rtcc-nm-installed"></div><div class="xdsoft_datetimepicker xdsoft_ xdsoft_noselect "><div class="xdsoft_datepicker active"><div class="xdsoft_mounthpicker"><button type="button" class="xdsoft_prev" style="visibility: visible;"></button><button type="button" class="xdsoft_today_button" style="visibility: visible;"></button><div class="xdsoft_label xdsoft_month"><span>July</span><div class="xdsoft_select xdsoft_monthselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="0">January</div><div class="xdsoft_option " data-value="1">February</div><div class="xdsoft_option " data-value="2">March</div><div class="xdsoft_option " data-value="3">April</div><div class="xdsoft_option " data-value="4">May</div><div class="xdsoft_option " data-value="5">June</div><div class="xdsoft_option xdsoft_current" data-value="6">July</div><div class="xdsoft_option " data-value="7">August</div><div class="xdsoft_option " data-value="8">September</div><div class="xdsoft_option " data-value="9">October</div><div class="xdsoft_option " data-value="10">November</div><div class="xdsoft_option " data-value="11">December</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><div class="xdsoft_label xdsoft_year"><span>2017</span><div class="xdsoft_select xdsoft_yearselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="1950">1950</div><div class="xdsoft_option " data-value="1951">1951</div><div class="xdsoft_option " data-value="1952">1952</div><div class="xdsoft_option " data-value="1953">1953</div><div class="xdsoft_option " data-value="1954">1954</div><div class="xdsoft_option " data-value="1955">1955</div><div class="xdsoft_option " data-value="1956">1956</div><div class="xdsoft_option " data-value="1957">1957</div><div class="xdsoft_option " data-value="1958">1958</div><div class="xdsoft_option " data-value="1959">1959</div><div class="xdsoft_option " data-value="1960">1960</div><div class="xdsoft_option " data-value="1961">1961</div><div class="xdsoft_option " data-value="1962">1962</div><div class="xdsoft_option " data-value="1963">1963</div><div class="xdsoft_option " data-value="1964">1964</div><div class="xdsoft_option " data-value="1965">1965</div><div class="xdsoft_option " data-value="1966">1966</div><div class="xdsoft_option " data-value="1967">1967</div><div class="xdsoft_option " data-value="1968">1968</div><div class="xdsoft_option " data-value="1969">1969</div><div class="xdsoft_option " data-value="1970">1970</div><div class="xdsoft_option " data-value="1971">1971</div><div class="xdsoft_option " data-value="1972">1972</div><div class="xdsoft_option " data-value="1973">1973</div><div class="xdsoft_option " data-value="1974">1974</div><div class="xdsoft_option " data-value="1975">1975</div><div class="xdsoft_option " data-value="1976">1976</div><div class="xdsoft_option " data-value="1977">1977</div><div class="xdsoft_option " data-value="1978">1978</div><div class="xdsoft_option " data-value="1979">1979</div><div class="xdsoft_option " data-value="1980">1980</div><div class="xdsoft_option " data-value="1981">1981</div><div class="xdsoft_option " data-value="1982">1982</div><div class="xdsoft_option " data-value="1983">1983</div><div class="xdsoft_option " data-value="1984">1984</div><div class="xdsoft_option " data-value="1985">1985</div><div class="xdsoft_option " data-value="1986">1986</div><div class="xdsoft_option " data-value="1987">1987</div><div class="xdsoft_option " data-value="1988">1988</div><div class="xdsoft_option " data-value="1989">1989</div><div class="xdsoft_option " data-value="1990">1990</div><div class="xdsoft_option " data-value="1991">1991</div><div class="xdsoft_option " data-value="1992">1992</div><div class="xdsoft_option " data-value="1993">1993</div><div class="xdsoft_option " data-value="1994">1994</div><div class="xdsoft_option " data-value="1995">1995</div><div class="xdsoft_option " data-value="1996">1996</div><div class="xdsoft_option " data-value="1997">1997</div><div class="xdsoft_option " data-value="1998">1998</div><div class="xdsoft_option " data-value="1999">1999</div><div class="xdsoft_option " data-value="2000">2000</div><div class="xdsoft_option " data-value="2001">2001</div><div class="xdsoft_option " data-value="2002">2002</div><div class="xdsoft_option " data-value="2003">2003</div><div class="xdsoft_option " data-value="2004">2004</div><div class="xdsoft_option " data-value="2005">2005</div><div class="xdsoft_option " data-value="2006">2006</div><div class="xdsoft_option " data-value="2007">2007</div><div class="xdsoft_option " data-value="2008">2008</div><div class="xdsoft_option " data-value="2009">2009</div><div class="xdsoft_option " data-value="2010">2010</div><div class="xdsoft_option " data-value="2011">2011</div><div class="xdsoft_option " data-value="2012">2012</div><div class="xdsoft_option " data-value="2013">2013</div><div class="xdsoft_option " data-value="2014">2014</div><div class="xdsoft_option " data-value="2015">2015</div><div class="xdsoft_option " data-value="2016">2016</div><div class="xdsoft_option xdsoft_current" data-value="2017">2017</div><div class="xdsoft_option " data-value="2018">2018</div><div class="xdsoft_option " data-value="2019">2019</div><div class="xdsoft_option " data-value="2020">2020</div><div class="xdsoft_option " data-value="2021">2021</div><div class="xdsoft_option " data-value="2022">2022</div><div class="xdsoft_option " data-value="2023">2023</div><div class="xdsoft_option " data-value="2024">2024</div><div class="xdsoft_option " data-value="2025">2025</div><div class="xdsoft_option " data-value="2026">2026</div><div class="xdsoft_option " data-value="2027">2027</div><div class="xdsoft_option " data-value="2028">2028</div><div class="xdsoft_option " data-value="2029">2029</div><div class="xdsoft_option " data-value="2030">2030</div><div class="xdsoft_option " data-value="2031">2031</div><div class="xdsoft_option " data-value="2032">2032</div><div class="xdsoft_option " data-value="2033">2033</div><div class="xdsoft_option " data-value="2034">2034</div><div class="xdsoft_option " data-value="2035">2035</div><div class="xdsoft_option " data-value="2036">2036</div><div class="xdsoft_option " data-value="2037">2037</div><div class="xdsoft_option " data-value="2038">2038</div><div class="xdsoft_option " data-value="2039">2039</div><div class="xdsoft_option " data-value="2040">2040</div><div class="xdsoft_option " data-value="2041">2041</div><div class="xdsoft_option " data-value="2042">2042</div><div class="xdsoft_option " data-value="2043">2043</div><div class="xdsoft_option " data-value="2044">2044</div><div class="xdsoft_option " data-value="2045">2045</div><div class="xdsoft_option " data-value="2046">2046</div><div class="xdsoft_option " data-value="2047">2047</div><div class="xdsoft_option " data-value="2048">2048</div><div class="xdsoft_option " data-value="2049">2049</div><div class="xdsoft_option " data-value="2050">2050</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><button type="button" class="xdsoft_next" style="visibility: visible;"></button></div><div class="xdsoft_calendar"><table><thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead><tbody><tr><td data-date="25" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>25</div></td><td data-date="26" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date xdsoft_other_month" title=""><div>26</div></td><td data-date="27" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date xdsoft_other_month" title=""><div>27</div></td><td data-date="28" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date xdsoft_other_month" title=""><div>28</div></td><td data-date="29" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>29</div></td><td data-date="30" data-month="5" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date xdsoft_other_month" title=""><div>30</div></td><td data-date="1" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>1</div></td></tr><tr><td data-date="2" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>2</div></td><td data-date="3" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>3</div></td><td data-date="4" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>4</div></td><td data-date="5" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>5</div></td><td data-date="6" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>6</div></td><td data-date="7" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>7</div></td><td data-date="8" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>8</div></td></tr><tr><td data-date="9" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>9</div></td><td data-date="10" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date xdsoft_current xdsoft_today" title=""><div>10</div></td><td data-date="11" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>11</div></td><td data-date="12" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>12</div></td><td data-date="13" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>13</div></td><td data-date="14" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>14</div></td><td data-date="15" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>15</div></td></tr><tr><td data-date="16" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>16</div></td><td data-date="17" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>17</div></td><td data-date="18" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>18</div></td><td data-date="19" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>19</div></td><td data-date="20" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>20</div></td><td data-date="21" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>21</div></td><td data-date="22" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>22</div></td></tr><tr><td data-date="23" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>23</div></td><td data-date="24" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>24</div></td><td data-date="25" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>25</div></td><td data-date="26" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>26</div></td><td data-date="27" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>27</div></td><td data-date="28" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>28</div></td><td data-date="29" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>29</div></td></tr><tr><td data-date="30" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>30</div></td><td data-date="31" data-month="6" data-year="2017" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>31</div></td><td data-date="1" data-month="7" data-year="2017" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date xdsoft_other_month" title=""><div>1</div></td><td data-date="2" data-month="7" data-year="2017" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date xdsoft_other_month" title=""><div>2</div></td><td data-date="3" data-month="7" data-year="2017" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>3</div></td><td data-date="4" data-month="7" data-year="2017" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date xdsoft_other_month" title=""><div>4</div></td><td data-date="5" data-month="7" data-year="2017" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>5</div></td></tr></tbody></table></div><button class="xdsoft_save_selected blue-gradient-button" style="display: none;">Save Selected</button></div><div class="xdsoft_timepicker active"><button type="button" class="xdsoft_prev"></button><div class="xdsoft_time_box xdsoft_scroller_box"><div class="xdsoft_time_variant" style="margin-top: 0px;"><div class="xdsoft_time " data-hour="0" data-minute="0">00:00</div><div class="xdsoft_time " data-hour="0" data-minute="15">00:15</div><div class="xdsoft_time " data-hour="0" data-minute="30">00:30</div><div class="xdsoft_time " data-hour="0" data-minute="45">00:45</div><div class="xdsoft_time " data-hour="1" data-minute="0">01:00</div><div class="xdsoft_time " data-hour="1" data-minute="15">01:15</div><div class="xdsoft_time " data-hour="1" data-minute="30">01:30</div><div class="xdsoft_time " data-hour="1" data-minute="45">01:45</div><div class="xdsoft_time " data-hour="2" data-minute="0">02:00</div><div class="xdsoft_time " data-hour="2" data-minute="15">02:15</div><div class="xdsoft_time " data-hour="2" data-minute="30">02:30</div><div class="xdsoft_time " data-hour="2" data-minute="45">02:45</div><div class="xdsoft_time " data-hour="3" data-minute="0">03:00</div><div class="xdsoft_time " data-hour="3" data-minute="15">03:15</div><div class="xdsoft_time " data-hour="3" data-minute="30">03:30</div><div class="xdsoft_time " data-hour="3" data-minute="45">03:45</div><div class="xdsoft_time " data-hour="4" data-minute="0">04:00</div><div class="xdsoft_time " data-hour="4" data-minute="15">04:15</div><div class="xdsoft_time " data-hour="4" data-minute="30">04:30</div><div class="xdsoft_time " data-hour="4" data-minute="45">04:45</div><div class="xdsoft_time " data-hour="5" data-minute="0">05:00</div><div class="xdsoft_time " data-hour="5" data-minute="15">05:15</div><div class="xdsoft_time " data-hour="5" data-minute="30">05:30</div><div class="xdsoft_time " data-hour="5" data-minute="45">05:45</div><div class="xdsoft_time " data-hour="6" data-minute="0">06:00</div><div class="xdsoft_time " data-hour="6" data-minute="15">06:15</div><div class="xdsoft_time " data-hour="6" data-minute="30">06:30</div><div class="xdsoft_time " data-hour="6" data-minute="45">06:45</div><div class="xdsoft_time " data-hour="7" data-minute="0">07:00</div><div class="xdsoft_time " data-hour="7" data-minute="15">07:15</div><div class="xdsoft_time " data-hour="7" data-minute="30">07:30</div><div class="xdsoft_time " data-hour="7" data-minute="45">07:45</div><div class="xdsoft_time " data-hour="8" data-minute="0">08:00</div><div class="xdsoft_time " data-hour="8" data-minute="15">08:15</div><div class="xdsoft_time " data-hour="8" data-minute="30">08:30</div><div class="xdsoft_time " data-hour="8" data-minute="45">08:45</div><div class="xdsoft_time " data-hour="9" data-minute="0">09:00</div><div class="xdsoft_time " data-hour="9" data-minute="15">09:15</div><div class="xdsoft_time " data-hour="9" data-minute="30">09:30</div><div class="xdsoft_time " data-hour="9" data-minute="45">09:45</div><div class="xdsoft_time " data-hour="10" data-minute="0">10:00</div><div class="xdsoft_time " data-hour="10" data-minute="15">10:15</div><div class="xdsoft_time " data-hour="10" data-minute="30">10:30</div><div class="xdsoft_time " data-hour="10" data-minute="45">10:45</div><div class="xdsoft_time " data-hour="11" data-minute="0">11:00</div><div class="xdsoft_time " data-hour="11" data-minute="15">11:15</div><div class="xdsoft_time " data-hour="11" data-minute="30">11:30</div><div class="xdsoft_time " data-hour="11" data-minute="45">11:45</div><div class="xdsoft_time " data-hour="12" data-minute="0">12:00</div><div class="xdsoft_time " data-hour="12" data-minute="15">12:15</div><div class="xdsoft_time " data-hour="12" data-minute="30">12:30</div><div class="xdsoft_time " data-hour="12" data-minute="45">12:45</div><div class="xdsoft_time " data-hour="13" data-minute="0">13:00</div><div class="xdsoft_time " data-hour="13" data-minute="15">13:15</div><div class="xdsoft_time " data-hour="13" data-minute="30">13:30</div><div class="xdsoft_time " data-hour="13" data-minute="45">13:45</div><div class="xdsoft_time " data-hour="14" data-minute="0">14:00</div><div class="xdsoft_time " data-hour="14" data-minute="15">14:15</div><div class="xdsoft_time " data-hour="14" data-minute="30">14:30</div><div class="xdsoft_time " data-hour="14" data-minute="45">14:45</div><div class="xdsoft_time " data-hour="15" data-minute="0">15:00</div><div class="xdsoft_time " data-hour="15" data-minute="15">15:15</div><div class="xdsoft_time " data-hour="15" data-minute="30">15:30</div><div class="xdsoft_time " data-hour="15" data-minute="45">15:45</div><div class="xdsoft_time " data-hour="16" data-minute="0">16:00</div><div class="xdsoft_time xdsoft_current" data-hour="16" data-minute="15">16:15</div><div class="xdsoft_time " data-hour="16" data-minute="30">16:30</div><div class="xdsoft_time " data-hour="16" data-minute="45">16:45</div><div class="xdsoft_time " data-hour="17" data-minute="0">17:00</div><div class="xdsoft_time " data-hour="17" data-minute="15">17:15</div><div class="xdsoft_time " data-hour="17" data-minute="30">17:30</div><div class="xdsoft_time " data-hour="17" data-minute="45">17:45</div><div class="xdsoft_time " data-hour="18" data-minute="0">18:00</div><div class="xdsoft_time " data-hour="18" data-minute="15">18:15</div><div class="xdsoft_time " data-hour="18" data-minute="30">18:30</div><div class="xdsoft_time " data-hour="18" data-minute="45">18:45</div><div class="xdsoft_time " data-hour="19" data-minute="0">19:00</div><div class="xdsoft_time " data-hour="19" data-minute="15">19:15</div><div class="xdsoft_time " data-hour="19" data-minute="30">19:30</div><div class="xdsoft_time " data-hour="19" data-minute="45">19:45</div><div class="xdsoft_time " data-hour="20" data-minute="0">20:00</div><div class="xdsoft_time " data-hour="20" data-minute="15">20:15</div><div class="xdsoft_time " data-hour="20" data-minute="30">20:30</div><div class="xdsoft_time " data-hour="20" data-minute="45">20:45</div><div class="xdsoft_time " data-hour="21" data-minute="0">21:00</div><div class="xdsoft_time " data-hour="21" data-minute="15">21:15</div><div class="xdsoft_time " data-hour="21" data-minute="30">21:30</div><div class="xdsoft_time " data-hour="21" data-minute="45">21:45</div><div class="xdsoft_time " data-hour="22" data-minute="0">22:00</div><div class="xdsoft_time " data-hour="22" data-minute="15">22:15</div><div class="xdsoft_time " data-hour="22" data-minute="30">22:30</div><div class="xdsoft_time " data-hour="22" data-minute="45">22:45</div><div class="xdsoft_time " data-hour="23" data-minute="0">23:00</div><div class="xdsoft_time " data-hour="23" data-minute="15">23:15</div><div class="xdsoft_time " data-hour="23" data-minute="30">23:30</div><div class="xdsoft_time " data-hour="23" data-minute="45">23:45</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><button type="button" class="xdsoft_next"></button></div></div></body></html>

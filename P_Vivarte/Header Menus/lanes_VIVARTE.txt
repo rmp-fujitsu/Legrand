@@ -1,0 +1,15 @@
+${(get_user_metadata().compagnie == "VIVARTE") && ((get_user_metadata().grp_ens != "ITANCIA") || !(get_user_metadata().grp_ens??))}
+${get_user_metadata().compagnie == "VIVARTE"}
+
+LA HALLE CHAUSSURE,LA HALLE MODE
+SAN MARINA,MINELLI,COSMOPARIS
+CAROLL,LA HALLE CHAUSSURE,LA HALLE MODE,SAN MARINA,MINELLI,COSMOPARIS,NAFNAF,ANDRE
+
+// IT Group Managers (P.GUerre)
+${is_user_in_lane([384644]) && get_user_metadata().profil=='COMPANY' && !(is_user_in_lane([391720]))}
+
+// Partner Itancia => Lane (408328)
+${(get_user_metadata().grp_ens == 'ITANCIA') && (get_user_metadata().compagnie == 'VIVARTE')}
+
+// RMS- VIVARTE
+${(get_user_metadata().compagnie == "VIVARTE") && !(is_user_in_lane([408328]))}

@@ -1,0 +1,392 @@
+	THIS IS A LEGAL DOCUMENT -- RETAIN FOR YOUR RECORDS
+
+	RENDERX SOFTWARE LICENSE AGREEMENT
+
+Licensor:
+
+RENDERX, Inc.
+
+This is a legal document between you and RENDERX, Inc. ("RENDERX").
+It is important that you read this document before using the
+RENDERX-provided software ("Software") and any accompanying documentation
+("Documentation").  By using the Software, you agree to be bound by
+the terms of this Agreement whether or not you decide to purchase
+the Software.  If you do not agree, you are not licensed to use the
+Software, and you must destroy any downloaded copies of the Software in
+your possession or control.
+
+1.	SOFTWARE LICENSE
+
+(a)License Grant.  RENDERX grants you a non-exclusive, non-transferable
+(except as provided below), limited license to install and use a copy of
+the Software on your compatible computer, up to the Permitted Number of
+computers.  The Permitted Number of computers shall be delineated at such
+time as you elect to purchase the Software within the purchase agreement.
+
+ (b)	Use.  Your rights with respect to use depend on the version of
+ the product you have purchased:
+
+(b.1) If you have purchased the "XEP4 Server" version of the Software,
+you may install a copy of the Software on your compatible server computer
+up to the Permitted Number of computers and or CPU's, for the sole and
+exclusive purpose of using the Software on your internal network.
+
+(b.2) If you have purchased the "XEP4 Client" version of the Software,
+you may install one copy of the Software on your computer file server
+for the purpose of downloading and installing the Software onto other
+computers within your internal network or on each client computer directly
+up to the Permitted Number.
+
+(b.3) No other use is permitted, including without limitation using
+the Software either directly or through commands, data or instructions
+from or to a computer not part of your internal network, for Internet
+or Web-hosting services or by any user not licensed to use this copy of
+the Software through a valid license from RENDERX.
+
+(d)	Backup and Archival Copies.  You may make one backup and one
+archival copy of the Software, provided your backup and archival copies
+are not installed or used on any computer and further provided that all
+such copies shall bear the original and unmodified copyright, patent and
+other intellectual property markings that appear on or in the Software.
+You may not transfer the rights to a backup or archival copy unless you
+transfer all rights in the Software as provided under Section 3.
+
+(e)	Home Use.	For client-side licensees only, you, as the
+primary user of the computer on which the Software is installed, may
+also install the Software on one of your home computers.  However, the
+Software may not be used on your home computer at the same time as the
+Software is being used on the primary computer.
+
+(f)	Key Codes.  You will receive a key code when you elect to
+purchase the Software.	The key code will enable you to activate the
+Software beyond the initial thirty (30)-day evaluation period.	You may
+not relicense, reproduce or distribute a key code except with the express
+written permission of RENDERX.
+
+(g)	Title.	Title to the Software is not transferred to you.
+Ownership of all copies of the Software and of copies made by you is
+vested in RENDERX, subject to the rights of use granted to you in this
+Agreement.
+
+(h)	Reverse Engineering.  You may not reverse engineer, decompile,
+disassemble or otherwise attempt to discover the source code, underlying
+ideas, underlying user interface techniques or algorithms of the Software
+by any means whatsoever, directly or indirectly, or disclose any of
+the foregoing, except to the extent you may be expressly permitted to
+decompile under applicable law, it is essential to do so in order to
+achieve operability of the Software with another software program, and
+you have first requested RENDERX to provide the information necessary
+to achieve such operability and RENDERX has not made such information
+available.  RENDERX has the right to impose reasonable conditions
+and to request a reasonable fee before providing such information.
+Any information supplied by RENDERX or obtained by you, as permitted
+hereunder, may only be used by you for the purpose described herein and
+may not be disclosed to any third party or used to create any software
+which is substantially similar to the expression of the Software.
+Requests for information should be directed to the RENDERX Customer
+Support Department.
+
+(i)	Other Restrictions.  You may not loan, rent, lease, sublicense,
+distribute or otherwise transfer all or any portion of the Software
+to third parties except to the limited extent set forth in Section 3.
+You may not copy the Software except as expressly set forth above, and
+any copies that you are permitted to make pursuant to this Agreement
+must contain the same copyright, patent and other intellectual property
+markings that appear on or in the Software.  You may not modify, adapt or
+translate the Software. You may not, directly or indirectly, encumber or
+suffer to exist any lien or security interest on the Software; knowingly
+take any action that would cause the Software to be placed in the public
+domain; or use the Software in any computer environment not specified
+in this Agreement.  You will comply with applicable law and RENDERX's
+instructions regarding the use of the Software.  You agree to notify
+your employees and agents who may have access to the Software of the
+restrictions contained in this Agreement and to ensure their compliance
+with these restrictions.   The Software is not intended for use in the
+operation of nuclear facilities, aircraft navigation, communication
+systems or air traffic control equipment, where the failure of the
+Software could lead to death, personal injury or severe physical or
+environmental damage.
+
+
+
+2.	INTELLECTUAL PROPERTY RIGHTS
+
+Acknowledgement of RENDERX's Rights.  You acknowledge that the Software
+and any copies that you are authorized by RENDERX to make are the
+intellectual property of and are owned by RENDERX and its suppliers.
+The structure, organization and code of the Software are the valuable
+trade secrets and confidential information of RENDERX and its suppliers.
+The Software is protected by copyright, including without limitation
+by United States Copyright Law, international treaty provisions and
+applicable laws in the country in which it is being used.  You acknowledge
+that RENDERX retains the ownership of all patents, copyrights, trade
+secrets, trademarks and other intellectual property rights pertaining to
+the Software, and that RENDERX's ownership rights extend to any images,
+photographs, animations, videos, audio, music, text and "applets"
+incorporated into the Software and all accompanying printed materials.
+You will take no actions, which adversely affect RENDERX's intellectual
+property rights in the Software.  Trademarks shall be used in accordance
+with accepted trademark practice, including identification of trademark
+owners' names.	Trademarks may only be used to identify printed output
+produced by the Software, and such use of any trademark does not
+give you any right of ownership in that trademark.  XEP and RENDERX
+are trademarks of RENDERX, Inc. (registered in numerous countries).
+Unicode and the Unicode Logo are trademarks of Unicode, Inc. Windows,
+Windows 95, Windows 98, Windows NT and Windows 2000 are trademarks of
+Microsoft. W3C, CSS, DOM, MathML, RDF, XHTML, XML and XSL are trademarks
+(registered in numerous countries) of the World Wide Web Consortium (W3C);
+marks of the W3C are registered and held by its host institutions, MIT,
+INRIA and Keio.  Except as expressly stated above, this Agreement does
+not grant you any intellectual property rights in the Software.
+
+3.	LIMITED TRANSFER RIGHTS
+
+Notwithstanding the foregoing, you may transfer all your rights to
+use the Software to another person or legal entity provided that: (a)
+you also transfer this Agreement, the Software and all other software
+or hardware bundled or pre-installed with the Software, including all
+copies, updates and prior versions, and all copies of font software
+converted into other formats, to such person or entity; (b) you retain
+no copies, including backups and copies stored on a computer; (c) the
+receiving party secures a personalized key code from RENDERX; and (d)
+the receiving party accepts the terms and conditions of this Agreement
+and any other terms and conditions upon which you legally purchased a
+license to the Software.  Notwithstanding the foregoing, you may not
+transfer education, pre-release, or not-for-resale copies of the Software.
+
+4.	PRE-RELEASE PRODUCT ADDITIONAL TERMS
+
+If the product you have received with this license is pre-commercial
+release or beta Software ("Pre-release Software"), then this Section
+applies.  To the extent that any provision in this Section is in conflict
+with any other term or condition in this Agreement, this Section shall
+supersede such other term(s) and condition(s) with respect to the
+Pre-release Software, but only to the extent necessary to resolve the
+conflict.  You acknowledge that the Software is a pre-release version,
+does not represent final product from RENDERX, and may contain bugs,
+errors and other problems that could cause system or other failures and
+data loss.  CONSEQUENTLY, THE PRE-RELEASE SOFTWARE IS PROVIDED TO YOU
+"AS-IS", AND RENDERX DISCLAIMS ANY WARRANTY OR LIABILITY OBLIGATIONS
+TO YOU OF ANY KIND EXPRESS OR IMPLIED.	WHERE LEGALLY LIABILITY CANNOT
+BE EXCLUDED FOR PRE-RELEASE SOFTWARE, BUT IT MAY BE LIMITED, RENDERX'S
+LIABILITY AND THAT OF ITS SUPPLIERS SHALL BE LIMITED TO THE SUM OF FIFTY
+DOLLARS (U.S.$50) IN TOTAL.  You acknowledge that RENDERX has not promised
+or guaranteed to you that Pre-release Software will be announced or made
+available to anyone in the future, that RENDERX has no express or implied
+obligation to you to announce or introduce the Pre-release Software and
+that RENDERX may not introduce a product similar to or compatible with
+the Pre-release Software.  Accordingly, you acknowledge that any research
+or development that you perform regarding the Pre-release Software or
+any product associated with the Pre-release Software is done entirely
+at your own risk.  During the term of this Agreement, if requested by
+RENDERX, you will provide feedback to RENDERX regarding testing and use
+of the Pre-release Software, including error or bug reports.  If you have
+been provided the Pre-release Software pursuant to a separate written
+agreement, your use of the Software is governed by such agreement.
+You may not sublicense, lease, loan, rent, distribute or otherwise
+transfer the Pre-release Software.  Upon receipt of a later unreleased
+version of the Pre-release Software or release by RENDERX of a publicly
+released commercial version of the Software, whether as a stand-alone
+product or as part of a larger product, you agree to return or destroy
+all earlier Pre-release Software received from RENDERX and to abide by
+the terms of the license agreement for any such later versions of the
+Pre-release Software.
+
+5.	WARRANTY AND LIMITATION OF LIABILITY
+
+(a)Limited Warranty. RENDERX warrants that (a) the Software will perform
+substantially in accordance with the accompanying written materials for
+a period of one hundred and eighty (180) days from the date of receipt,
+and (b) any support services provided by RENDERX shall be substantially
+as described in applicable written materials provided to you by RENDERX,
+and RENDERX support engineers will make commercially reasonable efforts
+to solve any problem issues. Some states and jurisdictions do not allow
+limitations on duration of an implied warranty, so the above limitation
+may not apply to you. To the extent allowed by applicable law, implied
+warranties on the Software, if any, are limited to one hundred and eighty
+(180) days.
+
+(b)XSL-FO Issues.  In addition to the limitations on the obligations of
+Licensor to correct bugs or other defects in the Software, Licensor
+shall have no obligation to correct any failure of the Software
+to interpret data in XSL-FO formats if that data contains errors or
+other defects.	The parties understand that errors or defects may also
+appear in other computer programs which may interact with the Software,
+and that Licensor shall have no obligation or liability with respect
+to such defects or errors in those computer programs.  When notifying
+Licensor of a perceived defect in the Software, Licensee agrees that it
+shall provide Licensor with any input data that Licensee has attempted to
+convert sufficient for Licensor to replicate the defect.  Licensor shall
+have no obligations to implement any XSL-FO features not specifically
+mentioned in this Agreement.
+
+(c)Customer Remedies. RENDERX's and its suppliers' entire liability and
+your exclusive remedy shall be, at RENDERX's option, either (a) return of
+the price paid, if any, or (b) repair or replacement of the Software that
+does not meet RENDERX's Limited Warranty and which is returned to RENDERX
+with a copy of your receipt. This Limited Warranty is void if failure
+of the Software has resulted from accident, abuse or misapplication. Any
+replacement Software will be warranted for the remainder of the original
+warranty period or thirty (30) days, whichever is longer.
+
+(d)No Other Warranties. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE
+LAW, RENDERX AND ITS SUPPLIERS DISCLAIM ALL OTHER WARRANTIES AND
+CONDITIONS, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED
+TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, INFORMATIONAL CONTENT OR ACCURACY, QUIET ENJOYMENT, TITLE
+AND NON-INFRINGEMENT, WITH REGARD TO THE SOFTWARE, AND THE PROVISION
+OF OR FAILURE TO PROVIDE SUPPORT SERVICES. THIS LIMITED WARRANTY
+GIVES YOU SPECIFIC LEGAL RIGHTS. YOU MAY HAVE OTHERS, WHICH VARY FROM
+STATE/JURISDICTION TO STATE/JURISDICTION.
+
+(e)Limitation Of Liability. TO THE MAXIMUM EXTENT PERMITTED BY
+APPLICABLE LAW, IN NO EVENT SHALL RENDERX OR ITS SUPPLIERS BE LIABLE
+FOR ANY SPECIAL, INCIDENTAL, DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS
+PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY
+OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE
+SOFTWARE OR THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES, EVEN
+IF RENDERX HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN ANY
+CASE, RENDERX'S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS AGREEMENT
+SHALL BE LIMITED TO THE GREATER OF THE AMOUNT ACTUALLY PAID BY YOU
+FOR THE SOFTWARE PRODUCT OR U.S.$50.00; PROVIDED, HOWEVER, IF YOU HAVE
+ENTERED INTO AN RENDERX SUPPORT SERVICES AGREEMENT, RENDERX'S ENTIRE
+LIABILITY REGARDING SUPPORT SERVICES SHALL BE GOVERNED BY THE TERMS OF
+THAT AGREEMENT. Because some states and jurisdictions do not allow the
+exclusion or limitation of liability, the above limitation may not apply
+to you.  In such states and jurisdictions, RENDERX's liability shall be
+limited to the greatest extent permitted by law.
+
+(f)Infringement Claims.   RENDERX will indemnify and hold you harmless
+and will defend or settle any claim, suit or proceeding brought against
+you that is based upon a claim that the content contained in the Software
+infringes a copyright or violates an intellectual or proprietary right
+protected by United States or European Union law ("Claim"), but only
+to the extent the Claim arises directly out of the use of the Software.
+You must notify RENDERX in writing of any Claim within ten (10) business
+days after you first receive notice of the Claim, and you shall provide
+to RENDERX at no cost with such assistance and cooperation as RENDERX may
+reasonably request from time to time in connection with the defense of
+the Claim.  RENDERX shall have sole control over any Claim (including,
+without limitation, the selection of counsel and the right to settle on
+your behalf on any terms RENDERX deems desirable in the sole exercise of
+its discretion). You may, at your sole cost, retain separate counsel and
+participate in the defense or settlement negotiations. RENDERX shall
+pay actual damages and costs awarded against you (or payable by you
+pursuant to a settlement agreement) in connection with a Claim to the
+extent such damages and costs are not reimbursed to you by insurance
+or a third party, to an aggregate maximum of US$1,000. If the Software
+or its use becomes the subject of a Claim or its use is enjoined, or
+if in the opinion of RENDERX's legal counsel the Software is likely
+to become the subject of a Claim, RENDERX shall attempt to resolve the
+Claim by using commercially reasonable efforts to modify the Software
+or obtain a license to continue using the Software. If in the opinion
+of RENDERX's legal counsel the Claim, the injunction or potential Claim
+cannot be resolved through reasonable modification or licensing, RENDERX,
+at its own election, may terminate this Agreement without penalty,
+and will refund to you on a pro rata basis any fees paid in advance by
+you to RENDERX. THE FOREGOING CONSTITUTES RENDERX'S SOLE AND EXCLUSIVE
+LIABILITY FOR INTELLECTUAL PROPERTY INFRINGEMENT.
+
+6.	TERM AND TERMINATION
+
+This Agreement may be terminated (a) by your giving RENDERX written notice
+of termination; or (b) by RENDERX, at its option, giving you written
+notice of termination if you commit a breach of this Agreement and fail
+to cure such breach within thirty (30) days after notice from RENDERX.
+Upon any termination of this Agreement, you must cease all use of the
+Software, destroy all copies then in your possession or control and take
+such other actions as RENDERX may reasonably request to ensure that no
+copies of the Software remain in your possession or control.
+
+7.GENERAL PROVISIONS
+
+(a)Governing Law and Jurisdiction.  This Agreement shall be governed by
+the laws of the State of California and the Federal laws of the United
+States of America, exclusive of any conflicts of laws principles, which
+would require the application of the laws of another jurisdiction. Any
+and all disputes arising under this Agreement shall be subject to the
+exclusive jurisdiction of the courts located in Santa Clara County,
+California.
+
+(b)Entire Agreement.  This Agreement, including any Exhibits, Schedules or
+Attachments hereto, sets forth the entire agreement between the parties
+with respect to the subject matter described herein and supersedes all
+prior or contemporaneous negotiations, understandings and agreements,
+whether oral or written between the Parties concerning the subject matter
+hereof.   This Agreement shall also supersede all terms of any additional
+or unsigned license terms included in any package, media or electronic
+version of Software provided under this Agreement, including but not
+limited to any "shrink wrap", "click wrap" or "pop-up" license terms.
+
+(c)No Amendment.  This Agreement may not be amended except by means of
+a written document executed by both Parties.  No waiver of any right of
+either Party will be deemed effective unless that waiver is in writing
+and is signed by the Party waiving that right.
+
+(d)Attorneys' Fees.  If any action is brought which arises out of or
+relates to this Agreement, the Party who substantially prevails shall
+be entitled to recover all costs that Party incurred in prosecuting or
+defending that action, including but not limited to reasonable attorneys'
+fees, in addition to any other relief to which that Party may be awarded.
+
+(e)Contractual Statute of Limitations. With exception of the
+indemnification obligations set forth in Section5, no action or
+claim relating to this Agreement may be instituted more than one (1)
+year after the event giving rise to such action or claim.
+
+(f)Restricted Rights. US Government. The Software and any related service
+or documentation, is provided to you with Restricted Rights, in accordance
+with DFARS Section 227.7202 and its subparagraphs. You acknowledge that
+if you are using the Software as a representative, employee or agent of
+the Department of Defense or any other governmental entity of any county,
+state or country, that the Software or any portion thereof is classified,
+in accordance with 252.227-7014 as "Commercial Computer Software" and
+any documentation included in the Software is classified as Commercial
+Computer Software Documentation, both of which were developed exclusively
+at private expense by RenderX. You receive no rights to, nor any rights
+to modify or reproduce, the Software or documentation.
+
+(g)Notices.  Notices shall be in writing and shall be sent to the
+addresses set forth below the signatures of the parties to this Agreement.
+Notices may be delivered personally, via recognized express courier
+(such as Federal Express or DHL) or via first class mail return receipt
+requested.  Notices will be deemed delivered upon receipt if given
+personally, on the second business day after deposit with the express
+courier or on the third business day following deposit in the mail.
+
+(h)Agreement Not Unilaterally Drafted.	This Agreement shall not be
+deemed drafted unilaterally by either Party.
+
+(i)Precedence.	In the event of any conflict between this Agreement
+and any purchase order issued by Licensee with respect to the Software,
+the provisions of this Agreement shall govern.
+
+(j)Read and Understood. Each Party acknowledges that it has read and
+understands this Agreement and agrees to be bound by its terms.
+
+(k)Signatory Power. By signing this Agreement, the signor hereby certifies
+that he/she has signatory power thereto.
+
+(l)Exclusion of U.N. Convention on Contracts. The United Nations
+Convention on Contracts for the International Sale of Goods is hereby
+expressly excluded in its entirety from application to this Agreement.
+
+(m)Assignment. Licensor may assign this Agreement in whole or in part.
+Licensee may not assign or transfer this Agreement or its rights hereunder
+except to the purchaser of all or substantially all of its assets, or to
+its parent, any affiliate or any subsidiary. Subject to the foregoing,
+this Agreement will bind and inure to the benefit of the parties and
+their respective heirs, personal and legal representatives, affiliates,
+successors and permitted assigns.
+
+(n)No Waiver. The failure of either party at any time to require
+performance of any provision hereof shall in no manner affect such
+party's right at a later time to enforce the same or any other term of
+this Agreement.
+
+(o)Export Regulations. The Software and its related documentation may not
+be exported or reexported in violation of the U.S. Export Administration
+Act and its implementing regulations or the laws of the jurisdiction in
+which the Software was obtained.
+

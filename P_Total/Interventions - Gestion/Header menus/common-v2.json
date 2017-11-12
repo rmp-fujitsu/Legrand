@@ -1,0 +1,23 @@
+
+
+[{
+	"title": "Home",
+	"target": "_blank",
+	"image": "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+	"url": "https://portal.runmyprocess.com"
+},
+{
+	"title": "Nouvelle intervention",
+	"target": "_blank",
+	"url": "https://live.runmyprocess.com/live/112501487582701289/appli/341472?P_mode=${P_mode}"
+},
+{
+	"title": "Interventions",
+	"target": "_blank",
+	"url": "https://live.runmyprocess.com/live/112501487582701289/appli/228648?P_mode=${P_mode}"
+},
+{
+	"title": "Stations",
+	"target": "_blank",
+	"url": "https://live.runmyprocess.com/live/112501487582701289/appli/362263?P_mode=${P_mode}"
+}]

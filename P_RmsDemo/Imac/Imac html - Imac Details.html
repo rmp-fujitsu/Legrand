@@ -1,0 +1,96 @@
+<!-- IMAC details -->
+<div class="container-fluid bkg-light-blue">
+
+	<div id="id_rowImacType" class="row">
+		<div class="col-md-5 col-sm-5">
+			<div class="curr-period">
+				<h4 id="id_imacToDo"></h4>
+			</div>
+		</div>
+		<div class="col-md-1 col-sm-1 margin-top-bottom-10px">
+		</div>
+		<div class="col-md-4 col-sm-5">
+			<div class="input-group" data-toggle="tooltip" data-placement="bottom" title='${i18n("woNb_tooltip", "Référence de la demande (créée par le SDMO Fujitsu)")}'>
+				<span class="input-group-addon">
+			    	<i class="fa fa-hashtag" aria-hidden="true"></i>
+				</span>
+				<input id="id_woNb" name="wo_nb" class="form-control" type="text" placeholder="" disabled>
+			</div>
+		</div>
+	</div>
+
+	<div class="row margin-top-bottom-10px">
+	</div>
+
+	<div id="id_rowTechRequest" class="row">
+		<div class="col-md-4 col-sm-4 form-inline">
+			<div class="form-group">
+				<label for="technicianRequest">${i18n("technicianRequest_lbl", "Souhaitez-vous l'intervention d'un technicien ?")}</label>
+				<div class="input-group">
+				  <select id="id_technicianRequest" name="technicianRequest" class="form-control" type="text" title='${i18n("technicianRequest_tooltip", "Technicien envoyé sur place")}' size="1"></select>
+				  <span class="input-group-addon">
+				    <i class="fa fa-user-circle" aria-hidden="true"></i>
+				  </span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="id_rowImacDetails" class="row">	
+		<div id="id_colImacDet1" class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("cashdeskNb_tooltip", "Nb de caisse(s)")}'>
+				<label for="cashdeskNb">${i18n("cashdeskNb_lbl", "Nb de caisse(s)")}</label>
+				<input id="id_cashdeskNb" name="cashdeskNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("cashDrawerNb_tooltip", "Nb de tiroir(s)")}'>
+				<label for="cashDrawerNb">${i18n("cashDrawerNb_lbl", "Nb de tiroir(s)")}</label>
+				<input id="id_cashDrawerNb" name="cashDrawerNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+		</div>
+		<div id="id_colImacDet2" class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("scannerNb_tooltip", "Scanner à plat")}'>
+				<label for="scannerNb">${i18n("scannerNb_lbl", "Nb de scanner(s)")}</label>
+				<input id="id_scannerNb" name="scannerNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("handScannerNb_tooltip", "Douchette scanner")}'>
+				<label for="handScannerNb">${i18n("handScannerNb_lbl", "Nb de douchette(s)")}</label>
+				<input id="id_handScannerNb" name="handScannerNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+		</div>
+		<div id="id_colImacDet3" class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("tpeNb_tooltip", "Terminal de paiement électronique")}'>
+			 <label for="tpeNb">${i18n("tpeNb_lbl", "Nb de TPE(s)")}</label>
+				<input id="id_tpeNb" name="tpeNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("tpaNb_tooltip", "Terminal Portable de Saisie")}'>
+				<label for="tpaNb">${i18n("tpaNb_lbl", "Nb de TPA / PDA(s)")}</label>
+				<input id="id_tpaNb" name="tpaNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+		</div>
+		<div id="id_colImacDet4" class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("ticketPrinterNb_tooltip", "Imprimante Caisse Ticket")}'>
+			 <label for="ticketPrinterNb">${i18n("ticketPrinterNb_lbl", "Nb d'impr. ticket")}</label>
+				<input id="id_ticketPrinterNb" name="ticketPrinterNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+			<div class="input-group" data-toggle="tooltip" data-placement="top" title='${i18n("boPrinterNb_tooltip", "Imprimante Format Papier A4")}'>
+				<label for="boPrinterNb">${i18n("boPrinterNb_lbl", "Nb d'impr. A4")}</label>
+				<input id="id_boPrinterNb" name="boPrinterNb" class="form-control" type="number" pattern="^[0-9]{0,3}" min="0" max="999" step="1" size="3">
+			</div>
+		</div>
+	</div>   <!-- Fin id_rowImacDetails	 -->
+
+	<div id="id_rowImacServer" class="row">
+		<div class="col-md-4 col-sm-4 form-inline">
+			<div class="form-group">
+				<label for="serverRequest">${i18n("serverRequest_lbl", "Gestion d'un serveur")} ?</label>
+				<div class="input-group">
+				  <select id="id_serverRequest" name="serverRequest" class="form-control" type="text" title='${i18n("serverRequest_tooltip", "Serveur à installer/retirer/déménager")}' size="1"></select>
+				  <span class="input-group-addon">
+				    <i class="fa fa-server" aria-hidden="true"></i>
+				  </span>
+				</div>
+			</div>
+		</div>
+	</div>   <!-- Fin id_rowImacServer	 -->
+
+</div>

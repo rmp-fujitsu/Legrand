@@ -1,0 +1,146 @@
+<!-- 2 - Search Filters -->
+<div class="container">
+
+<!-- Predefenite Search filters -->
+	<div id="id_rowFavorites" class="row">
+			<div><strong>${i18n('div_predefinite_search', 'Recherches prédéfinies (30 derniers jours)')}</strong></div>
+			<button id="id_opened" name="opened" type="button" onclick="favoriteFilter('opened');" class="btn btn-primary favorite-btn"><i class="fa fa-star" aria-hidden="true"></i> ${i18n('opened_btn', 'Non Clos')}</button>
+			<button id="id_closed_one_month" name="closed_one_month" type="button" onclick="favoriteFilter('closed_one_month');" class="btn btn-primary favorite-btn"><i class="fa fa-star" aria-hidden="true"></i> ${i18n('closed_one_month_btn', 'Derniers fermés')}</button>
+			
+			<!-- Following predefinites buttons are hidden as unnecessary-->
+			<!--
+			<button id="id_lastOne" name="lastOne" type="button" onclick="favoriteFilter('lastOne');" class="btn btn-primary favorite-btn hidden"><i class="fa fa-star" aria-hidden="true"></i> ${i18n('lastOne_btn', '10 Derniers')}</button>
+			<button id="id_currentMonth" name="currentMonth" type="button" onclick="favoriteFilter('currentMonth');" class="btn btn-primary favorite-btn"><i class="fa fa-star" aria-hidden="true"></i> ${i18n('currentMonth_btn', 'Mois en cours')}</button> 
+			-->
+		</div>
+	</div>
+
+	<div id="id_rowLocations" class="row">
+		<div class="col-md-4 col-sm-4">
+			<label for="affiliateFilter" class="invisible">${i18n('affiliate_lbl', 'Enseigne')}</label>
+			<div class="input-group has-success" data-toggle="tooltip" data-placement="top" title="${i18n('affiliate_tooltip', 'Choix enseigne(s)')}">
+			  <span class="input-group-addon">
+			    <i class="fa fa-tag" aria-hidden="true"></i>
+			  </span>
+			  <select id="id_affiliateFilter" name="affiliateFilter" class="form-control" type="text" title="${i18n('affiliate_text', 'Choix enseigne(s)')}" size="1"></select>
+			</div>
+		</div>
+		
+		<div class="col-md-4 col-sm-4">
+			<label for="countryFilter" class="invisible">${i18n('country_lbl', 'Pays')}</label>
+			<div class="input-group has-success" data-toggle="tooltip" data-placement="top" title="${i18n('country_tooltip', 'Choix pays')}">
+			  <span class="input-group-addon">
+			    <i class="fa fa-globe" aria-hidden="true"></i>
+			  </span>
+			  <select id="id_countryFilter" name="countryFilter" class="form-control" type="text" title="${i18n('country_text', 'Choix pays')}" size="1"></select>
+			</div>
+		</div>
+
+		<div class="col-md-4 col-sm-4">
+			<label for="locationFilter">${i18n('location_lbl', 'Sites')}</label>
+			<div class="input-group has-success" data-toggle="tooltip" data-placement="top" title="${i18n('location_tooltip', 'Sites')}">
+			  <span class="input-group-addon">
+			    <i class="fa fa-font-awesome" aria-hidden="true"></i>
+			  </span>
+			  <select id="id_locationFilter" name="locationFilter" class="form-control" type="text" multiple size="5"></select>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+<!-- First options filter line -->
+	<div id="id_rowFilter1" class="row">
+		<div class="col-md-4 col-sm-4">
+			<div class="input-group">
+			  <span class="input-group-addon">
+			    <i class="fa fa-hashtag" aria-hidden="true"></i>
+			  </span>
+			  <input id="id_numberFilter" name="numberFilter" class="form-control" type="text" placeholder="${i18n('number_text', 'N° Incident')}">
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<label for="statusFilter">${i18n('state_lbl', 'Statut')}</label>
+			<div class="input-group">
+			  <span class="input-group-addon">
+			    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+			  </span>
+			  <select id="id_statusFilter" name="statusFilter" class="form-control" type="text" title="${i18n('state_text', 'Choisir un statut')}" multiple size="5"></select>
+			</div>
+			<div class="row margin-top-bottom-10px">
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="form-group has-success">
+				<input id="id_beginOpenedDateFilter" name="beginOpenedDateFilter" class="form-control" type="text" placeholder="${i18n('beginOpenedDate_text', 'Ouvert entre le...')}">
+			</div>
+			<div class="row margin-top-bottom-10px">
+			</div>
+			<div class="form-group has-success">
+				<input id="id_endOpenedDateFilter" name="endOpenedDateFilter" class="form-control" type="text" placeholder="${i18n('endOpenedDate_text', 'et le...')}">
+			</div>
+			<div class="row margin-top-bottom-10px">
+			</div>
+		</div>
+	</div>
+
+<!-- 2nd options filter line -->
+	<div id="id_rowFilter2" class="row invisible">
+		<div class="col-md-4 col-sm-4">
+			<div class="input-group">
+			  <span class="input-group-addon">
+			    <i class="fa fa-slack" aria-hidden="true"></i>
+			  </span>
+			  <input id="id_clientReferenceFilter" name="clientReferenceFilter" class="form-control" type="text" placeholder="Réf. Client" readonly="readonly">
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="input-group has-warning">
+			  	<span class="input-group-addon">
+			    	<i class="fa fa-calendar" aria-hidden="true"></i>
+			  	</span>
+				<input id="id_beginClosedDateFilter" name="beginClosedDateFilter" class="form-control" type="text" placeholder="Fermé entre le...">
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="input-group has-warning">
+			  	<span class="input-group-addon">
+			    	<i class="fa fa-calendar" aria-hidden="true"></i>
+			  	</span>
+				<input id="id_endClosedDateFilter" name="endClosedDateFilter" class="form-control" type="text" placeholder="et le...">
+			</div>
+		</div>
+	</div>
+
+<!-- Last options filter line -->
+	<div id="id_rowFilter3" class="row hidden">
+		<div class="col-md-4 col-sm-4">
+			<label for="woTypeFilter">Type de demande</label>
+			<div class="input-group">
+			  <span class="input-group-addon">
+			    <i class="fa fa-folder-open" aria-hidden="true"></i>
+			  </span>
+			  <select id="id_woTypeFilter" name="woTypeFilter" class="form-control" type="text" title="Choisir un type" size="1"></select>
+			</div>
+		</div>
+	</div>
+
+<!-- Description Search -->	
+	<div id="id_rowFilter4" class="row hidden">
+		<div class="col-md-4 col-sm-8">
+			<div class="form-group">
+				<label for="descriptionFilter" class="control-label">Rechercher dans la description du ticket</label>
+				<input id="id_descriptionFilter" name="descriptionFilter" class="form-control">
+			</div>	
+		</div>
+	</div>
+
+	<div id="rowButton" class="row">
+        <div class="col-md-4 col-sm-4 text-center">
+            <button id="id_search" name="id_search" class="btn btn-success execute_script-Button" onclick="getWorkOrderListFromServiceNow();"><i class="fa fa-search fa-lg"></i>&nbsp;&nbsp; ${i18n('btn_id1', 'Rechercher')}</button>
+        </div>
+        <div id="id_spinner_search_bottom" class="col-md-1 col-sm-1 margin-top-bottom-10px">
+			<i class="fa fa-spinner fa-pulse fa-3x fa-fw text-primary"></i>
+			<p class="sr-only-visible text-primary text-bold-italic">${i18n('spinner_search_bottom_text', "Chargement...")}</p>
+		</div>
+    </div>
+</div>

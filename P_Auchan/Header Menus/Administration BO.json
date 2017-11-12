@@ -1,0 +1,25 @@
+[{
+        "title" : "Accueil",
+        "image" : "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/356748?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Gestion Magasins",
+        "visible" : "${has_right('408444')=='true' || has_right('408343')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/357491?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Gestion Catalogue",
+        "visible" : "${has_right('408444')=='true' || has_right('408343')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/357396?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Gestion Tutoriels",
+        "visible" : "${has_right('408444')=='true' || has_right('408343')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/357449?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Gestion Contrats",
+        "visible" : "${has_right('408444')=='true' || has_right('408343')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/357397?P_mode=${P_mode}&P_language=${P_language}"
+    }
+]
+
+// 408343 => AUCHAN - Designers
+// 408444 => AUCHAN - SDMO Fujitsu

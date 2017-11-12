@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns="ProductTag"
+		targetNamespace="ProductTag"
+                elementFormDefault="qualified">
+  <xs:element name="product">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="value"/>
+        <xs:element ref="serial"/>
+      </xs:choice>
+      <xs:attributeGroup ref="attlist.product"/>      
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="attlist.product">
+    <xs:attribute name="item-id" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="value" type="xs:string"/>
+  <xs:element name="serial" type="xs:string"/>
+</xs:schema>

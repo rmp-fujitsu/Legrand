@@ -1,0 +1,25 @@
+[{
+        "title" : "Home",
+        "image" : "https://live.runmyprocess.com/live/112501487582701289/upload/674da3b0-9d52-11e7-9c4e-0619bd984419/home-icon.png",
+        "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/356263?P_mode=${P_mode}"
+    }, {
+        "title" : "Saisie formulaire",
+        "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/356263?P_mode=${P_mode}"
+    }, {
+        "title" : "Rapports",
+        "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/365678?P_mode=${P_mode}",
+        "visible" : "${has_right('412616')=='true' || has_right('407893')=='true'}"
+    }, {
+        "title" : "(Gestion des intervenants)",
+        "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/?P_mode=${P_mode}",
+        "visible" : "${has_right('412616')=='true' || has_right('407893')=='true'}"
+    }, {
+        "title" : "Gestions des sociétés",
+        "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/360645?P_mode=${P_mode}",
+        "visible" : "${has_right('412616')=='true' || has_right('407893')=='true'}"
+    }
+]
+
+// 412616 => TOTAL Controle Automates - Gestionnaires
+// 412307 => TOTAL Controle Automates - Techniciens
+// 407893 => TOTAL Controle Automates - Designers
