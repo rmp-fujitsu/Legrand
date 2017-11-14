@@ -530,7 +530,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_ppj_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -541,7 +541,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_ppj_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_ppj_ano_photo_url"/>
@@ -630,7 +630,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_ferm_com_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -641,7 +641,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_ferm_com_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_ferm_com_ano_photo_url"/>
@@ -730,7 +730,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_rep_au_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                   <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -741,7 +741,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_rep_au_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_rep_au_ano_photo_url"/>
@@ -830,7 +830,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_rep_depass_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -841,7 +841,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_rep_depass_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_rep_depass_ano_photo_url"/>
@@ -930,7 +930,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_rep_tgbt_jn_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -941,7 +941,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_rep_tgbt_jn_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_rep_tgbt_jn_ano_photo_url"/>
@@ -1030,7 +1030,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_rep_tgbt_tls_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1041,7 +1041,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_rep_tgbt_tls_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_rep_tgbt_tls_ano_photo_url"/>
@@ -1133,7 +1133,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cinit_appel_cntls_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="center">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1144,7 +1144,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cinit_appel_cntls_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cinit_appel_cntls_ano_photo_url"/>
@@ -1348,7 +1348,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_caisse_princ_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1358,7 +1358,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_caisse_princ_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_caisse_princ_ano_photo_url"/>
@@ -1483,7 +1483,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_caisse_sec1_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1493,7 +1493,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_caisse_sec1_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_caisse_sec1_ano_photo_url"/>
@@ -1606,7 +1606,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_caisse_sec2_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1616,7 +1616,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_caisse_sec2_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_caisse_sec2_ano_photo_url"/>
@@ -1729,7 +1729,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_kiosq1_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1739,7 +1739,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_kiosq1_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_kiosq1_ano_photo_url"/>
@@ -1852,7 +1852,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_kiosq2_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1862,7 +1862,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_kiosq2_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_kiosq2_ano_photo_url"/>
@@ -1975,7 +1975,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_piste_vl_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -1985,7 +1985,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_piste_vl_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_piste_vl_ano_photo_url"/>
@@ -2098,7 +2098,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_piste_pl_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2108,7 +2108,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_piste_pl_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_piste_pl_ano_photo_url"/>
@@ -2221,7 +2221,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_armoire_lap_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2231,7 +2231,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_armoire_lap_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_armoire_lap_ano_photo_url"/>
@@ -2344,7 +2344,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="au_gpl_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="10pt" padding-left="5.4pt" padding-bottom="10pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2354,7 +2354,7 @@
                                             </fo:block>
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="au_gpl_ano_photo_joined = 'OUI'">
-                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                    <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                         <xsl:attribute name="src">
                                                             <xsl:text>url('</xsl:text>
                                                             <xsl:value-of select="au_gpl_ano_photo_url"/>
@@ -2635,7 +2635,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n1_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2646,7 +2646,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n1_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n1_ano_photo_url"/>
@@ -2770,7 +2770,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n2_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2781,7 +2781,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n2_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n2_ano_photo_url"/>
@@ -2905,7 +2905,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n3_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -2916,7 +2916,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n3_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n3_ano_photo_url"/>
@@ -3040,7 +3040,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n4_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3051,7 +3051,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n4_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n4_ano_photo_url"/>
@@ -3175,7 +3175,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n5_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3186,7 +3186,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n5_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n5_ano_photo_url"/>
@@ -3310,7 +3310,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n6_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3321,7 +3321,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n6_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n6_ano_photo_url"/>
@@ -3445,7 +3445,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n7_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3456,7 +3456,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n7_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n7_ano_photo_url"/>
@@ -3580,7 +3580,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n8_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3591,7 +3591,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n8_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n8_ano_photo_url"/>
@@ -3715,7 +3715,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n9_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3726,7 +3726,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n9_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">>
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n9_ano_photo_url"/>
@@ -3850,7 +3850,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="depass_n10_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="11" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -3861,7 +3861,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="depass_n10_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="depass_n10_ano_photo_url"/>
@@ -4120,7 +4120,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="celec_vigi_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -4131,7 +4131,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="celec_vigi_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="celec_vigi_ano_photo_url"/>
@@ -4237,7 +4237,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="celec_tpi_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -4248,7 +4248,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="celec_tpi_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="celec_tpi_ano_photo_url"/>
@@ -4447,7 +4447,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="bjn_desact_cell_crep_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -4458,7 +4458,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="bjn_desact_cell_crep_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="bjn_desact_cell_crep_ano_photo_url"/>
@@ -4562,7 +4562,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="bjn_action_bascule_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -4573,7 +4573,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="bjn_action_bascule_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="bjn_action_bascule_ano_photo_url"/>
@@ -4677,7 +4677,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="bjn_ctrl_tempo_bascule_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -4688,7 +4688,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="bjn_ctrl_tempo_bascule_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="bjn_ctrl_tempo_bascule_ano_photo_url"/>
@@ -4792,7 +4792,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="bjn_remise_cell_crep_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -4803,7 +4803,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="bjn_remise_cell_crep_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="bjn_remise_cell_crep_ano_photo_url"/>
@@ -5002,7 +5002,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="aecl_simu_intrus_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -5013,7 +5013,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="aecl_simu_intrus_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="aecl_simu_intrus_ano_photo_url"/>
@@ -5117,7 +5117,7 @@
                                         </fo:table-cell>
                                     </fo:table-row>
                                     <xsl:if test="aecl_ctrl_tempo_eclair_ano_checked = 'OUI'">
-                                        <fo:table-row>
+                                        <fo:table-row keep-together.within-page="always">
                                             <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="9" background-color="white" display-align="left">
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                     <fo:inline font-size="8pt">
@@ -5128,7 +5128,7 @@
                                                 <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                     <xsl:if test="aecl_ctrl_tempo_eclair_ano_photo_joined = 'OUI'">
                                                         <fo:inline font-size="8pt">
-                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                            <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                                 <xsl:attribute name="src">
                                                                     <xsl:text>url('</xsl:text>
                                                                     <xsl:value-of select="aecl_ctrl_tempo_eclair_ano_photo_url"/>
@@ -5287,7 +5287,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cfin_remise_plastrons_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -5298,7 +5298,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cfin_remise_plastrons_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cfin_remise_plastrons_ano_photo_url"/>
@@ -5393,7 +5393,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cfin_appel_fin_cntls_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -5404,7 +5404,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cfin_appel_fin_cntls_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cfin_appel_fin_cntls_ano_photo_url"/>
@@ -5493,7 +5493,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cfin_reouv_com_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -5504,7 +5504,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cfin_reouv_com_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cfin_reouv_com_ano_photo_url"/>
@@ -5593,7 +5593,7 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <xsl:if test="cfin_cloture_ppj_ano_checked = 'OUI'">
-                                    <fo:table-row>
+                                    <fo:table-row keep-together.within-page="always">
                                         <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="none" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="7" background-color="white" display-align="left">
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
                                                 <fo:inline font-size="8pt">
@@ -5604,7 +5604,7 @@
                                             <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
                                                 <xsl:if test="cfin_cloture_ppj_ano_photo_joined = 'OUI'">
                                                     <fo:inline font-size="8pt">
-                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-height="scale-down-to-fit" height="300pt" content-width="350pt" scaling="uniform">
+                                                        <fo:external-graphic margin-left="auto" margin-right="auto" content-width="scale-down-to-fit" height="100%" width="450px" scaling="uniform">
                                                             <xsl:attribute name="src">
                                                                 <xsl:text>url('</xsl:text>
                                                                 <xsl:value-of select="cfin_cloture_ppj_ano_photo_url"/>

@@ -1,0 +1,26 @@
+[{
+    "title" : "Home",
+    "image" : "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+    "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/341528?P_mode=${P_mode}"
+}, {
+    "title" : "Créer demande",
+    "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/341528?P_mode=${P_mode}"
+}, {
+    "title" : "Mes rapports",
+    "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/342922?P_mode=${P_mode}"
+}, {
+    "title" : "Gestion des intervenants",
+    "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/344330?P_mode=${P_mode}",
+    "visible" : "${has_right('401469')=='true' || has_right('401372')=='true'}"
+}, {
+    "title" : "Gestions des sociétés",
+    "url" : "https://live.runmyprocess.com/live/112501487582701289/appli/349277?P_mode=${P_mode}",
+    "visible" : "${has_right('401469')=='true' || has_right('401372')=='true'}"
+},
+]
+
+// Lanes description
+// 419193 => Campagne TPI - Techniciens
+// 401469 => Campagne TPI - Gestionnaires
+// 401372 => Campagne TPI - Designers
+// 401468 => Campagne TPI - Utilisateurs (All)
