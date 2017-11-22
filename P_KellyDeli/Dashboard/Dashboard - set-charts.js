@@ -9,7 +9,7 @@ RMPApplication.debug("Dashboard : CHARTS part started");
 
 var ready = false;			// special variable use as flag to tell if function 
 var wo_query = {};			// query to Service Now Work Order table
-var wm_order_query = {};			// query to Service Now Work Order table
+var wm_order_query = {};	// query to Service Now Work Order table
 var data_query = {};
 
 // Keep different periods query 
@@ -29,10 +29,9 @@ var id_prevExercise = $("#id_previous_exercise");
 // We register the different period to be considered
 var reports_list = {
     "current_month" : "current_month", 
-	"previous_month" : "previous_month", 
+    "previous_month" : "previous_month",
 	"current_quarter" : "current_quarter", 
-	"previous_quarter" : "previous_quarter",
-	// "previous_quarter" : "previous_quarter", 
+	"previous_quarter" : "previous_quarter", 
 	"current_exercise" : "current_exercise"
 	// "previous_exercise" : "previous_exercise"
 };
@@ -56,7 +55,6 @@ setLabels();	// set Labels for different periods
 function setLabels () 
 {
 	RMPApplication.debug("begin setLabels");
-	c_debug(debug.chart, "=> setLabels"); 
 	$("#id_spinner_search").show();
 
 	// hide actual & previous period during definitions
@@ -78,12 +76,12 @@ function setLabels ()
 	var today = new Date();
 	var num_curr_month = getNumberMonth(today);
 
-	var month_text = ${P_quoted(i18n("month_period_text", "Mois"))};
-	var quarter_text = ${P_quoted(i18n("quarter_period_text", "Q"))};
-	var year_text = ${P_quoted(i18n("year_period_text", "Exercice"))};
+	var month_text = ${P_quoted(i18n('month_period_text', 'Mois'))};
+	var quarter_text = ${P_quoted(i18n('quarter_period_text', 'Q'))};
+	var year_text = ${P_quoted(i18n('year_period_text', 'Exercice'))};
 
 	id_currMonth.append(month_text + ': ' + curr_month);
-	id_prevMonth.append(month_text + ' ' + prev_month);
+	id_prevMonth.append(month_text + ': ' + prev_month);
 	id_currQuart.append(quarter_text + curr_quarter.num + ' - ' + curr_quarter.year);
 	id_prevQuart.append(quarter_text + prev_quarter.num + ' - ' + prev_quarter.year);
 
@@ -96,7 +94,7 @@ function setLabels ()
 			curr_year -= 1;
 			next_year -= 1;
 		}
-		id_currExercise.append(year_text + ': ' + curr_year + ' / ' + next_year);
+		id_currExercise.append(year_text + ': ' + curr_year + ' / '  + next_year);
 		id_prevExercise.append(year_text + ': ' + prev_year + ' / ' + curr_year);
 	}
 	RMPApplication.debug("end setLabels");
@@ -108,28 +106,22 @@ function setLabels ()
 function getFilter() 		
 {
 	RMPApplication.debug("begin getFilter");
-	c_debug(debug.chart, "=> getFilter"); 
+	c_debug(debug.chart, "=> getFilter");
 	$("#id_spinner_search").show();
-	/*var current_month_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentMonth() + "@" + getLastDayCurrentMonth();
-	var previous_month_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousMonth() + "@" + getLastDayPreviousMonth();
-	var current_quarter_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentQuarter() + "@" + getLastDayCurrentQuarter();
-	var previous_quarter_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayPreviousQuarter();
-	var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
-	var previous_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE);
-	// we retrieve datas from previous and current exercise
-	var two_exercises_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentMonth();	*/
-	// Fomula queries from Service Now
-	// var current_month_query = "^wo_opened_atONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()";
-	// var previous_month_query = "^wo_opened_atONLast month@javascript:gs.beginningOfLastMonth()@javascript:gs.endOfLastMonth()";
-	// var current_quarter_query = "^wo_opened_atONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()";
-	// var previous_quarter_query = "^wo_opened_atONLast quarter@javascript:gs.quartersAgoStart(1)@javascript:gs.quartersAgoEnd(1)";
-	var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
-
+	// var current_month_query = "^opened_atBETWEEN" + getFirstDayCurrentMonth() + "@" + getLastDayCurrentMonth();
+	// var previous_month_query = "^opened_atBETWEEN" + getFirstDayPreviousMonth() + "@" + getLastDayPreviousMonth();
+	// var current_quarter_query = "^opened_atBETWEEN" + getFirstDayCurrentQuarter() + "@" + getLastDayCurrentQuarter();
+	// var previous_quarter_query = "^opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayPreviousQuarter();
+	// var current_exercise_query = "^opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
+	// var previous_exercise_query = "^opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE);	
+	
+	var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
+	
 	var sn_query_charts = "co_parentLIKE" + login.company;
+
 	// following any change to affiliate filter, we use contractsListQuery, already defined :)
-	// sn_query_charts += contractsListQuery;
-	// sn_query_charts += locationsListQuery;
-	// var sn_query_charts = "";
+	sn_query_charts += contractsListQuery;
+	sn_query_charts += locationsListQuery;
 
 	/*current_month_query = sn_query_charts + current_month_query;
 	previous_month_query = sn_query_charts + previous_month_query;
@@ -166,7 +158,7 @@ function getFilter()
 function drawChart()
 {
 	RMPApplication.debug("begin drawChart");
-	c_debug(debug.chart, "=> drawChart"); 
+	c_debug(debug.chart, "=> drawChart");
 
 	var options = {};
 	// Following CAPI is only implemented for 6 periods (current & previous months, quarters, exercises)
@@ -219,6 +211,7 @@ function wo_list_ok(P_computed)
 
 	data_query = {};			// reset previous data_query
 	for (key in reports_list) {
+		// console.log("*** KEY : ", key, "***");
 		var array = [];
 		if ( isEmpty(wo_period_array[key]) ) {
 			array = null;
@@ -257,7 +250,6 @@ function wo_list_ok(P_computed)
 				result.wo_prod[i] = array[i].prod_u_label;				// Get list of work order categories
 				result.wo_prob[i] = array[i].prob_u_label;				// Get list of work order categories
 			}
-			// Group different table by type
 			result.wo_type_reduced = reduce_array(result.wo_type);
 			result.wo_prod_reduced = reduce_array(result.wo_prod);
 			result.wo_prob_reduced = reduce_array(result.wo_prob);
@@ -331,7 +323,7 @@ function wo_list_ok(P_computed)
 						+ result.nb_comp + result.nb_inc + result.nb_canc + result.nb_err;
 			// result.nb_fcomp = result.nb_comp + result.nb_res;		// "Finished - Complete" = Resolved + Closed Complete
 			// result.nb_finc = result.nb_inc + result.nb_unr;		// "Finished - Incomplete" = Unresolved + Closed Incomplete
-			// c_debug(debug.chart, "=> wo_list_ok: result.wo_number = ", result.wo_number);
+			c_debug(debug.chart, "=> wo_list_ok: result.wo_number = ", result.wo_number);
 
 			//Get number per work order type
 			result.wo_type_details = new Array (result.wo_type_reduced.length);
@@ -374,7 +366,7 @@ function wo_list_ok(P_computed)
 				}
 			}
 			c_debug(debug.chart, "=> wo_list_ok: result.wo_prob_details = ", result.wo_prob_details);
-
+			
 			c_debug(debug.chart, "=> wo_list_ok: result = ", result);
 		}
 		data_query[key] = result;
@@ -393,7 +385,7 @@ function wo_list_ko(P_error)
 {
 	RMPApplication.debug("begin wo_list_ko: P_error = ", JSON.stringify(P_error));
 	c_debug(debug.chart, "=> wo_list_ko  P_error = ", P_error);
-	var error_msg = ${P_quoted(i18n("wo_list_ko", "Chargement impossible des rapports!"))};
+	var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Chargement impossible des rapports!"))};
     notify_error(chart_title_notify, error_msg + ' ' + chart_thanks_notify);
     RMPApplication.debug("end wo_list_ko");
 }
@@ -461,7 +453,7 @@ function drawCurrentMonthChart()
 	} else {
 		id_current_month_chart.removeClass('hidden');
 		drawBarChart(data_query.current_month, "id_current_month_chart_states");
-		drawColumnChart(data_query.current_month, "id_current_month_chart_types");
+		// drawColumnChart(data_query.current_month, "id_current_month_chart_types");
 		drawPieChart(data_query.current_month, "id_current_month_chart_products");
 	}
 	$("#id_spinner_search").hide();
@@ -477,11 +469,11 @@ function drawPreviousMonthChart()
 	if (data_query.previous_month.wo_array.length == 0) {				// for array
 	// if (Object.keys(data_query.previous_month).length == 0) {		// for object
 		// id_previous_month_chart.addClass('hidden');
-        notify_error(error_chart_title, error_chart_msg);
+		notify_error(error_chart_title, error_chart_msg);
 	} else {
 		id_previous_month_chart.removeClass('hidden');
 		drawBarChart(data_query.previous_month, "id_previous_month_chart_states");
-		drawColumnChart(data_query.previous_month, "id_previous_month_chart_types");
+		// drawColumnChart(data_query.previous_month, "id_previous_month_chart_types");
 		drawPieChart(data_query.previous_month, "id_previous_month_chart_products");
 	}
 	$("#id_spinner_search").hide();
@@ -497,11 +489,11 @@ function drawCurrentQuarterChart()
 	if (data_query.current_quarter.wo_array.length == 0) {				// for array
 	// if (Object.keys(data_query.current_quarter).length == 0) {		// for object
 		// id_current_quarter_chart.addClass('hidden');
-        notify_error(error_chart_title, error_chart_msg);
+		notify_error(error_chart_title, error_chart_msg);
 	} else {
 		id_current_quarter_chart.removeClass('hidden');
 		drawBarChart(data_query.current_quarter, "id_current_quarter_chart_states");
-		drawColumnChart(data_query.current_quarter, "id_current_quarter_chart_types");
+		// drawColumnChart(data_query.current_quarter, "id_current_quarter_chart_types");
 		drawPieChart(data_query.current_quarter, "id_current_quarter_chart_products");
 	}
 	$("#id_spinner_search").hide();
@@ -517,11 +509,11 @@ function drawPreviousQuarterChart()
 	if (data_query.previous_quarter.wo_array.length == 0) {				// for array
 	// if (Object.keys(data_query.previous_quarter).length == 0) {		// for object
 		// id_previous_quarter_chart.addClass('hidden');
-        notify_error(error_chart_title, error_chart_msg);
+		notify_error(error_chart_title, error_chart_msg);
 	} else {
 		id_previous_quarter_chart.removeClass('hidden');
 		drawBarChart(data_query.previous_quarter, "id_previous_quarter_chart_states");
-		drawColumnChart(data_query.previous_quarter, "id_previous_quarter_chart_types");
+		// drawColumnChart(data_query.previous_quarter, "id_previous_quarter_chart_types");
 		drawPieChart(data_query.previous_quarter, "id_previous_quarter_chart_products");
 	}
 	$("#id_spinner_search").hide();
@@ -537,11 +529,11 @@ function drawCurrentExerciseChart()
 	if (data_query.current_exercise.wo_array.length == 0) {				// for array
 	// if (Object.keys(data_query.current_exercise).length == 0) {		// for object
 		// id_current_exercise_chart.addClass('hidden');
-        notify_error(error_chart_title, error_chart_msg);
+		notify_error(error_chart_title, error_chart_msg);
 	} else {
 		id_current_exercise_chart.removeClass('hidden');
 		drawBarChart(data_query.current_exercise, "id_current_exercise_chart_states");
-		drawColumnChart(data_query.current_exercise, "id_current_exercise_chart_types");
+		// drawColumnChart(data_query.current_exercise, "id_current_exercise_chart_types");
 		drawPieChart(data_query.current_exercise, "id_current_exercise_chart_products");
 	}
 	$("#id_spinner_search").hide();
@@ -557,17 +549,16 @@ function drawPreviousExerciseChart()
 	if (data_query.previous_exercise.wo_array.length == 0) {			// for array
 	// if (Object.keys(data_query.previous_exercise).length == 0) {		// for object
 		// id_previous_exercise_chart.addClass('hidden');
-        notify_error(error_chart_title, error_chart_msg);
+		notify_error(error_chart_title, error_chart_msg);
 	} else {
 		id_previous_exercise_chart.removeClass('hidden');
 		drawBarChart(data_query.previous_exercise, "id_previous_exercise_chart_states");
-		drawColumnChart(data_query.previous_exercise, "id_previous_exercise_chart_types");
+		// drawColumnChart(data_query.previous_exercise, "id_previous_exercise_chart_types");
 		drawPieChart(data_query.previous_exercise, "id_previous_exercise_chart_products");
 	}
 	$("#id_spinner_search").hide();
 	RMPApplication.debug("end drawPreviousExerciseChart");
 }
-
 // ===============================================================
 //  Chart drawing functions
 // ===============================================================
@@ -613,8 +604,8 @@ function drawBarChart(d_obj, id_div)
 	]);
 	// ],false);		// 'false' means that the first row contains labels, not data.
 
-	var wo_per_state_option_title = ${P_quoted(i18n("bar_title_id1", "Répartition des"))} + " (" + d_obj.wo_number + ") " + ${P_quoted(i18n("bar_title_id2", "tickets par STATUT"))};
-	var wo_per_state_option_label = ${P_quoted(i18n("graph_label_id1", "Nombre"))};
+	var wo_per_state_option_title = ${P_quoted(i18n('bar_title_id1', 'Répartition des'))} + " (" + d_obj.wo_number + ") " + ${P_quoted(i18n('bar_title_id2', 'tickets par STATUT'))};
+	var wo_per_state_option_label = ${P_quoted(i18n('graph_label_id1', 'Nombre'))};
 
 	var wo_per_state_option = {
 		title: wo_per_state_option_title,
@@ -663,9 +654,9 @@ function drawColumnChart(d_obj, id_div)
 		wo_per_type_array[i+1] = [d_obj.wo_type_reduced[i], d_obj.wo_type_details[i]];
 	}
 
-	// console.log('wo_per_type_array: ', wo_per_type_array);
+	c_debug(debug.chart, "=> drawColumnChart: wo_per_type_array: ", wo_per_type_array);
 	var wo_per_type_data = google.visualization.arrayToDataTable(wo_per_type_array);
-	var wo_per_type_options_title = ${P_quoted(i18n("column_title_id1", "Répartition des"))} + " (" + d_obj.wo_type_number + ") " + ${P_quoted(i18n("column_title_id2", "tickets par TYPE"))};
+	var wo_per_type_options_title = ${P_quoted(i18n('column_title_id1', 'Répartition des'))} + " (" + d_obj.wo_type_number + ") " + ${P_quoted(i18n('column_title_id2', 'tickets par TYPE'))};
 	var wo_per_type_options = {
 		title: wo_per_type_options_title,
 		titleTextStyle: {
@@ -686,7 +677,7 @@ function drawColumnChart(d_obj, id_div)
 	wo_per_type_chart.draw (wo_per_type_data, wo_per_type_options);
 
 	RMPApplication.debug("end drawColumnChart");
-}	// End function drawColumnChart
+}	// End function columnPieChart
 
 function drawPieChart(d_obj, id_div) 
 {
@@ -702,9 +693,9 @@ function drawPieChart(d_obj, id_div)
 		wo_per_prod_array[i+1] =  [d_obj.wo_prod_reduced[i], d_obj.wo_prod_details[i]];
 	}
 
-	// console.log('wo_per_prod_array: ', wo_per_prod_array);
+	c_debug(debug.chart, "=> drawPieChart: wo_per_prod_array: ", wo_per_prod_array);
 	var wo_per_prod_data = google.visualization.arrayToDataTable(wo_per_prod_array);
-	var wo_per_prod_options_title = ${P_quoted(i18n("pie_title_id1", "Répartition des"))} + " (" + d_obj.wo_prod_number + ") " + ${P_quoted(i18n("pie_title_id2", "tickets par PRODUIT"))};
+	var wo_per_prod_options_title = ${P_quoted(i18n('pie_title_id1', 'Répartition des'))} + " (" + d_obj.wo_prod_number + ") " + ${P_quoted(i18n('pie_title_id2', 'tickets par PRODUIT'))};
 	var wo_per_prod_options = {
 		title: wo_per_prod_options_title,
 		titleTextStyle: {
