@@ -378,6 +378,110 @@
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
+                        <fo:block space-after="8pt" space-after.conditionality="retain" line-height="1.2378041666666666" font-family="Arial" font-size="12pt" language="FR" font-weight="bold" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
+                            <fo:leader />
+                        </fo:block>
+
+
+<!-- Résumé des anomalies non réparées -->
+                        <fo:table font-family="Arial" language="FR" start-indent="0pt" border-top-style="solid" border-top-color="black" border-top-width="0.5pt" border-left-style="solid" border-left-color="black" border-left-width="0.5pt" border-bottom-style="solid" border-bottom-color="black" border-bottom-width="0.5pt" border-right-style="solid" border-right-color="black" border-right-width="0.5pt" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
+                            <fo:table-column column-number="1" column-width="380.00pt" />
+                            <fo:table-column column-number="2" column-width="42.55pt" />
+                            <fo:table-column column-number="3" column-width="42.55pt" />
+                            <fo:table-column column-number="4" column-width="42.55pt" />
+                            <fo:table-body start-indent="0pt" end-indent="0pt">
+                                <fo:table-row>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="4" background-color="#FF0000" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="10pt" language="FR" font-weight="bold" color="#FFFFFF">
+                                            <fo:inline font-weight="bold" color="#FFFFFF" font-size="10pt">
+                                                <fo:leader leader-length="0pt" />Résumé des anomalies NON réparées sur place (en cours de dévt...)
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+                                <fo:table-row>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-weight="bold" font-size="8pt">
+                                                <fo:leader leader-length="0pt" />Action
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />Défaut majeur existant
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />Réparé sur site
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />Renvoi infos chez DO
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+                                <fo:table-row>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="none" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="left">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="left">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />"" Action concernée ""
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="dotted" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />
+                                                <xsl:choose>
+                                                    <xsl:when test="cinit_ppj_ano_checked = 'OUI'">
+                                                        <xsl:value-of select="cinit_ppj_ano_checked"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="dotted" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="dotted" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />
+                                                <xsl:choose>
+                                                    <xsl:when test="cinit_ppj_ano_repare = 'OUI'">
+                                                        <xsl:value-of select="cinit_ppj_ano_repare"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="1pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="dotted" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="dotted" border-bottom-style="dotted" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#DEEAF6" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR" text-align="center">
+                                            <fo:inline font-size="8pt">
+                                                <fo:leader leader-length="0pt" />
+                                                <xsl:choose>
+                                                    <xsl:when test="cinit_ppj_ano_renvoi_ordre = 'OUI'">
+                                                        <xsl:value-of select="cinit_ppj_ano_renvoi_ordre"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                            </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+                            </fo:table-body>
+                        </fo:table>
                         <fo:block page-break-before="always" space-after="8pt" space-after.conditionality="retain" line-height="1.2378041666666666" font-family="Arial" font-size="12pt" language="FR" font-weight="bold" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
                             <fo:leader />
                         </fo:block>

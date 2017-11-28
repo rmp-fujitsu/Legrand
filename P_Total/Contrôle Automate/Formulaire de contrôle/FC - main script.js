@@ -354,8 +354,8 @@ function timestamp_to_delay(t_stamp_ms)
         var hours = "";
         if (minutes > 59) {
             hours = Math.floor(minutes / 60);
-            hours = (hours == 0) ? "" : pad(hours) + "h";
             minutes = minutes - (hours * 60);
+            hours = (hours == 0) ? "" : pad(hours) + "h";
         }
         minutes = (minutes == 0) ? "00" : pad(minutes);
         seconds = Math.floor(seconds % 60);

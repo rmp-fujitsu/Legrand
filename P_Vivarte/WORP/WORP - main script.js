@@ -229,7 +229,7 @@ function fillAffiliateBox(vue)
 
     var affiliateListTemp = JSON.parse(id_affiliate_cl.getList()).list;
     // console.log("=>  fillAffiliateBox: affiliateListTemp = ", affiliateListTemp);
-    var text_affiliateFilter = ${P_quoted(i18n("affiliateFilter_text", "TOUS LES CONTRATS"))};
+    var text_affiliateFilter = ${P_quoted(i18n("affiliateFilter_text", "TOUTES LES ENSEIGNES"))};
 
     // Complete affiliate selection filter according connected profile
     switch (vue) {
