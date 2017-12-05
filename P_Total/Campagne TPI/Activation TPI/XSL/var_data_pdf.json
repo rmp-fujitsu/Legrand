@@ -1,0 +1,53 @@
+[
+{
+    "my_var_main": {
+        
+        "date_intervention_str": "${date_intervention_str?default('')}",
+        "code_implant": "${code_implant?default('')}",
+        "nom_station": "${nom_station?default('')}",
+        "ville": "${ville?default('')}",
+        "code_postal": "${code_postal?default('')}",
+        "email_station": "${email_station?default('')}",
+        "tel_station": "${tel_station?default('')}",
+        "nom_societe": "${nom_societe?default('')}",
+        "nom_intervenant": "${nom_intervenant?default('')}",
+        "tel_intervenant": "${tel_intervenant?default('')}",
+
+        "nb_faces_tpi_installes": "${nb_faces_tpi_installes?default('')}",
+        "nb_tpi_df_installes": "${nb_tpi_df_installes?default('')}",
+        "nb_bornes_installees": "${nb_bornes_installees?default('')}",
+        "nb_appareils_distributeur_vl": "${nb_appareils_distributeur_vl?default('')}",
+        "nb_appareils_distributeur_pl": "${nb_appareils_distributeur_pl?default('')}",
+        "duree_ferm_comm": "${duree_ferm_comm?default('')}",
+        "duree_activation_tpi": "${duree_activation_tpi?default('')}",
+
+        "attachmentContentType": "PNG",
+        "photos_ilot_et_auvent": "${photos_ilot_et_auvent}",
+        "commentaires_ilot_et_auvent": "${commentaires_ilot_et_auvent?default('')}",
+        "photos_face_appareil_modifie": "${photos_face_appareil_modifie}",
+        "commentaires_face_appareil_modifie": "${commentaires_face_appareil_modifie?default('')}",
+        "photos_depass_et_arrets_urgence": "${photos_depass_et_arrets_urgence}",
+        "commentaires_depass_et_arrets_urgence": "${commentaires_depass_et_arrets_urgence?default('')}",
+        "photos_noyau_interieur_tete_calculateur": "${photos_noyau_interieur_tete_calculateur}",
+        "commentaires_noyau_interieur_tete_calculateur": "${commentaires_noyau_interieur_tete_calculateur?default('')}",
+        "photos_palette_filmee": "${photos_palette_filmee}",
+        "commentaires_palette_filmee": "${commentaires_palette_filmee?default('')}",
+        "photos_switch_caisse": "${photos_switch_caisse}",
+        "commentaires_switch_caisse": "${commentaires_switch_caisse?default('')}",
+        "photos_arrivees_reseau_baie": "${photos_arrivees_reseau_baie}",
+        "commentaires_arrivees_reseau_baie": "${commentaires_arrivees_reseau_baie?default('')}",
+        "photos_modifications_tgbt": "${photos_modifications_tgbt}",
+        "commentaires_modifications_tgbt": "${commentaires_modifications_tgbt?default('')}",
+        "photos_photos_autres": "${photos_photos_autres}",
+        "commentaires_photos_autres": "${commentaires_photos_autres?default('')}",
+        "photos_mise_service_face_tpi": "${photos_mise_service_face_tpi}",
+        "commentaires_mise_service_face_tpi": "${commentaires_mise_service_face_tpi?default('')}",
+        "photos_fiche_mouvement_materiel": "${photos_fiche_mouvement_materiel}",
+        "commentaires_fiche_mouvement_materiel": "${commentaires_fiche_mouvement_materiel?default('')}",
+        "photos_bon_livraison_tpi_kits": "${photos_bon_livraison_tpi_kits}",
+        "commentaires_bon_livraison_tpi_kits": "${commentaires_bon_livraison_tpi_kits?default('')}",
+        "photos_fiche_mise_service_tpi": "${photos_fiche_mise_service_tpi}",
+        "commentaires_fiche_mise_service_tpi": "${commentaires_fiche_mise_service_tpi?default('')}"
+    }
+}
+]

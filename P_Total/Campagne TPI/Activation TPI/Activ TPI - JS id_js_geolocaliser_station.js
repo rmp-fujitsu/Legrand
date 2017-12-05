@@ -6,6 +6,8 @@ var distance_tolerance_km = 0.3;
 var latitude = parseFloat(RMPApplication.get("localiser.coordinates.latitude"));
 var latitude_rad = (parseFloat(latitude) * pi) / 180;
 var longitude = parseFloat(RMPApplication.get("localiser.coordinates.longitude"));
+c_debug(debug.geolocalisation, "Géolocalisation: Latitude  = ", latitude);
+c_debug(debug.geolocalisation, "Géolocalisation: Longitude = ", longitude);
 
 var latitude_lower_bound = latitude - parseFloat(distance_tolerance_km/111);
 var latitude_upper_bound = latitude + parseFloat(distance_tolerance_km/111);
@@ -17,23 +19,24 @@ var input = {"latitude_lower_bound": latitude_lower_bound, "latitude_upper_bound
 var options = {};
 id_localiser_station.trigger(input, options, localiser_station_ok, localiser_station_ko);
 
-function localiser_station_ok(P_computed)
+function localiser_station_ok(result)
 {
-    if (P_computed.station_localisee == "") {
+    if (result.station_localisee == "") {
 
     } else { 
 		
-		RMPApplication.set("code_implant", P_computed.code_implant);
-		RMPApplication.set("nom_station", P_computed.nom_station);
-		RMPApplication.set("departement", P_computed.departement);
-		RMPApplication.set("ville", P_computed.ville);
-		RMPApplication.set("tel", P_computed.tel);
-		// RMPApplication.set("adresse", P_computed.adresse);
+		RMPApplication.set("code_implant", result.code_implant);
+		RMPApplication.set("nom_station", result.nom_station);
+		RMPApplication.set("adresse", result.adresse);
+		RMPApplication.set("code_postal", result.code_postal);
+		RMPApplication.set("ville", result.ville);
+		RMPApplication.set("email_station", result.email_station);
+		RMPApplication.set("tel_station", result.tel_station);
     }
 }
 
 function localiser_station_ko(P_error)
 {
-    alert("Le module de géolocalisation est indisponible." + <br/> + "Veuillez entrer directement le code implant ou le nom de la station.");
-   // alert(JSON.stringify(P_error));
+    // alert("Le module de géolocalisation est indisponible." + <br/> + "Veuillez entrer directement le code implant ou le nom de la station.");
+    // alert(JSON.stringify(P_error));
 }

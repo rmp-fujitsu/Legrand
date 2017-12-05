@@ -428,7 +428,7 @@ function getFilteredLocations()
                 }
         }
         
-        //call api to location collection
+        // call api to location collection
         // console.log("getFilteredLocations : input = ", input);
         id_get_filtered_locations_api.trigger(input, options, get_locations_ok, get_locations_ko);
     }
