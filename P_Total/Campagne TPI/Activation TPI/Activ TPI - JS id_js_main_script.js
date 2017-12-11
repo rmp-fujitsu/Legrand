@@ -97,6 +97,7 @@ var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
 
 
+
 // execute main program
 init();
 
@@ -204,15 +205,21 @@ function prepare_data()
 
     // Deal with all inserted images
     for (key in domaines) {
+        
+        c_debug(debug.prepare_data, "=> prepare_data: domaines[" + key + "]");
+        var comments_var = "commentaires_" + key;
+        var comments_id = "id_" + comments_var;
         var photos_cw_var = "photos_" + key;
         var photos_cw_id = "id_" + photos_cw_var;
-        c_debug(debug.prepare_data, "=> prepare_data: domaines[" + key + "]");
 
+        var comments_val =  eval(comments_id).getValue();
+        // c_debug(debug.prepare_data, "=> prepare_data: comments_val = ", comments_val);
         var photo_cw_val =  JSON.parse(eval(photos_cw_id).getValue());
         // c_debug(debug.prepare_data, "=> prepare_data: OBJ photo_cw_val = ", photo_cw_val);
         var photo_cw_count = eval(photos_cw_id).getUploadedCount();
         // c_debug(debug.prepare_data, "=> prepare_data: photo_cw_count = ", photo_cw_count);
 
+        domaines[key].comments = comments_val;
         domaines[key].nb_images = photo_cw_count;
         domaines[key].img_array = photo_cw_val;
 
