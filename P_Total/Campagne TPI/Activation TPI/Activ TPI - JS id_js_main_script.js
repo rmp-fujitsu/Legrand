@@ -11,6 +11,7 @@ var debug = {
 	"hidden": false,
     "init": true,
     "geolocalisation": true,
+    "station": true,
     "prepare_data": true
 };
 
