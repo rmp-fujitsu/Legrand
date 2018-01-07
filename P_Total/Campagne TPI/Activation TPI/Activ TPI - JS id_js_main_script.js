@@ -10,8 +10,8 @@ RMPApplication.debug ("Application started");
 var debug = {
 	"hidden": false,
     "init": true,
-    "geolocalisation": true,
-    "station": true,
+    "geolocalisation": false,
+    "station": false,
     "prepare_data": true
 };
 
@@ -111,6 +111,7 @@ function init()
     RMPApplication.debug("begin init");
     c_debug(debug.init, "=> init");
 
+    set_email_resp_inter();
     form_state = RMPApplication.get("form_state");
 
     if (form_state == "Initial") {
@@ -121,6 +122,33 @@ function init()
     }
 
     RMPApplication.debug("end init");
+}
+
+// set Email Resp. Intervenant
+function set_email_resp_inter()
+{
+    RMPApplication.debug ("begin set_email_resp_inter");
+    var my_pattern = {};
+    var nom_societe = RMPApplication.get("nom_societe");
+    my_pattern.nom_societe = nom_societe;
+    c_debug(debug.init, "=> set_email_resp_inter: nom_societe = ", nom_societe);
+    col_email_company_tpi.listCallback(my_pattern, {}, set_email_resp_inter_ok, set_email_resp_inter_ko);
+    RMPApplication.debug ("end set_email_resp_inter");
+}
+
+function set_email_resp_inter_ok(result) 
+{
+    RMPApplication.debug ("begin set_email_resp_inter_ok");
+    c_debug(debug.init, "=> set_email_resp_inter_ok: result = ", result);
+    RMPApplication.set("email_resp_intervenant", result[0].email);
+    RMPApplication.debug ("end set_email_resp_inter_ok");
+}
+
+function set_email_resp_inter_ko(error) 
+{
+    RMPApplication.debug ("begin set_email_resp_inter_ko");
+    alert("Pas d'email correspondant au compte connecté: " + JSON.stringify(error));
+    RMPApplication.debug ("end set_email_resp_inter_ko");
 }
 
 // register actual date & time
