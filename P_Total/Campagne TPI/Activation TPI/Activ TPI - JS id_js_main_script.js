@@ -9,10 +9,10 @@ RMPApplication.debug ("Application started");
 // if "true", logs will be showed on the browser console
 var debug = {
 	"hidden": false,
-    "init": true,
+    "init": false,
     "geolocalisation": false,
     "station": false,
-    "prepare_data": true
+    "prepare_data": false
 };
 
 // List of all domains
@@ -86,7 +86,7 @@ var domaines = {
 
 var other_var = {};         // save temporary variables
 var var_data_pdf = {};      // data collected ready to be imported in final PDF report
-var images_list = [];
+var images_list;
 var update_done, abort, response_done, execute_process = null;
 var form_state;
 
@@ -112,6 +112,8 @@ function init()
     c_debug(debug.init, "=> init");
 
     set_email_resp_inter();
+    set_destinataires_pdf();
+
     form_state = RMPApplication.get("form_state");
 
     if (form_state == "Initial") {
@@ -132,7 +134,7 @@ function set_email_resp_inter()
     var nom_societe = RMPApplication.get("nom_societe");
     my_pattern.nom_societe = nom_societe;
     c_debug(debug.init, "=> set_email_resp_inter: nom_societe = ", nom_societe);
-    col_email_company_tpi.listCallback(my_pattern, {}, set_email_resp_inter_ok, set_email_resp_inter_ko);
+    col_destinataires_pdf_tpi.listCallback(my_pattern, {}, set_email_resp_inter_ok, set_email_resp_inter_ko);
     RMPApplication.debug ("end set_email_resp_inter");
 }
 
@@ -149,6 +151,40 @@ function set_email_resp_inter_ko(error)
     RMPApplication.debug ("begin set_email_resp_inter_ko");
     alert("Pas d'email correspondant au compte connecté: " + JSON.stringify(error));
     RMPApplication.debug ("end set_email_resp_inter_ko");
+}
+
+// set Destinataires rapport PDF
+function set_destinataires_pdf()
+{
+    RMPApplication.debug ("begin set_destinataires_pdf");
+    var my_pattern = {};
+    var options = {};
+    col_destinataires_pdf_tpi.listCallback(my_pattern, options, set_destinataires_pdf_ok, set_destinataires_pdf_ko);
+    RMPApplication.debug ("end set_destinataires_pdf");
+}
+
+function set_destinataires_pdf_ok(result) 
+{
+    RMPApplication.debug ("begin set_destinataires_pdf_ok");
+    // c_debug(debug.init, "=> set_destinataires_pdf_ok: result = ", result);
+    var destinataires_pdf = "";
+    for (var i=0; i<result.length; i++) {
+        if (i==0) {
+            destinataires_pdf += result[i].email;
+        } else {
+            destinataires_pdf += "," + result[i].email;
+        }
+    }
+    c_debug(debug.init, "=> set_destinataires_pdf_ok: destinataires_pdf = ", destinataires_pdf);
+    RMPApplication.set("destinataires_pdf", destinataires_pdf);
+    RMPApplication.debug ("end set_destinataires_pdf_ok");
+}
+
+function set_destinataires_pdf_ko(error) 
+{
+    RMPApplication.debug ("begin set_destinataires_pdf_ko");
+    alert("Aucun mail recensé comme destinataires des rapports PDF: " + JSON.stringify(error));
+    RMPApplication.debug ("end set_destinataires_pdf_ko");
 }
 
 // register actual date & time
@@ -231,6 +267,8 @@ function prepare_data()
 {
     RMPApplication.debug ("begin prepare_data");
     c_debug(debug.prepare_data, "=> begin prepare_data");
+
+    images_list = [];
 
     // Deal with all inserted images
     for (key in domaines) {
