@@ -9,22 +9,6 @@ var itemName = "Update lists";      // what kind of item ?
 var collectionid_var3 = "col_lists";
 var res3 = false;
 
-// ==============================
-//generates a unique ID
-// ==============================
-function uniqueId()
-{
-	var idstr = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
-	do {
-		// between numbers and characters (48 is 0 and 90 is Z (42-48 = 90)
-		var ascicode = Math.floor((Math.random() * 42) + 48);
-		if (ascicode < 58 || ascicode > 64) {
-			// exclude all chars between : (58) and @ (64)
-			idstr += String.fromCharCode(ascicode);
-		}
-	} while (idstr.length < 32);
-	return (idstr);
-}
 
 // ==============================
 // clean custom widget (CW) area
@@ -46,7 +30,7 @@ function add_list()
 {
     RMPApplication.debug ("begin add_list");
     var my_object = eval('(' + RMPApplication.get("my_list") + ')');
-    console.log("add_list: my_object", my_object);
+    c_debug(debug.update_list, "=> add_list: my_object = ", my_object);
 	if (!list_already_exists(my_object.list)) {
 		my_object.id_list = uniqueId();
 		eval(collectionid_var3).saveCallback(my_object, add_list_ok, add_list_ko);
@@ -60,7 +44,7 @@ function add_list()
 function add_list_ok(result)
 {
 	RMPApplication.debug("begin add_list_ok");
-    console.log("add_list_ok: result", result);
+    c_debug(debug.update_list, "=> add_list_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("add_list_ok_msg", "New list added!"))};
     notify_success(success_title_notify, success_msg);
 	clean_list();
@@ -72,7 +56,7 @@ function add_list_ko(error)
 {
     //Error while adding item in the collection
     RMPApplication.debug("begin add_list_ko");
-    console.log("add_list_ko: error = ", error);
+    c_debug(debug.update_list, "=> add_list_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("add_list_ko_msg", "Save do not success!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_list_ko");
@@ -85,16 +69,16 @@ function update_list()
 {
 	RMPApplication.debug ("begin update_list");
     var my_pattern = {};
-    my_pattern.id_list = RMPApplication.get("my_list.id_list");
+    my_pattern.id_list = RMPApplication.get("my_list.list");
     var my_object = eval('(' + RMPApplication.get("my_list") + ')');
-    eval(collectionid_var2).updateCallback(my_pattern, my_object, update_list_ok, update_list_ko);
+    eval(collectionid_var3).updateCallback(my_pattern, my_object, update_list_ok, update_list_ko);
     RMPApplication.debug ("end update_list");
 }
 
 function update_list_ok(result)
 {
 	RMPApplication.debug ("begin update_list_ok");
-    console.log("update_list_ok: result", result);
+    c_debug(debug.update_list, "=> update_list_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("update_list_ok_msg", "Information saved with success!"))};
     notify_success(success_title_notify, success_msg);
     clean_list();
@@ -106,7 +90,7 @@ function update_list_ko(error)
 {
 	//Error while updating item in the collection
 	RMPApplication.debug ("begin update_list_ko");
-    console.log("update_list_ko: error = ", error);
+    c_debug(debug.update_list, "=> update_list_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("update_list_ko_msg", "Update do not success!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_list_ko");
@@ -118,7 +102,7 @@ function update_list_ko(error)
 function load_list(id_list)
 {
 	RMPApplication.debug ("begin load_list");
-    console.log("load_list: id_list = ", id_list); 
+    c_debug(debug.update_list, "=> load_list: id_list = ", id_list); 
     var my_pattern = {};
 	my_pattern.id_list = id_list;
     RMPApplication.debug ("my_pattern.id_list = " + my_pattern.id_list);    
@@ -129,12 +113,13 @@ function load_list(id_list)
 function load_list_ok(result)
 {
 	RMPApplication.debug ("begin load_list_ok");
-    console.log("load_list_ok: result", result);
+    c_debug(debug.update_list, "=> load_list_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("load_list_ok_msg", "Information were correctly loaded!"))};
     notify_success(success_title_notify, success_msg);
     id_section_list.setVisible(true);
 	id_section_list.open();
-	RMPApplication.set("my_list", result[0]);
+    RMPApplication.set("my_list", result[0]);
+    RMPApplication.set("my_list.list", result[0].id_list);
     RMPApplication.set("action", "update");
     RMPApplication.debug ("end load_list_ok");
 }
@@ -142,7 +127,7 @@ function load_list_ok(result)
 function load_list_ko(error)
 {
 	RMPApplication.debug ("begin load_list_ko");
-    console.log("load_list_ko: error = ", error);
+    c_debug(debug.update_list, "=> load_list_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_list_ko_msg", "Informations were not retrieved!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     id_report_lists.refresh();
@@ -156,7 +141,7 @@ function load_list_ko(error)
 function delete_list(id_list)
 {
     RMPApplication.debug ("begin delete_list");
-    console.log("id_list: id_list = ", id_list);
+    c_debug(debug.update_list, "=> id_list: id_list = ", id_list);
     var my_pattern = {};
     my_pattern.id_list = id_list;
     RMPApplication.debug ("my_pattern.id_list = " + my_pattern.id_list);  
@@ -167,7 +152,7 @@ function delete_list(id_list)
 function delete_list_ok(result)
 {
 	RMPApplication.debug ("begin delete_list_ok");
-    console.log("delete_list_ok: result = ", result);
+    c_debug(debug.update_list, "=> delete_list_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("delete_list_ok_msg", "List deleted!"))};
     notify_success(success_title_notify, success_msg);
     id_report_lists.refresh();
@@ -181,7 +166,7 @@ function delete_list_ko(error)
 {
 	//Error while deleting item from the collection
 	RMPApplication.debug ("begin delete_list_ko");
-    console.log("delete_list_ko: error = ", error);
+    c_debug(debug.update_list, "=> delete_list_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("delete_list_ko_msg", "List deletion do not succcess!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_list_ko");
@@ -193,34 +178,38 @@ function delete_list_ko(error)
 function list_already_exists(id_list)
 {
     RMPApplication.debug ("begin function list_already_exists");
-    console.log("list_already_exists: id_list = ", id_list);
-    var my_pattern = {};
-    my_pattern.id_list = id_list;
-    var options = {};
-    options.asynchronous = false;
-    res3 = false;
-    eval(collectionid_var3).listCallback(my_pattern, options, exists_list_ok, exists_list_ko);
-    RMPApplication.debug ("end function list_already_exists");
-    return res3;
+    c_debug(debug.update_list, "=> list_already_exists: id_list = ", id_list);
+    if (isEmpty(id_list)) {
+        return false;
+    } else {
+        var my_pattern = {};
+        my_pattern.id_list = id_list;
+        var options = {};
+        options.asynchronous = false;
+        res3 = false;
+        eval(collectionid_var3).listCallback(my_pattern, options, exists_list_ok, exists_list_ko);
+        RMPApplication.debug ("end function list_already_exists");
+        return res3;
+    }
 }
 
 function exists_list_ok(result)
 {
     RMPApplication.debug ("begin exists_list_ok");
-    console.log("exists_list_ok: result = ", result);
+    c_debug(debug.update_list, "=> exists_list_ok: result = ", result);
 	if (result[0]) {
 		res3 = true;
 	} else {
 		res3 = false;
     }
-    console.log("exists_list_ok: res3 = ", res3);
+    c_debug(debug.update_list, "=> exists_list_ok: res3 = ", res3);
     RMPApplication.debug ("end exists_list_ok");
 }
 
 function exists_list_ko(error)
 {
     RMPApplication.debug ("begin exists_list_ko");
-    console.log("exists_list_ko: error = ", error);
+    c_debug(debug.update_list, "=> exists_list_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("exists_list_ko_msg", "Update list's existence could not be checked!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_list_ko");

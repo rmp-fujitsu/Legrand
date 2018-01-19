@@ -9,23 +9,6 @@ var collectionid_var2 = "col_timers";
 var res2 = false;
 
 // ==============================
-//generates a unique ID
-// ==============================
-function uniqueId()
-{
-	var idstr = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
-	do {
-		// between numbers and characters (48 is 0 and 90 is Z (42-48 = 90)
-		var ascicode = Math.floor((Math.random() * 42) + 48);
-		if (ascicode < 58 || ascicode > 64) {
-			// exclude all chars between : (58) and @ (64)
-			idstr += String.fromCharCode(ascicode);
-		}
-	} while (idstr.length < 32);
-	return (idstr);
-}
-
-// ==============================
 // clean custom widget (CW) area
 // variable: my_item
 // ==============================
@@ -49,10 +32,10 @@ function add_timer()
 	id_my_timer.id_mtimer.setText(m);
 
 	var my_object = eval('(' + RMPApplication.get("my_timer") + ')');
-	console.log("add_timer: my_object", my_object);
+	c_debug(debug.timer, "=> add_timer: my_object = ", my_object);
 	if (!timer_already_exists(my_object.step, my_object.timer)) {
 		my_object.id_timer = uniqueId();
-		eval(collectionid_var4).saveCallback(my_object, add_timer_ok, add_timer_ko);
+		eval(collectionid_var2).saveCallback(my_object, add_timer_ok, add_timer_ko);
 	} else {
 		var error_msg2 = ${P_quoted(i18n("add_file_msg2", "This timer already exists!"))};
         notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
@@ -63,7 +46,7 @@ function add_timer()
 function add_timer_ok(result)
 {
 	RMPApplication.debug("begin add_timer_ok");
-    console.log("add_timer_ok: result", result);
+    c_debug(debug.timer, "=> add_timer_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("add_timer_ok_msg", "New timer added!"))};
     notify_success(success_title_notify, success_msg);
 	clean_timer();
@@ -75,7 +58,7 @@ function add_timer_ko(error)
 {
     //Error while adding item in the collection
     RMPApplication.debug("begin add_timer_ko");
-    console.log("add_timer_ko: error = ", error);
+    c_debug(debug.timer, "=> add_timer_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("add_timer_ko_msg", "Save do not success!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_timer_ko");
@@ -97,7 +80,7 @@ function update_timer()
 function update_timer_ok(result)
 {
 	RMPApplication.debug ("begin update_timer_ok");
-    console.log("update_timer_ok: result", result);
+    c_debug(debug.timer, "=> update_timer_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("update_timer_ok_msg", "Information saved with success!"))};
     notify_success(success_title_notify, success_msg);
     clean_timer();
@@ -109,7 +92,7 @@ function update_timer_ko(error)
 {
 	//Error while updating item in the collection
 	RMPApplication.debug ("begin update_timer_ko");
-    console.log("update_timer_ko: error = ", error);
+    c_debug(debug.timer, "=> update_timer_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("update_timer_ko_msg", "Update do not success!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_timer_ko");
@@ -121,7 +104,7 @@ function update_timer_ko(error)
 function load_timer(id_timer)
 {
 	RMPApplication.debug ("begin load_timer");
-    console.log("load_timer: id_timer = ", id_timer); 
+    c_debug(debug.timer, "=> load_timer: id_timer = ", id_timer); 
     var my_pattern = {};
 	my_pattern.id_timer = id_timer;
     RMPApplication.debug ("my_pattern.id_timer = " + my_pattern.id_timer);    
@@ -132,7 +115,7 @@ function load_timer(id_timer)
 function load_timer_ok(result)
 {
 	RMPApplication.debug ("begin load_timer_ok");
-    console.log("load_timer_ok: result", result);
+    c_debug(debug.timer, "=> load_timer_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("load_timer_ok_msg", "Information were correctly loaded!"))};
     notify_success(success_title_notify, success_msg);
     id_section_timer.setVisible(true);
@@ -145,7 +128,7 @@ function load_timer_ok(result)
 function load_timer_ko(error)
 {
 	RMPApplication.debug ("begin load_timer_ko");
-    console.log("load_timer_ko: error = ", error);
+    c_debug(debug.timer, "=> load_timer_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_timer_ko_msg", "Informations were not retrieved!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     id_report_timers.refresh();
@@ -158,7 +141,7 @@ function load_timer_ko(error)
 function delete_timer(id_timer)
 {
 	RMPApplication.debug ("begin delete_timer");
-    console.log("delete_timer: id_timer = ", id_timer);
+    c_debug(debug.timer, "=> delete_timer: id_timer = ", id_timer);
     var my_pattern = {};
     my_pattern.id_timer = id_timer;
     RMPApplication.debug ("my_pattern.id_timer = " + my_pattern.id_timer);  
@@ -169,7 +152,7 @@ function delete_timer(id_timer)
 function delete_timer_ok(result)
 {
 	RMPApplication.debug ("begin delete_timer_ok");
-    console.log("delete_timer_ok: result = ", result);
+    c_debug(debug.timer, "=> delete_timer_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("delete_timer_ok_msg", "Timer deleted!"))};
     notify_success(success_title_notify, success_msg);
     id_report_timers.refresh();
@@ -183,7 +166,7 @@ function delete_timer_ko(error)
 {
 	//Error while deleting item from the collection
 	RMPApplication.debug ("begin delete_timer_ko");
-    console.log("delete_timer_ko: error = ", error);
+    c_debug(debug.timer, "=> delete_timer_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("delete_timer_ko_msg", "Timer deletion do not succcess!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_timer_ko");
@@ -195,7 +178,7 @@ function delete_timer_ko(error)
 function timer_already_exists(step, timer) 
 {
 	RMPApplication.debug ("begin function timer_already_exists");
-    console.log("timer_already_exists: step = " + step  + " | timer = " + timer);
+    c_debug(debug.timer, "=> timer_already_exists: step = " + step  + " | timer = " + timer);
 	var my_pattern = {};
 	my_pattern.step = step;
 	my_pattern.timer = timer;
@@ -210,20 +193,20 @@ function timer_already_exists(step, timer)
 function exists_timer_ok(result)
 {
 	RMPApplication.debug ("begin exists_timer_ok");
-    console.log("exists_timer_ok: result = ", result);
+    c_debug(debug.timer, "=> exists_timer_ok: result = ", result);
 	if (result[0]) {
 		res2 = true;
 	} else {
 		res2 = false;
 	}
-	console.log("exists_timer_ok: res2 = ", res2);
+	c_debug(debug.timer, "=> exists_timer_ok: res2 = ", res2);
     RMPApplication.debug ("end exists_timer_ok");
 }
 
 function exists_timer_ko(error) 
 {
 	RMPApplication.debug ("begin exists_timer_ko");
-    console.log("exists_timer_ko: error = ", error);
+    c_debug(debug.timer, "=> exists_timer_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("exists_timer_ko_msg", "Timer's existence could not be checked!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_timer_ko");
