@@ -1,13 +1,17 @@
 // id_back_to_requester_btn
 
+var myVar = setTimeout(prepare_string_variables_array, 1000);
+
 id_more_info_comment_section.setVisible(true);
 var id = "id_more_info_comment_section";
-$('[id="' + id + '"]').attr("title", "${i18n('widgettitle', 'Send Back To Requester')}");
+var dialog_title = "${i18n('back_to_requestor_title', 'Send Back To Requester')}";
 $('[id="' + id + '"]').dialog({
+    title: dialog_title,
     autoOpen: false,
-    height: 500,
-    width: 500,
+    height: 250,
+    width: "auto",
     modal: true,
     resizable: false
 });
+$('[id="' + id + '"] .header').css('display', 'none');
 $('[id="' + id + '"]').dialog("open");

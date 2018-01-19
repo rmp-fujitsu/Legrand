@@ -55,6 +55,7 @@ setLabels();	// set Labels for different periods
 function setLabels () 
 {
 	RMPApplication.debug("begin setLabels");
+	c_debug(debug.chart, "=> setLabels"); 
 	$("#id_spinner_search").show();
 
 	// hide actual & previous period during definitions
@@ -115,7 +116,14 @@ function getFilter()
 	// var current_exercise_query = "^opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
 	// var previous_exercise_query = "^opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE);	
 	
-	var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
+	var today = new Date();
+	var num_curr_month = today.getMonth() + 1;
+	var num_first_moe = Number(FIRSTMONTHOFEXERCISE);
+	if (((num_curr_month + 12 - num_first_moe)%12) > 3) {
+		var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
+	} else {
+		var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
+	}
 	
 	var sn_query_charts = "co_parentLIKE" + login.company;
 
@@ -211,7 +219,6 @@ function wo_list_ok(P_computed)
 
 	data_query = {};			// reset previous data_query
 	for (key in reports_list) {
-		// console.log("*** KEY : ", key, "***");
 		var array = [];
 		if ( isEmpty(wo_period_array[key]) ) {
 			array = null;

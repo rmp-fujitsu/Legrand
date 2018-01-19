@@ -13,3 +13,7 @@ var debug = {
     "update_list": false,
     "email_notif": false
 };
+
+var success_title_notify = ${P_quoted(i18n("success_title_notify", "Success"))};
+var error_title_notify = ${P_quoted(i18n("error_title_notify", "Error"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Thanks to report this issue!"))};

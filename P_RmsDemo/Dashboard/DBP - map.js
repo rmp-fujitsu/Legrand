@@ -117,9 +117,8 @@ function dispatchWorkOrder()
             var increment_k_soon = false;
             var increment_k_over = false;
             var sla_location_name = reduced_wos_loc_name[j];
-            // Isolate location code
-            var tiret_j = reduced_wos_loc_name[j].lastIndexOf("-");
-            var sla_loc_code = reduced_wos_loc_name[j].substring(tiret_j+1, reduced_wos_loc_name[j].length).trim();
+            // c_debug(debug.sla, "=> dispatchWorkOrder: sla_location_name = ", sla_location_name);
+
             sla_loc_name[j] = {};
             sla_loc_name[j].loc_name = reduced_wos_loc_name[j];
             sla_loc_name[j].wo_list = [];
@@ -129,14 +128,28 @@ function dispatchWorkOrder()
 
                 // keep additionnal location informations for further needs
                 wos_array[i].loc_col_location_code = wos_array[i].cu_correlation_id;
+                // c_debug(debug.sla, "=> dispatchWorkOrder: location_name = ", wos_array[i].loc_col_location_name);
+                // c_debug(debug.sla, "=> dispatchWorkOrder: location_code = ", wos_array[i].loc_col_location_code);
+                
                 var tiret_i = wos_array[i].loc_name.lastIndexOf("-");
-                wos_array[i].loc_col_location_name = wos_array[i].loc_name.substring(0, tiret_i);
-                // wos_array[i].loc_col_location_name = wos_array[i].loc_name;
-                // wos_array[i].loc_col_location_code = wos_array[i].loc_name.substring(tiret_i+1, wos_array[i].loc_name.length).trim();
-                c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "] = ", wos_array[i]);
+                if (tiret_i > -1) {     // '-' character found
+                    var loc_code_end = wos_array[i].loc_name.substring(tiret_i+1, wos_array[i].loc_name.length).trim();
+                    if (loc_code_end === wos_array[i].cu_correlation_id) {
+                        wos_array[i].loc_col_location_name = wos_array[i].loc_name.substring(0, tiret_i);
+                    } else {
+                        wos_array[i].loc_col_location_name = wos_array[i].loc_name;
+                    }
+                } else {
+                    wos_array[i].loc_col_location_name = wos_array[i].loc_name;
+                }
+                // c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "] = ", wos_array[i]);
 
-                // if (wos_array[i].loc_col_location_name === sla_location_name) {       // if no location_code included in location's name
-                if (wos_array[i].loc_col_location_code === sla_loc_code) {                // strict dispatching                  
+                // c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "].loc_col_location_name = ", wos_array[i].loc_col_location_name);
+                // c_debug(debug.sla, "\n                    sla_location_name = ", sla_location_name);
+                // if (wos_array[i].loc_col_location_name === sla_location_name) {          // if no location_code included in location's name
+                // if (wos_array[i].loc_col_location_code === sla_loc_code) {                // strict dispatching
+                if (include_string(sla_location_name, wos_array[i].loc_col_location_name)) {       // if no location_code included in location's name                  
+                    
                     sla_loc_name[j].wo_list.push(wos_array[i]);
 
                     if ( parseFloat(wos_array[i].tasksla_percentage) < 80 ) {             // On Time SLA
@@ -324,16 +337,6 @@ function setSiteInfo(w_order_arr)
                     '<i class="glyphicon glyphicon-globe" aria-hidden="true"> </i>' + ' GPS: Lat (' + w_order_arr.wo_list[0].loc_latitude + ') - Long (' + w_order_arr.wo_list[0].loc_longitude + ')</div>' +
                     '<hr>' + 
                     '<p><strong>' + ${P_quoted(i18n('popup_id1', 'Incidents en cours (Etat SLA)'))} + '</strong></p>';
-
-/*    var w_order_arr_sorted = w_order_arr;
-    w_order_arr_sorted.sort( function(a, b) {
-        return new Date(a.tasksla_planned_end_time).getTime() - new Date(b.tasksla_planned_end_time).getTime();
-    });
-
-    for (var i=0; i<w_order_arr_sorted.wo_list.length; i++) {
-        var end_time = moment(w_order_arr.wo_list[i].tasksla_planned_end_time).format("DD/MM/YYYY HH:mm");
-        siteInfo += '<p>- ' + w_order_arr.wo_list[i].wo_number + ' &#10143; Fin SLA: ' + end_time  + ' - <span style="color: ' + w_order_arr.wo_list[i].sla_def.color + ';"><i class=\"fa fa-' +  w_order_arr.wo_list[i].sla_def.sign + ' fa-lg\" aria-hidden=\"true\"></i></span> [' + w_order_arr.wo_list[i].tasksla_percentage + '%]</p>';
-    }*/
 
     for (var i=0; i<w_order_arr.wo_list.length; i++) {
         var end_time_utc = moment.tz(w_order_arr.wo_list[i].tasksla_planned_end_time, "UTC");

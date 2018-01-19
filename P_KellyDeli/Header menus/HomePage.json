@@ -16,7 +16,7 @@
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/345847?P_mode=${P_mode}&P_language=${P_language}"
     }, {
         "title" : "Tableaux de bord",
-		"visible" : "${has_right('403277')=='false' && has_right('402267')=='false' && has_right('402314')=='false'}",
+		"visible" : "${has_right('403277')=='false' && has_right('402267')=='false'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/345850?P_mode=${P_mode}&P_language=${P_language}"
     }, {
         "title" : "Tutoriels",

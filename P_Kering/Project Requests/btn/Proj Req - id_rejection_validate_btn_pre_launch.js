@@ -1,5 +1,7 @@
 // id_rejection_validate_btn
 
+var myVar = setTimeout(prepare_string_variables_array, 1000);
+
 RMPApplication.setVariable("statut", "Rejected");
 id_rejection_comment_section.close();
 var id = "id_rejection_comment_section";

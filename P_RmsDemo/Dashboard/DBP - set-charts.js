@@ -95,7 +95,7 @@ function setLabels ()
 			curr_year -= 1;
 			next_year -= 1;
 		}
-		id_currExercise.append(year_text + ': ' + curr_year + ' / '  + next_year);
+		id_currExercise.append(year_text + ': ' + curr_year + ' / ' + next_year);
 		id_prevExercise.append(year_text + ': ' + prev_year + ' / ' + curr_year);
 	}
 	RMPApplication.debug("end setLabels");
@@ -117,12 +117,15 @@ function getFilter()
 	var previous_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE);
 	// we retrieve datas from previous and current exercise
 	var two_exercises_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentMonth();	*/
-	// Fomula queries from Service Now
-	// var current_month_query = "^wo_opened_atONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()";
-	// var previous_month_query = "^wo_opened_atONLast month@javascript:gs.beginningOfLastMonth()@javascript:gs.endOfLastMonth()";
-	// var current_quarter_query = "^wo_opened_atONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()";
-	// var previous_quarter_query = "^wo_opened_atONLast quarter@javascript:gs.quartersAgoStart(1)@javascript:gs.quartersAgoEnd(1)";
-	var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
+	var today = new Date();
+	var num_curr_month = today.getMonth() + 1;
+	var num_first_moe = Number(FIRSTMONTHOFEXERCISE);
+	if (((num_curr_month + 12 - num_first_moe)%12) > 3) {
+		var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
+	} else {
+		var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
+	}
+	
 	
 	var sn_query_charts = "co_parentLIKE" + login.company;
 
@@ -150,7 +153,6 @@ function getFilter()
 	
 	c_debug(debug.chart, "getFilter: wo_query = ", wo_query);
 	
-
 	// load Google Charts Library
 	google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -702,7 +704,7 @@ function drawPieChart(d_obj, id_div)
 		wo_per_prod_array[i+1] =  [d_obj.wo_prod_reduced[i], d_obj.wo_prod_details[i]];
 	}
 
-	c_debug(debug.chart, "=> drawPieChart: wo_per_prod_array: ", wo_per_prod_array);
+	c_debug(debug.chart, "=> drawPieChart: wo_per_prod_array = ", wo_per_prod_array);
 	var wo_per_prod_data = google.visualization.arrayToDataTable(wo_per_prod_array);
 	var wo_per_prod_options_title = ${P_quoted(i18n("pie_title_id1", "Répartition des"))} + " (" + d_obj.wo_prod_number + ") " + ${P_quoted(i18n("pie_title_id2", "tickets par PRODUIT"))};
 	var wo_per_prod_options = {

@@ -417,7 +417,6 @@ function getFilteredLocations()
                 break;
 
             case "LOCAL" :
-                // console.log("switch LOCAL");
                 if ( (country_value !== "tous") && (!isEmpty(country_value)) ) {
                     input.country = { "$regex" : country_value, "$options" : "i"};  
                 } 
@@ -774,7 +773,7 @@ function queryServiceNow()
     // names of company, affiliates, country, division, region
 
     // Only work orders with active SLA are interesting for cartography
-    sn_query += "^tasksla_active=true";         // only WO with a n associated active sla
+    sn_query += "^tasksla_active=true";         // only WO with an associated active sla
     sn_query += "^tasksla_stage=in_progress";         // only WO with an associated active sla & in_progress stage
 
     var input = {};

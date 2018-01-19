@@ -169,7 +169,7 @@ function load_item(locationcode)
     // console.log("load_item: locationcode = ", locationcode); 
     var my_pattern = {};
     my_pattern.location_code = locationcode;
-    RMPApplication.debug ("my_pattern." + locationcode + " = " + my_pattern.location_code);    
+    RMPApplication.debug ("my_pattern.locationcode = " + my_pattern.location_code);    
     eval(collectionid).listCallback(my_pattern, {}, load_ok, load_ko);
     RMPApplication.debug ("end load_item");
 }
@@ -206,7 +206,7 @@ function delete_item(locationcode)
     // console.log("delete_item: itemid = ", itemid);
     var my_pattern = {};
     my_pattern.location_code = locationcode;
-    RMPApplication.debug ("my_pattern." + locationcode + " = " + my_pattern.location_code);  
+    RMPApplication.debug ("my_pattern.locationcode = " + my_pattern.location_code);  
     eval(collectionid).removeCallback(my_pattern, delete_ok, delete_ko);
     RMPApplication.debug ("end delete_item");
 }

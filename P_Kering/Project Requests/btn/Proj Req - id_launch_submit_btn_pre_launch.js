@@ -1,5 +1,7 @@
 // id_launch_submit_btn
 
+var myVar = setTimeout(prepare_string_variables_array, 1000);
+
 RMPApplication.setVariable("statut", "Submitted");
 
 var error_msg = "Incorrect or missing value(s) for the following field(s) : " + "\n" + "\n";
