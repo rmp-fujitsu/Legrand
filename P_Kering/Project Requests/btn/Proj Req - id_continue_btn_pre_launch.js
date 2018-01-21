@@ -1,5 +1,8 @@
 // id_continue_btn
 
+prepare_string_variables_array();
+var myVar = setTimeout({}, 1000);
+
 var liste = "Valeur incorrecte ou manquante pour les champs suivants : " + "\n" + "\n";
 
 if (RMPApplication.get("project_manager_name") == null) {

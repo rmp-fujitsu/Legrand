@@ -1,5 +1,8 @@
 // id_verif_champs
 
+prepare_string_variables_array();
+var myVar = setTimeout({}, 1000);
+
 var error_msg = "Incorrect or missing value(s) for the following field(s) : " + "\n" + "\n";
 var liste = error_msg;
 

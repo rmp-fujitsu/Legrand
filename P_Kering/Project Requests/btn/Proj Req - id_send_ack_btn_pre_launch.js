@@ -1,5 +1,8 @@
 // id_send_ack_btn
 
+prepare_string_variables_array();
+var myVar = setTimeout({}, 1000);
+
 if (RMPApplication.get("documentation_to_deliver") == "no") {
 	id_description.setText("n/a");console.log("1 - documentation_to_deliver");
 }

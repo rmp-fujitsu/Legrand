@@ -1,6 +1,7 @@
 // id_reject_request_btn
 
-var myVar = setTimeout(prepare_string_variables_array, 1000);
+prepare_string_variables_array();
+var myVar = setTimeout({}, 1000);
 
 id_rejection_comment_section.setVisible(true);
 var id = "id_rejection_comment_section";
