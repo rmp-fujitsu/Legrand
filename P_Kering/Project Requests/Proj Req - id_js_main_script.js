@@ -8,7 +8,7 @@
 var debug = {
     "hidden": false,
     "init": false,
-    "replace_str": true
+    "replace_str": false
 };
 
 // String Variables list where double-quote char must be replaced by single-quote
@@ -47,15 +47,6 @@ var string_variables_array = [
     "rejection_comment"
 ];
 
-function isEmpty(s_var)
-{
-    if(s_var !== "" && s_var !== "undefined" && s_var !== null && s_var !== undefined && s_var !== "NOT DEFINED" && s_var !== "not defined") {
-        return false;
-    } else {
-        return true;
-    }
-}
-
 // replace double-quote character by single-quote before generating PDF report
 function clean_quote(str)
 {
@@ -65,27 +56,13 @@ function clean_quote(str)
 
 function prepare_string_variables_array()
 {
-    for (var i=0; i<string_variables_array.length; i++){
+    for (i=0; i<string_variables_array.length; i++){
 
         var str_value = RMPApplication.get(string_variables_array[i]);
         if (!isEmpty(str_value)) {
             str_value = clean_quote(str_value);
             RMPApplication.set(eval("\"" + string_variables_array[i] + "\""), str_value);
             c_debug(debug.replace_str, "String var [" + string_variables_array[i] + "]  has been modified!" )
-        }
-    }
-}
-
-// ====================================================================================
-//   For debugging purpose
-// ====================================================================================
-function c_debug(part, str_content, vb_content) 
-{
-    if (part) {
-        if (!(isEmpty(vb_content))) {
-            console.log("\n " + str_content, vb_content);
-        } else {
-            console.log("\n " + str_content);
         }
     }
 }

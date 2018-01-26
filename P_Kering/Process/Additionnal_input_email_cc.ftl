@@ -11,9 +11,10 @@
 <#assign destinataires_cc = []>
 <#list list_objects(my_pattern, "notifications") as x>
     <#if mode = "LIVE">
-        <#assign destinataires_cc = "${x.live_email_cc?eval}">
+        <#assign dest_cc = x.live_email_cc>
+        <#assign destinataires_cc = "${dest_cc?eval}">
     <#elseif mode = "ACCEPTANCE">
-        <#assign destinataires_cc = "${x.acceptance_email_cc?eval}">
+        <#assign destinataires_cc = "">
     <#elseif mode = "TEST">
         <#assign destinataires_cc = "">
     </#if>
