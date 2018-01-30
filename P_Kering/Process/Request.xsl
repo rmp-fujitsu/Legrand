@@ -104,7 +104,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt" language="EN-US">
-										<fo:leader leader-length="0pt" />Project code
+										<fo:leader leader-length="0pt" />Project Code
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -152,7 +152,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-weight="bold" font-size="12pt" language="EN-US">
-										<fo:leader leader-length="0pt" />Kick off date
+										<fo:leader leader-length="0pt" />Kick off Date
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -168,7 +168,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-weight="bold" font-size="12pt" language="EN-US">
-										<fo:leader leader-length="0pt" />Kick off hour
+										<fo:leader leader-length="0pt" />Kick off Hour
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -200,7 +200,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Request ID:
+										<fo:leader leader-length="0pt" />Request ID
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -216,7 +216,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Request name :
+										<fo:leader leader-length="0pt" />Request Name
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -232,7 +232,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Requested By :
+										<fo:leader leader-length="0pt" />Requested By
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -248,7 +248,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Creation date:
+										<fo:leader leader-length="0pt" />Creation Date
 									</fo:inline>
 									<fo:inline>
 										<fo:leader leader-length="0pt" />
@@ -267,7 +267,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Organizational Unit :
+										<fo:leader leader-length="0pt" />Organizational Unit
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -283,7 +283,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Position :
+										<fo:leader leader-length="0pt" />Position
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -299,7 +299,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Phone :
+										<fo:leader leader-length="0pt" />Phone
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -315,7 +315,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Expected Delivery Date :
+										<fo:leader leader-length="0pt" />Expected Delivery Date:
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -331,7 +331,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Expected Go Live date :
+										<fo:leader leader-length="0pt" />Expected GO Live date
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -347,7 +347,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Submission date:
+										<fo:leader leader-length="0pt" />Submission Date
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -363,7 +363,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Last Submission date:
+										<fo:leader leader-length="0pt" />Last Submission Date
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -379,7 +379,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Location :
+										<fo:leader leader-length="0pt" />Location
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -395,7 +395,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold">
-										<fo:leader leader-length="0pt" />Project Description :
+										<fo:leader leader-length="0pt" />Project Description
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -411,7 +411,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Attachement :
+										<fo:leader leader-length="0pt" />Attachement
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -428,7 +428,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Type :
+										<fo:leader leader-length="0pt" />Type
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -444,7 +444,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Project Complexity - Pre Qualification:
+										<fo:leader leader-length="0pt" />Project Complexity - Pre Qualification
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -460,7 +460,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Invoicing Type:
+										<fo:leader leader-length="0pt" />Invoicing Type
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -476,7 +476,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Target Brand:
+										<fo:leader leader-length="0pt" />Target Brand
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -516,9 +516,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt" language="EN-US">
 										<fo:leader leader-length="0pt" />
-										
-                                                     <xsl:value-of select="Document_to_deliver"/>
-                                               
+											<xsl:value-of select="Document_to_deliver"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -535,9 +533,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-								
-                                                     <xsl:value-of select="Server_installation"/>
-                                                 
+											<xsl:value-of select="Server_installation"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -554,9 +550,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-									
-                                                     <xsl:value-of select="Networking_configuration"/>
-                                            
+											<xsl:value-of select="Networking_configuration"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -568,7 +562,7 @@
 								</fo:block>
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="14pt" language="FR" space-before="6pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="14pt">
-										<fo:leader leader-length="0pt" />Service Level :
+										<fo:leader leader-length="0pt" />Service Level
 									</fo:inline>
 								</fo:block>
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain" font-weight="bold">
@@ -593,9 +587,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-						
-                                                     <xsl:value-of select="Full_management"/>
-                                              
+											<xsl:value-of select="Full_management"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -604,7 +596,7 @@
 							<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain" font-weight="bold">
 									<fo:inline font-weight="bold" font-size="12pt">
-										<fo:leader leader-length="0pt" />Basic monitoring and back up :
+										<fo:leader leader-length="0pt" />Basic monitoring and back-up
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -612,9 +604,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-										
-                                                     <xsl:value-of select="SLA_excuse"/>
-                                              
+											<xsl:value-of select="Basic_monitoring"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -631,9 +621,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-										
-                                                     <xsl:value-of select="Backup"/>
-                                                
+											<xsl:value-of select="Backup"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -662,9 +650,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-										
-                                                     <xsl:value-of select="Affected_components"/>
-                                       
+											<xsl:value-of select="Affected_components"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -681,10 +667,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline font-size="12pt">
 										<fo:leader leader-length="0pt" />
-										
-                                                
-                                                     <xsl:value-of select="Impacts"/>
-                                               
+											<xsl:value-of select="Impacts"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>
@@ -701,7 +684,7 @@
 								<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="12pt" language="EN-US" space-before="6pt" space-before.conditionality="retain">
 									<fo:inline>
 										<fo:leader leader-length="0pt" />
-										 <xsl:value-of select="Benefits"/>
+											<xsl:value-of select="Benefits"/>
 									</fo:inline>
 								</fo:block>
 							</fo:table-cell>

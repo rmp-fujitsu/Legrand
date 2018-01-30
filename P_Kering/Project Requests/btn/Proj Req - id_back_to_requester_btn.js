@@ -1,7 +1,7 @@
 // id_back_to_requester_btn
 
 prepare_string_variables_array();
-var myVar = setTimeout({}, 1000);
+var myVar = setTimeout(function(){}, 1000);
 
 id_more_info_comment_section.setVisible(true);
 var id = "id_more_info_comment_section";

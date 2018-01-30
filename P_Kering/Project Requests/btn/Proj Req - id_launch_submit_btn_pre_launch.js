@@ -1,7 +1,7 @@
 // id_launch_submit_btn
 
 prepare_string_variables_array();
-var myVar = setTimeout({}, 1000);
+var myVar = setTimeout(function(){}, 1000);
 
 RMPApplication.setVariable("statut", "Submitted");
 

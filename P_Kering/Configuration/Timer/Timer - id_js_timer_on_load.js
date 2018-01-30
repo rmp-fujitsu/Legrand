@@ -28,8 +28,9 @@ function add_timer()
 {
 	RMPApplication.debug ("begin add_timer");
 	var jtimer = parseInt(RMPApplication.get("my_timer.timer"));
-	var m = jtimer * 1080;
-	id_my_timer.id_mtimer.setText(m);
+    var m = jtimer * 1440;
+    var timer_str = m.toString();
+	id_my_timer.id_mtimer.setText(timer_str);
 
 	var my_object = eval('(' + RMPApplication.get("my_timer") + ')');
 	c_debug(debug.timer, "=> add_timer: my_object = ", my_object);
@@ -211,4 +212,3 @@ function exists_timer_ko(error)
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_timer_ko");
 }
-
