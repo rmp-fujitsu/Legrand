@@ -452,17 +452,25 @@
 									<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
 										<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain" font-weight="bold">
 											<fo:inline font-weight="bold" font-size="11pt">
-												<fo:leader leader-length="0pt" />Attachement
+												<fo:leader leader-length="0pt" />Attachment
 											</fo:inline>
 										</fo:block>
 									</fo:table-cell>
 									<fo:table-cell padding-top="0pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="white" display-align="center">
-										<fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain">
-											<fo:inline font-size="11pt">
-												<fo:leader leader-length="0pt" />
-												<xsl:value-of select="Attachment" />
-											</fo:inline>
-										</fo:block>
+                                        <fo:block space-after="2pt" space-after.conditionality="retain" line-height="1.147" font-family="Calibri" font-size="11pt" language="FR" space-before="2pt" space-before.conditionality="retain">
+											<xsl:choose>
+                                                <xsl:when test="$Nb_uploaded_files != '0'">
+                                                    <fo:inline font-size="11pt">
+                                                        <fo:leader leader-length="0pt" /><xsl:value-of select="Some_files"/>
+                                                    </fo:inline>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <fo:inline font-size="11pt">
+                                                        <fo:leader leader-length="0pt" /><xsl:value-of select="No_files"/>
+                                                    </fo:inline>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+										</fo:block>  
 									</fo:table-cell>
 								</fo:table-row>
 								<fo:table-row>

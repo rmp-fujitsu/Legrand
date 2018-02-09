@@ -38,20 +38,20 @@ if (RMPApplication.get("project_description") == null) {
     liste += "- Project description" + "\n";
 }
 
-if (RMPApplication.get("full_management_and_monitoring") == null) {
+if (RMPApplication.get("full_management_and_monitoring_option") == null) {
     liste += "- Description Full management and monitoring" + "\n";
 }
 
-if (RMPApplication.get("basic_monitoring_and_back_up") == null) {
+if (RMPApplication.get("basic_monitoring_and_back_up_option") == null) {
     liste += "- Description Basic monitoring and back up" + "\n";
 }
 
-if (RMPApplication.get("full_management_and_monitoring") == "no") {
+if (RMPApplication.get("full_management_and_monitoring_option") == "no") {
 	id_comment_full_management_and_monitoring.setText("n/a"); 
 	console.log("4- full_management_and_monitoring = no");
 }
 
-if (RMPApplication.get("basic_monitoring_and_back_up") == "no") {
+if (RMPApplication.get("basic_monitoring_and_back_up_option") == "no") {
 	id_comment_basic_monitoring_and_back_up.setText("n/a");
 	console.log("5- basic_monitoring_and_back_up = no");
 }

@@ -9,12 +9,12 @@ RMPApplication.debug("IMAC : Application started");
 
 // if "true", logs will be showed on the browser console
 var debug = {
-    "init" : true,
-    "box" : true,
-    "categ" : true,
-    "action" : true,
-    "datas" : true,
-    "process_btn" : true
+    "init" : false,
+    "box" : false,
+    "categ" : false,
+    "action" : false,
+    "datas" : false,
+    "process_btn" : false
 };
 
 var login = {};					// metadata user
@@ -28,6 +28,7 @@ var request = {};				// all informations related to the IMAC request
 								// => should be used as pattern to retrieve cost line in collection
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
+var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
@@ -41,7 +42,8 @@ init();		// execute main program
 function resetWI()
 {
 	RMPApplication.debug("begin resetWI");
-    c_debug(debug.init, "=> resetWI");
+	c_debug(debug.init, "=> resetWI");
+	$("#id_module_cards").hide();			// by default
 
 	var selectedLang = "fr";                // french by default
     var datepicker_lang = selectedLang;
@@ -714,11 +716,45 @@ function showUserChoice()
 	id_imacToDo.append(action);
 	id_imacToDo.show();	
 
-
 	// toggle location details part
 	id_location_info.setVisible(true);
 
 	RMPApplication.debug("end showUserChoice");
+}
+
+// ====================================================================================
+//   Check or uncheck State options according values
+// ====================================================================================
+function checkStates() 
+{
+    RMPApplication.debug("begin checkStates");
+	c_debug(debug.process_btn, "=> checkStates");
+	
+	var id_woNb = $("#id_woNb");
+	var id_techDate = $("#id_techDate");
+	var state_value = id_state.getValue();
+	if (isEmpty(id_woNb.val()) || isEmpty(id_techDate.val())) {
+		id_inter_planned.setChecked(false);
+		if (id_imac_accepted.isChecked()) {
+			id_state.setValue("accepted");
+		} else {
+			id_state.setValue("sent");
+		}
+	} else {									// Intervention date & WO filled
+		id_inter_planned.setChecked(true);
+		id_imac_accepted.setChecked(true);
+		id_state.setValue("planned");
+	}
+	if (id_imac_achieved.isChecked()) {			// IMAC can't be achieved if not "cancelled" state
+		id_imac_cancelled.setChecked(false);
+		id_state.setValue("achieved");
+	}
+	if (id_imac_cancelled.isChecked()) {        // IMAC can't be cancelled if not "achieved" state
+		id_imac_achieved.setChecked(false);
+		id_state.setValue("cancelled");
+	}
+	imacContentStateUpdate();
+	RMPApplication.debug("end checkStates");
 }
 
 // ====================================================================================
@@ -727,9 +763,7 @@ function showUserChoice()
 function dataValidation() 
 {
 	RMPApplication.debug("begin dataValidation");
-    var state_value = id_state.getValue();
-    c_debug(debug.datas, "=> dataValidation: state = ", state_value);
-
+	
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");			// technicianRequest input
 	var id_serverRequest = $("#id_serverRequest");					// serverRequest input
@@ -754,7 +788,7 @@ function dataValidation()
 	var id_collectDate = $("#id_collectDate");
 	var id_restrictedAccess = $("#id_restrictedAccess");
 	var datum = "";
-
+	
 	// Customer set following values
 	if (id_material_todo.getValue() == "move") {
 		id_distance_cost.setSelectedValue(distanceCost);
@@ -771,49 +805,80 @@ function dataValidation()
 	id_customer_comments.setValue(id_customerComments.val());
 	id_technician_time.setValue(id_techTime.val());
 	id_restricted_access.setValue(id_restrictedAccess.val());
-
+	
     var contexte = id_context.getValue();
     // contexte == "web" for desktop screen and datepicker; otherwise (for tablet & mobile) datebox is used as calendar component
     var date_separator = (contexte == "web") ? "/" :  "-";
     var temp_techTime = "10:00";
-
-	if (!isEmpty(id_techDate.val())) {
-		datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
-		datum = Math.round(datum.getTime()/ 1000);
-		id_technician_date.setDate(datum);
+	var date_format = "DD" + date_separator + "MM" + date_separator + "YYYY";
+	
+	var techDate_val = id_techDate.val();
+	var technician_date_val = moment.unix(id_technician_date.getDate()).format(date_format);
+	if (isEmpty(techDate_val) && isEmpty(technician_date_val)) {
+		id_planning_changed.setValue("no");
+		id_technician_date.setValue(null);
+		RMPApplication.set("technician_date_l", "");
+	} else if (techDate_val != technician_date_val) {
+		if (isEmpty(techDate_val)) {
+			id_planning_changed.setValue("no");
+			id_technician_date.setValue(null);
+			RMPApplication.set("technician_date_l", "");
+		} else {
+			id_planning_changed.setValue("yes");
+			datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
+			datum = Math.round(datum.getTime()/ 1000);
+			id_technician_date.setDate(datum);
+		}
+	} else {
+		id_planning_changed.setValue("no");
 	}
 	if (!isEmpty(id_runDate.val())) {
 		datum = stringToDateTime(id_runDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_run_date.setDate(datum);
-	}
+    } else {
+		id_run_date.setValue(null);
+    }
 	if (!isEmpty(id_businessDate.val())) {
 		datum = stringToDateTime(id_businessDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_business_date.setDate(datum);
-	}
+    } else {
+		id_business_date.setValue(null);
+    }
 	if (!isEmpty(id_keyReturnDate.val())) {
 		datum = stringToDateTime(id_keyReturnDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_key_return_date.setDate(datum);
+	} else {
+		id_key_return_date.setValue(null);
 	}
 
+	checkStates();		// check or uncheck SDMO State options
+	setTimeout(function(){}, 500);
+	var state_value = id_state.getValue();
+	c_debug(debug.datas, "=> dataValidation: state = ", state_value);
+	
 	if (state_value == "sent" || state_value == "planned" || state_value == "accepted" || state_value == "achieved" || state_value == "cancelled") {
-
+		
 		id_wo_number.setValue(id_woNb.val());
 		id_total_amount.setValue(id_totalAmount.val());
 		id_fujitsu_comments.setValue(id_fujitsuComments.val());
-
+		
 		if (!isEmpty(id_deliveryDate.val())) {
 			datum = stringToDateTime(id_deliveryDate.val() + " " + temp_techTime, date_separator);
 			datum = Math.round(datum.getTime()/ 1000);
 			id_delivery_date.setDate(datum);
-		}
+		} else {
+            id_delivery_date.setValue(null);
+        }
 		if (!isEmpty(id_collectDate.val())) {
 			datum = stringToDateTime(id_collectDate.val() + " " + temp_techTime, date_separator);
 			datum = Math.round(datum.getTime()/ 1000);
 			id_collect_date.setDate(datum);
-		}	
+		} else {
+            id_collect_date.setValue(null);
+        }	
 	}
 
 	switch (state_value) {
@@ -893,6 +958,7 @@ function saveDraft()
     c_debug(debug.process_btn, "=> saveDraft");
 
 	id_state.setValue("draft");
+	// validate data before continuing the process or saving the form
 	dataValidation();
 
 	RMPApplication.debug("end saveDraft");
@@ -924,8 +990,7 @@ function sendRequest()
 	} else {                       // tablet or mobile
 
 		id_state.setValue("sent");
-		// update IMAC global state
-		imacStateUpdate();
+		// validate data before continuing the process or saving the form
 		dataValidation();
 		return true;		// needed as called by pre-launch script "Envoyer la demande" button
 	}
@@ -972,7 +1037,6 @@ function retrieveAllDatas()
 	var id_restrictedAccess = $("#id_restrictedAccess");
 	var datum = "";
 
-
 	// Customer set following values
 	id_technicianRequest.val(id_technician.getSelectedValue());
 	id_serverRequest.val(id_server.getSelectedValue());
@@ -998,33 +1062,45 @@ function retrieveAllDatas()
 	
     var contexte = id_context.getValue();
     // contexte == "web" for desktop screen and datepicker; otherwise (for tablet & mobile) datebox is used as calendar component
-    var date_separator = (contexte == "web") ? "/" :  "-";
+	var date_separator = (contexte == "web") ? "/" :  "-";
 
 	var date_format = "DD" + date_separator + "MM" + date_separator + "YYYY";
 	if (!isEmpty(id_technician_date.getDate())) {
 		datum = moment.unix(id_technician_date.getDate()).format(date_format);
 		id_techDate.val(datum);
-	}
+	} else {
+        id_techDate.val("");
+    }
 	if (!isEmpty(id_run_date.getDate())) {
 		datum = moment.unix(id_run_date.getDate()).format(date_format);
 		id_runDate.val(datum);
-	}
+	} else {
+        id_runDate.val("");
+    }
 	if (!isEmpty(id_business_date.getDate()) ) {
 		datum = moment.unix(id_business_date.getDate()).format(date_format);
 		id_businessDate.val(datum);
-	}
+	} else {
+        id_businessDate.val("");
+    }
 	if (!isEmpty(id_key_return_date.getDate()) ) {
 		datum = moment.unix(id_key_return_date.getDate()).format(date_format);
 		id_keyReturnDate.val(datum);
-	}
+	} else {
+        id_keyReturnDate.val("");
+    }
 	if (!isEmpty(id_delivery_date.getDate())) {
 		datum = moment.unix(id_delivery_date.getDate()).format(date_format);
 		id_deliveryDate.val(datum);
-	}
+	} else {
+        id_deliveryDate.val("");
+    }
 	if (!isEmpty(id_collect_date.getDate())) {
 		datum = moment.unix(id_collect_date.getDate()).format(date_format);
 		id_collectDate.val(datum);
-	}		
+	} else {
+        id_collectDate.val("");
+    }		
 
 	switch (state_value) {
 		case "draft" : 
@@ -1038,26 +1114,10 @@ function retrieveAllDatas()
 			id_sdmo_cancellation.setVisible(false);	// only active for "Informations Fujitsu screen"
 			break;
         default :
-            var id_woNb = $("#id_woNb");
-            var id_techDate = $("#id_techDate");
-            if (isEmpty(id_woNb.val()) || isEmpty(id_techDate.val())) {
-                id_inter_planned.setChecked(false);
-            } else {            // Intervention date & WO filled
-                id_inter_planned.setChecked(true);
-            }
-            if (id_imac_achieved.isChecked()) {        // IMAC can't be achieved if not "achieved" state
-                id_imac_achieved.setChecked(false);
-            }
-            if (id_imac_cancelled.isChecked()) {        // IMAC can't be cancelled if not "cancelled" state
-                id_imac_cancelled.setChecked(false);
-            }
+			checkStates();
 			id_imac_update.setVisible(true);		// only active for "Informations Fujitsu screen"
 			id_sdmo_validation.setVisible(true);	// only active for "Informations Fujitsu screen"
             id_sdmo_cancellation.setVisible(true);	// only active for "Informations Fujitsu screen"
-            /* if (id_imac_update.isEnabled()) {
-				// Update last informations related to present IMAC
-				RMPApplication.save(updateImac, updateImacFail);
-			} */
 			break;
 	}
 
@@ -1124,8 +1184,16 @@ function sdmoValidation()
     // contexte == "web" for desktop screen and datepicker; otherwise (for tablet & mobile) datebox is used as calendar component
     var date_separator = (contexte == "web") ? "/" :  "-";
     var temp_techTime = "10:00";
+	var date_format = "DD" + date_separator + "MM" + date_separator + "YYYY";
 
-	if (!isEmpty(id_techDate.val())) {
+	var techDate_val = id_techDate.val();
+	var technician_date_val = moment.unix(id_technician_date.getDate()).format(date_format);
+	if (isEmpty(techDate_val) && isEmpty(technician_date_val)) {
+		id_planning_changed.setValue("no");
+		id_technician_date.setValue(null);
+		RMPApplication.set("technician_date_l", "");
+	} else if (techDate_val != technician_date_val) {
+		id_planning_changed.setValue("yes");
 		datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_technician_date.setDate(datum);
@@ -1134,27 +1202,42 @@ function sdmoValidation()
 		datum = stringToDateTime(id_runDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_run_date.setDate(datum);
-	}
+	} else {
+        id_run_date.setValue(null);
+    }
 	if (!isEmpty(id_businessDate.val())) {
 		datum = stringToDateTime(id_businessDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_business_date.setDate(datum);
-	}
+	} else {
+        id_business_date.setValue(null);
+    }
 	if (!isEmpty(id_keyReturnDate.val())) {
 		datum = stringToDateTime(id_keyReturnDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_key_return_date.setDate(datum);
-	}
+	} else {
+        id_key_return_date.setValue(null);
+    }
 	if (!isEmpty(id_deliveryDate.val())) {
 		datum = stringToDateTime(id_deliveryDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_delivery_date.setDate(datum);
-	}
+	} else {
+        id_delivery_date.setValue(null);
+    }
 	if (!isEmpty(id_collectDate.val())) {
 		datum = stringToDateTime(id_collectDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
 		id_collect_date.setDate(datum);
-	}
+	} else {
+        id_collect_date.setValue(null);
+    }
+
+	checkStates();		// check or uncheck SDMO State options
+	setTimeout(function(){}, 500);
+	var state_value = id_state.getValue();
+	c_debug(debug.datas, "=> sdmoValidation: state = ", state_value);
 
 	// =========================================================
 	// TO DO: Liste de contrôle des erreurs possibles de saisie
@@ -1190,10 +1273,6 @@ function sdmoValidation()
 	switch (state_value) {
 		case "achieved" :		
 		case "cancelled" :
-			if (id_imac_update.isEnabled()) {
-				// Update last informations related to present IMAC
-				RMPApplication.save(updateImac, updateImacFail);
-			}
 			id_imac_update.setVisible(false);
 			id_sdmo_validation.setVisible(false);
 			id_sdmo_cancellation.setVisible(false);
@@ -1226,17 +1305,17 @@ function woCloseIMAC()
         dialog_warning(title, content, btn_ok);
 		return false;
 	} else {
-		id_state.setValue("achieved");
+		// id_state.setValue("achieved");
 		id_imac_achieved.setChecked(true);
+
 		// update IMAC global state
 		updateImacBeforeEnd();
 
-		RMPApplication.debug("end woCloseIMAC");
-
-        c_debug(debug.process_btn, "=> woCloseIMAC: before returning TRUE");
 		while (update_done == false) {
 			// wait until flag update_done is setted to true
 		}
+		c_debug(debug.process_btn, "=> woCloseIMAC: before returning TRUE");
+		RMPApplication.debug("end woCloseIMAC");
 		return true;		// needed as called by pre-launch script "Envoyer la demande" button
 	}
 }
@@ -1261,17 +1340,17 @@ function woImacCancel()
 		var new_fuji_comments = (isEmpty(id_fujitsu_comments.getValue()) ? "" : id_fujitsu_comments.getValue() + "\n-------------------\n" ) + "- Raison annulation: " + id_cancellation_reason.getValue();
 		id_fujitsu_comments.setValue(new_fuji_comments);
 		id_fujitsuComments.val(new_fuji_comments);
-		id_state.setValue("cancelled");
+		// id_state.setValue("cancelled");
 		id_imac_cancelled.setChecked(true);
+		
 		// update IMAC global state
 		updateImacBeforeEnd();
 
-		RMPApplication.debug("end woImacCancel");
-
-        c_debug(debug.process_btn, "=> woImacCancel: before returning TRUE");
 		while (update_done == false) {
-				// wait until flag update_done is setted to true
-			}
+			// wait until flag update_done is setted to true
+		}
+		c_debug(debug.process_btn, "=> woImacCancel: before returning TRUE");
+		RMPApplication.debug("end woImacCancel");
 		return true;		// needed as called by pre-launch script "Annuler l'IMAC" button
 	}
 }
@@ -1285,25 +1364,69 @@ function updateImac()
     c_debug(debug.process_btn, "=> updateImac");
 	update_done = false;
 
-    if (id_inter_planned.isChecked()) {
+	// validate data before continuing the process or saving the form
+	dataValidation();
+	
+	if (id_inter_planned.isChecked()) {
 		id_state.setValue("planned");
 	} else if (id_imac_accepted.isChecked()) {
 		id_state.setValue("accepted");
 	} else {
-        id_state.setValue("sent");
-    }
-	
-	// update IMAC global state
-	imacStateUpdate();
-	dataValidation();
+		id_state.setValue("sent");
+	}
 
-	RMPApplication.debug("end updateImac");
-	
-    c_debug(debug.process_btn, "=> updateImac: before returning TRUE");
 	while (update_done == false) {
 		// wait until flag update_done is setted to true
 	}
-	return true;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
+	c_debug(debug.process_btn, "=> updateImac: before returning TRUE");
+	RMPApplication.debug("end updateImac");
+	return true;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button	
+	
+}
+
+// ====================================================================================
+//   Command to execute before saving form => INACTIVE
+// ====================================================================================
+function prepareSaveImac() 
+{
+    RMPApplication.debug("begin prepareSaveImac");
+    c_debug(debug.process_btn, "=> prepareSaveImac");
+
+    dataValidation();
+	setTimeout( function() {}, 500);
+	c_debug(debug.process_btn, "=> prepareSaveImac: simulate click to continue process");
+    document.getElementById("id_continue_process").click();
+	// RMPApplication.save(updateImacSuccess, updateImacFail);
+	
+	RMPApplication.debug("end prepareSaveImac");
+}
+
+// ====================================================================================
+//   Update IMAC success
+// ====================================================================================
+function updateImacSuccess() 
+{
+    RMPApplication.debug("begin updateImacSuccess");
+	c_debug(debug.process_btn, "=> updateImacSuccess");
+	var success_msg = ${P_quoted(i18n("updateImacSuccess_msg", "Le formulaire a bien été mis à jour!"))};
+    notify_success(success_title_notify, success_msg);
+
+	RMPApplication.debug("end updateImacSuccess");	
+	// return true;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
+}
+
+// ====================================================================================
+//   Update IMAC failure
+// ====================================================================================
+function updateImacFail() 
+{
+    RMPApplication.debug("begin updateImacFail");
+	c_debug(debug.process_btn, "=> updateImacFail");
+	var error_msg = ${P_quoted(i18n("updateImacFail_msg", "La sauvegarde du formulaire a généré une erreur!"))};
+    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+	
+	RMPApplication.debug("end updateImacFail");
+	// return false;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
 }
 
 // ====================================================================================
@@ -1314,33 +1437,19 @@ function updateImacBeforeEnd()
     RMPApplication.debug("begin updateImacBeforeEnd");
     c_debug(debug.process_btn, "=> updateImacBeforeEnd");
 
-	// update IMAC global state
-	imacStateUpdate();
+	// validate data before continuing the process or saving the form
 	sdmoValidation();
 
 	RMPApplication.debug("end updateImacBeforeEnd");
 }
 
 // ====================================================================================
-//   Update IMAC failure
-// ====================================================================================
-function updateImacFail() 
-{
-    RMPApplication.debug("begin updateImacFail");
-    c_debug(debug.process_btn, "=> updateImacFail");
-	
-	RMPApplication.debug("end updateImacFail");
-	
-	return false;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
-}
-
-// ====================================================================================
 //   IMAC state update by SDMO => state column report is filled with this info
 // ====================================================================================
-function imacStateUpdate() 
+function imacContentStateUpdate() 
 {
-    RMPApplication.debug("begin ImacStateUpdate");
-    c_debug(debug.process_btn, "=> ImacStateUpdate");
+    RMPApplication.debug("begin imacContentStateUpdate");
+    c_debug(debug.process_btn, "=> imacContentStateUpdate");
 
 	var sent_state = ${P_quoted(i18n("sent_state", "Transmise"))};
 	var accepted_state = ${P_quoted(i18n("accepted_state", "Acceptée"))};
@@ -1382,8 +1491,5 @@ function imacStateUpdate()
 
 	id_fujitsu_state.setValue(state_content);
 
-	// Update last informations related to present IMAC
-	RMPApplication.save(updateImac, updateImacFail);
-
-	RMPApplication.debug("end ImacStateUpdate");
+	RMPApplication.debug("end imacContentStateUpdate");
 }
