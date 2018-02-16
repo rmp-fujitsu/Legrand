@@ -16,7 +16,7 @@ var string_variables_array = [
     "request_title",
     "project_description",
     "comments_tmp_e",
-    "documentation",
+    "documentation_to_deliver",
     "server_installation",
     "networking_configuration",
     "comment_full_management_and_monitoring",
@@ -54,13 +54,20 @@ function clean_quote(str)
     return str.replace(/"/g, "'");
 }
 
+// replace double-quote character by single-quote before generating PDF report
+function clean_backslash(str)
+{
+    // return str.replace(/"/g, "&quot;");
+    return str.replace(/\\/g, "/");
+}
+
 function prepare_string_variables_array()
 {
     for (i=0; i<string_variables_array.length; i++){
 
         var str_value = RMPApplication.get(string_variables_array[i]);
         if (!isEmpty(str_value)) {
-            str_value = clean_quote(str_value);
+            str_value = clean_quote(clean_backslash(str_value));
             RMPApplication.set(eval("\"" + string_variables_array[i] + "\""), str_value);
             c_debug(debug.replace_str, "String var [" + string_variables_array[i] + "]  has been modified!" )
         }

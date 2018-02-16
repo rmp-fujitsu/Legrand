@@ -2,23 +2,23 @@
 // listen: country
 
 var sn_query = "^company.parentLIKEVIVARTE";
-sn_query += "^stateIN16";                       // state 16 => Assigned
+sn_query += "^stateIN10,11,13,15,16,18";        // State => Diagnosed, Awaiting Approval, Approved, Awaiting Diagnostis, Assigned, Work In Progress
 var input = {"wm_order_query": sn_query};
 var options = {};
 id_get_wo_list.trigger(input, options, wo_ok, wo_ko);
 
 function wo_ok(result)
 {
-	if (typeof(result.wm_order_list.getRecordsResult) == 'undefined') {
+    if (typeof(result.wm_order_list.getRecordsResult) == 'undefined') {
         c_debug(debug.work_order, "=> wo_ok: No Work Order found!");
-		var info_msg = ${P_quoted(i18n("wo_ok_no_wo_msg", "No Work Order found!"))};
-		notify_info(info_title_notify, info_msg);
+        var info_msg = ${P_quoted(i18n("wo_ok_no_wo_msg", "No Work Order found!"))};
+        notify_info(info_title_notify, info_msg);
         
-	} else {
+    } else {
         
         var work_order = "";
         if (typeof(result.wm_order_list.getRecordsResult[0]) == 'undefined') {       // Only 1 Work Order
-		    work_order = result.wm_order_list.getRecordsResult.number;
+            work_order = result.wm_order_list.getRecordsResult.number;
 
         } else {                    // At least 2 Work Orders
             for (i=0; i<result.wm_order_list.getRecordsResult.length; i++) {
@@ -85,8 +85,3 @@ function inv_ko(error) {
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	RMPApplication.debug("end inv_ko");
 }
-
-
-
-
-

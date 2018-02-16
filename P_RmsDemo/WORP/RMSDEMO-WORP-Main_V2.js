@@ -43,7 +43,7 @@ var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signa
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // used collections list
-var col_locations = "col_locations_vivarte";
+var col_locations = "col_locations_rmsdemo";
 
 // execute main program
 init();
@@ -56,7 +56,7 @@ function init()
     RMPApplication.debug("begin init : login = " + login);
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
-    resetWI();              // reset Web Iterface
+    resetWI();              // reset Web Interface
 
     var option = {};
     var pattern = {};
@@ -167,10 +167,10 @@ function get_info_ok(result)
     } else if ( (!isEmpty(login.grp_affiliates)) && (login.grp_affiliates != "NOT DEFINED") ) {    // a group of affiliates
         view = "GRP_AFF";
 
-    } else if ( (!isEmpty(login.affiliate)) && ((login.region == login.affiliate) || (login.division == login.affiliate)) ) {    // One affiliate, but country can be selected
+    } else if ( (login.region == login.affiliate) || (login.division == login.affiliate) ) {    // One affiliate, but country can be selected
         view = "AFFILIATE";
 
-    } else if ( (!isEmpty(login.country)) && ((login.region == login.country) || (login.division == login.country)) ) {    // One country, but affiliate can be selected
+    } else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
         view = "COUNTRY";
 
     } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
@@ -195,7 +195,7 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    // console.log("=> get_info_ko: error = ", error);
+    c_debug(debug.init, "=> get_info_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
@@ -266,11 +266,11 @@ function fillAffiliateBox(vue)
             $("#id_affiliateFilter").append($("<option selected />").val('tous').html(text_affiliateFilter));
             affiliateList = [];
             switch (login.grp_affiliates) {
-                case 'SMC':
-                    affiliateList = [{'label':'COSMOPARIS', 'value':'COSMO'}, {'label':'MINELLI', 'value':'MINELLI'}, {'label':'SAN MARINA', 'value':'SMARINA'}];
+                case 'SOCIETE2':
+                    affiliateList = [{'label':'SOCIETE 2A', 'value':'SOC2A'}, {'label':'SOCIETE 2B', 'value':'SOC2A'}];
                     break;
-                case 'HALLES':
-                    affiliateList = [{'label':'LA HALLE CHAUSSURE', 'value':'CEC'}, {'label':'LA HALLE MODE', 'value':'HAV'}];
+                case 'SOCIETE3':
+                    affiliateList = [{'label':'SOCIETE 3A', 'value':'SOC3A'}, {'label':'SOCIETE 3B', 'value':'SOC3B'}, {'label':'SOCIETE 3C', 'value':'SOC3C'}];
                     break;
                 default:
                     break;
@@ -410,7 +410,7 @@ function fillLocationBox(locations_array)
 // ======================================================
 function load_site(locationCode) 
 {
-    RMPApplication.debug ("begin load_site: locationCode = " + JSON.stringify(locationCode));
+    RMPApplication.debug ("begin load_site: locationCode = " + JSON.stringify(locationCode)); 
     c_debug(debug.site, "=> load_site: locationCode = ", locationCode);
     var my_pattern = {};
     var options = {};
@@ -431,10 +431,10 @@ function load_site_ok(result)
 
 function load_site_ko(error) 
 {
-    RMPApplication.debug ("begin load_site_ko: result = " + JSON.stringify(error));
+    RMPApplication.debug ("begin load_site_ko: result = " + JSON.stringify(error)); 
     c_debug(debug.site, "=> load_site_ko: error = ", JSON.stringify(error));
     site = {};
-    var error_msg = ${P_quoted(i18n("get_load_site_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_site_ko");    
 }
@@ -458,9 +458,9 @@ function getFilteredLocations()
 
     // According to specific views, if "tous" value is set for one of country & affiliate boxes
     if ((view ==="COMPANY" && country_value === "tous" && affiliate_value ==="tous") || (view ==="GRP_AFF" && affiliate_value ==="tous") || (view ==="AFFILIATE" && country_value ==="tous") || (view ==="COUNTRY" && affiliate_value ==="tous")) {
-
-        var text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Ensemble des sites"))};
         
+        var text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Ensemble des sites"))};
+
         // we propose only one value for all locations "Ensemble des sites"
         $("#id_locationFilter").empty();    // previous value reset
         $("#id_locationFilter").append($("<option selected />").val('tous').html(text_locationFilter));
@@ -498,22 +498,22 @@ function getFilteredLocations()
                     input.country = { "$regex" : country_value, "$options" : "i"};   
                 }
                 switch (login.grp_affiliates) {
-                    case 'SMC':
-                        if ( (affiliate_value !== "tous") && (!isEmpty(affiliate_value)) ) {
-                            input.affiliate = { "$regex" : affiliate_value, "$options" : "i"}; 
-                        } else {
-                            // TO DO: composer la query avec le nom des 3 enseignes
-                            input.affiliate = {};
-                            input.affiliate.$in = ['COSMOPARIS', 'MINELLI', 'SAN MARINA']; 
-                        }
-                        break;
-                    case 'HALLES':
+                    case 'SOCIETE2':
                         if ( (affiliate_value !== "tous") && (!isEmpty(affiliate_value)) ) {
                             input.affiliate = { "$regex" : affiliate_value, "$options" : "i"}; 
                         } else {
                             // TO DO: composer la query avec le nom des 2 enseignes
                             input.affiliate = {};
-                            input.affiliate.$in = ['LA HALLE CHAUSSURE', 'LA HALLE MODE']; 
+                            input.affiliate.$in = ['SOCIETE 2A', 'SOCIETE 2B']; 
+                        }
+                        break;
+                    case 'SOCIETE3':
+                        if ( (affiliate_value !== "tous") && (!isEmpty(affiliate_value)) ) {
+                            input.affiliate = { "$regex" : affiliate_value, "$options" : "i"}; 
+                        } else {
+                            // TO DO: composer la query avec le nom des 3 enseignes
+                            input.affiliate = {};
+                            input.affiliate.$in = ['SOCIETE 3A', 'SOCIETE 3B', 'SOCIETE 3C']; 
                         }
                         break;
                     default:
@@ -620,7 +620,7 @@ function get_all_siteinfo()
     var v_ol_len = var_order_list.length;
     c_debug(debug.site, "=> get_all_siteinfo: v_ol_l = ", v_ol_len);
     if (var_order_list.length == undefined) {       // only one search's result
-       var buf = var_order_list.location.split('-');
+        var buf = var_order_list.location.split('-');
         var loc_code = $.trim(buf[buf.length - 1]);
         var input = {};
         input.location_code = loc_code;
@@ -631,7 +631,7 @@ function get_all_siteinfo()
     } else {
         for (var i=0; i<var_order_list.length; i++) {
             var buf = var_order_list[i].location.split('-');
-            var loc_code = $.trim(buf[buf.length - 1]); 
+            var loc_code = $.trim(buf[buf.length - 1]);
             
             // test par exemple sur le 3ème enregistrement
             /*if (i == 3) {
@@ -648,7 +648,10 @@ function get_all_siteinfo()
     }
     RMPApplication.debug("end get_all_siteinfo");
 }
-
+// *************************************************************************************
+// *************************************************************************************
+// *************************************************************************************
+// *************************************************************************************
 function get_all_siteinfo_ok(result)
 {
     RMPApplication.debug("begin get_all_siteinfo_ok : result = " + JSON.stringify(result));
@@ -679,7 +682,7 @@ function get_all_siteinfo_ok(result)
 function get_all_siteinfo_ko(error)
 {
     RMPApplication.debug("begin get_all_siteinfo_ko : error = " + JSON.stringify(error));
-    // console.log("=> get_all_siteinfo_ko: error = ", error);
+    c_debug(debug.site, "=> get_all_siteinfo_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_all_siteinfo_ko_msg", "Récupération impossible des informations de tous les sites!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_all_siteinfo_ko");
@@ -708,8 +711,8 @@ function getWorkOrderListFromServiceNow()
         case 'tous':
             break;
         default:
-            var  title = ${P_quoted(i18n("error_getWOListFromSN_title", "Type de Work Order"))};
-            var  content = ${P_quoted(i18n("error_getWOListFromSN_msg", "La recherche pour le type de Work Order sélectionné n'est pas encore implémentée!"))};
+            var  title = ${P_quoted(i18n("error_getWOListFromSN_title", "Type d'incident"))};
+            var  content = ${P_quoted(i18n("error_getWOListFromSN_msg", "La recherche pour le type d'incident sélectionné n'est pas encore implémentée!"))};
             dialog_error(title, content, btn_ok);
             return;
             break;
@@ -806,7 +809,7 @@ function queryServiceNow()
     $("#id_spinner_search_bottom").show();
     clearOrderDataTable();
     clearTaskDataTable();
-    
+
 /* ########################################################################
     PART TO MODIFY WHEN SERVICENOW QUERY WILL BE AVAILABLE in REST FORMAT
 ######################################################################## */
@@ -959,14 +962,14 @@ function fillOrderArray()
 
             if (var_ol[i].site[0] == undefined) {
                 c_debug(debug.order, "Pb pour le WO: ", var_ol[i].number, "\nMerci de référencer ce site sur RMS: ", var_ol[i].u_customer_site, " - ", var_ol[i].location);
-                c_debug(debug.order, "\n=> Détail demande: ", var_ol[i]);
+                    c_debug(debug.order, "\n=> Détail demande: ", var_ol[i]);
                 var title2 = ${P_quoted(i18n("error_fillOrderArray_title2", "INFORMATION"))};
                 var content2 = ${P_quoted(i18n("error_fillOrderArray_msg2","Demander au SDMO de créer le site manquant sous RunMyStore"))};
-                var content_msg2 = content2 + ": " + var_ol[i].u_customer_site + " <br>" + "#WO: " + var_ol[i].number;
+                var content_msg2 = content2 + ": " + var_ol[i].location + " <br>";
                 // to avoid a screen warning
                 // dialog_warning(title2, content_msg2, btn_ok);
             }
-
+            
             var opened_at = "";
             var expected_start = "";
             var closed_at = "";
@@ -974,7 +977,7 @@ function fillOrderArray()
 
             // var buf = var_ol[i].location.split('-');
             // var site_code = $.trim(buf[buf.length - 1]);
-            var site_code = (var_ol[i].site[0] == undefined) ? "" : var_ol[i].site[0].location_code;
+           var site_code = (var_ol[i].site[0] == undefined) ? "" : var_ol[i].site[0].location_code;
             c_debug(debug.order, '[i] = ', i);
             c_debug(debug.order, '\nvar_ol[i] = ', var_ol[i]);
 
@@ -1102,8 +1105,8 @@ function setNotation(note, indice)
     }
     RMPApplication.debug("=> setNotation : column_notation = " + column_notation);
     c_debug(debug.eval, "=> setNotation: column_notation = ", column_notation);
-    RMPApplication.debug("end setNotation");
     return column_notation;
+    RMPApplication.debug("end setNotation");
 }
 
 // ==========================================
@@ -1161,7 +1164,7 @@ function setNotationValue(note)
 // ==================================
 function displayDetail(indice)
 {
-    RMPApplication.debug("displayDetail : indice =  " + indice);
+    RMPApplication.debug("begin displayDetail : indice =  " + indice);
     id_search_filters.setVisible(false);
     id_search_results.setVisible(false);
     id_ticket_details.setVisible(true);
@@ -1212,7 +1215,7 @@ function displayDetail(indice)
         var closed_at_utc = moment.tz(v_ol.closed_at, "UTC");
         var closed_at = moment(closed_at_utc, "YYYY-MM-DD HH:mm:ss").tz(login.timezone).format("DD/MM/YYYY HH:mm:ss");
     }
-        if (v_ol.u_resolution_time != "") {
+    if (v_ol.u_resolution_time != "") {
         var u_resolution_time_utc = moment.tz(v_ol.u_resolution_time, "UTC");
         var u_resolution_time = moment(u_resolution_time_utc, "YYYY-MM-DD HH:mm:ss").tz(login.timezone).format("DD/MM/YYYY HH:mm:ss");
     }
@@ -1286,8 +1289,9 @@ function load_img_model()
     }
     c_debug(debug.image,'selectedCat: [' + selectedCat + '] - selectedBrand: [' + selectedBrand + '] - selectedModel: [' + selectedModel + ']');
     if ( (!isEmpty(selectedCat)) && (!isEmpty(selectedBrand)) && (!isEmpty(selectedModel)) ) {
-        RMPApplication.debug ("retrieve image details in catalog collection");   
+        RMPApplication.debug ("=> load_img_model: retrieve image details in catalog collection");   
 
+        //capi
         var input_obj = {};
         var query_obj = {};
         query_obj.category = selectedCat;
@@ -1355,8 +1359,8 @@ function load_img_model_ko(error)
 {
     RMPApplication.debug ("begin load_img_model_ko : " + JSON.stringify(error));
     c_debug(debug.image, "=> load_img_model_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_img_model_ko", "Chargement impossible de l'image associée!"))};
-    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);    
+    var error_msg = ${P_quoted(i18n("load_img_model_ko_msg", "Chargement impossible de l'image de l'équipement!"))};
+    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify); 
     RMPApplication.debug ("end load_img_model_ko");    
 }
 
@@ -1431,7 +1435,7 @@ function setProgression(numb)
             break;
         case '19':
         default:
-            break;         
+            break;           
     }
     c_debug(debug.progress, "=> setProgression: selectedValue : ", selectedValue);
     if (selectedValue == 0) {
@@ -1675,7 +1679,7 @@ function getPrioriyLabel (priority)
 {
     RMPApplication.debug("begin getPrioriyLabel");
     c_debug(debug.status, "=> getPrioriyLabel: priority = ", priority);
-
+    
     switch (priority)  {
         case '1':
         case '1 - Critical':

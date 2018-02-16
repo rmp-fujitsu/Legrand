@@ -559,7 +559,7 @@ function findRequestType(cat)
     c_debug(debug.categ, "=> findRequestType: req_type = ", req_type);
     return req_type;
 
-	RMPApplication.debug("end findRequestType");
+	// RMPApplication.debug("end findRequestType");
 }
 
 // ====================================================================================
@@ -737,7 +737,7 @@ function checkStates()
 		id_inter_planned.setChecked(false);
 		if (id_imac_accepted.isChecked()) {
 			id_state.setValue("accepted");
-		} else {
+		} else if (state_value != "draft") {
 			id_state.setValue("sent");
 		}
 	} else {									// Intervention date & WO filled
@@ -763,6 +763,8 @@ function checkStates()
 function dataValidation() 
 {
 	RMPApplication.debug("begin dataValidation");
+	var state_value = id_state.getValue();
+    c_debug(debug.datas, "=> dataValidation: state at START = ", state_value);
 	
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");			// technicianRequest input
@@ -815,23 +817,32 @@ function dataValidation()
 	var techDate_val = id_techDate.val();
 	var technician_date_val = moment.unix(id_technician_date.getDate()).format(date_format);
 	if (isEmpty(techDate_val) && isEmpty(technician_date_val)) {
+		c_debug(debug.datas, "=> dataValidation: isEmpty(techDate_val) && isEmpty(technician_date_val)");
 		id_planning_changed.setValue("no");
 		id_technician_date.setValue(null);
 		RMPApplication.set("technician_date_l", "");
+
 	} else if (techDate_val != technician_date_val) {
+
 		if (isEmpty(techDate_val)) {
+			c_debug(debug.datas, "=> dataValidation: (techDate_val != technician_date_val) && isEmpty(techDate_val)");
 			id_planning_changed.setValue("no");
 			id_technician_date.setValue(null);
 			RMPApplication.set("technician_date_l", "");
 		} else {
+			c_debug(debug.datas, "=> dataValidation: (techDate_val != technician_date_val) && !(isEmpty(techDate_val))");
 			id_planning_changed.setValue("yes");
 			datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
 			datum = Math.round(datum.getTime()/ 1000);
 			id_technician_date.setDate(datum);
 		}
+		
 	} else {
+		c_debug(debug.datas, "=> dataValidation: !(isEmpty(techDate_val) && isEmpty(technician_date_val))");
 		id_planning_changed.setValue("no");
 	}
+	c_debug(debug.datas, "=> dataValidation: planning_changed = ", id_planning_changed.getValue());
+
 	if (!isEmpty(id_runDate.val())) {
 		datum = stringToDateTime(id_runDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
@@ -857,7 +868,7 @@ function dataValidation()
 	checkStates();		// check or uncheck SDMO State options
 	setTimeout(function(){}, 500);
 	var state_value = id_state.getValue();
-	c_debug(debug.datas, "=> dataValidation: state = ", state_value);
+	c_debug(debug.datas, "=> dataValidation: state at END = ", state_value);
 	
 	if (state_value == "sent" || state_value == "planned" || state_value == "accepted" || state_value == "achieved" || state_value == "cancelled") {
 		
@@ -895,11 +906,6 @@ function dataValidation()
             c_debug(debug.datas, "=> dataValidation: 3 SDMO buttons should be visible");
 			break;
 		case "achieved" :
-			id_imac_update.setVisible(false);
-			id_sdmo_validation.setVisible(false);
-            id_sdmo_cancellation.setVisible(false);
-            c_debug(debug.datas, "=> dataValidation: 3 SDMO buttons should be hidden");
-			break;
 		case "cancelled" :
 			id_imac_update.setVisible(false);
 			id_sdmo_validation.setVisible(false);
@@ -943,7 +949,6 @@ function dataValidation()
 		}
 	}
 	toDoList += '</ul>';
-
 	update_done = true;
 
 	RMPApplication.debug("end dataValidation");
@@ -995,7 +1000,7 @@ function sendRequest()
 		return true;		// needed as called by pre-launch script "Envoyer la demande" button
 	}
 
-	RMPApplication.debug("end sendRequest");
+	// RMPApplication.debug("end sendRequest");
 }
 
 // ====================================================================================
@@ -1008,7 +1013,8 @@ function retrieveAllDatas()
 
 	// Fill technician & server boxes before retrieving real values
     fillTechnicianBox();
-    fillServerBox();
+	fillServerBox();
+	id_planning_changed.setValue("no");
     var state_value = id_state.getValue();
     c_debug(debug.datas, "=> retrieveAllDatas state = ", state_value);
 
@@ -1131,7 +1137,7 @@ function sdmoValidation()
 {
 	RMPApplication.debug("begin sdmoValidation");
     var state_value = id_state.getValue();
-    c_debug(debug.datas, "=> sdmoValidation: state = ", state_value);
+    c_debug(debug.datas, "=> sdmoValidation: state at START = ", state_value);
 
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");
@@ -1189,15 +1195,32 @@ function sdmoValidation()
 	var techDate_val = id_techDate.val();
 	var technician_date_val = moment.unix(id_technician_date.getDate()).format(date_format);
 	if (isEmpty(techDate_val) && isEmpty(technician_date_val)) {
+		c_debug(debug.datas, "=> sdmoValidation: isEmpty(techDate_val) && isEmpty(technician_date_val)");
 		id_planning_changed.setValue("no");
 		id_technician_date.setValue(null);
 		RMPApplication.set("technician_date_l", "");
+
 	} else if (techDate_val != technician_date_val) {
-		id_planning_changed.setValue("yes");
-		datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
-		datum = Math.round(datum.getTime()/ 1000);
-		id_technician_date.setDate(datum);
+
+		if (isEmpty(techDate_val)) {
+			c_debug(debug.datas, "=> sdmoValidation: (techDate_val != technician_date_val) && isEmpty(techDate_val)");
+			id_planning_changed.setValue("no");
+			id_technician_date.setValue(null);
+			RMPApplication.set("technician_date_l", "");
+		} else {
+			c_debug(debug.datas, "=> sdmoValidation: (techDate_val != technician_date_val) && !(isEmpty(techDate_val))");
+			id_planning_changed.setValue("yes");
+			datum = stringToDateTime(id_techDate.val() + " " + temp_techTime, date_separator);
+			datum = Math.round(datum.getTime()/ 1000);
+			id_technician_date.setDate(datum);
+		}
+
+	} else {
+		c_debug(debug.datas, "=> sdmoValidation: !(isEmpty(techDate_val) && isEmpty(technician_date_val))");
+		id_planning_changed.setValue("no");
 	}
+	c_debug(debug.datas, "=> sdmoValidation: planning_changed = ", id_planning_changed.getValue());
+
 	if (!isEmpty(id_runDate.val())) {
 		datum = stringToDateTime(id_runDate.val() + " " + temp_techTime, date_separator);
 		datum = Math.round(datum.getTime()/ 1000);
@@ -1237,7 +1260,21 @@ function sdmoValidation()
 	checkStates();		// check or uncheck SDMO State options
 	setTimeout(function(){}, 500);
 	var state_value = id_state.getValue();
-	c_debug(debug.datas, "=> sdmoValidation: state = ", state_value);
+	c_debug(debug.datas, "=> sdmoValidation: state at END = ", state_value);
+
+	switch (state_value) {
+		case "achieved" :		
+		case "cancelled" :
+			id_imac_update.setVisible(false);
+			id_sdmo_validation.setVisible(false);
+			id_sdmo_cancellation.setVisible(false);
+			break;
+		default :
+			id_imac_update.setVisible(true);
+			id_sdmo_validation.setVisible(true);
+			id_sdmo_cancellation.setVisible(true);
+			break;
+	}
 
 	// =========================================================
 	// TO DO: Liste de contrôle des erreurs possibles de saisie
@@ -1269,20 +1306,6 @@ function sdmoValidation()
 		}
 	}
 	toDoList += '</ul>';
-
-	switch (state_value) {
-		case "achieved" :		
-		case "cancelled" :
-			id_imac_update.setVisible(false);
-			id_sdmo_validation.setVisible(false);
-			id_sdmo_cancellation.setVisible(false);
-			break;
-		default :
-			id_imac_update.setVisible(true);
-			id_sdmo_validation.setVisible(true);
-			id_sdmo_cancellation.setVisible(true);
-			break;
-	}
 	update_done = true;
 
 	RMPApplication.debug("end sdmoValidation");
@@ -1365,15 +1388,7 @@ function updateImac()
 	update_done = false;
 
 	// validate data before continuing the process or saving the form
-	dataValidation();
-	
-	if (id_inter_planned.isChecked()) {
-		id_state.setValue("planned");
-	} else if (id_imac_accepted.isChecked()) {
-		id_state.setValue("accepted");
-	} else {
-		id_state.setValue("sent");
-	}
+	sdmoValidation();
 
 	while (update_done == false) {
 		// wait until flag update_done is setted to true
