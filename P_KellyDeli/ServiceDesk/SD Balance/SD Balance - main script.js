@@ -81,7 +81,7 @@ function insert_ok(result)
     var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
     var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
     var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
-    dialog_success(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+	dialog_success(title, content1 + ": \n<strong>" + wm_order.insertResponse.number + "</strong>\n" + content2, btn_ok);
 
 	var input = {};
 	var my_array = eval(RMPApplication.get("take_a_photo"));

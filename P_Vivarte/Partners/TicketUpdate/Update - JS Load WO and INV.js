@@ -60,14 +60,14 @@ function inv_ok(result)
         
             if (result.wm_task_list.getRecordsResult.dispatch_group == RMPApplication.get("dispatch_group") || result.wm_task_list.getRecordsResult.assignment_group == RMPApplication.get("dispatch_group")) {
                 c_debug(debug.intervention, "=> inv_ok: result.wm_task_list = ", result.wm_task_list);
-                vb_wo.push({"label":result.wm_task_list.getRecordsResult.number + "-" + result.wm_task_list.getRecordsResult.location,"value":result.wm_task_list.getRecordsResult.sys_id});
+                vb_wo.push({"label": result.wm_task_list.getRecordsResult.number + " [" + result.wm_task_list.getRecordsResult.u_work_order + "] " + " - " + result.wm_task_list.getRecordsResult.location,"value": result.wm_task_list.getRecordsResult.sys_id});
             }
 
         } else {             // At least 2 interventions
             c_debug(debug.intervention, "=> inv_ok: result.wm_task_list = ", result.wm_task_list);
             for (i=0; i<result.wm_task_list.getRecordsResult.length; i++) {
                 if (result.wm_task_list.getRecordsResult[i].dispatch_group == RMPApplication.get("dispatch_group") || result.wm_task_list.getRecordsResult[i].assignment_group == RMPApplication.get("dispatch_group")) {
-                    vb_wo.push({"label":result.wm_task_list.getRecordsResult[i].number + "-" + result.wm_task_list.getRecordsResult[i].location,"value":result.wm_task_list.getRecordsResult[i].sys_id});
+                    vb_wo.push({"label": result.wm_task_list.getRecordsResult[i].number + " [" + result.wm_task_list.getRecordsResult[i].u_work_order + "] " + " - " + result.wm_task_list.getRecordsResult[i].location, "value": result.wm_task_list.getRecordsResult[i].sys_id});
                 }
             }
         }
@@ -85,8 +85,3 @@ function inv_ko(error) {
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	RMPApplication.debug("end inv_ko");
 }
-
-
-
-
-
