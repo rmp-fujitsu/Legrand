@@ -85,12 +85,11 @@ function get_info_ok(result)
     } else if ( (!isEmpty(login.grp_affiliates)) && (login.grp_affiliates != "NOT DEFINED") ) {    // a group of affiliates
         view = "GRP_AFF";
 
-    } else if ( (login.region == login.affiliate) || (login.division == login.affiliate) ) {    // One affiliate, but country can be selected
+    } else if ( (!isEmpty(login.affiliate)) && ((login.region == login.affiliate) || (login.division == login.affiliate)) ) {    // One affiliate, but country can be selected
         view = "AFFILIATE";
 
-    } else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
+    } else if ( (!isEmpty(login.country)) && ((login.region == login.country) || (login.division == login.country)) ) {    // One country, but affiliate can be selected
         view = "COUNTRY";
-
 
     } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
         view = "DIVISION";
@@ -594,7 +593,8 @@ function createRequest(aff_obj)
     var description = description_head + "\n" + "- Information: " + description_body;
     var expected_start = "";
     // var expected_start = getExpectedStartDateSN(7);
-    var priority = $("#id_priority").val();
+    // var priority = $("#id_priority").val();
+    var priority = "3";		// 3 - Moderate
     var state = "1";    // draft
     
     if ( $('#id_phone').val()=== "not defined" || isEmpty($('#id_phone').val()) ) {
@@ -642,9 +642,10 @@ function insert_ok(result)
     // console.log("=> insert_ok: result = ", result);
     $("#id_spinner_insert").hide();
     wm_order = result;
-    var title = ${P_quoted(i18n("insert_ok_title", "Information Suivi Demande"))};
-    var content = ${P_quoted(i18n("insert_ok_msg", "Demande créée sous la référence"))};
-    dialog_success(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+    var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
+    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
+	dialog_success(title, content1 + ": \n<strong>" + wm_order.insertResponse.number + "</strong>\n" + content2, btn_ok);
 
     RMPApplication.debug("end insert_ok");  
 }

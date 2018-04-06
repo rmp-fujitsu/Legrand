@@ -27,17 +27,18 @@ function datesCheck()
 	c_debug(debug.dates_check, "=> begin datesCheck");
 
 	// retrieve dates from WI
+	var update_date = RMPApplication.get("date");					// locale date & time string
 	var start_date = id_work_start.getValue() * 1000;				// locale timestamp value in milliseconds
 	var end_date = id_work_end.getValue() * 1000;
 	var work_start_l = RMPApplication.get("work_start_l");			// locale date & time string
 	var work_end_l = RMPApplication.get("work_end_l");
-	var now_date = Date.now();										// current timestamp value in milliseconds
+	var now_date = Date.now();									// current timestamp value in milliseconds
 
 	// check if start_date < end_date
 	if (start_date > end_date) {
 		c_debug(debug.dates_check, "=> datesCheck: start_date > end_date AND return FALSE");
 		var error_msg = ${P_quoted(i18n("start_date_msg", "The date of intervention end can't be lower than the date of intervention start!"))};
-		notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+		dialog_error(error_title_notify, error_msg, btn_ok);
 		return false;
 	}
 
@@ -45,15 +46,18 @@ function datesCheck()
 	if (end_date > now_date) {
 		c_debug(debug.dates_check, "=> datesCheck: end_date > now_date AND return FALSE");
 		var error_msg = ${P_quoted(i18n("end_date_msg", "The date of intervention end can't be higher than the current date & time!"))};
-		notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+		dialog_error(error_title_notify, error_msg, btn_ok);
 		return false;
 	}
 
 	// dates should be converted in UTC format before updating the ticket
+	var utc_update_date = moment(update_date, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
     var start_date_utc  = moment(work_start_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
     var end_date_utc  = moment(work_end_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
 
-    // we save UTC dates for ulterior use
+	// we save UTC dates for ulterior use
+	id_utc_date.setValue(utc_update_date);
+	c_debug(debug.dates_check, "=> datesCheck: utc_update_date = ", utc_update_date);
 	id_utc_work_start.setValue(start_date_utc);
 	c_debug(debug.dates_check, "=> datesCheck: start_date_utc = ", start_date_utc);
 	id_utc_work_end.setValue(end_date_utc);

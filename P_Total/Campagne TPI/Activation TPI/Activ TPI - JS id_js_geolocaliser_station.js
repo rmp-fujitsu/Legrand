@@ -1,7 +1,12 @@
 // id_js_geolocaliser_station
 // => Var. listened: localiser
 
-localiser_station();
+// Teste si le mode OFFLINE de RMP est activé
+if (RMP_RunMyApp.isInOfflineMode()) { 
+	id_geolocaliser_station.setVisible(false);
+} else {
+	localiser_station();
+}
 
 function localiser_station()
 {
@@ -47,7 +52,7 @@ function localiser_station()
 function localiser_station_ok(result)
 {
 	c_debug(debug.geolocalisation, "=> BEGIN - localiser_station_ok: result  = ", result);
-    if ((result.station_localisee == {}) || (result.station_localisee == "")) {
+    if ((Object.keys(result.station_localisee).length == 0) || (result.station_localisee == "")) {
 
 		// pas de correspondance trouvée via le module de Géolocalisation
 

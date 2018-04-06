@@ -2,7 +2,8 @@
 // listen: country
 
 var sn_query = "^company.parentLIKEVIVARTE";
-sn_query += "^stateIN16";                       // state 16 => Assigned
+sn_query += "^stateIN10,11,13,15,16,18";        // State => Diagnosed, Awaiting Approval, Approved, Awaiting Diagnostis, Assigned, Work In Progress
+// sn_query += "^stateIN16";                       // state 16 => Assigned
 var input = {"wm_order_query": sn_query};
 var options = {};
 id_get_wo_list.trigger(input, options, wo_ok, wo_ko);
@@ -26,12 +27,11 @@ function wo_ok(result)
             }
         }
         var sn_query = "parent.numberIN" + work_order;
-        sn_query += "^stateIN10,11,13,15,16,18";
+        sn_query += "^stateIN16";
         var input = {"wm_task_query": sn_query};
         var options = {};
         c_debug(debug.work_order, "=> wo_ok: result.wm_order_list = ", result.wm_order_list);
         id_get_work_order_tasks_list.trigger(input, options, inv_ok, inv_ko);
-        id_spinner.setVisible(false);
     }
 }
 
@@ -50,8 +50,9 @@ function inv_ok(result)
 {
     if (typeof(result.wm_task_list.getRecordsResult) == 'undefined') {
         c_debug(debug.intervention, "=> inv_ok: No intervention found!");
+        id_spinner.setVisible(false);
 		var info_msg = ${P_quoted(i18n("inv_ok_no_inv_msg", "No intervention found!"))};
-		notify_info(info_title_notify, info_msg);
+        notify_info(info_title_notify, info_msg);
     
     } else {
 
@@ -71,6 +72,7 @@ function inv_ok(result)
                 }
             }
         }
+        id_spinner.setVisible(false);
         var a = new RMP_List();
         a.fromArray(vb_wo);
         RMPApplication.setList("vb_wo",a);

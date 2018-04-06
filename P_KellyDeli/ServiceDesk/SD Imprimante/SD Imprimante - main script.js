@@ -1,12 +1,12 @@
 // ========================
-//   SD - Balance : MAIN
+//   SD - Imprimante : MAIN
 // ========================
-RMPApplication.debug("SD - Balance : Application started");
+RMPApplication.debug("SD - Imprimante : Application started");
 
 
-// ===============================
-// Common variables declaration
-// ===============================
+// ========================
+// Variables declaration
+// ========================
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
@@ -19,7 +19,7 @@ function createRequest()
 	RMPApplication.debug("begin createRequest");
 	RMPApplication.set("sn_caller","Resp "+ RMPApplication.get("location_name"));
 	var contract = "KD\\KELLYDELI" 
-    var customer_site = RMPApplication.get("location_name"); 
+	var customer_site = RMPApplication.get("location_name");
 	var requestType = "intervention";
 	var work_order_type = requestType;
     var contact_type = "RunMyStore";
@@ -30,8 +30,9 @@ function createRequest()
     var short_description = description.substring(0,99);
     var state = "1";    // draft
     var expected_start = "";
-    var priority = "1";
-    var contact_detail = "";
+    var priority = "3";		// 3 - Moderate
+	var contact_detail = "";
+	var photo_consult = ${P_quoted(i18n("photo_consult_txt", "Connectez-vous à RMS pour consulter les photos jointes lors de l'ouverture de l'incident"))};
 
 	// define insertion query before sending to Service Now
 	var options = {};
@@ -40,22 +41,21 @@ function createRequest()
 	work_order.sn_contract = contract;
 	work_order.sn_contact_type = contact_type;
 	work_order.sn_correlation_id = customer_reference;
-	work_order.sn_description = description;
 	work_order.sn_location = RMPApplication.get("location_name");
 	work_order.sn_u_customer_site = customer_site;
 	work_order.sn_state = state;
 	work_order.sn_qualification_group = qualification_group;
 	work_order.sn_short_description = short_description;
-	work_order.sn_priority = priority;
+	work_order.sn_priority = priority;	
 	work_order.sn_u_contact_details = contact_detail;
 	work_order.sn_u_work_order_type = work_order_type;
 	work_order.sn_category = RMPApplication.get("category");
-	work_order.sn_u_product_type = RMPApplication.get("product_type");
 	work_order.sn_u_problem_type = RMPApplication.get("problem_type");
+	work_order.sn_u_product_type = RMPApplication.get("product_type");
 	work_order.sn_expected_start = expected_start;
-	work_order.sn_cmdb_ci = RMPApplication.get("ci")+ "_" + RMPApplication.get("kiosk_reference");
-	
+	work_order.sn_cmdb_ci = RMPApplication.get("ci") + "_" + RMPApplication.get("kiosk_reference");
 	work_order.location_code = RMPApplication.get("location_code");
+
 	var my_array = eval(RMPApplication.get("take_a_photo"));
 	if (my_array.length !=0) {
 		var pictures = [];
@@ -63,13 +63,15 @@ function createRequest()
 			pictures.push(my_array[i].id);
 		}
 		work_order.picture = pictures;
+		description += "\n => " + photo_consult;
 	}
-
+	work_order.sn_description = description;
+	
 	// console.log(RMPApplication.get("sn_caller"));
 	console.log("=> createRequest: work_order = ", work_order);
 	id_insert_work_order_api.trigger (work_order, options, insert_ok, insert_ko);
 
-	RMPApplication.debug("end createRequest");
+	RMPApplication.debug("end createRequest");	
 }
 
 function insert_ok(result) 
@@ -78,7 +80,7 @@ function insert_ok(result)
 	// console.log("=> insert_ok: result = ", result);
 
 	wm_order = result;
-    var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
+	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
     var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
     var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
     dialog_success(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
@@ -102,7 +104,7 @@ function insert_ok(result)
 	}
 
 	id_save_picture_in_collection.trigger (input, {}, save_picture_ok,save_picture_ko);
-	$("#id_ouvrir_ticket").click();	
+	$("#id_ouvrir_ticket").click();
 
 	RMPApplication.debug("end insert_ok");
 }
@@ -113,7 +115,7 @@ function insert_ko(error)
     // console.log("=> insert_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
-    RMPApplication.debug("end insert_ko");		
+    RMPApplication.debug("end insert_ko");			
 }
 
 function save_picture_ok (result)

@@ -134,7 +134,7 @@ function set_email_resp_inter()
     var nom_societe = RMPApplication.get("nom_societe");
     my_pattern.nom_societe = nom_societe;
     c_debug(debug.init, "=> set_email_resp_inter: nom_societe = ", nom_societe);
-    col_destinataires_pdf_tpi.listCallback(my_pattern, {}, set_email_resp_inter_ok, set_email_resp_inter_ko);
+    col_societes_inter_tpi.listCallback(my_pattern, {}, set_email_resp_inter_ok, set_email_resp_inter_ko);
     RMPApplication.debug ("end set_email_resp_inter");
 }
 
@@ -142,7 +142,7 @@ function set_email_resp_inter_ok(result)
 {
     RMPApplication.debug ("begin set_email_resp_inter_ok");
     c_debug(debug.init, "=> set_email_resp_inter_ok: result = ", result);
-    RMPApplication.set("email_resp_intervenant", result[0].email);
+    RMPApplication.set("email_resp_intervenant", result[0].email_resp_inter);
     RMPApplication.debug ("end set_email_resp_inter_ok");
 }
 

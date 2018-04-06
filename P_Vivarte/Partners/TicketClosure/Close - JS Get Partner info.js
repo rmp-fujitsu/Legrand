@@ -6,6 +6,7 @@ id_get_user_info_as_admin.trigger(input, options, user_info_ok, user_info_ko);
 
 function user_info_ok(result)
 {
+	c_debug(debug.user_info, "=> user_info_ok: result = ", result);
     var pays = result.pays;
     RMPApplication.set("country", pays);
     RMPApplication.set("timezone", result.timezone);
