@@ -109,13 +109,7 @@ function getFilter()
 	RMPApplication.debug("begin getFilter");
 	c_debug(debug.chart, "=> getFilter");
 	$("#id_spinner_search").show();
-	// var current_month_query = "^opened_atBETWEEN" + getFirstDayCurrentMonth() + "@" + getLastDayCurrentMonth();
-	// var previous_month_query = "^opened_atBETWEEN" + getFirstDayPreviousMonth() + "@" + getLastDayPreviousMonth();
-	// var current_quarter_query = "^opened_atBETWEEN" + getFirstDayCurrentQuarter() + "@" + getLastDayCurrentQuarter();
-	// var previous_quarter_query = "^opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayPreviousQuarter();
-	// var current_exercise_query = "^opened_atBETWEEN" + getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);
-	// var previous_exercise_query = "^opened_atBETWEEN" + getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE) + "@" + getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE);	
-	
+
 	var today = new Date();
 	var num_curr_month = today.getMonth() + 1;
 	var num_first_moe = Number(FIRSTMONTHOFEXERCISE);
@@ -130,23 +124,9 @@ function getFilter()
 	// following any change to affiliate filter, we use contractsListQuery, already defined :)
 	sn_query_charts += contractsListQuery;
 	sn_query_charts += locationsListQuery;
-
-	/*current_month_query = sn_query_charts + current_month_query;
-	previous_month_query = sn_query_charts + previous_month_query;
-	current_quarter_query = sn_query_charts + current_quarter_query;
-	previous_quarter_query = sn_query_charts + previous_quarter_query;
-	current_exercise_query = sn_query_charts + current_exercise_query;
-	previous_exercise_query = sn_query_charts + previous_exercise_query;
-	sn_query_charts += two_exercises_query;*/
 	current_exercise_query = sn_query_charts + current_exercise_query;
 
 	wo_query = {};			// reset of previous
-	/*wo_query.current_month = {"sn_query" : current_month_query};
-	wo_query.previous_month = {"sn_query" : previous_month_query};
-	wo_query.current_quarter = {"sn_query" : current_quarter_query};
-	wo_query.previous_quarter = {"sn_query" : previous_quarter_query};
-	wo_query.current_exercise = {"sn_query" : current_exercise_query};
-	wo_query.previous_exercise = {"sn_query" : previous_exercise_query};*/
 	wo_query.current_exercise = {"sn_query" : current_exercise_query};
 
 	c_debug(debug.chart, "getFilter: wo_query = ", wo_query);
@@ -154,8 +134,6 @@ function getFilter()
 	// load Google Charts Library
 	google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-
-    // getFilteredLocations();
 
     RMPApplication.debug("end getFilter");
 }
@@ -392,7 +370,7 @@ function wo_list_ko(P_error)
 {
 	RMPApplication.debug("begin wo_list_ko: P_error = ", JSON.stringify(P_error));
 	c_debug(debug.chart, "=> wo_list_ko  P_error = ", P_error);
-	var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Chargement impossible des rapports!"))};
+	var error_msg = ${P_quoted(i18n("wo_list_ko_msg", "Chargement impossible des rapports!"))};
     notify_error(chart_title_notify, error_msg + ' ' + chart_thanks_notify);
     RMPApplication.debug("end wo_list_ko");
 }
@@ -566,6 +544,7 @@ function drawPreviousExerciseChart()
 	$("#id_spinner_search").hide();
 	RMPApplication.debug("end drawPreviousExerciseChart");
 }
+
 // ===============================================================
 //  Chart drawing functions
 // ===============================================================
@@ -582,15 +561,15 @@ function drawBarChart(d_obj, id_div)
 
 	var column_id1 = ${P_quoted(i18n("column_id1", "Statut"))};
 	var column_text_id1 = ${P_quoted(i18n("column_text_id1", "Nombre"))};
-	var column_id2 = ${P_quoted(i18n("column_id2", "Transmis"))};
-	var column_id3 = ${P_quoted(i18n("column_id3", "En attente de diagnostic"))};
-	var column_id4 = ${P_quoted(i18n("column_id4", "Diagnostiqué"))};
-	var column_id5 = ${P_quoted(i18n("column_id5", "Affecté"))};
-	var column_id6 = ${P_quoted(i18n("column_id6", "En cours de résolution"))};
-	var column_id7 = ${P_quoted(i18n("column_id7", "Terminé - Complet"))};
-	var column_id8 = ${P_quoted(i18n("column_id8", "Terminé - Incomplet"))};
-	var column_id9 = ${P_quoted(i18n("column_id9", "Annulé"))};
-	var column_id10 = ${P_quoted(i18n("column_id10", "Erreur"))};
+	var column_id2 = translateExp(col_lang_opt.code_language, getVarStatusValue("Transmis"));
+	var column_id3 = translateExp(col_lang_opt.code_language, getVarStatusValue("En attente de diagnostic"));
+	var column_id4 = translateExp(col_lang_opt.code_language, getVarStatusValue("Diagnostiqué"));
+	var column_id5 = translateExp(col_lang_opt.code_language, getVarStatusValue("Affecté"));
+	var column_id6 = translateExp(col_lang_opt.code_language, getVarStatusValue("En cours de résolution"));
+	var column_id7 = translateExp(col_lang_opt.code_language, getVarStatusValue("Terminé - Complet"));
+	var column_id8 = translateExp(col_lang_opt.code_language, getVarStatusValue("Terminé - Incomplet"));
+	var column_id9 = translateExp(col_lang_opt.code_language, getVarStatusValue("Annulé"));
+	var column_id10 = translateExp(col_lang_opt.code_language, getVarStatusValue("Erreur"));
 
 	// Data & option definitions for work order per state Chart
 	var wo_per_state_data = google.visualization.arrayToDataTable([
@@ -725,6 +704,106 @@ function drawPieChart(d_obj, id_div)
 	RMPApplication.debug("end drawPieChart");
 }	// End function drawPieChart
 
+// =======================================
+//  Return value of variable
+// =======================================
+function translateExp (lang, expr)
+{
+    RMPApplication.debug("begin translateExp");
+    c_debug(debug.status, "=> translateExp: lang = ", lang);
+    c_debug(debug.status, "=>               expr = ", expr);
+    return col_lang_opt[expr];
+    RMPApplication.debug("end translateExp");
+}
+
+// =======================================
+// Get Var Status Value
+// =======================================
+function getVarStatusValue (libelle)
+{
+    RMPApplication.debug("begin getVarStatusValue");
+    c_debug(debug.status, "=> getVarStatusValue: libelle = ", libelle);
+
+    switch (libelle)  {
+        case "Brouillon" :
+        case "Transmis" :
+        case "Draft" :
+        case "1" :
+            return 'st_sent';
+            break;
+        case "Clos - Résolu" :
+        case "Terminé - Complet" :
+        case "Closed Complete" :
+        case "3" :
+            return 'st_closed_complete';
+            break;
+        case "Clos - Non résolu" :
+        case "Terminé - Incomplet" :
+        case "Closed Incomplete" :
+        case "4" :
+            return 'st_closed_incomplete';
+            break;
+        case "Clos - Annulé" :          
+        case "Cancelled" :
+        case "7" :
+            return 'st_cancelled';
+            break;
+        case "Diagnostiqué" :
+        case "Qualifié" :
+        case "Diagnosed" :
+        case "Qualified" :
+        case "10" :
+            return 'st_diagnosed';
+            break;
+        case "En attente d'approbation" :
+        case "Awaiting Approval" :
+        case "11" :
+            return 'st_waiting_appro';
+            break;
+        case "Approuvé" :
+        case "Approved" :
+        case "13" :
+            return 'st_approved';
+            break;
+        case "En attente de diagnostic" :
+        case "Awaiting Diagnosis" :
+        case "15" :
+            return 'st_waiting_diag';
+            break;
+        case "Assigné" :
+        case "Affecté" :
+        case "Assigned" :
+        case "16" :
+            return 'st_assigned';
+            break;
+        case "En cours de résolution" :
+        case "En cours de traitement" :
+        case "Work In Progress" :
+        case "18" :
+            return 'st_in_progress';
+            break;
+        case "Erreur" :
+        case "Error" :
+        case "19" :
+            return 'st_error';
+            break;
+        case "Résolu - En attente de cloture" : 
+        case "Resolved" :
+        case "20" :
+            return 'st_resolved';
+            break;
+        case "Non résolu - En attente de cloture" :
+        case "Unresolved" :
+        case "21" :
+            return 'st_unresolved';
+            break;
+        default:        // All status or no status selected)
+            return 'st_unknown';
+            break;
+    }
+    RMPApplication.debug("end getVarStatusValue");
+}
+
 // Calculate breakdown rate
 /*function setBreakdownRate(bd_obj)
 {
@@ -761,7 +840,7 @@ function drawPieChart(d_obj, id_div)
 
 	RMPApplication.debug ("end setBreakdownRate"); 
 }
-*/
+
 function load_panne_ok(result) 
 {
     RMPApplication.debug ("begin load_panne_ok");
@@ -778,3 +857,4 @@ function load_panne_ko(error)
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_panne_ko");
 }
+*/

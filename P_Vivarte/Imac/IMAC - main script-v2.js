@@ -135,7 +135,7 @@ function resetWI()
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
 			id_location_info.open();
-			id_location_change.setVisible(false);
+			id_reset_adresses.setVisible(false);
 			id_location_validate.setVisible(false);
 			id_imac_request.setVisible(true);
 			id_imac_request.open();
@@ -155,7 +155,7 @@ function resetWI()
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
 			id_location_info.open();
-			id_location_change.setVisible(false);
+			id_reset_adresses.setVisible(false);
 			id_location_validate.setVisible(false);
 			id_imac_request.setVisible(true);
 			id_imac_request.open();
@@ -174,7 +174,7 @@ function resetWI()
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
 			id_location_info.open();
-			id_location_change.setVisible(false);
+			id_reset_adresses.setVisible(false);
 			id_location_validate.setVisible(false);
 			id_imac_request.setVisible(true);
 			id_imac_request.open();
@@ -188,7 +188,7 @@ function resetWI()
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
 			id_location_info.open();
-			id_location_change.setVisible(false);
+			id_reset_adresses.setVisible(false);
 			id_location_validate.setVisible(false);
 			id_imac_request.setVisible(true);
 			id_imac_request.open();
@@ -324,7 +324,8 @@ function get_info_ok(result)
 		id_acces_enseignes.setValue(login.affiliates_access);
 	}
 	id_telephone_demandeur.setValue(login.phone);
-	if (!isEmpty(login.country)) {
+	// if (!isEmpty(login.country)) {
+	if (isEmpty(id_h_pays_m.getValue())) {		
 		id_pays_m.setSelectedValue(capitalize(login.country));
 		id_new_pays.setSelectedValue(capitalize(login.country));
 	}
@@ -733,25 +734,26 @@ function checkStates()
 	var id_woNb = $("#id_woNb");
 	var id_techDate = $("#id_techDate");
 	var state_value = id_state.getValue();
-	if (isEmpty(id_woNb.val()) || isEmpty(id_techDate.val())) {
-		id_inter_planned.setChecked(false);
-		if (id_imac_accepted.isChecked()) {
+	var imac_accepted = (id_imac_accepted.isChecked()) ? true : false;
+	var inter_planned = (!isEmpty(id_woNb.val()) && (!isEmpty(id_techDate.val()))) ? true : false;
+
+	if (state_value != "draft") {		// State in ['sent', 'accepted', 'planned', 'achieved', 'cancelled']
+
+		if (imac_accepted) {						// SDMO has checked this checkbox
 			id_state.setValue("accepted");
-		} else if (state_value != "draft") {
-			id_state.setValue("sent");
 		}
-	} else {									// Intervention date & WO filled
-		id_inter_planned.setChecked(true);
-		id_imac_accepted.setChecked(true);
-		id_state.setValue("planned");
-	}
-	if (id_imac_achieved.isChecked()) {			// IMAC can't be achieved if not "cancelled" state
-		id_imac_cancelled.setChecked(false);
-		id_state.setValue("achieved");
-	}
-	if (id_imac_cancelled.isChecked()) {        // IMAC can't be cancelled if not "achieved" state
-		id_imac_achieved.setChecked(false);
-		id_state.setValue("cancelled");
+		if (inter_planned) {						// Intervention date & WO filled
+			id_state.setValue("planned");
+			id_inter_planned.setChecked(true);
+		}
+		if (id_imac_achieved.isChecked()) {			// IMAC can't be achieved if not "cancelled" state
+			id_imac_cancelled.setChecked(false);
+			id_state.setValue("achieved");
+		}
+		if (id_imac_cancelled.isChecked()) {        // IMAC can't be cancelled if not "achieved" state
+			id_imac_achieved.setChecked(false);
+			id_state.setValue("cancelled");
+		}
 	}
 	imacContentStateUpdate();
 	RMPApplication.debug("end checkStates");
@@ -1194,6 +1196,7 @@ function sdmoValidation()
 
 	var techDate_val = id_techDate.val();
 	var technician_date_val = moment.unix(id_technician_date.getDate()).format(date_format);
+	// Planned technician date has changed or not ?
 	if (isEmpty(techDate_val) && isEmpty(technician_date_val)) {
 		c_debug(debug.datas, "=> sdmoValidation: isEmpty(techDate_val) && isEmpty(technician_date_val)");
 		id_planning_changed.setValue("no");
@@ -1258,7 +1261,7 @@ function sdmoValidation()
     }
 
 	checkStates();		// check or uncheck SDMO State options
-	setTimeout(function(){}, 500);
+	setTimeout(function(){}, 1000);
 	var state_value = id_state.getValue();
 	c_debug(debug.datas, "=> sdmoValidation: state at END = ", state_value);
 
@@ -1487,16 +1490,12 @@ function imacContentStateUpdate()
 		state_content += ((state_content == "") ? "" : separator) + states.sent;
 	}
 	// state_content += ((state_content == "") ? "" : separator) + "<span style=\'background-color: red; color: white;\'>" + states.accepted + "</span>";
-	if (id_inter_planned.isChecked()) {
-		id_imac_accepted.setChecked(true);
-		state_content += ((state_content == "") ? "" : separator) + states.accepted;
-		state_content += ((state_content == "") ? "" : separator) + states.planned;
-	} else if (id_imac_accepted.isChecked()) {
+	if (id_imac_accepted.isChecked()) {
 		state_content += ((state_content == "") ? "" : separator) + states.accepted;
 	}
-	/* if (id_order_requested.isChecked()) {	// Customer is not aware of this info
-		state_content += ((state_content == "") ? "" : separator) + states.ordered;
-	} */
+	if (id_inter_planned.isChecked()) {
+		state_content += ((state_content == "") ? "" : separator) + states.planned;
+	}
 	if (id_imac_achieved.isChecked()) {
 		state_content = states.achieved;		// previous actions are cleared
 	}

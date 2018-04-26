@@ -1,3 +1,5 @@
+// id_ready.JS
+
 $(function () {
 
 	// Tooltip functionnality
@@ -12,5 +14,5 @@ $(function () {
 	$('[data-toggle="tooltip"]').mouseleave(function(){
 	    $(this).tooltip('hide');
 	});
-	
+
 })

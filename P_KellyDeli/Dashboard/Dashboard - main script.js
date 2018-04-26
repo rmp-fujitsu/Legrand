@@ -10,6 +10,7 @@ RMPApplication.debug("Dashboard : Application started");
 // if "true", logs will be showed on the browser console
 var debug = {
     "init" : false,
+    "language" : false,
     "box" : false,
     "site" : false,
     "query" : false,
@@ -28,10 +29,14 @@ var sn_query = '';              // query sent to Service Now
 var contractsListQuery = '';    // part of query with involved contracts will be re-used
 var locationsListQuery = '';    // part of query with involved contracts will be re-used
 var wos_array = null;           // all opened work orders with active SLA for selected locations
+var col_lang_opt = {};          // options related to user language
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
+
+// used collections list
+var col_languages = "col_langues_kellydeli";
 
 // Identify special DIV for informations
 var id_profile = $("#id_profile");
@@ -45,6 +50,9 @@ init();     // trigger main process
 function init() 
 {
     RMPApplication.debug("begin init : login = " + login);
+
+    load_language(RMPApplication.get("language"));     
+
     var option = {};
     var pattern = {};
     pattern.login = RMPApplication.get("login");
@@ -53,6 +61,41 @@ function init()
     // CAPI for getting user information
     id_get_user_info_as_admin_api.trigger (pattern, option , get_info_ok, get_info_ko);
     RMPApplication.debug("end init");
+}
+
+// ============================================
+// get information for selected language
+// ============================================
+function load_language(code_language)
+{
+    RMPApplication.debug ("begin load_language");
+    c_debug(debug.language, "=> load_language: code_language = ", code_language);
+    var my_pattern = {};
+    var options = {};
+    my_pattern.code_language = code_language;
+    eval(col_languages).listCallback(my_pattern, options, load_language_ok, load_language_ko);
+    RMPApplication.debug ("end load_language");
+}
+
+function load_language_ok(result)
+{
+    RMPApplication.debug ("begin load_language_ok");
+    c_debug(debug.language, "=> load_language_ok: result", result);
+    if (result.length > 0) {
+        col_lang_opt = result[0];
+        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées!"))};
+        // notify_success(info_title_notify, success_msg);
+    }
+    RMPApplication.debug ("end load_language_ok");
+}
+
+function load_language_ko(error)
+{
+    RMPApplication.debug ("begin load_language_ko");
+    c_debug(debug.language, "=> load_language_ko: error = ", error);
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue!"))};
+    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+    RMPApplication.debug ("end load_language_ko");
 }
 
 // ============================================

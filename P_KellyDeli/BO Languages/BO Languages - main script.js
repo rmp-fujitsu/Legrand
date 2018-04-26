@@ -22,6 +22,7 @@ var var_list =
     "code_datebox" : "code_datebox",
     "code_heartrating" : "code_heartrating",
     "code_datatable" : "code_datatable",
+    "code_moment" : "code_moment",
 
     "st_sent" : "st_sent",
     "st_waiting_diag" : "st_waiting_diag",
@@ -31,15 +32,49 @@ var var_list =
     "st_closed_incomplete" : "st_closed_incomplete",
     "st_closed_complete" : "st_closed_complete",
     "st_cancelled" : "st_cancelled",
+    "st_resolved" : "st_resolved",
+    "st_unresolved" : "st_unresolved",
+    "st_error" : "st_error",
+    "st_approved" : "st_approved",
+    "st_waiting_appro" : "st_waiting_appro",
+    "st_unknown" : "st_unknown",
 
     "prio_critical" : "prio_critical",
     "prio_high" : "prio_high",
     "prio_moderate" : "prio_moderate",
     "prio_low" : "prio_low",
     "prio_planned" : "prio_planned",
+    "prio_unknown" : "prio_unknown",
 
     "type_intervention" : "type_intervention",
-    "type_imac" : "type_imac"
+    "type_imac" : "type_imac",
+    "type_quotation" : "type_quotation",
+    "type_preventive" : "type_preventive",
+    "type_request" : "type_request",
+    "type_project" : "type_project",
+    "type_assistance" : "type_assistance",
+    "type_unknown" : "type_unknown",
+
+    "st_inv_draft" : "st_inv_draft",
+    "st_inv_closed_complete" : "st_inv_closed_complete",
+    "st_inv_closed_incomplete" : "st_inv_closed_incomplete",
+    "st_inv_cancelled" : "st_inv_cancelled",
+    "st_inv_dispatch" : "st_inv_dispatch",
+    "st_inv_assigned" : "st_inv_assigned",
+    "st_inv_accepted" : "st_inv_accepted",
+    "st_inv_in_progress" : "st_inv_in_progress",
+    "st_inv_unknown" : "st_inv_unknown",
+
+    "date_full" : "date_full",
+    "date_semi_full" : "date_semi_full",
+    "date_only_date" : "date_only_date",
+    "date_only_time" : "date_only_time",
+    
+    "separator_decimal" : "separator_decimal",
+    "separator_thousand" : "separator_thousand",
+    "currency_local" : "currency_local",
+    "currency_symbol" : "currency_symbol"
+
 };
 
 var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
@@ -220,7 +255,7 @@ function delete_ko(error)
 function item_already_exists(code_language) 
 {
     RMPApplication.debug ("begin function item_already_exists");
-    c_debug(debug.item, "=> item_already_exists: my_object = ", my_object);
+    c_debug(debug.item, "=> item_already_exists: code_language = ", code_language);
     var my_pattern = {};
     my_pattern.code_language = code_language;
     var options = {};

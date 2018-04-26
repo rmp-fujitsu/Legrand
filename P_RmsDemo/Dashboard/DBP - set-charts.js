@@ -126,7 +126,6 @@ function getFilter()
 		var current_exercise_query = "^wo_opened_atBETWEEN" + getFirstDayPreviousQuarter() + "@" + getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE);	
 	}
 	
-	
 	var sn_query_charts = "co_parentLIKE" + login.company;
 
 	// following any change to affiliate filter, we use contractsListQuery, already defined :)
@@ -156,8 +155,6 @@ function getFilter()
 	// load Google Charts Library
 	google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-
-    // getFilteredLocations();
 
     RMPApplication.debug("end getFilter");
 }
@@ -765,7 +762,7 @@ function drawPieChart(d_obj, id_div)
 
 	RMPApplication.debug ("end setBreakdownRate"); 
 }
-*/
+
 function load_panne_ok(result) 
 {
     RMPApplication.debug ("begin load_panne_ok");
@@ -782,3 +779,4 @@ function load_panne_ko(error)
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_panne_ko");
 }
+*/

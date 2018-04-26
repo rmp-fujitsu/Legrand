@@ -1,3 +1,4 @@
+// id_reset_adresses
 // reset all Adresse Actuelle + Future fields widget
 id_code_magasin.setValue("");
 id_enseigne_m.setVisible(false);

@@ -14,19 +14,19 @@ var overSLA_WO, soonOverSLA_WO, onTimeSLA_WO;
 var sla_def = [
     { 
         'type' : 'overSLA', 
-        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/2b6c9840-0f10-11e7-8bf9-02b3a23437c9/marker_red.png',
+        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/d548f7c0-25ca-11e7-9176-0619bd984419/marker_red.png',
         'sign' : 'frown-o',
         'color' : '#FF0000'
     },
     { 
         'type' : 'soonOverSLA', 
-        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/2b6d0d70-0f10-11e7-8bf9-02b3a23437c9/marker_yellow.png',
+        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/d7e8cff0-25ca-11e7-8331-0639651b3341/marker_yellow.png',
         'sign' : 'meh-o',
         'color' : '#FFD760'
     },
     { 
         'type' : 'onTimeSLA', 
-        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/2b6bade0-0f10-11e7-8bf9-02b3a23437c9/marker_green.png',
+        'marker' : 'https://live.runmyprocess.com/live/112501480325272109/upload/d2790ee0-25ca-11e7-b214-066d75fba2ef/marker_green.png',
         'sign' : 'smile-o',
         'color' : '#00DD21'
     }
@@ -89,9 +89,9 @@ function dispatchWorkOrder()
 
     // No opened ticked with active SLA
     if ( (wos_array.length == undefined) || (wos_array.length == 0) ) {
-        var error_title = ${P_quoted(i18n('error_title_id9', 'Information'))};
-        var error_text = ${P_quoted(i18n('error_text_id9', 'Aucun incident associé à un SLA est en cours !'))};
-        notify_error(error_title, error_text); 
+        var  title = ${P_quoted(i18n("error_dispatchWorkOrder_title", "Information"))};
+        var  content = ${P_quoted(i18n("error_dispatchWorkOrder_msg", "Aucun incident associé à un SLA, est en cours !"))};
+        notify_error(title, content);
     
     } else {
 
@@ -116,9 +116,9 @@ function dispatchWorkOrder()
             var increment_k_on = false;
             var increment_k_soon = false;
             var increment_k_over = false;
-            // Isolate location code
-            var tiret_j = reduced_wos_loc_name[j].lastIndexOf("-");
-            var sla_loc_code = reduced_wos_loc_name[j].substring(tiret_j+1, reduced_wos_loc_name[j].length).trim();
+            var sla_location_name = reduced_wos_loc_name[j];
+            // c_debug(debug.sla, "=> dispatchWorkOrder: sla_location_name = ", sla_location_name);
+
             sla_loc_name[j] = {};
             sla_loc_name[j].loc_name = reduced_wos_loc_name[j];
             sla_loc_name[j].wo_list = [];
@@ -126,13 +126,30 @@ function dispatchWorkOrder()
             // 2) list work order by tasksla_planned_end_time
             for (var i=0; i<wos_array.length; i++) {
 
-                var tiret_i = wos_array[i].loc_name.lastIndexOf("-");
                 // keep additionnal location informations for further needs
-                wos_array[i].loc_col_location_code = wos_array[i].loc_name.substring(tiret_i+1, wos_array[i].loc_name.length).trim();
-                wos_array[i].loc_col_location_name = wos_array[i].loc_name.substring(0, tiret_i);
-                c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "] = ", wos_array[i]);
+                wos_array[i].loc_col_location_code = wos_array[i].cu_correlation_id;
+                // c_debug(debug.sla, "=> dispatchWorkOrder: location_name = ", wos_array[i].loc_col_location_name);
+                // c_debug(debug.sla, "=> dispatchWorkOrder: location_code = ", wos_array[i].loc_col_location_code);
+                
+                var tiret_i = wos_array[i].loc_name.lastIndexOf(wos_array[i].loc_col_location_code);
+                if (tiret_i > -1) {     // location code found
+                    var loc_code_end = wos_array[i].loc_name.substring(tiret_i, wos_array[i].loc_name.length).trim();
+                    if (loc_code_end === wos_array[i].cu_correlation_id) {
+                        wos_array[i].loc_col_location_name = wos_array[i].loc_name.substring(0, tiret_i-1);
+                    } else {
+                        wos_array[i].loc_col_location_name = wos_array[i].loc_name;
+                    }
+                } else {
+                    wos_array[i].loc_col_location_name = wos_array[i].loc_name;
+                }
+                // c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "] = ", wos_array[i]);
 
-                if (wos_array[i].loc_col_location_code === sla_loc_code) {                // strict dispatching                  
+                // c_debug(debug.sla, "=> dispatchWorkOrder: wos_array[" + i + "].loc_col_location_name = ", wos_array[i].loc_col_location_name);
+                // c_debug(debug.sla, "\n                    sla_location_name = ", sla_location_name);
+                // if (wos_array[i].loc_col_location_name === sla_location_name) {          // if no location_code included in location's name
+                // if (wos_array[i].loc_col_location_code === sla_loc_code) {                // strict dispatching
+                if (include_string(sla_location_name, wos_array[i].loc_col_location_name)) {       // if no location_code included in location's name                  
+                    
                     sla_loc_name[j].wo_list.push(wos_array[i]);
 
                     if ( parseFloat(wos_array[i].tasksla_percentage) < 80 ) {             // On Time SLA
@@ -229,9 +246,9 @@ function showMarkers(arr_loc)
 {
     RMPApplication.debug("begin showMarkers");
     if ( (arr_loc.length == undefined) || (arr_loc.length == 0) ) {
-        var error_title = ${P_quoted(i18n('error_title_id10', 'Information'))};
-        var error_text = ${P_quoted(i18n('error_text_id10', 'Aucun incident en cours est concerné par ce statut de SLA!'))};
-         notify_error(error_title, error_text);
+        var title = ${P_quoted(i18n("error_showMarkers_title", "Information"))};
+        var content = ${P_quoted(i18n("error_showMarkers_msg", "Aucun incident en cours n'est concerné par ce statut de SLA!"))};
+        notify_error(title, content);
         return;
     }
     // clear previous markers on the map before showing the new markers
@@ -242,6 +259,7 @@ function showMarkers(arr_loc)
     for (var i=0; i<arr_loc.length; i++) {
         addMarker(arr_loc[i]);
     }
+
     // Automatically center the map fitting all markers on the screen
     // c_debug(debug.sla, "=> showMarkers: bounds = ", bounds);
     if (!isEmpty(bounds)) {
@@ -264,7 +282,7 @@ function addMarker(loca)
     // c_debug(debug.sla, "=> addMarker: loca = ", loca);
 
     var contentInfo = setSiteInfo(loca);
-    // console.log('contentInfo = ', contentInfo);
+    // c_debug(debug.sla, "=> addMarker: contentInfo = ", contentInfo);
     var place = new google.maps.LatLng (loca.wo_list[0].loc_latitude, loca.wo_list[0].loc_longitude);
     // c_debug(debug.sla, "=> addMarker: place = ", place);
     
@@ -306,7 +324,7 @@ function setSiteInfo(w_order_arr)
     RMPApplication.debug("begin setSiteInfo");
     // c_debug(debug.sla, "=> setSiteInfo: w_order_arr = ", w_order_arr);
 
-    var imgInfo = "https://live.runmyprocess.com/live/112501480325272109/upload/2b634970-0f10-11e7-8bf9-02b3a23437c9/locations_200.png";
+    var imgInfo = "https://live.runmyprocess.com/live/112501480325272109/upload/05c7f6c0-25c7-11e7-869b-02b3a23437c9/locations_200.png";
     var siteInfo =    
         '<div id="content' + w_order_arr.wo_list[0].loc_col_location_code + '">' +
             '<div id="siteNotice' + w_order_arr.wo_list[0].loc_col_location_code + '">' +
@@ -320,20 +338,10 @@ function setSiteInfo(w_order_arr)
                     '<hr>' + 
                     '<p><strong>' + ${P_quoted(i18n('popup_id1', 'Incidents en cours (Etat SLA)'))} + '</strong></p>';
 
-/*    var w_order_arr_sorted = w_order_arr;
-    w_order_arr_sorted.sort( function(a, b) {
-        return new Date(a.tasksla_planned_end_time).getTime() - new Date(b.tasksla_planned_end_time).getTime();
-    });
-
-    for (var i=0; i<w_order_arr_sorted.wo_list.length; i++) {
-        var end_time = moment(w_order_arr.wo_list[i].tasksla_planned_end_time).format("DD/MM/YYYY HH:mm");
-        siteInfo += '<p>- ' + w_order_arr.wo_list[i].wo_number + ' &#10143; Fin SLA: ' + end_time  + ' - <span style="color: ' + w_order_arr.wo_list[i].sla_def.color + ';"><i class=\"fa fa-' +  w_order_arr.wo_list[i].sla_def.sign + ' fa-lg\" aria-hidden=\"true\"></i></span> [' + w_order_arr.wo_list[i].tasksla_percentage + '%]</p>';
-    }*/
-
     for (var i=0; i<w_order_arr.wo_list.length; i++) {
-        // var end_time = moment(w_order_arr.wo_list[i].tasksla_planned_end_time).format("DD/MM/YYYY HH:mm");
         var end_time_utc = moment.tz(w_order_arr.wo_list[i].tasksla_planned_end_time, "UTC");
         var end_time = moment(end_time_utc, "YYYY-MM-DD HH:mm:ss").tz(login.timezone).format("DD/MM/YYYY HH:mm:ss");
+        // wo_correlation_id if customer reference is preferred, else wo_number
         siteInfo += '<p>- ' + w_order_arr.wo_list[i].wo_number + ' &#10143; ' + ${P_quoted(i18n('popup_id2', 'Fin SLA'))} + ': ' + end_time  + ' - <span style="color: ' + w_order_arr.wo_list[i].sla_def.color + ';"><i class=\"fa fa-' +  w_order_arr.wo_list[i].sla_def.sign + ' fa-lg\" aria-hidden=\"true\"></i></span> [' + w_order_arr.wo_list[i].tasksla_percentage + '%]</p>';
     }
 
