@@ -3,14 +3,23 @@
 // ========================
 RMPApplication.debug("SD - Balance : Application started");
 
-
 // ========================
 // Variables declaration
 // ========================
-var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
-var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
+// if "true", logs will be showed on the browser console
+var debug = {
+	"init" : false,
+	"insert" : false,
+	"picture" : false
+};
+
+// other global variables
+var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
+var close_title_notify = ${P_quoted(i18n("close_title_notify", "Information"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var close_msg_notify = ${P_quoted(i18n("close_msg_notify", "Merci d'avoir utilisé RunMyStore!"))};
+var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // =============================================================
 // Create Work Order insertion request to Service Now
@@ -18,7 +27,8 @@ var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 function createRequest()
 {
 	RMPApplication.debug("begin createRequest");
-	RMPApplication.set("sn_caller","Resp "+ RMPApplication.get("location_name"));
+	$("#id_spinner_insert").show();
+	RMPApplication.set("sn_caller", "Resp "+ RMPApplication.get("location_name"));
 	var contract = "KD\\KELLYDELI" 
 	var customer_site = RMPApplication.get("location_name");
 	var requestType = "intervention";
@@ -36,7 +46,6 @@ function createRequest()
 	var photo_consult = ${P_quoted(i18n("photo_consult_txt", "Connectez-vous à RMS pour consulter les photos jointes lors de l'ouverture de l'incident"))};
 
 	// define insertion query before sending to Service Now
-	var options = {};
     var work_order = {};
 	work_order.sn_caller = RMPApplication.get("sn_caller");
 	work_order.sn_contract = contract;
@@ -67,28 +76,20 @@ function createRequest()
 		description += "\n => " + photo_consult;
 	}
 	work_order.sn_description = description;
-	
-	console.log("=> createRequest: work_order = ", work_order);
-	console.log(RMPApplication.get("sn_caller"));
-	
+	c_debug(debug.insert, "=> createRequest: work_order = ", work_order);
+	c_debug(debug.insert, "=> createRequest: sn_caller = ", RMPApplication.get("sn_caller"));	
+	var options = {};	
 	id_insert_work_order_api.trigger (work_order, options, insert_ok, insert_ko);
 
 	RMPApplication.debug("end createRequest");
-
-	
 }
 
 function insert_ok(result) 
 {
 	RMPApplication.debug("begin insert_ok : " + JSON.stringify(result));
-	// console.log("=> insert_ok: result = ", result);
+	c_debug(debug.insert, "=> insert_ok: result = ", JSON.stringify(result));
 
 	wm_order = result;
-	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
-    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
-    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
-	dialog_success(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
-
 	var input = {};
 	var my_array = eval(RMPApplication.get("take_a_photo"));
 	if (my_array.length !=0) {
@@ -107,33 +108,60 @@ function insert_ok(result)
 		input.picture = [];
 	}
 
-	id_save_picture_in_collection.trigger (input, {}, save_picture_ok,save_picture_ko);
-	$("#id_ouvrir_ticket").click();
+	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
+    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais!"))};
+	notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
 
+	var options = {};
+	c_debug(debug.insert, "=> insert_ok: input = ", input);
+	id_save_picture_in_collection.trigger (input, options, save_picture_ok, save_picture_ko);
+	
 	RMPApplication.debug("end insert_ok");
 }
+
 function insert_ko(error) 
 {
-    RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
-    // console.log("=> insert_ko: error = ", error);
+	RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
+	c_debug(debug.insert, "=> insert_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
-    RMPApplication.debug("end insert_ko");			
+    RMPApplication.debug("end insert_ko");
 }
 
 function save_picture_ok (result)
 {
 	RMPApplication.debug("begin save_picture_ok : result = " + JSON.stringify(result));
-	// console.log("=> save_picture_ok: result = ",result);
-
-    RMPApplication.debug("end affiliate_ok");
+	c_debug(debug.picture, "=> save_picture_ok: result = ", result);
+    RMPApplication.debug("end save_picture_ok");
 }
 
 function save_picture_ko (error) 
 {
     RMPApplication.debug("begin save_picture_ko : error = " + JSON.stringify(error));
-    // console.log("=> save_picture_ko: error = ", error);
+    c_debug(debug.picture, "=> save_picture_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("save_picture_ko_msg", "Sauvegarde impossible du document!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end save_picture_ko");
+}
+
+// =====================================================================================
+//   Show a notification then redirect to an another page when dialog box is validated
+// =====================================================================================
+function notify_then_close_process(title, content, labelBtn)
+{
+    $("#id_spinner_insert").hide();
+    ssi_modal.dialog({
+        title: title,
+        content: content, 
+        okBtn:
+            {
+                className:'btn btn-success btn-responsive',
+                label: labelBtn
+            }
+    },
+    function() {
+    	// update the process => next step
+		document.getElementById("id_close_process").click();
+    });
 }
