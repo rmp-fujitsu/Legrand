@@ -17,8 +17,11 @@ var debug = {
 
 // other global variables
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
+var close_title_notify = ${P_quoted(i18n("close_title_notify", "Information"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var close_msg_notify = ${P_quoted(i18n("close_msg_notify", "Merci d'avoir utilisé RunMyStore!"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
+
 
 // =============================================================
 // Create Work Order insertion request to Service Now
@@ -26,6 +29,7 @@ var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 function createRequest()
 {
 	RMPApplication.debug("begin createRequest");
+	$("#id_spinner_insert").show();
 	RMPApplication.set("sn_caller", "Resp "+ RMPApplication.get("location_name"));
 	var contract = "KD\\KELLYDELI" 
 	var customer_site = RMPApplication.get("location_name");
@@ -88,11 +92,6 @@ function insert_ok(result)
 	c_debug(debug.insert, "=> insert_ok: result = ", JSON.stringify(result));
 
 	wm_order = result;
-	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
-    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
-    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
-    dialog_success(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
-
 	var input = {};
 	var my_array = eval(RMPApplication.get("take_a_photo"));
 	if (my_array.length !=0) {
@@ -111,11 +110,15 @@ function insert_ok(result)
 		input.picture = [];
 	}
 
+	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
+    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais!"))};
+	notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+
 	var options = {};
 	c_debug(debug.insert, "=> insert_ok: input = ", input);
 	id_save_picture_in_collection.trigger (input, options, save_picture_ok, save_picture_ko);
-	// update the process => next step
-	$("#id_ouvrir_ticket").click();
+	
 	RMPApplication.debug("end insert_ok");
 }
 
@@ -142,4 +145,25 @@ function save_picture_ko (error)
     var error_msg = ${P_quoted(i18n("save_picture_ko_msg", "Sauvegarde impossible du document!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end save_picture_ko");
+}
+
+// =====================================================================================
+//   Show a notification then redirect to an another page when dialog box is validated
+// =====================================================================================
+function notify_then_close_process(title, content, labelBtn)
+{
+    $("#id_spinner_insert").hide();
+    ssi_modal.dialog({
+        title: title,
+        content: content, 
+        okBtn:
+            {
+                className:'btn btn-success btn-responsive',
+                label: labelBtn
+            }
+    },
+    function() {
+    	// update the process => next step
+		document.getElementById("id_close_process").click();
+    });
 }
