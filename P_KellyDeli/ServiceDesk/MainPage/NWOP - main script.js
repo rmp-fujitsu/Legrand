@@ -28,7 +28,7 @@ var wm_order = null;            // work order details saved in Service Now
 var short_cat = null;           // to keep the selected category's short name
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // execute main program
@@ -133,7 +133,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
     c_debug(debug.init, "=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko"); 
 } 
@@ -286,7 +286,7 @@ function fillLocationBox(locations_array)
 
     } else {    
         // if locations_array is empty, "false" is affected to "value"
-        var text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Aucun site pour la selection"))};
+        var text_locationFilter = ${P_quoted(i18n("no_locationFilter_text", "Aucun site pour la selection !"))};
         $("#id_locationFilter").append($("<option selected />").val('false').html(text_locationFilter));
     }
     c_debug(debug.box, "=> end fillLocationBox: locations_array = ", locations_array);
@@ -458,7 +458,7 @@ function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
     c_debug(debug.location, "=> get_locations_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
 }
@@ -510,7 +510,7 @@ function load_location_ko(error)
 {
     RMPApplication.debug ("begin load_location_ko : error = " + JSON.stringify(error)); 
     c_debug(debug.location, "=> load_location_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_location_ko");    
 }
@@ -546,7 +546,7 @@ function affiliate_ko(error)
 {
     RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
     c_debug(debug.affiliate, "=> affiliate_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale!"))};
+    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);  
     RMPApplication.debug("end affiliate_ko");
 }
@@ -660,7 +660,7 @@ function insert_ko(error)
 {
     RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
     c_debug(debug.insert, "=> insert_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket!"))};
+    var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     $("#id_spinner_insert").hide();
     RMPApplication.debug("end insert_ko");      

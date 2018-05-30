@@ -247,7 +247,7 @@ function showMarkers(arr_loc)
     RMPApplication.debug("begin showMarkers");
     if ( (arr_loc.length == undefined) || (arr_loc.length == 0) ) {
         var title = ${P_quoted(i18n("error_showMarkers_title", "Information"))};
-        var content = ${P_quoted(i18n("error_showMarkers_msg", "Aucun incident en cours n'est concerné par ce statut de SLA!"))};
+        var content = ${P_quoted(i18n("error_showMarkers_msg", "Aucun incident en cours n'est concerné par ce statut de SLA !"))};
         notify_error(title, content);
         return;
     }

@@ -18,8 +18,8 @@ var debug = {
 // other global variables
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var close_title_notify = ${P_quoted(i18n("close_title_notify", "Information"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
-var close_msg_notify = ${P_quoted(i18n("close_msg_notify", "Merci d'avoir utilisé RunMyStore!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
+var close_msg_notify = ${P_quoted(i18n("close_msg_notify", "Merci d'avoir utilisé RunMyStore !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 
@@ -110,24 +110,31 @@ function insert_ok(result)
 		input.picture = [];
 	}
 
-	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
-    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
-    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais!"))};
-	notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
-
 	var options = {};
 	c_debug(debug.insert, "=> insert_ok: input = ", input);
 	id_save_picture_in_collection.trigger (input, options, save_picture_ok, save_picture_ko);
-	
+
+	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
+    var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
+	notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+
 	RMPApplication.debug("end insert_ok");
 }
 
 function insert_ko(error) 
 {
     RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
-    c_debug(debug.insert, "=> insert_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket!"))};
-    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+	c_debug(debug.insert, "=> insert_ko: error = ", error);
+	var title = ${P_quoted(i18n("id_title_insert_ko_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_insert_ko_1", "Le processus de création du ticket a été anormalement long OU n'a pas abouti !"))};
+	var content2 = ${P_quoted(i18n("id_msg_insert_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
+	var content3 = ${P_quoted(i18n("id_msg_insert_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
+	alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
+	// alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
+	// $("#id_spinner_insert").hide();
+    // var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket !"))};
+    // notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end insert_ko");			
 }
 
@@ -142,8 +149,14 @@ function save_picture_ko (error)
 {
     RMPApplication.debug("begin save_picture_ko : error = " + JSON.stringify(error));
 	c_debug(debug.picture, "=> save_picture_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("save_picture_ko_msg", "Sauvegarde impossible du document!"))};
-    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+	var title = ${P_quoted(i18n("id_title_save_picture_ko_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_save_picture_ko_1", "Le document n'a pu être sauvegardé !"))};
+	var content2 = ${P_quoted(i18n("id_msg_save_picture_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
+	var content3 = ${P_quoted(i18n("id_msg_save_picture_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
+	alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
+	// $("#id_spinner_insert").hide();
+    // var error_msg = ${P_quoted(i18n("save_picture_ko_msg", "Sauvegarde impossible du document !"))};
+    // notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end save_picture_ko");
 }
 
@@ -159,6 +172,27 @@ function notify_then_close_process(title, content, labelBtn)
         okBtn:
             {
                 className:'btn btn-success btn-responsive',
+                label: labelBtn
+            }
+    },
+    function() {
+    	// update the process => next step
+		document.getElementById("id_close_process").click();
+    });
+}
+
+// =====================================================================================
+//   Show an alert then redirect to an another page when dialog box is validated
+// =====================================================================================
+function alert_then_close_process(title, content, labelBtn)
+{
+    $("#id_spinner_insert").hide();
+    ssi_modal.dialog({
+        title: title,
+        content: content, 
+        okBtn:
+            {
+                className:'btn btn-danger btn-responsive',
                 label: labelBtn
             }
     },

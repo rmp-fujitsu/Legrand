@@ -39,7 +39,7 @@ var reports_list = {
 var error_chart_title = ${P_quoted(i18n("error_chart_title", "Information"))};
 var error_chart_msg = ${P_quoted(i18n("error_chart_msg", "Aucune donnée à afficher pour cette période"))};
 var chart_title_notify = ${P_quoted(i18n("chart_title_notify", "Erreur"))};
-var chart_thanks_notify = ${P_quoted(i18n("chart_thanks_notify", "Merci de signaler cette erreur!"))};
+var chart_thanks_notify = ${P_quoted(i18n("chart_thanks_notify", "Merci de signaler cette erreur !"))};
 var chart_btn_ok = ${P_quoted(i18n("chart_btn_ok", "OK"))};
 
 // following collections could be used in the future
@@ -370,7 +370,7 @@ function wo_list_ko(P_error)
 {
 	RMPApplication.debug("begin wo_list_ko: P_error = ", JSON.stringify(P_error));
 	c_debug(debug.chart, "=> wo_list_ko  P_error = ", P_error);
-	var error_msg = ${P_quoted(i18n("wo_list_ko_msg", "Chargement impossible des rapports!"))};
+	var error_msg = ${P_quoted(i18n("wo_list_ko_msg", "Chargement impossible des rapports !"))};
     notify_error(chart_title_notify, error_msg + ' ' + chart_thanks_notify);
     RMPApplication.debug("end wo_list_ko");
 }
@@ -853,7 +853,7 @@ function load_panne_ko(error)
 {
     RMPApplication.debug ("begin load_panne_ko : error = " + JSON.stringify(error));
     c_debug(debug.chart, "=> load_panne_ko: error = ", error);
-	var error_msg = ${P_quoted(i18n("error_load_panne_ko_msg", "Calcul impossible du taux de panne!"))};
+	var error_msg = ${P_quoted(i18n("error_load_panne_ko_msg", "Calcul impossible du taux de panne !"))};
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_panne_ko");
 }

@@ -27,7 +27,7 @@ function init_ko(error)
 {
     RMPApplication.debug("begin init_ko: error = " + JSON.stringify(error));
     c_debug(debug.init, "=> init_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("init_ko_msg", "Problème lors de l'initialisation!"))};
+    var error_msg = ${P_quoted(i18n("init_ko_msg", "Problème lors de l'initialisation !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end init_ko"); 
 }

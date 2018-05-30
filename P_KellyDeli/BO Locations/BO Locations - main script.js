@@ -36,7 +36,7 @@ var var_list =
 
 var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 
 // ==============================
 // clean custom widget (CW) area
@@ -65,7 +65,7 @@ function add_item()
 
     for (key in var_list)  {
         if ( RMPApplication.validate() == false ) {
-            var error_msg1 = ${P_quoted(i18n("add_item_msg1", "Tous les champs doivent être remplis!"))};
+            var error_msg1 = ${P_quoted(i18n("add_item_msg1", "Tous les champs doivent être remplis !"))};
             notify_error(error_title_notify, error_msg1);
             RMPApplication.debug ("all fields must be set!");
             return;
@@ -79,7 +79,7 @@ function add_item()
         RMPApplication.debug (my_object);
         RMPApplication.debug ("New" + itemName.toUpperCase() + " added");
     } else {
-        var error_msg2 = ${P_quoted(i18n("add_item_msg2", "Le site existe déjà!"))};
+        var error_msg2 = ${P_quoted(i18n("add_item_msg2", "Le site existe déjà !"))};
         notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
         RMPApplication.debug (itemName.toUpperCase() + " already exists!");
     }
@@ -90,7 +90,7 @@ function add_ok(result)
 {
     RMPApplication.debug("begin add_ok");
     c_debug(debug.item, "=> add_ok: result", result);
-    var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouveau site ajouté!"))};
+    var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouveau site ajouté !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
     id_report.refresh();
@@ -102,7 +102,7 @@ function add_ko(error)
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
     c_debug(debug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible du site!"))};
+    var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
 }
@@ -125,7 +125,7 @@ function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
     c_debug(debug.item, "=> update_ok: result", result);
-    var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour!"))};
+    var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
     id_report.refresh();
@@ -137,7 +137,7 @@ function update_ko(error)
     //Error while updating item in the collection
     RMPApplication.debug ("begin update_ko");
     c_debug(debug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible du site!"))};
+    var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_ko");
 }
@@ -160,7 +160,7 @@ function load_ok(result)
 {
     RMPApplication.debug ("begin load_ok");
     c_debug(debug.item, "=> load_ok: result", result);
-    var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations du site chargées!"))};
+    var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations du site chargées !"))};
     notify_success(success_title_notify, success_msg);
     id_details_item.setVisible(true);
     id_details_item.open();
@@ -173,7 +173,7 @@ function load_ko(error)
 {
     RMPApplication.debug ("begin load_ko");
     c_debug(debug.item, "=> load_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible du site!"))};
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     id_report.refresh();
     RMPApplication.debug ("end load_ko");
@@ -197,7 +197,7 @@ function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
     c_debug(debug.item, "=> delete_ok: result", result);
-    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé!"))};
+    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé !"))};
     notify_success(success_title_notify, success_msg);
     id_report.refresh();
     //empty custom widget
@@ -211,7 +211,7 @@ function delete_ko(error)
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
     c_debug(debug.item, "=> delete_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du site!"))};
+    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
 }
@@ -251,7 +251,7 @@ function exists_ko(error)
 {
     RMPApplication.debug ("begin exists_ko");
     c_debug(debug.item, "=> exists_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("exists_ko_msg", "L'existence du site ne peut être vérifiée!"))};
+    var error_msg = ${P_quoted(i18n("exists_ko_msg", "L'existence du site ne peut être vérifiée !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_ko");
 }

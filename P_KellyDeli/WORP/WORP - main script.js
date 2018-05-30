@@ -41,7 +41,7 @@ var col_lang_opt = {};
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var info_title_notify = ${P_quoted(i18n("info_title_notify", "Information"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // used collections list
@@ -91,7 +91,7 @@ function load_language_ok(result)
     c_debug(debug.language, "=> load_language_ok: result", result);
     if (result.length > 0) {
         col_lang_opt = result[0];
-        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées!"))};
+        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées !"))};
         // notify_success(info_title_notify, success_msg);
         resetWI();                                          // reset Web Iterface
     }
@@ -102,7 +102,7 @@ function load_language_ko(error)
 {
     RMPApplication.debug ("begin load_language_ko");
     c_debug(debug.language, "=> load_language_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue!"))};
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_language_ko");
 }
@@ -235,7 +235,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
     c_debug(debug.init, "=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
 } 
@@ -799,7 +799,7 @@ function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
     c_debug(debug.site, "=> get_locations_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
 }
@@ -829,7 +829,7 @@ function getWorkOrderListFromServiceNow()
             break;
         default:
             var  title = ${P_quoted(i18n("error_getWOListFromSN_title", "Type d'incident"))};
-            var  content = ${P_quoted(i18n("error_getWOListFromSN_msg", "La recherche pour le type d'incident sélectionné n'est pas encore implémentée!"))};
+            var  content = ${P_quoted(i18n("error_getWOListFromSN_msg", "La recherche pour le type d'incident sélectionné n'est pas encore implémentée !"))};
             dialog_error(title, content, btn_ok);
             return;
             break;
@@ -957,7 +957,7 @@ function order_ok(result)
         c_debug(debug.order, "=> order_ok: var_order_list (null) = ", var_order_list);
 
         var  title = ${P_quoted(i18n("order_ok_title", "Résultat de la recherche"))};
-        var  content = ${P_quoted(i18n("order_ok_msg", "Aucun ticket ne correspond aux critères donnés!"))};
+        var  content = ${P_quoted(i18n("order_ok_msg", "Aucun ticket ne correspond aux critères donnés !"))};
         dialog_info(title, content, btn_ok);
 
         id_search_results.setVisible(false);
@@ -981,7 +981,7 @@ function order_ko(error)
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
 
-    var error_msg = ${P_quoted(i18n("order_ko_msg", "Récupération impossible des informations de Work Order!"))};
+    var error_msg = ${P_quoted(i18n("order_ko_msg", "Récupération impossible des informations de Work Order !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end order_ko");
 }
@@ -1017,7 +1017,7 @@ function fillOrderArray()
         $("#id_spinner_search_bottom").hide();
         RMPApplication.debug("fillOrderArray : var_order_list not set ");
         var  title1 = ${P_quoted(i18n("error_fillOrderArray_title1", "Résultat de la recherche"))};
-        var  content1 = ${P_quoted(i18n("error_fillOrderArray_msg1", "Aucune demande ne correspond à votre recherche! <br> (var_order_list non défini)"))};
+        var  content1 = ${P_quoted(i18n("error_fillOrderArray_msg1", "Aucune demande ne correspond à votre recherche ! <br> (var_order_list non défini)"))};
         dialog_info(title1, content1, btn_ok);
         return;
     }
@@ -1135,7 +1135,7 @@ function task_ko(error)
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
     clearTaskDataTable();
-    var error_msg = ${P_quoted(i18n("task_ko_msg", "Récupération impossible des interventions!"))};
+    var error_msg = ${P_quoted(i18n("task_ko_msg", "Récupération impossible des interventions !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end task_ko");
 }
@@ -1176,7 +1176,7 @@ function wo_details_ok(result)
     id_search_results.setVisible(false);
     id_ticket_details.setVisible(true);
     
-    var text_error_detail = ${P_quoted(i18n("error_detail_text", "Non trouvé!"))};
+    var text_error_detail = ${P_quoted(i18n("error_detail_text", "Non trouvé !"))};
     var company_detail = (isEmpty(login.company)) ? v_ol.co_u_full_name.toUpperCase() : login.company;
     var affiliate_detail = (isEmpty(v_ol.co_name)) ? v_ol.co_u_full_name : v_ol.co_name;
     var country_detail = (isEmpty(v_ol.loc_country)) ? text_error_detail : v_ol.loc_country.toUpperCase();
@@ -1240,7 +1240,7 @@ function wo_details_ko(error)
     c_debug(debug.detail, "=> wo_details_ko : error = ", error);
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
-    var error_msg = ${P_quoted(i18n("wo_details_ko_msg", "Récupération impossible des informations de Work Order!"))};
+    var error_msg = ${P_quoted(i18n("wo_details_ko_msg", "Récupération impossible des informations de Work Order !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify); 
     RMPApplication.debug("end wo_details_ko");
 }
@@ -1267,7 +1267,7 @@ function get_photo_ok (result)
         id_attachment.html('');
         var content = "";
         for (var i = 0; i< result.my_obj.length; i++) {
-            content = content +  '<p><i class="fa fa-file-image-o" aria-hidden="true"></i> <a href="' + result.my_obj[i].url + '">' + result.my_obj[i].name+ '</a></p>';
+            content = content +  '<p><i class="fa fa-file-image-o" aria-hidden="true"></i> <a href="' + result.my_obj[i].url + '" target="_blank">' + result.my_obj[i].name+ '</a></p>';
         }
         id_attachment.append(content);
     }
@@ -1279,7 +1279,7 @@ function get_photo_ko (error)
     RMPApplication.debug("begin get_photo_ko : error =  " + JSON.stringify(error));
     c_debug(debug.photo, "=> get_photo_ko: error", error);
 
-    var error_msg = ${P_quoted(i18n("order_ko_msg", "Récupération impossible des photos!"))};
+    var error_msg = ${P_quoted(i18n("order_ko_msg", "Récupération impossible des photos !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_photo_ko");
 }
@@ -1461,7 +1461,7 @@ function setProgression(numb)
     var selectedValue = 0; 
     var state = $("#id_state_detail").val();
     c_debug(debug.progress, "=> setProgression: state : ", state);
-    var state_val = getStatusValue(state);
+    var state_val = getStatusValue(v_ol.wo_state);
     c_debug(debug.progress, "=> setProgression: state_val : ", state_val);
 
     switch (state_val)

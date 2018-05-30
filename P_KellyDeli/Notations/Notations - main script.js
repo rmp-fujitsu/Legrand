@@ -20,7 +20,7 @@ var content_value = JSON.parse(RMPApplication.get("my_json"));
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var info_title_notify = ${P_quoted(i18n("info_title_notify", "Information"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 init();
@@ -101,7 +101,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
     c_debug(debug.init, "=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
 } 
@@ -126,7 +126,7 @@ function load_language_ok(result)
     c_debug(debug.language, "=> load_language_ok: result", result);
     if (result.length > 0) {
         col_lang_opt = result[0];
-        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées!"))};
+        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées !"))};
         // notify_success(info_title_notify, success_msg);
 
         // next actions to do
@@ -140,7 +140,7 @@ function load_language_ko(error)
 {
     RMPApplication.debug ("begin load_language_ko");
     c_debug(debug.language, "=> load_language_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue!"))};
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_language_ko");
 }
@@ -341,7 +341,7 @@ function check_eval(note, comments)
         c_debug(debug.content, "=> check_eval: note <= 3");
         if (isEmpty(comments)) {
             var title_dialog_empty = ${P_quoted(i18n("title_dialog_empty", "Commentaire obligatoire"))};
-            var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire!"))};
+            var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire !"))};
             dialog_error(title_dialog_empty, content_dialog_empty, btn_ok);
             return false;
         } else {

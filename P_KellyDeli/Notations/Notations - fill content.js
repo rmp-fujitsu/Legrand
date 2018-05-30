@@ -61,7 +61,7 @@ function check_eval(note, comments)
         c_debug(debug.content, "=> check_eval: note <= 3");
         if (isEmpty(comments)) {
             var title_dialog_empty = ${P_quoted(i18n("title_dialog_empty", "Commentaire obligatoire"))};
-            var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire!"))};
+            var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire !"))};
             dialog_error(title_dialog_empty, content_dialog_empty, btn_ok);
             return false;
         } else {

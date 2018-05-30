@@ -74,7 +74,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("=> begin get_info_ko: error = " + JSON.stringify(error));
 	c_debug(debug.user_info, "=> get_info_ko: error = ", error);
-	var error_msg = ${P_quoted(i18n("user_info_ko_msg", "Error while loading user informations!"))};
+	var error_msg = ${P_quoted(i18n("user_info_ko_msg", "Unable to load user information!"))};
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	RMPApplication.debug("end get_info_ko");
 }
@@ -138,7 +138,7 @@ function get_closure_codes_list_ko(error)
 {
     RMPApplication.debug("=> begin get_closure_codes_list_ko: error = " + JSON.stringify(error));
 	c_debug(debug.closure_code, "=> get_closure_codes_list_ko: error = ", error);
-	var error_msg = ${P_quoted(i18n("get_closure_codes_list_ko_msg", "Error while loading closure code!"))};
+	var error_msg = ${P_quoted(i18n("get_closure_codes_list_ko_msg", "Unable to load closure codes!"))};
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	RMPApplication.debug("end get_closure_codes_list_ko");
 }
@@ -218,7 +218,7 @@ function order_ok(result)
 
 	if (typeof(wm_ol) == 'undefined') {					// Aucun résultat
 
-		var error_msg = ${P_quoted(i18n("order_ok_msg", "Aucun Work Order n'a été trouvé!"))};
+		var error_msg = ${P_quoted(i18n("order_ok_msg", "No current Work Order found!"))};
     	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 
 	} else {
@@ -245,7 +245,7 @@ function order_ko(error)
 {
     RMPApplication.debug("begin order_ko : error =  " + JSON.stringify(error));
 	id_spinner.setVisible(false);
-    var error_msg = ${P_quoted(i18n("order_ko_msg", "la recherche des Work Order n'a pas abouti!"))};
+    var error_msg = ${P_quoted(i18n("order_ko_msg", "Can not retrieve Work Orders!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end order_ko");
 }
@@ -259,7 +259,7 @@ function inv_ok(result)
 
 	if (typeof(wt_ol) == 'undefined') {				// Aucun résultat
 		
-		var error_msg = ${P_quoted(i18n("inv_ok_msg", "Aucune intervention encore ouverte n'a été trouvée!"))};
+		var error_msg = ${P_quoted(i18n("inv_ok_msg", "No current Intervention found!"))};
     	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 
 	} else {
@@ -290,7 +290,7 @@ function inv_ko(error)
 {
     RMPApplication.debug("begin inv_ko : error =  " + JSON.stringify(error));
 	id_spinner.setVisible(false);
-    var error_msg = ${P_quoted(i18n("inv_ko_msg", "La recherche des Interventions n'a rien donné!"))};
+    var error_msg = ${P_quoted(i18n("inv_ko_msg", "Can not retrieve interventions!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end inv_ko");
 }

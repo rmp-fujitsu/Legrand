@@ -79,7 +79,7 @@ var var_list =
 
 var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 
 // ==============================
 // clean custom widget (CW) area
@@ -128,7 +128,7 @@ function add_ok(result)
 {
     RMPApplication.debug("begin add_ok");
     c_debug(debug.item, "=> add_ok: result", result);
-    var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouvelle langue ajoutée!"))};
+    var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouvelle langue ajoutée !"))};
     notify_success(success_title_notify, success_msg);
     RMPApplication.debug("end add_ok");
 }
@@ -138,7 +138,7 @@ function add_ko(error)
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
     c_debug(debug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible de langue!"))};
+    var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible de langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
 }
@@ -160,7 +160,7 @@ function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
     c_debug(debug.item, "=> update_ok: result", result);
-    var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour!"))};
+    var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     RMPApplication.debug ("end update_ok");
 }
@@ -170,7 +170,7 @@ function update_ko(error)
     //Error while updating item in the collection
     RMPApplication.debug ("begin update_ko");
     c_debug(debug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible de la collection!"))};
+    var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible de la collection !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_ko");
 }
@@ -200,7 +200,7 @@ function load_ok(result)
                 RMPApplication.set(key, result[0][key])
             }
         }
-        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées!"))};
+        var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées !"))};
         notify_success(success_title_notify, success_msg);
     }
     RMPApplication.debug ("end load_ok");
@@ -210,7 +210,7 @@ function load_ko(error)
 {
     RMPApplication.debug ("begin load_ko");
     c_debug(debug.item, "=> load_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données!"))};
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_ko");
 }
@@ -233,7 +233,7 @@ function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
     c_debug(debug.item, "=> delete_ok: result", result);
-    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé!"))};
+    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé !"))};
     notify_success(success_title_notify, success_msg);
     // clean_item();
     RMPApplication.debug ("end delete_ok");
@@ -244,7 +244,7 @@ function delete_ko(error)
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
     c_debug(debug.item, "=> delete_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du site!"))};
+    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
 }
@@ -282,7 +282,7 @@ function exists_ko(error)
 {
     RMPApplication.debug ("begin exists_ko");
     c_debug(debug.item, "=> exists_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("exists_ko_msg", "La langue n'a pu être trouvée!"))};
+    var error_msg = ${P_quoted(i18n("exists_ko_msg", "La langue n'a pu être trouvée !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_ko");
 }

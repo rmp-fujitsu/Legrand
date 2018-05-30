@@ -12,7 +12,7 @@ RMPApplication.set("my_notation", my_notation);
 // check if comment is mandatory according to notation value
 control_OK = check_eval(my_notation.notation, my_notation.comment);
 if (control_OK == true) {
-    var evaluation_conf = ${P_quoted(i18n("evaluation_conf", "Votre évaluation a bien été prise en compte!"))}; 
+    var evaluation_conf = ${P_quoted(i18n("evaluation_conf", "Votre évaluation a bien été prise en compte !"))}; 
     notify_success(info_title_notify, evaluation_conf);
     $("#id_rowSatisfaction").attr('readonly', 'readonly');
     true;
