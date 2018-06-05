@@ -12,8 +12,9 @@ var debug = {
     "user_info": false,
     "closure_code": false,
 	"dates_check": false,
-	"intervention": false,
-	"information": false
+	"work_order": true,
+	"intervention": true,
+	"information": true
 };
 
 var login = {};
@@ -201,21 +202,68 @@ function datesCheck()
 function load_WO_InvFromSN() 
 {
     RMPApplication.debug("begin load_WO_InvFromSN");
-    c_debug(debug.intervention, "=> load_WO_InvFromSN");
+    c_debug(debug.work_order, "=> load_WO_InvFromSN");
 
-	var dispatch_group = RMPApplication.get("dispatch_group");
 	var sn_query = "";											// query to be defined with following criterias
-	sn_query += "co_u_full_name=KD\\KELLYDELI";					// contract definition
-	sn_query += "^task_stateIN16,17,18";						// Intervention different states ready to be closed
-	sn_query += "^wo_stateIN10,11,13,15,16,18";					// WO different states ready to be closed
-	sn_query += "^usergrp_name=" + dispatch_group;
-	
+	// sn_query += "^company.u_full_name=KD\\KELLYDELI";		// contract definition
+	sn_query += "^co_u_full_name=KD\\KELLYDELI";
+	// sn_query += "^stateIN10,11,13,15,16,18";					// different states ready to be closed
+	sn_query += "^wo_stateIN10,11,13,15,16,18";
+
 	var options = {};
 	var input = {"query": sn_query};
-    c_debug(debug.intervention, "=> load_WO_InvFromSN: sn_query = ", sn_query);
-	id_get_interventions_list_api.trigger(input, options, inv_ok, inv_ko);
+	// var input = {"wm_order_query": sn_query};										// OLD CAPI
+    c_debug(debug.work_order, "=> load_WO_InvFromSN: sn_query = ", sn_query);
+	id_get_work_order_list_basic_api.trigger(input, options, order_ok, order_ko);
+	// id_get_work_order_list_api.trigger(input, options, order_ok, order_ko);			// OLD CAPI
 
 	RMPApplication.debug("end load_WO_InvFromSN");
+}
+
+function order_ok(result)
+{
+	RMPApplication.debug("order_ok : result =  " + result);
+
+	var wm_ol = result.result;
+	// var wm_ol = result.wm_order_list.getRecordsResult;				// in SOAP mode
+    c_debug(debug.work_order, "=> order_ok: wm_ol = ", wm_ol);
+
+	if (typeof(wm_ol) == 'undefined') {					// Aucun résultat
+
+		var error_msg = ${P_quoted(i18n("order_ok_msg", "No current Work Order found!"))};
+    	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+
+	} else {
+		var wo_list = "";								// list of work orders
+
+		if (typeof(wm_ol[0]) == 'undefined') {			// 1 Seul résultat
+			// wo_list = wm_ol.number;
+			wo_list = wm_ol.wo_number;
+		} else {										// 1 liste de résultats
+			for (i=0; i<wm_ol.length; i++) {
+				// wo_list += ((i==0) ? "" : ",") + wm_ol[i].number;
+				wo_list += ((i==0) ? "" : ",") + wm_ol[i].wo_number;
+			}
+		}
+		var sn_query = "parent.numberIN" + wo_list;		// Only intervention for following Work Order
+		sn_query += "^stateIN16,17,18";					// different states ready to be closed
+
+		var options = {};
+		var input = {"query": sn_query};
+		// var input = {"wm_task_query": sn_query};		// OLD CAPI
+		c_debug(debug.work_order, "=> order_ok: input = ", input);
+		id_get_work_order_tasks_list_api.trigger(input, options, inv_ok, inv_ko);
+	}
+	RMPApplication.debug("end order_ok");
+}
+
+function order_ko(error)
+{
+    RMPApplication.debug("begin order_ko : error =  " + JSON.stringify(error));
+	id_spinner.setVisible(false);
+    var error_msg = ${P_quoted(i18n("order_ko_msg", "Can not retrieve Work Orders!"))};
+    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+    RMPApplication.debug("end order_ko");
 }
 
 function inv_ok(result)
@@ -223,9 +271,10 @@ function inv_ok(result)
 	RMPApplication.debug("inv_ok : result =  " + result);
 
 	wt_ol = result.result;
+	// wt_ol = result.wm_task_list.getRecordsResult;				// in SOAP mode
 	c_debug(debug.intervention, "=> inv_ok: wt_ol = ", wt_ol);
 
-	if (typeof(wt_ol) == 'undefined') {					// Aucun résultat
+	if (typeof(wt_ol) == 'undefined') {				// Aucun résultat
 		
 		var error_msg = ${P_quoted(i18n("inv_ok_msg", "No current Intervention found!"))};
     	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
@@ -233,18 +282,22 @@ function inv_ok(result)
 	} else {
 		var dispatch_group = RMPApplication.get("dispatch_group");
 		var vb_wo = new Array();
-		if (typeof(wt_ol[0]) == 'undefined') {			// 1 Seul résultat
-				vb_wo.push({"label": wt_ol.task_number + " [" +  wt_ol.wo_number + "] - " + wt_ol.loc_name, "value": wt_ol.task_sys_id});
+		if (typeof(wt_ol[0]) == 'undefined') {		// 1 Seul résultat
+			if (wt_ol.dispatch_group.name == RMPApplication.get("dispatch_group") || wt_ol.assignment_group.name == RMPApplication.get("dispatch_group")) {
+				vb_wo.push({"label": wt_ol.number + " - " + wt_ol.location.name, "value": wt_ol.sys_id});
+			}
 
-		} else {										// 1 liste de résultats
+		} else {											// 1 liste de résultats
 			for(i=0; i<wt_ol.length; i++) {
-					vb_wo.push({"label": wt_ol[i].task_number + " [" +  wt_ol[i].wo_number + "] - " + wt_ol[i].loc_name, "value": wt_ol[i].task_sys_id});
+				if (wt_ol[i].dispatch_group.name == RMPApplication.get("dispatch_group") || wt_ol[i].assignment_group.name == RMPApplication.get("dispatch_group")) {
+					vb_wo.push({"label": wt_ol[i].number + " - " + wt_ol[i].location.name, "value": wt_ol[i].sys_id});
+				}
 			}			
 		}
 		var a = new RMP_List();
 		a.fromArray(vb_wo);
 		c_debug(debug.intervention, "=> inv_ok: vb_wo = ", vb_wo);
-		RMPApplication.setList("vb_wo", a);			// List of interventions
+		RMPApplication.setList("vb_wo", a);		// List of interventions
 		id_spinner.setVisible(false);
 	}
 
@@ -260,9 +313,7 @@ function inv_ko(error)
     RMPApplication.debug("end inv_ko");
 }
 
-// =====================================================================
-//   Affiche la date et heure courantes mais sauvegarde la date utc
-// =====================================================================
+// Affiche la date et heure courantes mais sauvegarde la date utc
 function setDate() 
 {
 	RMPApplication.debug("begin setDate");
@@ -291,19 +342,15 @@ function set_ticket_information()
     c_debug(debug.information, "=> set_ticket_information");
 
 	for(i=0; i<wt_ol.length; i++) {
-		if (wt_ol[i].task_sys_id == RMPApplication.get("ticket_number")) {
+		if (wt_ol[i].sys_id == RMPApplication.get("ticket_number")) {
 			c_debug(debug.information, "=> set_ticket_information: wt_ol[" + i + "] = ", wt_ol[i]);
-			RMPApplication.set("short_description", wt_ol[i].task_short_description);
-			RMPApplication.set("description", wt_ol[i].task_description);
-			var opened_at_date_utc  = moment(wt_ol[i].wo_opened_at, "YYYY-MM-DD HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
+			RMPApplication.set("short_description", wt_ol[i].u_work_order.short_description);
+			RMPApplication.set("description", wt_ol[i].u_work_order.description);
+			var opened_at_date_utc  = moment(wt_ol[i].u_work_order.opened_at, "YYYY-MM-DD HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
 			RMPApplication.set("opened_at", opened_at_date_utc);
-			RMPApplication.set("diagnosis_description", wt_ol[i].task_diagnosis_description);
 			id_short_description.setVisible(true);
 			id_description.setVisible(true);
 			id_opened_at.setVisible(true);
-			if (!isEmpty(wt_ol[i].task_diagnosis_description)) {
-				id_diagnosis_description.setVisible(true);
-			}
 			id_ticket_information.setVisible(true);
 			break;
 		}

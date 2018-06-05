@@ -37,15 +37,16 @@
     }
 ]
 
-// 398369  => RMS - Designers
-// 398368  => RMS - KELLYDELI
-// 403277  => KD - Partners
+// 402267  => KD - End User (ex-local)
+// 402314  => KD - Kiosk Managers (ex-Region)
+// 402315  => KD - Region Manager (ex-Division)
+// 401865  => KD - Central Head of Regional Managers
+// 402221  => KD - Affiliate Managers
 // 439766  => KD - Support DESK KD
 // 401915  => KD - Support Managers
-// 402221  => KD - Affiliate Managers
-// 402315  => KD - Region Manager (ex-Division)
-// 402314  => KD - Kiosk Managers (ex-Region)
-// 402267  => KD - End User (ex-local)
-// 401865  => KD - Central Head of Regional Managers
+// 403277  => KD - Partners
 // 398371  => KD - IMAC Requestors
 // 398372  => KD - SDMO Fujitsu
+// 398369  => RMS - Designers
+
+// 398368  => RMS - KELLYDELI

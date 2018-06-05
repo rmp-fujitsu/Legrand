@@ -19,13 +19,17 @@ function user_info_ok(result)
 		RMPApplication.set("dispatch_group","Fujitsu Espagne");
 	} else if (RMPApplication.get("country") == "BELGIUM") {
 		RMPApplication.set("dispatch_group","Fujitsu Belgique");
+	} else if (RMPApplication.get("country") == "NETHERLANDS") {
+		RMPApplication.set("dispatch_group","Fujitsu Pays-Bas");
+	} else if (RMPApplication.get("country") == "ITALY") {
+		RMPApplication.set("dispatch_group","Fujitsu Italie");				
 	} else if (include_string(RMPApplication.get("email"), "kellydeli")) {
 		RMPApplication.set("dispatch_group", "IT KellyDeli");
 	} else {
-		RMPApplication.set("dispatch_group","Fujitsu Belgique");
+		RMPApplication.set("dispatch_group","MAINTAINER - PC30Net");
 	}
 
-	if (include_string(RMPApplication.get("dispatch_group"), "Fujitsu")) {
+	if (include_string(RMPApplication.get("dispatch_group"), "Fujitsu") || include_string(RMPApplication.get("dispatch_group"), "MAINTAINER")) {
 		var my_pattern = {"dispatch_group" : "Fujitsu"};
 	}
 	else {
