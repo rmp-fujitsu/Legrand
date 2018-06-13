@@ -65,6 +65,16 @@ var var_list =
     "st_inv_in_progress" : "st_inv_in_progress",
     "st_inv_unknown" : "st_inv_unknown",
 
+    "clot_vis_echg" : "clot_vis_echg",
+    "clot_vis_netreg" : "clot_vis_netreg",
+    "clot_vis_piece" : "clot_vis_piece",
+    "clot_vis_remast" : "clot_vis_remast",
+    "clot_erreur_diag" : "clot_erreur_diag",
+    "clot_hd_annul_clt" : "clot_hd_annul_clt",
+    "clot_hd_annul_int" : "clot_hd_annul_int",
+    "clot_hd_doubl_rel" : "clot_hd_doubl_rel",
+    "clot_hd_telephone" : "clot_hd_telephone",
+
     "date_full" : "date_full",
     "date_semi_full" : "date_semi_full",
     "date_only_date" : "date_only_date",

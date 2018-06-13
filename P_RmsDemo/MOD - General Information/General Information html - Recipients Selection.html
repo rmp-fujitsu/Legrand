@@ -1,0 +1,33 @@
+<!-- Recipients Selection -->
+<div class="row well well-sm">
+    <label for="recipients_radio" class="control-label input-group">Destinataires du message&nbsp;<i class="fa fa-users" aria-hidden="true"></i></label>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="radio">
+            <label>
+                <input type="radio" name="recipients_radio">
+                ${i18n("recipients_radio_1", "Tout le monde")}
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="recipients_radio">
+                ${i18n("recipients_radio_2", "Uniquement les magasins")}
+            </label>
+        </div>
+
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="radio">
+            <label class="active">
+                <input type="radio" name="recipients_radio" checked="">
+                ${i18n("recipients_radio_3", "Uniquement le Help Desk (test interne avant envoi)")}
+            </label>
+        </div>
+        <div class="radio">
+            <label class="displayme_${has_right('405161')=='false'}">
+                <input type="radio" name="recipients_radio">
+                ${i18n("recipients_radio_4", "Uniquement un groupe de test (TEST-ACCEPTANCE)")}
+            </label>
+        </div>
+    </div>
+</div>
