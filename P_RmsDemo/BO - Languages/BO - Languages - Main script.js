@@ -11,7 +11,7 @@ var debug = {
 };
 
 var itemName = "Language";      // what kind of item ?
-var collectionid = "col_langues_kellydeli";
+var collectionid = "col_langues_rmsdemo";
 
 var var_list = 
 {

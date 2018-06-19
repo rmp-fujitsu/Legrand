@@ -9,8 +9,7 @@ RMPApplication.debug("Closure Ticket : Application started");
 
 // if "true", logs will be showed on the browser console
 var debug = {
-	"user_info": false,
-	"language": false,
+    "user_info": false,
     "closure_code": false,
 	"dates_check": false,
 	"intervention": false,
@@ -19,23 +18,7 @@ var debug = {
 
 var login = {};
 var wt_ol = [];
-var rmp_interf_tz = "Europe/Paris";
-var col_all_lang = {};
-var default_lang = "fr";									// Seevice Now Closure codes are defined in french 
-var selected_lang = RMPApplication.get("language");			// What language was selected by user
-var col_closure_codes = "col_cloture_codes";				// Collection with closure codes information
-var col_languages = "col_langues_kellydeli";				// Collection with languages information
-var clot_lbl_list = [
-	"clot_vis_echg",
-    "clot_vis_netreg",
-    "clot_vis_piece",
-    "clot_vis_remast",
-    "clot_erreur_diag",
-    "clot_hd_annul_clt",
-    "clot_hd_annul_int",
-    "clot_hd_doubl_rel",
-    "clot_hd_telephone"
-];
+var collectionid = "col_cloture_codes";
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Error"))};
 var info_title_notify = ${P_quoted(i18n("info_title_notify", "Information"))};
@@ -53,7 +36,7 @@ function init()
 	var options = {};
 	var pattern = {};
 	pattern.login = RMPApplication.get("email");
-	c_debug(debug.user_info, "=> init: pattern = ", pattern);
+	c_debug(debug.user_info, "=> getPartnerInfo: pattern = ", pattern);
 
 	id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
 	RMPApplication.debug("end init");
@@ -125,82 +108,27 @@ function setDispatchGroup()
 		RMPApplication.set("dispatch_group","MAINTAINER - PC30Net");
 	}
 
-	load_languages_collection();
-
+	if (include_string(RMPApplication.get("dispatch_group"), "Fujitsu") || include_string(RMPApplication.get("dispatch_group"), "MAINTAINER")) {
+		var my_pattern = {"dispatch_group" : "Fujitsu"};
+	}
+	else {
+		var my_pattern = {"dispatch_group" : RMPApplication.get("dispatch_group")};
+	}
+	c_debug(debug.user_info, "=> user_info_ok: my_pattern = ", my_pattern);
+    eval(collectionid).listCallback(my_pattern, {}, get_closure_codes_list_ok, get_closure_codes_list_ko);
     RMPApplication.debug("end user_info_ok");
-}
-
-// ============================================
-// get information for selected language
-// ============================================
-function load_languages_collection()
-{
-    RMPApplication.debug ("begin load_languages_collection");
-    c_debug(debug.language, "=> load_languages_collection");
-    var my_pattern = {};
-    var options = {};
-    eval(col_languages).listCallback(my_pattern, options, load_languages_collection_ok, load_languages_collection_ko);
-    RMPApplication.debug ("end load_languages_collection");
-}
-
-function load_languages_collection_ok(result)
-{
-    RMPApplication.debug ("begin load_languages_collection_ok");
-    c_debug(debug.language, "=> load_languages_collection_ok: result", result);
-    if (result.length > 0) {
-		col_all_lang = result;
-        var success_msg = ${P_quoted(i18n("load_languages_collection_ok_msg", "Informations de la collection chargées !"))};
-		// notify_success(info_title_notify, success_msg);
-		set_closure_codes_list(default_lang, selected_lang);
-    }
-    RMPApplication.debug ("end load_languages_collection_ok");
-}
-
-function load_languages_collection_ko(error)
-{
-    RMPApplication.debug ("begin load_languages_collection_ko");
-    c_debug(debug.language, "=> load_languages_collection_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_languages_collection_ko_msg", "Récupération impossible des données de la collections des langues !"))};
-    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
-    RMPApplication.debug ("end load_languages_collection_ko");
 }
 
 // =====================================================
 //  Creation of closure codes list
 // =====================================================
-function set_closure_codes_list(def_lang, sel_lang) 
+function get_closure_codes_list_ok(result) 
 {
-	RMPApplication.debug("=> begin set_closure_codes_list");
-	c_debug(debug.closure_code, "    set_closure_codes_list : default_language = ", def_lang);
-	c_debug(debug.closure_code, "    set_closure_codes_list : selected_language = ", sel_lang);
-	var def_lang_list = [];
-	var sel_lang_list = [];
-
-	for (i=0; i<col_all_lang.length; i++) {
-		
-		if (col_all_lang[i].code_language == def_lang) {					// get all default language closure codes
-			for (j=0; j<clot_lbl_list.length; j++) {
-				var value = clot_lbl_list[j];
-				def_lang_list[j] = col_all_lang[i][value];
-			}
-		}
-
-		if (col_all_lang[i].code_language == sel_lang) {					// get all selected language closure codes
-			for (j=0; j<clot_lbl_list.length; j++) {
-				var value = clot_lbl_list[j];
-				sel_lang_list[j] = col_all_lang[i][value];
-			}
-		}
-	}
-	c_debug(debug.closure_code, "    set_closure_codes_list : def_lang_list = ", def_lang_list);
-	c_debug(debug.closure_code, "    set_closure_codes_list : sel_lang_list = ", sel_lang_list);
-
+    RMPApplication.debug("=> begin get_closure_codes_list_ok: result = " + JSON.stringify(result));
 	var vb_codes = new Array();
-	for (i=0; i<sel_lang_list.length; i++) {
-		vb_codes.push({"label": sel_lang_list[i], "value": def_lang_list[i]});
-	}
-	c_debug(debug.closure_code, "    set_closure_codes_list : vb_codes = ", vb_codes);
-		
+	for (i=0; i<result.length; i++) {
+		vb_codes.push({"label": result[i].closure_code, "value": result[i].closure_code});
+	}	
 	var a = new RMP_List();
 	a.fromArray(vb_codes);
 	RMPApplication.setList("vb_codes", a);
@@ -208,7 +136,16 @@ function set_closure_codes_list(def_lang, sel_lang)
 	// load WO and INV from Service Now
 	load_WO_InvFromSN();
 
-    RMPApplication.debug("end set_closure_codes_list");
+    RMPApplication.debug("end get_closure_codes_list_ok");
+}
+
+function get_closure_codes_list_ko(error) 
+{
+    RMPApplication.debug("=> begin get_closure_codes_list_ko: error = " + JSON.stringify(error));
+	c_debug(debug.closure_code, "=> get_closure_codes_list_ko: error = ", error);
+	var error_msg = ${P_quoted(i18n("get_closure_codes_list_ko_msg", "Unable to load closure codes!"))};
+	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+	RMPApplication.debug("end get_closure_codes_list_ko");
 }
 
 // ============================================
@@ -242,14 +179,9 @@ function datesCheck()
 		return false;
 	}
 
-	// As rmp.interface account is set with GMT+2 timezone in Service Now,
-	// dates should be converted in GMT+2 format before updating the ticket
-	var start_date_local = moment.tz(work_start_l, "DD/MM/YYYY HH:mm:ss", login.timezone);
-	var start_date_utc  = moment(start_date_local, "DD/MM/YYYY HH:mm:ss").tz(rmp_interf_tz).format("DD/MM/YYYY HH:mm:ss");
-	var end_date_local = moment.tz(work_end_l, "DD/MM/YYYY HH:mm:ss", login.timezone);
-	var end_date_utc  = moment(end_date_local, "DD/MM/YYYY HH:mm:ss").tz(rmp_interf_tz).format("DD/MM/YYYY HH:mm:ss");
-    // var start_date_utc  = moment(work_start_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
-	// var end_date_utc  = moment(work_end_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
+	// dates should be converted in UTC format before updating the ticket
+    var start_date_utc  = moment(work_start_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
+    var end_date_utc  = moment(work_end_l, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
 
     // we save UTC dates for ulterior use
 	id_utc_work_start.setValue(start_date_utc);
