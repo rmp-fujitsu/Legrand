@@ -103,10 +103,8 @@ function insert_ok(result)
 			entry_json.wo_number = wm_order.insertResponse.number
 			entries.push(entry_json);
 		}
-			input.picture = entries;
-		}
-	
-	else {
+		input.picture = entries;
+	} else {
 		input.picture = [];
 	}
 
@@ -131,10 +129,6 @@ function insert_ko(error)
 	var content2 = ${P_quoted(i18n("id_msg_insert_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
 	var content3 = ${P_quoted(i18n("id_msg_insert_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
 	alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
-	// alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
-	// $("#id_spinner_insert").hide();
-    // var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket !"))};
-    // notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end insert_ko");			
 }
 
@@ -154,9 +148,6 @@ function save_picture_ko (error)
 	var content2 = ${P_quoted(i18n("id_msg_save_picture_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
 	var content3 = ${P_quoted(i18n("id_msg_save_picture_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
 	alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
-	// $("#id_spinner_insert").hide();
-    // var error_msg = ${P_quoted(i18n("save_picture_ko_msg", "Sauvegarde impossible du document !"))};
-    // notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end save_picture_ko");
 }
 

@@ -1,3 +1,3 @@
-id_last_level_variable.setValue("level_1");
-id_last_level_value.setValue("yes");
+RMPApplication.set("last_level_variable", "level_1");
+RMPApplication.set("last_level_value", "no");
 true;

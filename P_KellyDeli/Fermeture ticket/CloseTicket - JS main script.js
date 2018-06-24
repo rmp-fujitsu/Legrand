@@ -21,7 +21,7 @@ var login = {};
 var wt_ol = [];
 var rmp_interf_tz = "Europe/Paris";
 var col_all_lang = {};
-var default_lang = "fr";									// Seevice Now Closure codes are defined in french 
+var default_lang = "fr";									// Service Now Closure codes are defined in french 
 var selected_lang = RMPApplication.get("language");			// What language was selected by user
 var col_closure_codes = "col_cloture_codes";				// Collection with closure codes information
 var col_languages = "col_langues_kellydeli";				// Collection with languages information
@@ -69,8 +69,8 @@ function get_info_ok(result)
 
     // define "login" variable properties
 	login.user = result.user;
-	login.email = result.user;
-	login.phone = result.phone;
+	login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
+    login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
@@ -110,20 +110,21 @@ function setDispatchGroup()
     // Match with SNOW Format
 	var dispatch_group;
 	if (include_string(RMPApplication.get("email"), "bizerba")) {
-		RMPApplication.set("dispatch_group","Bizerba");
+		dispatch_group = ,"Bizerba";
 	} else if (RMPApplication.get("country") == "SPAIN") {
-		RMPApplication.set("dispatch_group","Fujitsu Espagne");
+		dispatch_group = "Fujitsu Espagne";
 	} else if (RMPApplication.get("country") == "BELGIUM") {
-		RMPApplication.set("dispatch_group","Fujitsu Belgique");
+		dispatch_group = "Fujitsu Belgique";
 	} else if (RMPApplication.get("country") == "NETHERLANDS") {
-		RMPApplication.set("dispatch_group","Fujitsu Pays-Bas");
+		dispatch_group = "Fujitsu Pays-Bas";
 	} else if (RMPApplication.get("country") == "ITALY") {
-		RMPApplication.set("dispatch_group","Fujitsu Italie");				
+		dispatch_group = "Fujitsu Italie";				
 	} else if (include_string(RMPApplication.get("email"), "kellydeli")) {
-		RMPApplication.set("dispatch_group", "IT KellyDeli");
+		dispatch_group = "IT KellyDeli";
 	} else {
-		RMPApplication.set("dispatch_group","MAINTAINER - PC30Net");
+		dispatch_group = "MAINTAINER - PC30Net";
 	}
+	RMPApplication.set("dispatch_group", dispatch_group);
 
 	load_languages_collection();
 
@@ -146,7 +147,7 @@ function load_languages_collection()
 function load_languages_collection_ok(result)
 {
     RMPApplication.debug ("begin load_languages_collection_ok");
-    c_debug(debug.language, "=> load_languages_collection_ok: result", result);
+    c_debug(debug.language, "=> load_languages_collection_ok: result = ", result);
     if (result.length > 0) {
 		col_all_lang = result;
         var success_msg = ${P_quoted(i18n("load_languages_collection_ok_msg", "Informations de la collection chargées !"))};
@@ -229,16 +230,16 @@ function datesCheck()
 	// check if start_date < end_date
 	if (start_date > end_date) {
 		c_debug(debug.dates_check, "=> datesCheck: start_date > end_date AND return FALSE");
-		var error_msg = ${P_quoted(i18n("start_date_msg", "The date of intervention end can't be lower than the date of intervention start!"))};
-		notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+		var error_msg1 = ${P_quoted(i18n("start_date_msg", "The date of intervention end can't be lower than the date of intervention start!"))};
+		notify_error(error_title_notify, error_msg1 + ' ' + error_thanks_notify);
 		return false;
 	}
 
 	// check if end_date < current date&time
 	if (end_date > now_date) {
 		c_debug(debug.dates_check, "=> datesCheck: end_date > now_date AND return FALSE");
-		var error_msg = ${P_quoted(i18n("end_date_msg", "The date of intervention end can't be higher than the current date & time!"))};
-		notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
+		var error_msg2 = ${P_quoted(i18n("end_date_msg", "The date of intervention end can't be higher than the current date & time!"))};
+		notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
 		return false;
 	}
 

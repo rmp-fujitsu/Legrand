@@ -6,7 +6,7 @@ RMPApplication.debug ("Application started");
 // ==========================================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "item": false
 };
 
@@ -45,7 +45,7 @@ function clean_item()
 {
     // clean widget area before any add-action
     RMPApplication.debug ("begin Item cleaned");
-    c_debug(debug.item, "=> begin clean_item");
+    c_debug(dbug.item, "=> begin clean_item");
 /*    var img_category_data = eval('(' + RMPApplication.get("my_item.category_img") + ')');
     var img_product_data = eval('(' + RMPApplication.get("my_item.product_img") + ')');
     var img_type_data = eval('(' + RMPApplication.get("my_item.type_img") + ')');
@@ -81,7 +81,7 @@ function add_item()
 {
     RMPApplication.debug ("begin add_item");
     var my_object = eval('(' + RMPApplication.get("my_item") + ')');
-    c_debug(debug.item, "=> add_item: my_object = ", my_object);
+    c_debug(dbug.item, "=> add_item: my_object = ", my_object);
 
     if ( isEmpty(my_object.category) && isEmpty(my_object.product) && isEmpty(my_object.type) ) {
         var error_msg1 = ${P_quoted(i18n("add_item_msg1", "La catégorie ou le produit doivent être définis !"))};
@@ -92,7 +92,7 @@ function add_item()
     
     if(!item_already_exists(my_object)) {
         my_object.itemid = RMPApplication.uuid();
-        c_debug(debug.item, "=> add_item: my_object = ", my_object);
+        c_debug(dbug.item, "=> add_item: my_object = ", my_object);
         eval(collectionid).saveCallback(my_object, add_ok, add_ko);
         RMPApplication.debug (my_object);
         RMPApplication.debug ("New" + itemName.toUpperCase() + " added");
@@ -107,7 +107,7 @@ function add_item()
 function add_ok(result)
 {
     RMPApplication.debug("begin add_ok");
-    c_debug(debug.item, "=> add_ok: result", result);
+    c_debug(dbug.item, "=> add_ok: result", result);
     var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouveau tutoriel ajouté !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
@@ -119,7 +119,7 @@ function add_ko(error)
 {
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
-    c_debug(debug.item, "=> update_ko: error = ", error);
+    c_debug(dbug.item, "=> update_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible du tutoriel !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
@@ -133,9 +133,9 @@ function update_item()
     RMPApplication.debug ("begin update_item");
     var my_pattern = {};
     my_pattern.itemid = RMPApplication.get("my_item.itemid");
-    c_debug(debug.item, "=> update_item: my_pattern = ", my_pattern);
+    c_debug(dbug.item, "=> update_item: my_pattern = ", my_pattern);
     var my_object = eval('(' + RMPApplication.get("my_item") + ')');
-    c_debug(debug.item, "=> update_item: my_object = ", my_object);
+    c_debug(dbug.item, "=> update_item: my_object = ", my_object);
     eval(collectionid).updateCallback(my_pattern, my_object, update_ok, update_ko);
     RMPApplication.debug ("end update_item");
 }
@@ -143,7 +143,7 @@ function update_item()
 function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
-    c_debug(debug.item, "=> update_ok: result", result);
+    c_debug(dbug.item, "=> update_ok: result", result);
     var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
@@ -155,7 +155,7 @@ function update_ko(error)
 {
     //Error while updating item in the collection
     RMPApplication.debug ("begin update_ko");
-   c_debug(debug.item, "=> update_ko: error = ", error);
+   c_debug(dbug.item, "=> update_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible du tutoriel !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_ko");
@@ -167,7 +167,7 @@ function update_ko(error)
 function load_item(itemid)
 {
     RMPApplication.debug ("begin load_item");
-    c_debug(debug.item, "=> load_item: itemid = ", itemid);
+    c_debug(dbug.item, "=> load_item: itemid = ", itemid);
     var my_pattern = {};
     my_pattern.itemid = itemid;
     RMPApplication.debug ("my_pattern." + itemid + " = " + my_pattern.itemid);
@@ -178,7 +178,7 @@ function load_item(itemid)
 function load_ok(result)
 {
     RMPApplication.debug ("begin load_ok");
-    c_debug(debug.item, "=> load_ok: result", result);
+    c_debug(dbug.item, "=> load_ok: result", result);
     var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations du tutoriel chargées !"))};
     notify_success(success_title_notify, success_msg);
     id_details_item.setVisible(true);
@@ -191,7 +191,7 @@ function load_ok(result)
 function load_ko(error)
 {
     RMPApplication.debug ("begin load_ko");
-    c_debug(debug.item, "=> load_ko: error = ", error);
+    c_debug(dbug.item, "=> load_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible du tutoriel !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     id_report.refresh();
@@ -204,7 +204,7 @@ function load_ko(error)
 function delete_item(itemid)
 {
     RMPApplication.debug ("begin delete_item");
-    c_debug(debug.item, "=> delete_item: itemid = ", itemid);
+    c_debug(dbug.item, "=> delete_item: itemid = ", itemid);
     var my_pattern = {};
     my_pattern.itemid = itemid;
     RMPApplication.debug ("my_pattern." + itemid + " = " + my_pattern.itemid);
@@ -215,7 +215,7 @@ function delete_item(itemid)
 function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
-    c_debug(debug.item, "=> delete_ok: result", result);
+    c_debug(dbug.item, "=> delete_ok: result", result);
     var success_msg = ${P_quoted(i18n("delete_ok_msg", "Tutoriel supprimé !"))};
     notify_success(success_title_notify, success_msg);
     id_report.refresh();
@@ -229,7 +229,7 @@ function delete_ko(error)
 {
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
-    c_debug(debug.item, "=> delete_ko: error = ", error);
+    c_debug(dbug.item, "=> delete_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du tutoriel !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
@@ -241,7 +241,7 @@ function delete_ko(error)
 function item_already_exists(my_object)
 {
     RMPApplication.debug ("begin function item_already_exists");
-    c_debug(debug.item, "=> item_already_exists: my_object = ", my_object);
+    c_debug(dbug.item, "=> item_already_exists: my_object = ", my_object);
     var my_pattern = {};
     for (key in my_object)  {
         my_pattern[key] = ( my_object[key] !== "" ) ? my_object[key] : "";
@@ -257,7 +257,7 @@ function item_already_exists(my_object)
 function exists_ok(result)
 {
     RMPApplication.debug ("begin exists_ok");
-    c_debug(debug.item, "=> exists_ok: result", result);
+    c_debug(dbug.item, "=> exists_ok: result", result);
     if(result[0]) {
         res = true;
     } else {
@@ -269,7 +269,7 @@ function exists_ok(result)
 function exists_ko(error) 
 {
     RMPApplication.debug ("begin exists_ko");
-    c_debug(debug.item, "=> exists_ko: error = ", error);
+    c_debug(dbug.item, "=> exists_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("exists_ko_msg", "L'existence du tutoriel ne peut être vérifiée !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_ko");

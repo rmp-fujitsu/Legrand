@@ -6,7 +6,7 @@ RMPApplication.debug ("Application started");
 // ==========================================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "item": false
 };
 
@@ -99,7 +99,7 @@ function clean_item()
 {
     // clean widget area before any add-action
     RMPApplication.debug ("begin " + itemName + " Widget Area cleaned");
-    c_debug(debug.item, "=> begin clean_item");
+    c_debug(dbug.item, "=> begin clean_item");
     for (key in var_list)  {
         if (key != "code_language") {
             RMPApplication.set(key, "");
@@ -115,7 +115,7 @@ function add_item()
 {
     RMPApplication.debug ("begin add_item");
     var code_language = RMPApplication.get("code_language");
-    c_debug(debug.item, "=> add_item: code_language = ", code_language);
+    c_debug(dbug.item, "=> add_item: code_language = ", code_language);
     var my_object = {};
     for (key in var_list)  {
         my_object[key] = RMPApplication.get(key);
@@ -123,11 +123,11 @@ function add_item()
     
     if (!item_already_exists(code_language)) {
 
-        c_debug(debug.item, "=> add_item: my_object", my_object);
+        c_debug(dbug.item, "=> add_item: my_object", my_object);
         eval(collectionid).saveCallback(my_object, add_ok, add_ko);
         RMPApplication.debug ("New" + itemName.toUpperCase() + " added");
     } else {
-        c_debug(debug.item, "=> update_item: my_object", my_object);
+        c_debug(dbug.item, "=> update_item: my_object", my_object);
         update_item(my_object);
         RMPApplication.debug (itemName.toUpperCase() + " will be updated!");
     }
@@ -137,7 +137,7 @@ function add_item()
 function add_ok(result)
 {
     RMPApplication.debug("begin add_ok");
-    c_debug(debug.item, "=> add_ok: result", result);
+    c_debug(dbug.item, "=> add_ok: result", result);
     var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouvelle langue ajoutée !"))};
     notify_success(success_title_notify, success_msg);
     RMPApplication.debug("end add_ok");
@@ -147,7 +147,7 @@ function add_ko(error)
 {
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
-    c_debug(debug.item, "=> update_ko: error = ", error);
+    c_debug(dbug.item, "=> update_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible de langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
@@ -159,7 +159,7 @@ function add_ko(error)
 function update_item(my_object)
 {
     RMPApplication.debug ("begin update_item");
-    c_debug(debug.item, "=> update_item: my_object = ", my_object);
+    c_debug(dbug.item, "=> update_item: my_object = ", my_object);
     var my_pattern = {};
     my_pattern.code_language = RMPApplication.get("code_language");
     eval(collectionid).updateCallback(my_pattern, my_object, update_ok, update_ko);
@@ -169,7 +169,7 @@ function update_item(my_object)
 function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
-    c_debug(debug.item, "=> update_ok: result", result);
+    c_debug(dbug.item, "=> update_ok: result", result);
     var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     RMPApplication.debug ("end update_ok");
@@ -179,7 +179,7 @@ function update_ko(error)
 {
     //Error while updating item in the collection
     RMPApplication.debug ("begin update_ko");
-    c_debug(debug.item, "=> update_ko: error = ", error);
+    c_debug(dbug.item, "=> update_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible de la collection !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_ko");
@@ -191,7 +191,7 @@ function update_ko(error)
 function load_item(code_language)
 {
     RMPApplication.debug ("begin load_item");
-    c_debug(debug.item, "=> load_item: code_language = ", code_language);
+    c_debug(dbug.item, "=> load_item: code_language = ", code_language);
     var my_pattern = {};
     my_pattern.code_language = code_language;
     RMPApplication.debug ("my_pattern.code_language = " + my_pattern.code_language);    
@@ -202,7 +202,7 @@ function load_item(code_language)
 function load_ok(result)
 {
     RMPApplication.debug ("begin load_ok");
-    c_debug(debug.item, "=> load_ok: result", result);
+    c_debug(dbug.item, "=> load_ok: result", result);
     clean_item();
     if (result.length > 0) {
         for (key in var_list)  {
@@ -219,7 +219,7 @@ function load_ok(result)
 function load_ko(error)
 {
     RMPApplication.debug ("begin load_ko");
-    c_debug(debug.item, "=> load_ko: error = ", error);
+    c_debug(dbug.item, "=> load_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_ko");
@@ -231,7 +231,7 @@ function load_ko(error)
 function delete_item(code_language)
 {
     RMPApplication.debug ("begin delete_item");
-    c_debug(debug.item, "=> delete_item: code_language = ", code_language);
+    c_debug(dbug.item, "=> delete_item: code_language = ", code_language);
     var my_pattern = {};
     my_pattern.code_language = code_language;
     RMPApplication.debug ("my_pattern.code_language = " + my_pattern.code_language);  
@@ -242,7 +242,7 @@ function delete_item(code_language)
 function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
-    c_debug(debug.item, "=> delete_ok: result", result);
+    c_debug(dbug.item, "=> delete_ok: result", result);
     var success_msg = ${P_quoted(i18n("delete_ok_msg", "Langue supprimée !"))};
     notify_success(success_title_notify, success_msg);
     // clean_item();
@@ -253,7 +253,7 @@ function delete_ko(error)
 {
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
-    c_debug(debug.item, "=> delete_ko: error = ", error);
+    c_debug(dbug.item, "=> delete_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
@@ -265,7 +265,7 @@ function delete_ko(error)
 function item_already_exists(code_language) 
 {
     RMPApplication.debug ("begin function item_already_exists");
-    c_debug(debug.item, "=> item_already_exists: code_language = ", code_language);
+    c_debug(dbug.item, "=> item_already_exists: code_language = ", code_language);
     var my_pattern = {};
     my_pattern.code_language = code_language;
     var options = {};
@@ -279,7 +279,7 @@ function item_already_exists(code_language)
 function exists_ok(result)
 {
     RMPApplication.debug ("begin exists_ok");
-    c_debug(debug.item, "=> exists_ok: result", result);
+    c_debug(dbug.item, "=> exists_ok: result", result);
     if(result[0]) {
         res = true;
     } else {
@@ -291,7 +291,7 @@ function exists_ok(result)
 function exists_ko(error) 
 {
     RMPApplication.debug ("begin exists_ko");
-    c_debug(debug.item, "=> exists_ko: error = ", error);
+    c_debug(dbug.item, "=> exists_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("exists_ko_msg", "La langue n'a pu être trouvée !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_ko");

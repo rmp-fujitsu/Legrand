@@ -515,9 +515,9 @@ function load_location_ko(error)
     RMPApplication.debug ("end load_location_ko");    
 }
 
-// ========================================================
-//  get complete informations of selected affiliate
-// ========================================================
+// ========================================================================================
+//  get complete informations of selected affiliate (not used if only one affiliate)
+// ========================================================================================
 function getAffiliate(affiliate_value)
 {
     RMPApplication.debug("=> begin getAffiliate: affiliate_value = ", affiliate_value);
@@ -619,16 +619,16 @@ function createRequest(aff_obj)
     work_order.sn_correlation_id = customer_reference;
     work_order.sn_description = description;
     work_order.sn_location = location;
-    work_order.sn_u_customer_site = customer_site;
     work_order.sn_state = state;
     work_order.sn_qualification_group = qualification_group;
     work_order.sn_short_description = short_description;
     work_order.sn_priority = priority;
-    work_order.sn_u_contact_details = contact_detail;
-    work_order.sn_u_work_order_type = work_order_type;
     work_order.sn_category = category;
-    work_order.sn_u_product_type = product_type;
+    work_order.sn_u_contact_details = contact_detail;
+    work_order.sn_u_customer_site = customer_site;
+    work_order.sn_u_work_order_type = work_order_type;
     work_order.sn_u_problem_type = problem_type;
+    work_order.sn_u_product_type = product_type;
     work_order.sn_expected_start = expected_start;
     work_order.sn_cmdb_ci = logical_name;
 

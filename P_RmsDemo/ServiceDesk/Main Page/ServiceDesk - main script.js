@@ -28,11 +28,11 @@ var enseigne = null;            // affiliate's login user
 var wm_order = null;            // work order details saved in Service Now
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // execute main program
-init();
+// init();
 
 // ===============================
 //   Initialization part
@@ -75,8 +75,8 @@ function get_info_ok(result)
 
     // define "login" variable properties
 	login.user = result.user;
-	login.email = result.user;
-	login.phone = result.phone;
+	login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
+    login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
@@ -108,12 +108,11 @@ function get_info_ok(result)
     } else if ( (!isEmpty(login.grp_affiliates)) && (login.grp_affiliates != "NOT DEFINED") ) {    // a group of affiliates
         view = "GRP_AFF";
 
-    } else if ( (login.region == login.affiliate) || (login.division == login.affiliate) ) {    // One affiliate, but country can be selected
+    } else if ( (!isEmpty(login.affiliate)) && ((login.region == login.affiliate) || (login.division == login.affiliate)) ) {    // One affiliate, but country can be selected
         view = "AFFILIATE";
 
-	} else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
-	    view = "COUNTRY";
-
+	} else if ( (!isEmpty(login.country)) && ((login.region == login.country) || (login.division == login.country)) ) {    // One country, but affiliate can be selected
+        view = "COUNTRY";
 
 	} else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
 	    view = "DIVISION";
@@ -136,7 +135,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
     c_debug(debug.init, "=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko"); 
 } 
@@ -293,7 +292,7 @@ function fillLocationBox(locations_array)
 
     } else {    
         // if locations_array is empty, "false" is affected to "value"
-        var text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Aucun site pour la selection"))};
+        var text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Aucun site pour la selection !"))};
         $("#id_locationFilter").append($("<option selected />").val('false').html(text_locationFilter));
     }
     c_debug(debug.box, "=> end fillLocationBox: locations_array = ", locations_array);
@@ -319,11 +318,6 @@ function getFilteredLocations()
     var division_value = login.division; 
     var region_value = login.region;
     var location_code_value = login.location_code;
-
-    //  Test if global company view
-    /* ==== TEST with new instructions block ==== */    
-    /*    if (view === "COMPANY" && country_value === "tous" && affiliate_value === "tous") {
-    $("#id_locationFilter").empty();    // previous value reset as we required one & only one selected location */
 
     // According to specific views, if "tous" value is set for one of country & affiliate boxes
     if ((view ==="COMPANY" && country_value === "tous" && affiliate_value ==="tous") || (view ==="GRP_AFF" && affiliate_value ==="tous") || (view ==="AFFILIATE" && country_value ==="tous") || (view ==="COUNTRY" && affiliate_value ==="tous")) {
@@ -468,7 +462,7 @@ function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
     c_debug(debug.location, "=> get_locations_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
 }
@@ -479,13 +473,13 @@ function get_locations_ko(error)
 function load_location()
 {
     RMPApplication.debug("begin load_location");
-	c_debug(debug.location, "=> load_location");
-	var locationCode = $('#id_locationFilter').val();
+    var locationCode = $('#id_locationFilter').val();
+    c_debug(debug.init, "=> load_location: locationCode = ", locationCode);
 	if (isEmpty(locationCode) || locationCode === "false" || locationCode === "tous") {
         $("#id_locationFilter").select2("close");
-        /*var  title = ${P_quoted(i18n("error_location_title", "Erreur"))};
+        var  title = ${P_quoted(i18n("error_location_title", "Erreur"))};
         var  content = ${P_quoted(i18n("location_selection", "Veuillez sélectionner un seul site, en utilisant si besoin les filtres PAYS et/ou ENSEIGNE..."))};
-		dialog_info(title, content, btn_ok);*/
+		// dialog_info(title, content, btn_ok);
 		return;
 	}
 
@@ -516,7 +510,7 @@ function load_location_ko(error)
 {
     RMPApplication.debug ("begin load_location_ko : error = " + JSON.stringify(error)); 
     c_debug(debug.location, "=> load_location_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_location_ko");    
 }
@@ -531,7 +525,6 @@ function getAffiliate(affiliate_value)
     var options = {};
     var input = {};
     var query = {};
-    // query.abbreviation = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
     query.affiliate = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
     input.input_query = query; 
     c_debug(debug.affiliate, "=> getAffiliate: input = ", input);
@@ -555,7 +548,7 @@ function affiliate_ko(error)
 {
     RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
     c_debug(debug.affiliate, "=> affiliate_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Impossible de retrouver le nom du contrat!"))};
+    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);  
     RMPApplication.debug("end affiliate_ko");
 }
@@ -603,10 +596,12 @@ function createRequest(aff_obj)
     var customer_reference = $("#id_refCustomer").val(); 
     var contact = $("#id_contact").val();
     // issue description will contain informations about impacted equipement
-    var description_head = "- Matériel: " + selectedCat + " (" + selectedBrand + " - " + selectedModel + ")";
+    var mat_translate = ${P_quoted(i18n("material_trans", "Matériel"))};
+    var description_head = "- " + mat_translate + ": " + selectedCat + " (" + selectedBrand + " - " + selectedModel + ")";
     var description_body = $("#id_descripton").val();
     var short_description = description_body.substring(0,99);
-    var description = description_head + "\n" + "- Information: " + description_body;
+    var inf_translate = ${P_quoted(i18n("information_trans", "Information"))};
+    var description = description_head + "\n" + "- " + inf_translate + ": " + description_body;
     var expected_start = "";
     var priority = "3";     // 3 - Moderate
     var state = "1";        // draft
@@ -658,7 +653,8 @@ function insert_ok(result)
 	wm_order = result;
     var title = ${P_quoted(i18n("insert_ok_title", "Information Suivi Demande"))};
     var content = ${P_quoted(i18n("insert_ok_msg", "Demande créée sous la référence"))};
-    dialog_success(title, content + ": \n" + wm_order.insertResponse.number + "\n", btn_ok);
+    var content2 = ${P_quoted(i18n("insert_ok_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
+    dialog_success(title, content + ": \n<strong>" + wm_order.insertResponse.number + "</strong>\n" + content2, btn_ok);
     
     resetWI();      // reset web interface before a new request
 
@@ -669,7 +665,7 @@ function insert_ko(error)
 {
     RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
     c_debug(debug.insert, "=> insert_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket!"))};
+    var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	$("#id_spinner_insert").hide();
 	RMPApplication.debug("end insert_ko");		
@@ -689,7 +685,7 @@ function load_decision_tree()
 // The next screen is opened with "location_code" value in the url
 function load_next_screen(n_interface)
 {
-    RMPApplication.debug("begin load_next_screen");
+    RMPApplication.debug("begin load_next_screen : n_interface = " + JSON.stringify(n_interface));
     var url = "https://live.runmyprocess.com/live/112501480325272109/appli/";
     url += n_interface + "?P_mode=${P_mode}&P_language=${P_language}&location_code=";
     url += RMPApplication.get("loc_code");
