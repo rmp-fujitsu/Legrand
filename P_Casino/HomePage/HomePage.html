@@ -1,18 +1,38 @@
+<!-- HomePage - Images Menu Choice -->
 <div class="container text-center nav_img">
   <div class="row row-centered">
-    <div id="newServiceRequest" class="col-md-2 col-sm-4 col-xs-6">
-      <a href="https://live.runmyprocess.com/live/112501480325272109/appli/382997?P_mode=${P_mode}&P_language=${P_language}">
+
+<!-- Module Déclarer un incident -->    
+    <div id="newRequest" class="col-md-2 col-sm-4 col-xs-6">
+      <a href="https://live.runmyprocess.com/live/112501480325272109/appli/389366?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered">
           <div class="homeThumbnail">
-            <span class="homeTitle">${i18n('text_newServiceRequest', 'Demande de service')}</span>
+            <span class="homeTitle">${i18n('text_newRequest', 'Déclarer un incident')}</span>
           </div>
           <br>
           <i class="homeImage">
-              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/580d0f60-25c7-11e7-869b-02b3a23437c9/service_request_200.png" title="Demande de service" />
+              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/1babc110-25c7-11e7-8331-0639651b3341/open_ticket_200.png" title="Déclarer un incident" />
           </i>
         </div>
       </a>
     </div>
+
+<!-- Module Aide à la résolution -->    
+    <div id="serviceDesk" class="col-md-2 col-sm-4 col-xs-6">
+      <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
+        <div class="well col-centered">
+          <div class="homeThumbnail">
+            <span class="homeTitle">${i18n('text_serviceDesk', 'Aide à la résolution')}</span>
+          </div>
+          <br>
+          <i class="homeImage">
+              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/b33de3f0-510a-11e7-ab75-02b3a23437c9/service_desk_200.png" title="Aide à la résolution" />
+          </i>
+        </div>
+      </a>
+    </div>
+
+<!-- Module Suivi des demandes -->    
     <div id="trackingRequest" class="col-md-2 col-sm-4 col-xs-6">
       <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered">
@@ -25,20 +45,24 @@
           </i>
         </div>
       </a>
-    </div>    
-    <div id="rating" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439347')=='false' && has_right('439443')=='false'}">
+    </div>
+
+<!-- Module Mes tâches -->    
+    <div id="myTask" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439347')=='false' && has_right('439465')=='false'}">
       <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered">
           <div class="homeThumbnail">
-            <span class="homeTitle">${i18n('text_rating', 'Mes actions')}</span>
+            <span class="homeTitle">${i18n('text_myTask', 'Mes tâches')}</span>
           </div>
           <br>
           <i class="homeImage">
-              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/3a9f1c50-2673-11e7-869b-02b3a23437c9/myactions_200.png" title="Mes actions"/>
+              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/3a9f1c50-2673-11e7-869b-02b3a23437c9/myactions_200.png" title="Mes tâches"/>
           </i>
         </div>
       </a>
     </div>
+
+<!-- Module Tableaux de bord -->    
     <div id="report" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439310')=='false' && has_right('439465')=='false'}">
       <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered ">
@@ -52,24 +76,28 @@
         </div>
       </a>
     </div>
-    <div id="knowledgeBase" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439465')=='false'}">
-      <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
+
+<!-- Module Autres Modules -->
+    <div id="otherModules" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439393')=='true' || has_right('439309')=='true'}">
+      <a href="https://live.runmyprocess.com/live/112501480325272109/appli/389364?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered">
           <div class="homeThumbnail">
-            <span class="homeTitle">${i18n('text_knowledgeBase', 'Base de connaissances')}</span>
+            <span class="homeTitle">${i18n('text_otherModules', 'Autres modules')}</span>
           </div>
           <br>
           <i class="homeImage">
-              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/e5afb140-5111-11e7-ab75-02b3a23437c9/knowledge_base_200.png" title="Base de connaissances"/>
+              <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/0d52e930-5115-11e7-ab75-02b3a23437c9/other_modules_200.png" title="Autres modules"/>
           </i>
         </div>
       </a>
     </div>
-    <div id="otherModules" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439393')=='true' || has_right('439309')=='true'}">
+
+<!-- Module Gestion Compte -->
+    <div id="account" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('439393')=='true' || has_right('439309')=='true'}">
       <a href="https://live.runmyprocess.com/live/112501480325272109/appli/383207?P_mode=${P_mode}&P_language=${P_language}">
         <div class="well col-centered">
           <div class="homeThumbnail">
-            <span class="homeTitle">${i18n('text_accountManagement', 'Gestion Compte')}</span>
+            <span class="homeTitle">${i18n('text_account', 'Gestion Compte')}</span>
           </div>
           <br>
           <i class="homeImage">

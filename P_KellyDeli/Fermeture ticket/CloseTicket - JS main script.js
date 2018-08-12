@@ -8,14 +8,22 @@ RMPApplication.debug("Closure Ticket : Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
 	"user_info": false,
 	"language": false,
-    "closure_code": false,
+	"closure_code": false,
 	"dates_check": false,
 	"intervention": false,
 	"information": false
 };
+/*var dbug = {
+	"user_info": true,
+	"language": true,
+	"closure_code": true,
+	"dates_check": true,
+	"intervention": true,
+	"information": true
+};*/
 
 var login = {};
 var wt_ol = [];
@@ -53,7 +61,7 @@ function init()
 	var options = {};
 	var pattern = {};
 	pattern.login = RMPApplication.get("email");
-	c_debug(debug.user_info, "=> init: pattern = ", pattern);
+	c_debug(dbug.user_info, "=> init: pattern = ", pattern);
 
 	id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
 	RMPApplication.debug("end init");
@@ -65,13 +73,14 @@ function init()
 function get_info_ok(result)
 {
 	RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-	c_debug(debug.user_info, "=> get_info_ok: result = " + JSON.stringify(result));
+	c_debug(dbug.user_info, "=> get_info_ok: result = " + JSON.stringify(result));
 
     // define "login" variable properties
 	login.user = result.user;
 	login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
     login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
+    login.profil = result.profil;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
     login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
@@ -80,7 +89,7 @@ function get_info_ok(result)
     login.division = (!isEmpty(result.division)) ? result.division.trim().toUpperCase() : '';
     login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
 	login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
-	c_debug(debug.user_info, "=> get_info_ok: login = ", login);
+	c_debug(dbug.user_info, "=> get_info_ok: login = ", login);
 
     // Set Service Now dispatch group
     setDispatchGroup();
@@ -91,7 +100,7 @@ function get_info_ok(result)
 function get_info_ko(error)
 {
     RMPApplication.debug("=> begin get_info_ko: error = " + JSON.stringify(error));
-	c_debug(debug.user_info, "=> get_info_ko: error = ", error);
+	c_debug(dbug.user_info, "=> get_info_ko: error = ", error);
 	var error_msg = ${P_quoted(i18n("user_info_ko_msg", "Unable to load user information!"))};
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
 	RMPApplication.debug("end get_info_ko");
@@ -103,14 +112,14 @@ function get_info_ko(error)
 function setDispatchGroup() 
 {
 	RMPApplication.debug("begin setDispatchGroup");
-	c_debug(debug.user_info, "=> setDispatchGroup: input");
+	c_debug(dbug.user_info, "=> setDispatchGroup: input");
     RMPApplication.set("country", login.country);
     RMPApplication.set("timezone", login.timezone);
 
     // Match with SNOW Format
 	var dispatch_group;
 	if (include_string(RMPApplication.get("email"), "bizerba")) {
-		dispatch_group = ,"Bizerba";
+		dispatch_group = "Bizerba";
 	} else if (RMPApplication.get("country") == "SPAIN") {
 		dispatch_group = "Fujitsu Espagne";
 	} else if (RMPApplication.get("country") == "BELGIUM") {
@@ -137,7 +146,7 @@ function setDispatchGroup()
 function load_languages_collection()
 {
     RMPApplication.debug ("begin load_languages_collection");
-    c_debug(debug.language, "=> load_languages_collection");
+    c_debug(dbug.language, "=> load_languages_collection");
     var my_pattern = {};
     var options = {};
     eval(col_languages).listCallback(my_pattern, options, load_languages_collection_ok, load_languages_collection_ko);
@@ -147,7 +156,7 @@ function load_languages_collection()
 function load_languages_collection_ok(result)
 {
     RMPApplication.debug ("begin load_languages_collection_ok");
-    c_debug(debug.language, "=> load_languages_collection_ok: result = ", result);
+    c_debug(dbug.language, "=> load_languages_collection_ok: result = ", result);
     if (result.length > 0) {
 		col_all_lang = result;
         var success_msg = ${P_quoted(i18n("load_languages_collection_ok_msg", "Informations de la collection chargées !"))};
@@ -160,7 +169,7 @@ function load_languages_collection_ok(result)
 function load_languages_collection_ko(error)
 {
     RMPApplication.debug ("begin load_languages_collection_ko");
-    c_debug(debug.language, "=> load_languages_collection_ko: error = ", error);
+    c_debug(dbug.language, "=> load_languages_collection_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_languages_collection_ko_msg", "Récupération impossible des données de la collections des langues !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_languages_collection_ko");
@@ -172,8 +181,8 @@ function load_languages_collection_ko(error)
 function set_closure_codes_list(def_lang, sel_lang) 
 {
 	RMPApplication.debug("=> begin set_closure_codes_list");
-	c_debug(debug.closure_code, "    set_closure_codes_list : default_language = ", def_lang);
-	c_debug(debug.closure_code, "    set_closure_codes_list : selected_language = ", sel_lang);
+	c_debug(dbug.closure_code, "    set_closure_codes_list : default_language = ", def_lang);
+	c_debug(dbug.closure_code, "    set_closure_codes_list : selected_language = ", sel_lang);
 	var def_lang_list = [];
 	var sel_lang_list = [];
 
@@ -193,14 +202,14 @@ function set_closure_codes_list(def_lang, sel_lang)
 			}
 		}
 	}
-	c_debug(debug.closure_code, "    set_closure_codes_list : def_lang_list = ", def_lang_list);
-	c_debug(debug.closure_code, "    set_closure_codes_list : sel_lang_list = ", sel_lang_list);
+	c_debug(dbug.closure_code, "    set_closure_codes_list : def_lang_list = ", def_lang_list);
+	c_debug(dbug.closure_code, "    set_closure_codes_list : sel_lang_list = ", sel_lang_list);
 
 	var vb_codes = new Array();
 	for (i=0; i<sel_lang_list.length; i++) {
 		vb_codes.push({"label": sel_lang_list[i], "value": def_lang_list[i]});
 	}
-	c_debug(debug.closure_code, "    set_closure_codes_list : vb_codes = ", vb_codes);
+	c_debug(dbug.closure_code, "    set_closure_codes_list : vb_codes = ", vb_codes);
 		
 	var a = new RMP_List();
 	a.fromArray(vb_codes);
@@ -218,7 +227,7 @@ function set_closure_codes_list(def_lang, sel_lang)
 function datesCheck() 
 {
 	RMPApplication.debug("begin datesCheck");
-	c_debug(debug.dates_check, "=> begin datesCheck");
+	c_debug(dbug.dates_check, "=> begin datesCheck");
 
 	// retrieve dates from WI
 	var start_date = id_work_start.getValue() * 1000;				// locale timestamp value in milliseconds
@@ -229,7 +238,7 @@ function datesCheck()
 
 	// check if start_date < end_date
 	if (start_date > end_date) {
-		c_debug(debug.dates_check, "=> datesCheck: start_date > end_date AND return FALSE");
+		c_debug(dbug.dates_check, "=> datesCheck: start_date > end_date AND return FALSE");
 		var error_msg1 = ${P_quoted(i18n("start_date_msg", "The date of intervention end can't be lower than the date of intervention start!"))};
 		notify_error(error_title_notify, error_msg1 + ' ' + error_thanks_notify);
 		return false;
@@ -237,7 +246,7 @@ function datesCheck()
 
 	// check if end_date < current date&time
 	if (end_date > now_date) {
-		c_debug(debug.dates_check, "=> datesCheck: end_date > now_date AND return FALSE");
+		c_debug(dbug.dates_check, "=> datesCheck: end_date > now_date AND return FALSE");
 		var error_msg2 = ${P_quoted(i18n("end_date_msg", "The date of intervention end can't be higher than the current date & time!"))};
 		notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
 		return false;
@@ -254,12 +263,12 @@ function datesCheck()
 
     // we save UTC dates for ulterior use
 	id_utc_work_start.setValue(start_date_utc);
-	c_debug(debug.dates_check, "=> datesCheck: start_date_utc = ", start_date_utc);
+	c_debug(dbug.dates_check, "=> datesCheck: start_date_utc = ", start_date_utc);
 	id_utc_work_end.setValue(end_date_utc);
-	c_debug(debug.dates_check, "=> datesCheck: end_date_utc = ", end_date_utc);
+	c_debug(dbug.dates_check, "=> datesCheck: end_date_utc = ", end_date_utc);
 
 	RMPApplication.debug("end datesCheck");
-	c_debug(debug.dates_check, "=> datesCheck: return TRUE");
+	c_debug(dbug.dates_check, "=> datesCheck: return TRUE");
 	return true;		// needed as called by pre-launch script "Fermer le ticket" button
 }
 
@@ -270,7 +279,7 @@ function datesCheck()
 function load_WO_InvFromSN() 
 {
     RMPApplication.debug("begin load_WO_InvFromSN");
-    c_debug(debug.intervention, "=> load_WO_InvFromSN");
+    c_debug(dbug.intervention, "=> load_WO_InvFromSN");
 
 	var dispatch_group = RMPApplication.get("dispatch_group");
 	var sn_query = "";											// query to be defined with following criterias
@@ -281,7 +290,7 @@ function load_WO_InvFromSN()
 	
 	var options = {};
 	var input = {"query": sn_query};
-    c_debug(debug.intervention, "=> load_WO_InvFromSN: sn_query = ", sn_query);
+    c_debug(dbug.intervention, "=> load_WO_InvFromSN: sn_query = ", sn_query);
 	id_get_interventions_list_api.trigger(input, options, inv_ok, inv_ko);
 
 	RMPApplication.debug("end load_WO_InvFromSN");
@@ -292,7 +301,7 @@ function inv_ok(result)
 	RMPApplication.debug("inv_ok : result =  " + result);
 
 	wt_ol = result.result;
-	c_debug(debug.intervention, "=> inv_ok: wt_ol = ", wt_ol);
+	c_debug(dbug.intervention, "=> inv_ok: wt_ol = ", wt_ol);
 
 	if (typeof(wt_ol) == 'undefined') {					// Aucun résultat
 		
@@ -311,8 +320,10 @@ function inv_ok(result)
 			}			
 		}
 		var a = new RMP_List();
-		a.fromArray(vb_wo);
-		c_debug(debug.intervention, "=> inv_ok: vb_wo = ", vb_wo);
+		// alphabetical sort (i.e "from oldest INVxxxxxxx to newest") of Interventions array
+		var vb_wo_sorted = vb_wo.sort(sortArrayByKey({key: 'label', string: true}, false) );
+		a.fromArray(vb_wo_sorted);
+		c_debug(dbug.intervention, "=> inv_ok: vb_wo = ", vb_wo_sorted);
 		RMPApplication.setList("vb_wo", a);			// List of interventions
 		id_spinner.setVisible(false);
 	}
@@ -335,18 +346,18 @@ function inv_ko(error)
 function setDate() 
 {
 	RMPApplication.debug("begin setDate");
-	c_debug(debug.dates_check, "=> begin datesCheck");
+	c_debug(dbug.dates_check, "=> begin datesCheck");
 
     // Retrieving local current date&time
     var today = new Date();
     var local_date = moment(today, "DD/MM/YYYY HH:mm:ss").format("DD/MM/YYYY HH:mm:ss");
     id_date.setValue(local_date);
-	c_debug(debug.dates_check, "=> datesCheck: local_date = ", local_date);
+	c_debug(dbug.dates_check, "=> datesCheck: local_date = ", local_date);
 
     // we save UTC dates for ulterior use
     var utc_date = moment(today, "DD/MM/YYYY HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");
     id_utc_date.setValue(utc_date);
-    c_debug(debug.dates_check, "=> datesCheck: utc_date = ", utc_date);
+    c_debug(dbug.dates_check, "=> datesCheck: utc_date = ", utc_date);
 
 	RMPApplication.debug("end setDate");
 }
@@ -357,11 +368,11 @@ function setDate()
 function set_ticket_information() 
 {
     RMPApplication.debug("begin set_ticket_information");
-    c_debug(debug.information, "=> set_ticket_information");
+    c_debug(dbug.information, "=> set_ticket_information");
 
 	for(i=0; i<wt_ol.length; i++) {
 		if (wt_ol[i].task_sys_id == RMPApplication.get("ticket_number")) {
-			c_debug(debug.information, "=> set_ticket_information: wt_ol[" + i + "] = ", wt_ol[i]);
+			c_debug(dbug.information, "=> set_ticket_information: wt_ol[" + i + "] = ", wt_ol[i]);
 			RMPApplication.set("short_description", wt_ol[i].task_short_description);
 			RMPApplication.set("description", wt_ol[i].task_description);
 			var opened_at_date_utc  = moment(wt_ol[i].wo_opened_at, "YYYY-MM-DD HH:mm:ss").utc().format("DD/MM/YYYY HH:mm:ss");

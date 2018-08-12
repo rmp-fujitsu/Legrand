@@ -6,7 +6,7 @@ RMPApplication.debug ("Application started");
 // ==========================================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "item": false
 };
 
@@ -89,7 +89,7 @@ function add_item()
 function add_ok(result)
 {
     RMPApplication.debug("begin add_ok");
-    c_debug(dbug.item, "=> add_ok: result", result);
+    c_debug(dbug.item, "=> add_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("add_ok_msg", "Nouveau site ajouté !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
@@ -125,7 +125,7 @@ function update_item(locationcode)
 function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
-    c_debug(dbug.item, "=> update_ok: result", result);
+    c_debug(dbug.item, "=> update_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
@@ -160,7 +160,7 @@ function load_item(locationcode)
 function load_ok(result)
 {
     RMPApplication.debug ("begin load_ok");
-    c_debug(dbug.item, "=> load_ok: result", result);
+    c_debug(dbug.item, "=> load_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations du site chargées !"))};
     notify_success(success_title_notify, success_msg);
     id_details_item.setVisible(true);
@@ -197,7 +197,7 @@ function delete_item(locationcode)
 function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
-    c_debug(dbug.item, "=> delete_ok: result", result);
+    c_debug(dbug.item, "=> delete_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé !"))};
     notify_success(success_title_notify, success_msg);
     id_report.refresh();
@@ -239,7 +239,7 @@ function item_already_exists(my_object)
 function exists_ok(result)
 {
     RMPApplication.debug ("begin exists_ok");
-    c_debug(dbug.item, "=> exists_ok: result", result);
+    c_debug(dbug.item, "=> exists_ok: result = ", result);
     if(result[0]) {
         res = true;
     } else {

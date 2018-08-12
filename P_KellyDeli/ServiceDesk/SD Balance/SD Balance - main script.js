@@ -8,7 +8,7 @@ RMPApplication.debug("SD - Balance : Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
 	"init" : false,
 	"insert" : false,
 	"picture" : false
@@ -76,8 +76,8 @@ function createRequest()
 		description += "\n => " + photo_consult;
 	}
 	work_order.sn_description = description;
-	c_debug(debug.insert, "=> createRequest: work_order = ", work_order);
-	c_debug(debug.insert, "=> createRequest: sn_caller = ", RMPApplication.get("sn_caller"));	
+	c_debug(dbug.insert, "=> createRequest: work_order = ", work_order);
+	c_debug(dbug.insert, "=> createRequest: sn_caller = ", RMPApplication.get("sn_caller"));	
 	var options = {};	
 	id_insert_work_order_api.trigger (work_order, options, insert_ok, insert_ko);
 
@@ -87,7 +87,7 @@ function createRequest()
 function insert_ok(result) 
 {
 	RMPApplication.debug("begin insert_ok : " + JSON.stringify(result));
-	c_debug(debug.insert, "=> insert_ok: result = ", JSON.stringify(result));
+	c_debug(dbug.insert, "=> insert_ok: result = ", JSON.stringify(result));
 
 	wm_order = result;
 	var input = {};
@@ -109,7 +109,7 @@ function insert_ok(result)
 	}
 
 	var options = {};
-	c_debug(debug.insert, "=> insert_ok: input = ", input);
+	c_debug(dbug.insert, "=> insert_ok: input = ", input);
 	id_save_picture_in_collection.trigger (input, options, save_picture_ok, save_picture_ko);
 
 	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
@@ -123,7 +123,7 @@ function insert_ok(result)
 function insert_ko(error) 
 {
     RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
-	c_debug(debug.insert, "=> insert_ko: error = ", error);
+	c_debug(dbug.insert, "=> insert_ko: error = ", error);
 	var title = ${P_quoted(i18n("id_title_insert_ko_1", "Information Suivi Demande"))};
     var content1 = ${P_quoted(i18n("id_msg_insert_ko_1", "Le processus de création du ticket a été anormalement long OU n'a pas abouti !"))};
 	var content2 = ${P_quoted(i18n("id_msg_insert_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
@@ -139,14 +139,14 @@ function insert_ko(error)
 function save_picture_ok (result)
 {
 	RMPApplication.debug("begin save_picture_ok : result = " + JSON.stringify(result));
-	c_debug(debug.picture, "=> save_picture_ok: result = ", result);
+	c_debug(dbug.picture, "=> save_picture_ok: result = ", result);
     RMPApplication.debug("end save_picture_ok");
 }
 
 function save_picture_ko (error) 
 {
     RMPApplication.debug("begin save_picture_ko : error = " + JSON.stringify(error));
-	c_debug(debug.picture, "=> save_picture_ko: error = ", error);
+	c_debug(dbug.picture, "=> save_picture_ko: error = ", error);
 	var title = ${P_quoted(i18n("id_title_save_picture_ko_1", "Information Suivi Demande"))};
     var content1 = ${P_quoted(i18n("id_msg_save_picture_ko_1", "Le document n'a pu être sauvegardé !"))};
 	var content2 = ${P_quoted(i18n("id_msg_save_picture_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};

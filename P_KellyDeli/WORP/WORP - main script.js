@@ -8,7 +8,7 @@ RMPApplication.debug("Main : Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "init" : false,
     "language" : false,
     "box" : false,
@@ -65,7 +65,7 @@ function init()
     var option = {};
     var pattern = {};
     pattern.login = RMPApplication.get("login");
-    c_debug(debug.init, "=> init: pattern = ", pattern);
+    c_debug(dbug.init, "=> init: pattern = ", pattern);
 
     id_get_user_info_as_admin_api.trigger(pattern, option , get_info_ok, get_info_ko);
     RMPApplication.debug("end init");
@@ -77,7 +77,7 @@ function init()
 function load_language(code_language)
 {
     RMPApplication.debug ("begin load_language");
-    c_debug(debug.language, "=> load_language: code_language = ", code_language);
+    c_debug(dbug.language, "=> load_language: code_language = ", code_language);
     var my_pattern = {};
     var options = {};
     my_pattern.code_language = code_language;
@@ -88,7 +88,7 @@ function load_language(code_language)
 function load_language_ok(result)
 {
     RMPApplication.debug ("begin load_language_ok");
-    c_debug(debug.language, "=> load_language_ok: result", result);
+    c_debug(dbug.language, "=> load_language_ok: result", result);
     if (result.length > 0) {
         col_lang_opt = result[0];
         var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées !"))};
@@ -101,7 +101,7 @@ function load_language_ok(result)
 function load_language_ko(error)
 {
     RMPApplication.debug ("begin load_language_ko");
-    c_debug(debug.language, "=> load_language_ko: error = ", error);
+    c_debug(dbug.language, "=> load_language_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_language_ko");
@@ -113,7 +113,7 @@ function load_language_ko(error)
 function resetWI()
 {
     RMPApplication.debug("begin resetWI");
-    c_debug(debug.init, "=> resetWI");
+    c_debug(dbug.init, "=> resetWI");
     // Show only the necessary section: search
     id_search_filters.setVisible(true);
     id_search_results.setVisible(false);
@@ -177,13 +177,14 @@ function resetWI()
 function get_info_ok(result) 
 {
     RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-    c_debug(debug.init, "=> get_info_ok: result = ", result);
+    c_debug(dbug.init, "=> get_info_ok: result = ", result);
 
     // define "login" variable properties
     login.user = result.user;
     login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
     login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
+    login.profil = result.profil;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
     login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
@@ -193,7 +194,7 @@ function get_info_ok(result)
     login.division = (!isEmpty(result.division)) ? result.division.trim().toUpperCase() : '';
     login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
     login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
-    c_debug(debug.init, "=> get_info_ok: login = ", login);
+    c_debug(dbug.init, "=> get_info_ok: login = ", login);
 
     // Define 'view' global variable, used to filter locations scope
     // Different profiles are: SUPERUSER-COMPANY-COUNTRY-DIVISION-REGION-LOCAL
@@ -212,10 +213,10 @@ function get_info_ok(result)
     } else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
         view = "COUNTRY";
 
-    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") && (login.profil == "DIVISION") ) {
         view = "DIVISION";
 
-    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") && (login.profil == "REGION") ) {
         view = "REGION";
 
     } else {               // Only one site: 1 country - 1 affiliate - 1 location
@@ -234,7 +235,7 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    c_debug(debug.init, "=> get_info_ko: error = ", error);
+    c_debug(dbug.init, "=> get_info_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
@@ -248,7 +249,7 @@ function get_info_ko(error)
 function fillStateBox() 
 {
     RMPApplication.debug("begin fillStateBox");
-    c_debug(debug.box, "=> fillStateBox");
+    c_debug(dbug.box, "=> fillStateBox");
     var text_statusFilter = ${P_quoted(i18n("statusFilter_text", "Tous les statuts"))};
 
     $("#id_statusFilter").append($("<option selected />").val('tous').html(text_statusFilter));
@@ -264,7 +265,7 @@ function fillStateBox()
 function fillWoTypeBox() 
 {
     RMPApplication.debug("begin fillWoTypeBox");
-    c_debug(debug.box, "=> fillWoTypeBox");
+    c_debug(dbug.box, "=> fillWoTypeBox");
     var text_woTypeFilter = ${P_quoted(i18n("woTypeFilter_text", "Tous"))};
 
     $("#id_woTypeFilter").append($("<option selected />").val('tous').html(text_woTypeFilter));
@@ -283,7 +284,7 @@ function fillWoTypeBox()
 function fillAffiliateBox(vue) 
 {
     RMPApplication.debug("begin fillAffiliateBox : vue = ", vue);
-    c_debug(debug.box, "=> fillAffiliateBox: vue = ", vue);
+    c_debug(dbug.box, "=> fillAffiliateBox: vue = ", vue);
 
     affiliateList = [{ 'label': 'KELLYDELI', 'value': 'KELLYDELI' }];
 
@@ -301,7 +302,7 @@ function fillAffiliateBox(vue)
 function fillCountryBox(vue) 
 {
     RMPApplication.debug("begin fillCountryBox: vue = " + JSON.stringify(vue));
-    c_debug(debug.box, "=> fillCountryBox: vue = ", vue);
+    c_debug(dbug.box, "=> fillCountryBox: vue = ", vue);
 
     var text_countryFilter = "";
 
@@ -356,7 +357,7 @@ function fillCountryBox(vue)
 function fillLocationBox(locations_array)
 {
     RMPApplication.debug("begin fillLocationBox: locations_array = " + JSON.stringify(locations_array));
-    c_debug(debug.box, "=> fillLocationBox: locations_array = ", locations_array);
+    c_debug(dbug.box, "=> fillLocationBox: locations_array = ", locations_array);
 
     $("#id_locationFilter").empty();    // field reset
 
@@ -371,7 +372,7 @@ function fillLocationBox(locations_array)
 
             text_locationFilter = ${P_quoted(i18n("locationFilter_text", "Ensemble des sites"))}; 
             $("#id_locationFilter").append($("<option selected />").val('tous').html(text_locationFilter));
-            c_debug(debug.box, "=> fillLocationBox: Add => Ensemble des sites");
+            c_debug(dbug.box, "=> fillLocationBox: Add => Ensemble des sites");
         }
 
         // locations_array is alphabetically ordered
@@ -381,7 +382,7 @@ function fillLocationBox(locations_array)
         $.each(locations_array, function() {
             var id_i = this.location_code;
             var text_i = "&#10143; " + this.location_code + " - " + this.city.toUpperCase();
-            // c_debug(debug.box, "=> fillLocationBox: location_code = ", this.location_code);
+            // c_debug(dbug.box, "=> fillLocationBox: location_code = ", this.location_code);
             if (locations_array.length == 1) {
                 $("#id_locationFilter").append($("<option selected />").val(id_i).html(text_i));
             } else {  
@@ -404,7 +405,7 @@ function fillLocationBox(locations_array)
 function getVarStatusValue (libelle)
 {
     RMPApplication.debug("begin getVarStatusValue");
-    c_debug(debug.status, "=> getVarStatusValue: libelle = ", libelle);
+    c_debug(dbug.status, "=> getVarStatusValue: libelle = ", libelle);
 
     switch (libelle)  {
         case "Brouillon" :
@@ -492,7 +493,7 @@ function getVarStatusValue (libelle)
 function getVarINVStatusValue (libelle)
 {
     RMPApplication.debug("begin getVarINVStatusValue");
-    c_debug(debug.status, "=> getVarINVStatusValue: libelle = ", libelle);
+    c_debug(dbug.status, "=> getVarINVStatusValue: libelle = ", libelle);
 
     switch (libelle)  {
         case "Brouillon" :
@@ -552,7 +553,7 @@ function getVarINVStatusValue (libelle)
 function getVarPriorityValue (priority)
 {
     RMPApplication.debug("begin getVarPriorityValue");
-    c_debug(debug.priority, "=> getVarPriorityValue: priority = ", priority);
+    c_debug(dbug.priority, "=> getVarPriorityValue: priority = ", priority);
 
     switch (priority)  {
         case '1':
@@ -592,7 +593,7 @@ function getVarPriorityValue (priority)
 function getVarWOTypeValue (wo_type)
 {
     RMPApplication.debug("begin getVarWOTypeValue");
-    c_debug(debug.type, "=> getVarWOTypeValue: wo_type = ", wo_type);
+    c_debug(dbug.type, "=> getVarWOTypeValue: wo_type = ", wo_type);
 
     switch (wo_type)  {
         case 'Devis':
@@ -629,8 +630,8 @@ function getVarWOTypeValue (wo_type)
 function translateExp (lang, expr)
 {
     RMPApplication.debug("begin translateExp");
-    c_debug(debug.status, "=> translateExp: lang = ", lang);
-    c_debug(debug.status, "=>               expr = ", expr);
+    c_debug(dbug.status, "=> translateExp: lang = ", lang);
+    c_debug(dbug.status, "=>               expr = ", expr);
     return col_lang_opt[expr];
     RMPApplication.debug("end translateExp");
 }
@@ -641,12 +642,12 @@ function translateExp (lang, expr)
 function getFilteredLocations()
 {
     RMPApplication.debug("begin getFilteredLocations");
-    c_debug(debug.site, "=> getFilteredLocations");
+    c_debug(dbug.site, "=> getFilteredLocations");
 
     // Retrieving user's input value
     var country_value = $("#id_countryFilter").val();
     var affiliate_value = $("#id_affiliateFilter").val();
-    c_debug(debug.site, "=> getFilteredLocations: affiliate_value = ", affiliate_value);
+    c_debug(dbug.site, "=> getFilteredLocations: affiliate_value = ", affiliate_value);
     var affiliate_label = $("#id_affiliateFilter").text();
     var division_value = login.division; 
     var region_value = login.region;
@@ -660,7 +661,7 @@ function getFilteredLocations()
         // we propose only one value for all locations "Ensemble des sites"
         $("#id_locationFilter").empty();    // previous value reset
         $("#id_locationFilter").append($("<option selected />").val('tous').html(text_locationFilter));
-        c_debug(debug.site, "=> getFilteredLocations: ADD => => Ensemble des sites");
+        c_debug(dbug.site, "=> getFilteredLocations: ADD => => Ensemble des sites");
 
     } else {
 
@@ -673,12 +674,12 @@ function getFilteredLocations()
             for (var i=0; i < affiliateList.length; i++) {
                 if ( affiliate_value.toUpperCase() ==  affiliateList[i].value.toUpperCase() ) {
                     affiliate_value = affiliateList[i].label.toUpperCase();
-                    c_debug(debug.site, "=> getFilteredLocations: affiliate_value = ", affiliate_value);
+                    c_debug(dbug.site, "=> getFilteredLocations: affiliate_value = ", affiliate_value);
                 }
             }
         }
 
-        c_debug(debug.site, "=> getFilteredLocations: switch | view = ", view);
+        c_debug(dbug.site, "=> getFilteredLocations: switch | view = ", view);
         switch (view) {
             case "COMPANY" :
                 if ( (country_value !== "tous") && (!isEmpty(country_value)) ) {
@@ -767,7 +768,7 @@ function getFilteredLocations()
                     if (!(isEmpty(kiosk_list))) {       // Regional Manager manages several kiosks
                         var kiosk_list_array = [];
                         kiosk_list_array = kiosk_list.split(",");
-                        c_debug(debug.site, "getFilteredLocations : kiosk_list_array = ", kiosk_list_array);
+                        c_debug(dbug.site, "getFilteredLocations : kiosk_list_array = ", kiosk_list_array);
                         input.location_code.$in = kiosk_list_array;
                     
                     } else {                            // only one kiosk is managed by this manager
@@ -777,7 +778,7 @@ function getFilteredLocations()
         
         }
         //call api to location collection
-        c_debug(debug.site, "=> getFilteredLocations: input = ", input);
+        c_debug(dbug.site, "=> getFilteredLocations: input = ", input);
         id_get_filtered_locations_api.trigger(input, options, get_locations_ok, get_locations_ko);
     }
     RMPApplication.debug("end getFilteredLocations");
@@ -787,7 +788,7 @@ function get_locations_ok(result)
 {
     RMPApplication.debug("begin get_locations_ok : result = " + JSON.stringify(result));
     var_location_list = result.res;
-    c_debug(debug.site, "=> get_locations_ok : var_location_list = ", var_location_list);
+    c_debug(dbug.site, "=> get_locations_ok : var_location_list = ", var_location_list);
 
     // Fill locations select box with locations result
     fillLocationBox(var_location_list);
@@ -798,7 +799,7 @@ function get_locations_ok(result)
 function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
-    c_debug(debug.site, "=> get_locations_ko: error = ", error);
+    c_debug(dbug.site, "=> get_locations_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
@@ -810,7 +811,7 @@ function get_locations_ko(error)
 function getWorkOrderListFromServiceNow() 
 {
     RMPApplication.debug("begin getWorkOrderListFromServiceNow");
-    c_debug(debug.order, "=> getWorkOrderListFromServiceNow");
+    c_debug(dbug.order, "=> getWorkOrderListFromServiceNow");
 
     id_search_results.setVisible(false);
     initDataTable();
@@ -845,7 +846,7 @@ function getWorkOrderListFromServiceNow()
 function favoriteFilter(favQuery)
 {
     RMPApplication.debug("begin favoriteFilter: favQuery = ", favQuery);
-    c_debug(debug.query, "=> favoriteFilter: favQuery = ", favQuery);
+    c_debug(dbug.query, "=> favoriteFilter: favQuery = ", favQuery);
     initDataTable();
     clearOrderDataTable();
 
@@ -909,7 +910,7 @@ function favoriteFilter(favQuery)
 function getFilter()
 {
     RMPApplication.debug("begin getFilter");
-    c_debug(debug.query, "=> getFilter");
+    c_debug(dbug.query, "=> getFilter");
 
     // retrieve values and prepare query
     sn_query = "";
@@ -932,7 +933,7 @@ function getFilter()
 function queryServiceNow()
 {
     RMPApplication.debug("begin queryServiceNow: sn_query = ", sn_query);
-    c_debug(debug.query, "=> queryServiceNow: sn_query = ", sn_query);
+    c_debug(dbug.query, "=> queryServiceNow: sn_query = ", sn_query);
     $("#id_spinner_search_top").show();
     $("#id_spinner_search_bottom").show();
     clearOrderDataTable();
@@ -941,7 +942,7 @@ function queryServiceNow()
     var input = {};
     var option = {};
     input.query = sn_query;
-    c_debug(debug.query, "=> queryServiceNow: input = ", input);
+    c_debug(dbug.query, "=> queryServiceNow: input = ", input);
     id_get_work_order_list_api.trigger(input, option, order_ok, order_ko);
 
     RMPApplication.debug("end queryServiceNow");
@@ -950,11 +951,11 @@ function queryServiceNow()
 function order_ok(result)
 {
     RMPApplication.debug("order_ok : result =  " + result);
-    c_debug(debug.order, "=> order_ok: result", result);
+    c_debug(dbug.order, "=> order_ok: result", result);
 
     if (isEmpty(result.result) || (result.result.length == 0)) {
         var_order_list = null;
-        c_debug(debug.order, "=> order_ok: var_order_list (null) = ", var_order_list);
+        c_debug(dbug.order, "=> order_ok: var_order_list (null) = ", var_order_list);
 
         var  title = ${P_quoted(i18n("order_ok_title", "Résultat de la recherche"))};
         var  content = ${P_quoted(i18n("order_ok_msg", "Aucun ticket ne correspond aux critères donnés !"))};
@@ -967,7 +968,7 @@ function order_ok(result)
 
     } else {
         var_order_list = result.result;
-        c_debug(debug.order, "=> order_ok: var_order_list (not empty) = ", var_order_list);
+        c_debug(dbug.order, "=> order_ok: var_order_list (not empty) = ", var_order_list);
     }
     
     showOrderArray();
@@ -977,7 +978,7 @@ function order_ok(result)
 function order_ko(error) 
 {
     RMPApplication.debug("begin order_ko : error =  " + JSON.stringify(error));
-    c_debug(debug.order, "=> order_ko: error", error);
+    c_debug(dbug.order, "=> order_ko: error", error);
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
 
@@ -992,7 +993,7 @@ function order_ko(error)
 function showOrderArray()
 {
     RMPApplication.debug("begin fillOrderArray");
-    c_debug(debug.order, "=> fillOrderArray");
+    c_debug(dbug.order, "=> fillOrderArray");
     
     if (var_order_list.length != 0) {
         fillOrderArray();               // some orders to show
@@ -1010,7 +1011,7 @@ function showOrderArray()
 function fillOrderArray()  
 {
     RMPApplication.debug("begin fillOrderArray");
-    c_debug(debug.order, "=> fillOrderArray: var_order_list = ", var_order_list);
+    c_debug(dbug.order, "=> fillOrderArray: var_order_list = ", var_order_list);
 
     if (var_order_list == null) {
         $("#id_spinner_search_top").hide();
@@ -1025,7 +1026,7 @@ function fillOrderArray()
 
     // Dealing with a single object or an array of objects
     var var_ol = (var_order_list.length == undefined) ? [var_order_list] : var_order_list;
-    c_debug(debug.order, "=> fillOrderArray: var_ol = ", var_ol);
+    c_debug(dbug.order, "=> fillOrderArray: var_ol = ", var_ol);
     for (i=0; i < var_ol.length; i++) {
         try {
 
@@ -1035,7 +1036,7 @@ function fillOrderArray()
             var closed_at = "";
             var u_resolution_time = "";
             var site_name = var_ol[i].loc_name;
-            c_debug(debug.order, "=> fillOrderArray: var_ol[i].loc_name = ", var_ol[i].loc_name);
+            c_debug(dbug.order, "=> fillOrderArray: var_ol[i].loc_name = ", var_ol[i].loc_name);
 
             var notation = (isEmpty(var_ol[i].wo_u_customer_satisfaction)) ? "" : setNotation(var_ol[i].wo_u_customer_satisfaction, i);
 
@@ -1069,7 +1070,7 @@ function fillOrderArray()
                 // site_code,
                 // expected_start
             );
-            // c_debug(debug.order, "=> fillOrderArray: row = ", row);
+            // c_debug(dbug.order, "=> fillOrderArray: row = ", row);
             $('#id_tab_wm_order').DataTable().row.add(row);
         } catch (ee) {
             alert(ee.message);
@@ -1089,13 +1090,13 @@ function fillOrderArray()
 function getTaskList(indice) 
 {
     RMPApplication.debug("begin getTaskList");
-    c_debug(debug.task, "=> getTaskList");
+    c_debug(dbug.task, "=> getTaskList");
     id_index.setValue(indice);
     var query = "parent.number=" + var_order_list[indice].wo_number;
 
     var options = {};
     var pattern =  {"wm_task_query": query};
-    c_debug(debug.task, "=> getTaskList: pattern = ", pattern);
+    c_debug(dbug.task, "=> getTaskList: pattern = ", pattern);
     id_get_work_order_tasks_list_api.trigger(pattern, options, task_ok, task_ko);
     RMPApplication.debug("end getTaskList");
 }
@@ -1103,10 +1104,10 @@ function getTaskList(indice)
 function task_ok(result) 
 {
     RMPApplication.debug("begin task_ok : result =  " + JSON.stringify(result)); 
-    c_debug(debug.task, "=> task_ok: result = ", result);
+    c_debug(dbug.task, "=> task_ok: result = ", result);
     if (result.wm_task_list == "") {
         var_task_list = null;
-        c_debug(debug.task, "=> task_ok: var_task_list (null) = ", var_task_list);
+        c_debug(dbug.task, "=> task_ok: var_task_list (null) = ", var_task_list);
         clearTaskDataTable();
         id_search_results.setVisible(true);
         $("#id_spinner_search_top").hide();
@@ -1114,12 +1115,12 @@ function task_ok(result)
         // return;
     } else {
         var_task_list = result.wm_task_list.getRecordsResult;
-        c_debug(debug.task, "=> task_ok: var_task_list (not empty) = ", var_task_list);
+        c_debug(dbug.task, "=> task_ok: var_task_list (not empty) = ", var_task_list);
     }
     
     if (var_order_list.length != 0) {
         var indice = id_index.getValue();
-        c_debug(debug.task, "=> task_ok: call displayDetail | indice = ", indice);
+        c_debug(dbug.task, "=> task_ok: call displayDetail | indice = ", indice);
         displayDetail(indice);
 
     } else {
@@ -1131,7 +1132,7 @@ function task_ok(result)
 function task_ko(error) 
 {
     RMPApplication.debug("begin task_ko : error =  " + JSON.stringify(error));
-    c_debug(debug.task, "=> task_ko: error = ", error);
+    c_debug(dbug.task, "=> task_ko: error = ", error);
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
     clearTaskDataTable();
@@ -1147,7 +1148,7 @@ function displayDetail(indice)
 {
     RMPApplication.debug("displayDetail : indice =  " + indice);
     v_ol = var_order_list[indice];
-    c_debug(debug.detail, "=> displayDetail: v_ol (mini) = ", v_ol);
+    c_debug(dbug.detail, "=> displayDetail: v_ol (mini) = ", v_ol);
 
     // we want all details for the following work order before showing on the screen
     var wo_query = "^wo_number=" + $.trim(v_ol.wo_number);
@@ -1155,7 +1156,7 @@ function displayDetail(indice)
     var options = {};
     input.query = wo_query;
     // var input =  {"query": wo_query};
-    c_debug(debug.detail, "=> displayDetail: input = ", input);
+    c_debug(dbug.detail, "=> displayDetail: input = ", input);
     id_get_work_order_full_details_api.trigger(input, options, wo_details_ok, wo_details_ko);
 
     RMPApplication.debug("end displayDetail");
@@ -1164,12 +1165,12 @@ function displayDetail(indice)
 function wo_details_ok(result) 
 {
     RMPApplication.debug("begin wo_details_ok : result =  " + JSON.stringify(result));
-    // c_debug(debug.detail, "=> wo_details_ok: result = ", result);
-    v_ol_init = v_ol;
-    c_debug(debug.detail, "=> wo_details_ok: v_ol_init (mini) = ", v_ol_init);
+    // c_debug(dbug.detail, "=> wo_details_ok: result = ", result);
+    var v_ol_init = v_ol;
+    c_debug(dbug.detail, "=> wo_details_ok: v_ol_init (mini) = ", v_ol_init);
     v_ol = result.result[0];
-    c_debug(debug.detail, "=> wo_details_ok: result = ", result);
-    c_debug(debug.detail, "=> wo_details_ok: v_ol (full) = ", v_ol);
+    c_debug(dbug.detail, "=> wo_details_ok: result = ", result);
+    c_debug(dbug.detail, "=> wo_details_ok: v_ol (full) = ", v_ol);
 
     // Screen change: WOs list => WO details
     id_search_filters.setVisible(false);
@@ -1237,7 +1238,7 @@ function wo_details_ok(result)
 function wo_details_ko(error) 
 {
     RMPApplication.debug("begin wo_details_ko : error =  " + JSON.stringify(error));
-    c_debug(debug.detail, "=> wo_details_ko : error = ", error);
+    c_debug(dbug.detail, "=> wo_details_ko : error = ", error);
     $("#id_spinner_search_top").hide();
     $("#id_spinner_search_bottom").hide();
     var error_msg = ${P_quoted(i18n("wo_details_ko_msg", "Récupération impossible des informations de Work Order !"))};
@@ -1251,7 +1252,7 @@ function wo_details_ko(error)
 function link_to_photo(wo_number)
 {
     RMPApplication.debug("link_to_photo : wo_number =  " + wo_number);
-    c_debug(debug.photo, "=> link_to_photo: wo_number", wo_number);
+    c_debug(dbug.photo, "=> link_to_photo: wo_number", wo_number);
     var input = {};
     input.wo_number = wo_number;
     id_get_picture_in_collection.trigger(input, {}, get_photo_ok, get_photo_ko);
@@ -1261,7 +1262,7 @@ function link_to_photo(wo_number)
 function get_photo_ok (result)
 {
     RMPApplication.debug("get_photo_ok : result =  " + result);
-    c_debug(debug.photo, "=> get_photo_ok: result.my_obj = ", result.my_obj);
+    c_debug(dbug.photo, "=> get_photo_ok: result.my_obj = ", result.my_obj);
     if (result.my_obj.length != 0) {
         var id_attachment = $("#id_attachment");
         id_attachment.html('');
@@ -1277,7 +1278,7 @@ function get_photo_ok (result)
 function get_photo_ko (error)
 {
     RMPApplication.debug("begin get_photo_ko : error =  " + JSON.stringify(error));
-    c_debug(debug.photo, "=> get_photo_ko: error", error);
+    c_debug(dbug.photo, "=> get_photo_ko: error", error);
 
     var error_msg = ${P_quoted(i18n("order_ko_msg", "Récupération impossible des photos !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
@@ -1290,17 +1291,17 @@ function get_photo_ko (error)
 function fillTaskArray(wm_order_num)  
 {
     RMPApplication.debug ("begin fillTaskArray");
-    c_debug(debug.task, "=> fillTaskArray: wm_order_num = ", wm_order_num);
+    c_debug(dbug.task, "=> fillTaskArray: wm_order_num = ", wm_order_num);
 
     if (var_task_list == null) {
-        c_debug(debug.task, "=> fillTaskArray: var_task_list (null)");
+        c_debug(dbug.task, "=> fillTaskArray: var_task_list (null)");
         return;
     }
 
     $('#id_tab_wm_task').DataTable().clear();
     // Dealing with a single object or an array of objects
     var var_tl = (var_task_list.length == undefined) ? [var_task_list] : var_task_list;
-    c_debug(debug.task, "=> fillTaskArray: var_tl = ", var_tl);
+    c_debug(dbug.task, "=> fillTaskArray: var_tl = ", var_tl);
 
     for (j=0; j < var_tl.length; j++) {
         try {
@@ -1334,8 +1335,8 @@ function fillTaskArray(wm_order_num)
 function fillSatisfaction(note, evalComment)
 {
     RMPApplication.debug("begin fillSatisfaction");
-    c_debug(debug.eval, "=> fillSatisfaction: note = ", note);
-    c_debug(debug.eval, "=> fillSatisfaction: evalComment = ", evalComment);
+    c_debug(dbug.eval, "=> fillSatisfaction: note = ", note);
+    c_debug(dbug.eval, "=> fillSatisfaction: evalComment = ", evalComment);
 
     if (!isEmpty(note)) {                             // already evaluated
         $("#id_divEvaluation").show();
@@ -1349,21 +1350,21 @@ function fillSatisfaction(note, evalComment)
         });
         $("#id_evaluation").rating('update', note);
         $("#id_evaluation").rating('refresh', {readonly: true});
-        c_debug(debug.eval, "=> fillSatisfaction: #1");
+        c_debug(dbug.eval, "=> fillSatisfaction: #1");
 
         if (!isEmpty(evalComment)) {                  // show comment only if not empty
             $("#id_divEvalComment").show();
             $("#id_evalComment").val (evalComment);
             $("#id_evalComment").attr('readonly', 'readonly');
-            c_debug(debug.eval, "=> fillSatisfaction: #2");
+            c_debug(dbug.eval, "=> fillSatisfaction: #2");
         } else {                                
             $("#id_divEvalComment").hide();
-            c_debug(debug.eval, "=> fillSatisfaction: #3");
+            c_debug(dbug.eval, "=> fillSatisfaction: #3");
         }
     } else {
         $("#id_divEvaluation").hide();
         $("#id_divEvalComment").hide();
-        c_debug(debug.eval, "=> fillSatisfaction: #4");
+        c_debug(dbug.eval, "=> fillSatisfaction: #4");
     } 
     RMPApplication.debug("end fillSatisfaction");
 }
@@ -1374,7 +1375,7 @@ function fillSatisfaction(note, evalComment)
 function setNotation(note, indice)
 {
     RMPApplication.debug("begin setNotation: note = ", note);
-    c_debug(debug.eval, "=> setNotation: note = ", note);
+    c_debug(dbug.eval, "=> setNotation: note = ", note);
     var column_notation = "";
     var style = 'style="font-size: 1.2em; color: ';
     var heart = '<i class="fa fa-heart"></i>';
@@ -1405,7 +1406,7 @@ function setNotation(note, indice)
         }
         column_notation = '<div id="id_notation' + indice + '"><span ' + style + '>' + star + '</span></div>';  
     }
-    c_debug(debug.eval, "=> setNotation: column_notation = ", column_notation);
+    c_debug(dbug.eval, "=> setNotation: column_notation = ", column_notation);
     return column_notation;
     RMPApplication.debug("end setNotation");
 }
@@ -1416,7 +1417,7 @@ function setNotation(note, indice)
 function setNotationValue(note)
 {
     RMPApplication.debug("begin setNotationValue");
-    c_debug(debug.eval, "=> setNotationValue: note = ", note);
+    c_debug(dbug.eval, "=> setNotationValue: note = ", note);
     $("#id_selectedNotation").val(note);
     RMPApplication.debug("end setNotationValue");
 }
@@ -1427,7 +1428,7 @@ function setNotationValue(note)
 function displayDetailClose()
 {
     RMPApplication.debug("begin displayDetailClose");
-    c_debug(debug.detail, "=> displayDetailClose");
+    c_debug(dbug.detail, "=> displayDetailClose");
     id_search_filters.setVisible(true);
     id_search_results.setVisible(true);
     id_ticket_details.setVisible(false);
@@ -1460,9 +1461,9 @@ function setProgression(numb)
     RMPApplication.debug("begin setProgression : numb =  " + numb);
     var selectedValue = 0; 
     var state = $("#id_state_detail").val();
-    c_debug(debug.progress, "=> setProgression: state : ", state);
+    c_debug(dbug.progress, "=> setProgression: state : ", state);
     var state_val = getStatusValue(v_ol.wo_state);
-    c_debug(debug.progress, "=> setProgression: state_val : ", state_val);
+    c_debug(dbug.progress, "=> setProgression: state_val : ", state_val);
 
     switch (state_val)
     {
@@ -1500,7 +1501,7 @@ function setProgression(numb)
         default:
             break;
     }
-    c_debug(debug.progress, "=> setProgression: selectedValue : ", selectedValue);
+    c_debug(dbug.progress, "=> setProgression: selectedValue : ", selectedValue);
     if (selectedValue == 0) {
         return;                 // progression row should not be showed
     }
@@ -1573,7 +1574,7 @@ function setProgression(numb)
 function getStatusValue (libelle)
 {
     RMPApplication.debug("begin getStatusValue");
-    c_debug(debug.status, "=> getStatusValue: libelle = ", libelle);
+    c_debug(dbug.status, "=> getStatusValue: libelle = ", libelle);
 
         switch (libelle)  {
         case "Brouillon" :
@@ -1729,6 +1730,7 @@ function initDataTable()
                 { title : task_affected_col }
             ];
             break;
+
         case "tablet" :
             var responsive_options = {
                details: { type: 'column' }
@@ -1758,6 +1760,7 @@ function initDataTable()
                 { title : task_affected_col }
             ];
             break;
+
         case "mobile" :
             var responsive_options = {
                details: { type: 'column' }

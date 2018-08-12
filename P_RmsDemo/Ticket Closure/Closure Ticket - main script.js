@@ -114,7 +114,7 @@ function setDispatchGroup()
 	id_country.setValue(login.country);
 	switch (login.country) {
 		case "SPAIN": 
-			dispatch_group = "RMSDEMO - Fujitsu Espagnee";
+			dispatch_group = "RMSDEMO - Fujitsu Espagne";
 			break;
 		case "BELGIUM":		
 			dispatch_group = "RMSDEMO - Fujitsu Belgique";

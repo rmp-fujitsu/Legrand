@@ -16,7 +16,7 @@ function init()
     var options = {};
     var pattern = {};
     pattern.login = RMPApplication.get("login");
-    c_debug(debug.init, "=> init: pattern = ", pattern);
+    c_debug(dbug.init, "=> init: pattern = ", pattern);
 
     // CAPI for getting user information
     id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
@@ -29,7 +29,7 @@ function init()
 function get_info_ok(result)
 {
     RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-    c_debug(debug.init, "=> get_info_ok: result = ", result);
+    c_debug(dbug.init, "=> get_info_ok: result = ", result);
 
     // define "login" variable properties
     login.user = result.user;
@@ -44,7 +44,7 @@ function get_info_ok(result)
     login.division = (!isEmpty(result.division)) ? result.division.trim().toUpperCase() : '';
     login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
     login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
-    c_debug(debug.init, "=> get_info_ok: login = ", login);
+    c_debug(dbug.init, "=> get_info_ok: login = ", login);
 
     // Define 'view' global variable, used to filter locations scope
     // Different profiles are: SUPERUSER-COMPANY-COUNTRY-DIVISION-REGION-LOCAL
@@ -72,7 +72,7 @@ function get_info_ok(result)
     } else {               // Only one site: 1 country - 1 affiliate - 1 location
         view = "LOCAL";   
     }
-    c_debug(debug.init, "=> get_info_ok: view = ", view);
+    c_debug(dbug.init, "=> get_info_ok: view = ", view);
 
     load_location();
 
@@ -82,7 +82,7 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    c_debug(debug.init, "=> get_info_ko: error = ", error);
+    c_debug(dbug.init, "=> get_info_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko"); 
@@ -95,7 +95,7 @@ function load_location()
 {
     RMPApplication.debug("begin load_location");
     var locationCode = RMPApplication.get("variables.location_code");
-    c_debug(debug.init, "=> load_location: locationCode = ", locationCode);
+    c_debug(dbug.init, "=> load_location: locationCode = ", locationCode);
     if (isEmpty(locationCode) || locationCode === "false" || locationCode === "tous") {
         var  title = ${P_quoted(i18n("error_location_title", "Erreur"))};
         var  content = ${P_quoted(i18n("location_selection", "Veuillez sélectionner un seul site, en utilisant si besoin les filtres PAYS et/ou ENSEIGNE..."))};
@@ -106,7 +106,7 @@ function load_location()
     var my_pattern = {};
     var options = {};
     my_pattern.location_code = locationCode;
-    c_debug(debug.init, "=> load_location: my_pattern = ", my_pattern);
+    c_debug(dbug.init, "=> load_location: my_pattern = ", my_pattern);
     id_get_location_by_code_api.trigger(my_pattern , options, load_location_ok, load_location_ko);
     RMPApplication.debug ("end load_location");
 }
@@ -114,14 +114,14 @@ function load_location()
 function load_location_ok(result)
 {
     RMPApplication.debug("begin load_location_ok : result = " + JSON.stringify(result));
-    c_debug(debug.init, "=> load_location_ok: result = ", result);
+    c_debug(dbug.init, "=> load_location_ok: result = ", result);
     selected_location = result;
     // RMPApplication.set("selected_location", selected_location);
     RMPApplication.set("selected_location", JSON.stringify(selected_location));    
     selected_affiliate.affiliate = selected_location.affiliate.toUpperCase();
 
     // get abbreviate name of affiliate
-    c_debug(debug.init, "=> load_location_ok: selected_affiliate = ", selected_affiliate);
+    c_debug(dbug.init, "=> load_location_ok: selected_affiliate = ", selected_affiliate);
     getAffiliate(selected_affiliate.affiliate);
 
     RMPApplication.debug ("end load_location_ok");    
@@ -130,7 +130,7 @@ function load_location_ok(result)
 function load_location_ko(error) 
 {
     RMPApplication.debug ("begin load_location_ko : error = " + JSON.stringify(error)); 
-    c_debug(debug.init, "=> load_location_ko: error = ", error);
+    c_debug(dbug.init, "=> load_location_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_location_ko");    
@@ -142,13 +142,13 @@ function load_location_ko(error)
 function getAffiliate(affiliate_value)
 {
     RMPApplication.debug("=> begin getAffiliate: affiliate_value = ", affiliate_value);
-    c_debug(debug.init, "=> getAffiliate: affiliate_value = ", affiliate_value);
+    c_debug(dbug.init, "=> getAffiliate: affiliate_value = ", affiliate_value);
     var options = {};
     var input = {};
     var query = {};
     query.affiliate = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
     input.input_query = query; 
-    c_debug(debug.init, "=> getAffiliate: input = ", input);
+    c_debug(dbug.init, "=> getAffiliate: input = ", input);
     id_get_affiliate_api.trigger(input, options, affiliate_ok, affiliate_ko);
     RMPApplication.debug("end getAffiliate");
 }
@@ -156,7 +156,7 @@ function getAffiliate(affiliate_value)
 function affiliate_ok(result)
 {
     RMPApplication.debug("begin affiliate_ok : result = " + JSON.stringify(result));
-    c_debug(debug.init, "=> affiliate_ok: result = ", result);
+    c_debug(dbug.init, "=> affiliate_ok: result = ", result);
     selected_affiliate = result.records[0];
     RMPApplication.set("selected_affiliate", JSON.stringify(selected_affiliate));
 
@@ -166,7 +166,7 @@ function affiliate_ok(result)
 function affiliate_ko(error)
 {
     RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
-    c_debug(debug.init, "=> affiliate_ko: error = ", error);
+    c_debug(dbug.init, "=> affiliate_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);  
     RMPApplication.debug("end affiliate_ko");
