@@ -11,8 +11,8 @@ function getWoNumberQuery()
     var wm_number = $("#id_numberFilter").val();
     var wm_number_query = (isEmpty(wm_number)) ? "" : "^wo_number=" + $.trim(wm_number);
     c_debug(dbug.query, "=> getWoNumberQuery: wm_number_query = ", wm_number_query);
-    return wm_number_query;
     RMPApplication.debug("end getWoNumberQuery");
+    return wm_number_query;
 }
 
 // ===========================
@@ -24,8 +24,8 @@ function getCorrelationIdQuery()
     var referenceClient = $("#id_clientReferenceFilter").val();
     var corr_id_query = (isEmpty(referenceClient)) ? "" : "^wo_correlation_id=" + $.trim(referenceClient);
     c_debug(dbug.query, "=> getCorrelationIdQuery: corr_id_query = ", corr_id_query);
-    return corr_id_query;
     RMPApplication.debug("end getcorrelationIdQuery");
+    return corr_id_query;
 }
 
 // ===========================
@@ -50,8 +50,8 @@ function getStatusQuery()
         }
     }
     c_debug(dbug.query, "=> getStatusQuery: statusQuery = ", statusQuery);
-    return statusQuery;
     RMPApplication.debug("end getStatusQuery");
+    return statusQuery;
 }
 
 // ===================================
@@ -67,8 +67,8 @@ function getWoTypeQuery()
         var woTypeQuery = "^wo_u_work_order_type=" + $.trim(wo_type);
     }
     c_debug(dbug.query, "=> getWoTypeQuery: woTypeQuery = ", woTypeQuery);
-    return woTypeQuery;
     RMPApplication.debug("end getWoTypeQuery");
+    return woTypeQuery;
 }
 
 // ===============================
@@ -80,8 +80,8 @@ function getDescriptionQuery()
     var description = $("#id_descriptionFilter").val();
     var descriptionQuery = (isEmpty(description)) ? "" : "^wo_short_descriptionLIKE" + $.trim(description);
     c_debug(dbug.query, "=> getDescriptionQuery: descriptionQuery = ", descriptionQuery);
-    return descriptionQuery;
     RMPApplication.debug("end getDescriptionQuery");
+    return descriptionQuery;
 }
 
 // ==================================
@@ -112,8 +112,8 @@ function getOpenedAtQuery()
         openedAtQuery = "^wo_opened_at&lt;=" + date[2] + service_now_separator + date[1] + service_now_separator + date[0];
     }
     c_debug(dbug.query, "=> getOpenedAtQuery: openedAtQuery = ", openedAtQuery);
-    return openedAtQuery;
     RMPApplication.debug("end getOpenedAtQuery");
+    return openedAtQuery;
 }
 
 // ==================================
@@ -143,8 +143,8 @@ function getClosedAtQuery()
         closedAtQuery = "^wo_closed_at&lt;=" + date[2] + service_now_separator + date[1] + service_now_separator + date[0];
     }
     c_debug(dbug.query, "=> getClosedAtQuery: closedAtQuery = ", closedAtQuery);
-    return closedAtQuery;
     RMPApplication.debug("end getClosedAtQuery");
+    return closedAtQuery;
 }
 
 // =========================================================================================

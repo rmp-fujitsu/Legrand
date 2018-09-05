@@ -407,84 +407,87 @@ function getVarStatusValue (libelle)
     RMPApplication.debug("begin getVarStatusValue");
     c_debug(dbug.status, "=> getVarStatusValue: libelle = ", libelle);
 
+    var status_val = "";
+
     switch (libelle)  {
         case "Brouillon" :
         case "Transmis" :
         case "Draft" :
         case "1" :
-            return 'st_sent';
+            status_val = 'st_sent';
             break;
         case "Clos - Résolu" :
         case "Terminé - Complet" :
         case "Closed Complete" :
         case "3" :
-            return 'st_closed_complete';
+            status_val =  'st_closed_complete';
             break;
         case "Clos - Non résolu" :
         case "Terminé - Incomplet" :
         case "Closed Incomplete" :
         case "4" :
-            return 'st_closed_incomplete';
+            status_val =  'st_closed_incomplete';
             break;
         case "Clos - Annulé" :          
         case "Cancelled" :
         case "7" :
-            return 'st_cancelled';
+            status_val =  'st_cancelled';
             break;
         case "Diagnostiqué" :
         case "Qualifié" :
         case "Diagnosed" :
         case "Qualified" :
         case "10" :
-            return 'st_diagnosed';
+            status_val =  'st_diagnosed';
             break;
         case "En attente d'approbation" :
         case "Awaiting Approval" :
         case "11" :
-            return 'st_waiting_appro';
+            status_val =  'st_waiting_appro';
             break;
         case "Approuvé" :
         case "Approved" :
         case "13" :
-            return 'st_approved';
+            status_val =  'st_approved';
             break;
         case "En attente de diagnostic" :
         case "Awaiting Diagnosis" :
         case "15" :
-            return 'st_waiting_diag';
+            status_val =  'st_waiting_diag';
             break;
         case "Assigné" :
         case "Affecté" :
         case "Assigned" :
         case "16" :
-            return 'st_assigned';
+            status_val =  'st_assigned';
             break;
         case "En cours de résolution" :
         case "En cours de traitement" :
         case "Work In Progress" :
         case "18" :
-            return 'st_in_progress';
+            status_val =  'st_in_progress';
             break;
         case "Erreur" :
         case "Error" :
         case "19" :
-            return 'st_error';
+            status_val =  'st_error';
             break;
         case "Résolu - En attente de cloture" : 
         case "Resolved" :
         case "20" :
-            return 'st_resolved';
+            status_val =  'st_resolved';
             break;
         case "Non résolu - En attente de cloture" :
         case "Unresolved" :
         case "21" :
-            return 'st_unresolved';
+            status_val =  'st_unresolved';
             break;
         default:        // All status or no status selected)
-            return 'st_unknown';
+            status_val =  'st_unknown';
             break;
     }
     RMPApplication.debug("end getVarStatusValue");
+    return status_val;
 }
 
 // =======================================
@@ -495,56 +498,59 @@ function getVarINVStatusValue (libelle)
     RMPApplication.debug("begin getVarINVStatusValue");
     c_debug(dbug.status, "=> getVarINVStatusValue: libelle = ", libelle);
 
+    var INV_status_val = "";
+
     switch (libelle)  {
         case "Brouillon" :
         case "Transmis" :
         case "Draft" :
         case "1" :
-            return 'st_inv_draft';
+            INV_status_val = 'st_inv_draft';
             break;
         case "Clos - Résolu" :
         case "Terminé - Complet" :
         case "Closed Complete" :
         case "3" :
-            return 'st_inv_closed_complete';
+            INV_status_val =  'st_inv_closed_complete';
             break;
         case "Clos - Non résolu" :
         case "Terminé - Incomplet" :
         case "Closed Incomplete" :
         case "4" :
-            return 'st_inv_closed_incomplete';
+            INV_status_val =  'st_inv_closed_incomplete';
             break;
         case "Clos - Annulé" :          
         case "Cancelled" :
         case "7" :
-            return 'st_inv_cancelled';
+            INV_status_val =  'st_inv_cancelled';
             break;
         case "En attente d'affectation" :
         case "Pending Dispatch" :
         case "10" :
-            return 'st_inv_dispatch';
+            INV_status_val =  'st_inv_dispatch';
             break;
         case "Assigné" :
         case "Affecté" :
         case "Assigned" :
         case "16" :
-            return 'st_inv_assigned';
+            INV_status_val =  'st_inv_assigned';
             break;
         case "Accepté" :
         case "Accepted" :
         case "17" :
-            return 'st_inv_accepted';
+            INV_status_val =  'st_inv_accepted';
             break;
         case "En cours de résolution" :
         case "Work In Progress" :
         case "18" :
-            return 'st_inv_in_progress';
+            INV_status_val =  'st_inv_in_progress';
             break;
         default:        // All status or no status selected)
-            return 'st_inv_unknown';
+            INV_status_val =  'st_inv_unknown';
             break;
     }
     RMPApplication.debug("end getVarINVStatusValue");
+    return INV_status_val;
 }
 
 // =======================================
@@ -555,36 +561,40 @@ function getVarPriorityValue (priority)
     RMPApplication.debug("begin getVarPriorityValue");
     c_debug(dbug.priority, "=> getVarPriorityValue: priority = ", priority);
 
+    var priority_value = "";
+
     switch (priority)  {
         case '1':
         case '1 - Critical':
         case '1 - Critique':
-            return "prio_critical";
+            priority_value = "prio_critical";
             break;
         case '2':
         case '2 - High':
         case '2 - Elevée':
-            return "prio_high";
+            priority_value = "prio_high";
             break;
         case '3':
         case '3 - Moderate':
         case '3 - Modérée':
-            return "prio_moderate";
+            priority_value = "prio_moderate";
             break;
         case '4':
         case '4 - Low':
         case '4 - Basse':
-            return "prio_low";
+            priority_value = "prio_low";
             break;
         case '5':
         case '5 - Planning':
-            return "prio_planned";
+            priority_value = "prio_planned";
             break;
         default:        // All priorities or no priority selected)
-            return 'prio_unknown';
+            priority_value = 'prio_unknown';
             break;
     }
+
     RMPApplication.debug("end getVarPriorityValue");
+    return priority_value;
 }
 
 // =======================================
@@ -595,33 +605,36 @@ function getVarWOTypeValue (wo_type)
     RMPApplication.debug("begin getVarWOTypeValue");
     c_debug(dbug.type, "=> getVarWOTypeValue: wo_type = ", wo_type);
 
+    var WO_type_value = "";
+
     switch (wo_type)  {
         case 'Devis':
-            return "type_quotation";
+            WO_type_value = "type_quotation";
             break;
         case 'IMAC':
-            return "type_imac";
+            WO_type_value = "type_imac";
             break;
         case 'Preventive':
-            return "type_preventive";
+            WO_type_value = "type_preventive";
             break;
         case 'Request':
-            return "type_request";
+            WO_type_value = "type_request";
             break;
         case 'Project':
-            return "type_project";
+            WO_type_value = "type_project";
             break;
         case 'Intervention':
-            return "type_intervention";
+            WO_type_value = "type_intervention";
             break;
         case 'Assistance':
-            return "type_assistance";
+            WO_type_value = "type_assistance";
             break;
         default:        // All priorities or no priority selected)
-            return 'type_unknown';
+            WO_type_value = 'type_unknown';
             break;
     }
     RMPApplication.debug("end getVarWOTypeValue");
+    return WO_type_value;
 }
 
 // =======================================
@@ -632,8 +645,9 @@ function translateExp (lang, expr)
     RMPApplication.debug("begin translateExp");
     c_debug(dbug.status, "=> translateExp: lang = ", lang);
     c_debug(dbug.status, "=>               expr = ", expr);
-    return col_lang_opt[expr];
+    
     RMPApplication.debug("end translateExp");
+    return col_lang_opt[expr];
 }
 
 // ======================================================================================================
@@ -833,7 +847,6 @@ function getWorkOrderListFromServiceNow()
             var  content = ${P_quoted(i18n("error_getWOListFromSN_msg", "La recherche pour le type d'incident sélectionné n'est pas encore implémentée !"))};
             dialog_error(title, content, btn_ok);
             return;
-            break;
     }
     getFilter();
 
@@ -894,7 +907,6 @@ function favoriteFilter(favQuery)
             var  content = ${P_quoted(i18n("error_favoriteFilter_msg", "Ce résultat peut être obtenu en cliquant directement sur le bouton [Rechercher] situé en bas de l'écran."))};
             dialog_info(title, content, btn_ok);
             return;
-            break;
 
         default:     
             break;
@@ -1407,8 +1419,9 @@ function setNotation(note, indice)
         column_notation = '<div id="id_notation' + indice + '"><span ' + style + '>' + star + '</span></div>';  
     }
     c_debug(dbug.eval, "=> setNotation: column_notation = ", column_notation);
-    return column_notation;
+    
     RMPApplication.debug("end setNotation");
+    return column_notation;
 }
 
 // ==================================
@@ -1576,89 +1589,93 @@ function getStatusValue (libelle)
     RMPApplication.debug("begin getStatusValue");
     c_debug(dbug.status, "=> getStatusValue: libelle = ", libelle);
 
-        switch (libelle)  {
+    var status_value = "";
+
+    switch (libelle)  {
         case "Brouillon" :
         case "Transmis" :
         case "Draft" :
         case "1" :
-            return '1';
+            status_value =  '1';
             break;
         case "Clos - Résolu" :
         case "Terminé - Complet" :
         case "Closed Complete" :
         case "3" :
-            return '3';
+            status_value =  '3';
             break;
         case "Clos - Non résolu" :
         case "Terminé - Incomplet" :
         case "Closed Incomplete" :
         case "4" :
-            return '4';
+            status_value =  '4';
             break;
         case "Clos - Annulé" :          
         case "Cancelled" :
         case "7" :
-            return '7';
+            status_value =  '7';
             break;
         case "Diagnostiqué" :
         case "Qualifié" :
         case "Diagnosed" :
         case "Qualified" :
         case "10" :
-            return '10';
+            status_value =  '10';
             break;
         case "En attente d'approbation" :
         case "Awaiting Approval" :
         case "11" :
-            return '11';
+            status_value =  '11';
             break;
         case "Approuvé" :
         case "Approved" :
         case "13" :
-            return '13';
+            status_value =  '13';
             break;
         case "En attente de diagnostic" :
         case "Awaiting Diagnosis" :
         case "15" :
-            return '15';
+            status_value =  '15';
             break;
         case "Assigné" :
         case "Affecté" :
         case "Assigned" :
         case "16" :
-            return '16';
+            status_value =  '16';
             break;
         case "Accepté" :
         case "Accepted" :
         case "17" :
-            return '17';
+            status_value =  '17';
             break;
         case "En cours de résolution" :
         case "En cours de traitement" :
         case "Work In Progress" :
         case "18" :
-            return '18';
+            status_value =  '18';
             break;
         case "Erreur" :
         case "Error" :
         case "19" :
-            return '19';
+            status_value =  '19';
             break;
         case "Résolu - En attente de cloture" : 
         case "Resolved" :
         case "20" :
-            return '20';
+            status_value =  '20';
             break;
         case "Non résolu - En attente de cloture" :
         case "Unresolved" :
         case "21" :
-            return '21';
+            status_value =  '21';
             break;
         default:        // All status or no status selected)
-            return '0';
+            status_value =  '0';
             break;
     }
+
     RMPApplication.debug("end getStatusValue");
+    return status_value;
 }
 
 // ======================
