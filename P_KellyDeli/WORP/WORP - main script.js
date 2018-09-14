@@ -1188,6 +1188,7 @@ function wo_details_ok(result)
     id_search_filters.setVisible(false);
     id_search_results.setVisible(false);
     id_ticket_details.setVisible(true);
+    $("#id_attachment").html('');           // reset attachments area
     
     var text_error_detail = ${P_quoted(i18n("error_detail_text", "Non trouvé !"))};
     var company_detail = (isEmpty(login.company)) ? v_ol.co_u_full_name.toUpperCase() : login.company;
@@ -1463,7 +1464,7 @@ function displayDetailClose()
     $("#id_problem_type_detail").val ("");
     $("#id_short_description_detail").val ("");
     $("#id_description_detail").val ("");
-    // $("#id_attachment").html ("");           // to activate as soon as attachment is valid
+    $("#id_attachment").html ("");
     clearTaskDataTable();
     $("#id_rowProgression").hide();
     RMPApplication.debug("end displayDetailClose");

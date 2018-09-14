@@ -113,9 +113,9 @@ function insert_ok(result)
 	id_save_picture_in_collection.trigger (input, options, save_picture_ok, save_picture_ko);
 
 	var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
-    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence"))};
+    var content1 = ${P_quoted(i18n("id_msg_1", "Demande créée sous la référence :"))};
     var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
-	notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+	notify_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
 
 	RMPApplication.debug("end insert_ok");
 }

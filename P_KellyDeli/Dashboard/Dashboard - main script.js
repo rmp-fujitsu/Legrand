@@ -166,9 +166,9 @@ function get_info_ok(result)
     RMPApplication.debug("end get_info_ok");
 }
 
-function get_info_ko(result) 
+function get_info_ko(error) 
 {
-    RMPApplication.debug("get_info_ko : " + JSON.stringify(result));
+    RMPApplication.debug("get_info_ko : " + JSON.stringify(error));
     c_debug(dbug.init, "=> get_info_ko: error = ", error);    
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);

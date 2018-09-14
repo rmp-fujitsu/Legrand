@@ -1296,7 +1296,7 @@ function insert_ok(result)
 	$("#id_spinner_insert").hide();
 	wm_order = result;
     var title = ${P_quoted(i18n("insert_ok_title", "Information Suivi Demande"))};
-    var content = ${P_quoted(i18n("insert_ok_msg", "Demande créée sous la référence:"))};
+    var content = ${P_quoted(i18n("insert_ok_msg", "Demande créée sous la référence :"))};
     var content2 = ${P_quoted(i18n("id_msg_2", "Vous allez être contacté dans les plus brefs délais."))};
     dialog_success(title, content + "<br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
     
