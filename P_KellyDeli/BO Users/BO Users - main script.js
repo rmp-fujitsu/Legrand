@@ -7,9 +7,10 @@ RMPApplication.debug ("Application started");
 
 // if "true", logs will be showed on the browser console
 var dbug = {
-    "item": true,
+    "init": false,
+    "pres": false,
     "user_info": true,
-    "pres": true,
+    "update": true,
     "report": true
 };
 
@@ -37,6 +38,7 @@ var user_properties =
 var root_lvl = ["name", "email", "language"];
 var type_choice_list = ["language", "country", "timezone"];
 var not_copied_field_list = ["name", "email", "phone"];
+var upper_var = ["country", "region", "main_kiosk", "kiosks_list"];
 
 var login = {};
 var selected_user = {};
@@ -66,7 +68,7 @@ init();
 function init() 
 {
     RMPApplication.debug("begin init");
-    c_debug(dbug.item, "=> begin init");
+    c_debug(dbug.init, "=> begin init");
 
     CSS_changes();
     fill_actions_box();
@@ -81,7 +83,7 @@ function init()
 function CSS_changes()
 {
     RMPApplication.debug("begin CSS_changes");
-    c_debug(dbug.item, "=> begin CSS_changes");
+    c_debug(dbug.init, "=> begin CSS_changes");
     id_user.setVisible(false);
     id_new_user.setVisible(false);
     $("#id_user").addClass("bkg-light-blue");
@@ -96,19 +98,135 @@ function CSS_changes()
 function fill_actions_box()
 {
     RMPApplication.debug ("begin fill_actions_box");
-    c_debug(dbug.item, "=> begin fill_actions_box");
+    c_debug(dbug.init, "=> begin fill_actions_box");
 
     var vb_actions = new Array();
     for (key in actions)  {
         vb_actions.push({"label": " ● " + actions[key], "value": key});
     }
-    c_debug(dbug.item, "    fill_actions_box : vb_actions = ", vb_actions);
+    c_debug(dbug.init, "    fill_actions_box : vb_actions = ", vb_actions);
         
     var a = new RMP_List();
     a.fromArray(vb_actions);
     RMPApplication.setList("vb_actions", a);
 
     RMPApplication.debug ("end fill_actions_box");
+}
+
+// ==================================================
+//   According to user's choice, make somme actions
+// ==================================================
+function prepare_user_action()
+{
+     RMPApplication.debug("begin prepare_user_action");
+    c_debug(dbug.pres, "=> prepare_user_action: widget_name");
+    
+    selected_action = RMPApplication.get("user_action");
+    
+    if (!(isEmpty(selected_action))) {
+        selected_user.name = RMPApplication.get("existing_account");
+        var account_selected = (!isEmpty(selected_user.name));
+
+        switch (selected_action) {
+                case "add_user_action" :
+                    reset_info_user();
+                    id_user.setVisible(true);
+                    id_new_user.setVisible(false);
+                    id_existing_account.setVisible(false);
+                    RMPApplication.set("existing_account", "");
+                    set_fields_active("id_my_user", true);
+                    break;
+                
+                case "delete_user_action" :
+                    id_user.setVisible(account_selected);
+                    id_new_user.setVisible(false);
+                    set_fields_active("id_my_user", false);
+                    
+                    break;
+                
+                case "replace_user_action" :
+                    reset_info_user();
+                    reset_info_new_user();
+                    id_user.setVisible(account_selected);
+                    id_new_user.setVisible(account_selected);
+                    set_fields_active("id_my_user", false);
+                    break;
+                
+                case "update_user_action" :  
+                    // reset_info_user();
+                    id_user.setVisible(account_selected);
+                    id_new_user.setVisible(false);
+                    set_fields_active("id_my_user", true);
+                    break;
+
+                default:                        // no selection
+                    reset_info_user();
+                    id_user.setVisible(false);
+                    id_new_user.setVisible(false);
+                    id_existing_account.setVisible(false);
+                    RMPApplication.set("existing_account", "");
+                    break;
+            }
+
+            if (account_selected) {
+                get_user_basic_info();
+            }
+        } else {
+            reset_info_user();
+            id_user.setVisible(false);
+            id_new_user.setVisible(false);
+            id_existing_account.setVisible(false);
+            RMPApplication.set("existing_account", "");
+        }
+
+    RMPApplication.debug("end prepare_user_action");
+}
+
+// ============================================
+//   reset user's Metadata information part
+// ============================================
+function reset_info_user() 
+{
+    RMPApplication.debug("begin reset_info_user");
+    c_debug(dbug.pres, "=> reset_info_user");
+    RMPApplication.set("my_user", {});
+    RMPApplication.debug("end reset_info_user");
+}
+
+// ============================================
+//   reset new user's Metadata information part
+// ============================================
+function reset_info_new_user() 
+{
+    RMPApplication.debug("begin reset_info_new_user");
+    c_debug(dbug.pres, "=> reset_info_new_user");
+    RMPApplication.set("my_new_user", {});
+    RMPApplication.debug("end reset_info_new_user");
+}
+
+// ============================================
+//   We set as active or inactive all Widget fields
+// ============================================
+function set_fields_active(widget_name, bool)
+{
+    RMPApplication.debug("begin set_fields_active");
+    c_debug(dbug.pres, "=> set_fields_active: widget_name = ", widget_name);
+    c_debug(dbug.pres, "=>                  : bool = ", bool);
+
+    var action = RMPApplication.get("user_action");
+    for (key in user_properties) {
+        var id_widget = widget_name + ".id_" + key;
+        c_debug(dbug.pres, "=>                  : id_widget = ", id_widget);
+        if (key != "email") {
+            eval(id_widget).setEnabled(bool);
+        } else if (action == "update_user_action") {
+            eval(id_widget).setEnabled(false);
+        } else {
+            eval(id_widget).setEnabled(bool);
+        }
+    }
+
+    RMPApplication.debug("end set_fields_active");
 }
 
 // ================================================
@@ -155,6 +273,71 @@ function get_user_basic_info_ko(error)
     var error_msg = ${P_quoted(i18n("get_user_basic_info_ko_msg", "Impossible de récupérer les informations de l'utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_user_basic_info_ko");
+}
+
+// ============================================
+//   set user's Metadata information on screen
+// ============================================
+function set_user_info(user_login) 
+{
+    RMPApplication.debug("begin set_user_info");
+    c_debug(dbug.user_info, "=> set_user_info: user_login = ", user_login);
+
+    for (key in user_properties) {
+        var val_field = user_login[key];
+        if (type_choice_list.indexOf(key) > -1) {           // according to the type of input, we use different methods
+            var id_field = "id_my_user.id_" + key;
+            if (key == "country") {
+                val_field = capitalize(user_login[key]);
+            }
+            eval(id_field).setSelectedValue(val_field);
+            c_debug(dbug.user_info, "=> set_user_info: id_field (LIST) = ", id_field + " | selected_value = " + val_field);
+
+        } else {
+            var field = "my_user." + key;
+            RMPApplication.set(field, val_field);
+            c_debug(dbug.user_info, "=> set_user_info: field = ", field + " | value = " + val_field);
+        }
+    }
+
+    c_debug(dbug.user_info, "=> set_user_info: selected_action = ", selected_action);
+    if (selected_action == "replace_user_action") {
+        c_debug(dbug.user_info, "=> set_user_info: Appel à copy_user_info avec user_login = ", user_login);
+        copy_user_info(user_login);
+    }
+
+    RMPApplication.debug("end set_user_info");
+}
+
+// ============================================
+//   set user's Metadata information on screen
+// ============================================
+function copy_user_info(user_login) 
+{
+    RMPApplication.debug("begin copy_user_info");
+    c_debug(dbug.user_info, "=> copy_user_info: user_login = ", user_login);
+
+    for (key in user_properties) {
+        if (!(not_copied_field_list.indexOf(key) > -1)) {
+            var val_field = user_login[key];
+            if (type_choice_list.indexOf(key) > -1) {
+                var id_user_field = "id_my_user.id_" + key;
+                var id_new_user_field = "id_my_new_user.id_" + key;
+                if (key == "country") {
+                    val_field = capitalize(user_login[key]);
+                }
+                eval(id_new_user_field).setSelectedValue(val_field);
+                c_debug(dbug.user_info, "=> copy_user_info: id_new_user_field (LIST)= ", id_new_user_field + " | selected_value = " + val_field);
+
+            } else {
+                var new_user_field = "my_new_user." + key;
+                RMPApplication.set(new_user_field, val_field);
+                c_debug(dbug.user_info, "=> copy_user_info: new_user_field = ", new_user_field + " | value = " + val_field);
+            }
+        }
+    }
+
+    RMPApplication.debug("end copy_user_info");
 }
 
 // ================================================
@@ -271,199 +454,19 @@ function modify_password_new_user()
     RMPApplication.debug("end modify_password_new_user");
 }
 
-// ============================================
-//   set user's Metadata information on screen
-// ============================================
-function set_user_info(user_login) 
-{
-    RMPApplication.debug("begin set_user_info");
-    c_debug(dbug.user_info, "=> set_user_info: user_login = ", user_login);
-
-    for (key in user_properties) {
-        if (type_choice_list.indexOf(key) > -1) {
-            var id_field = "id_my_user.id_" + key;
-            if (key == "country") {
-                eval(id_field).setSelectedValue(capitalize(user_login[key]));
-                c_debug(dbug.user_info, "=> set_user_info: id_field = ", id_field + " | selected_value = " + capitalize(user_login[key]));
-            } else {
-                eval(id_field).setSelectedValue(user_login[key]);
-                c_debug(dbug.user_info, "=> set_user_info: id_field = ", id_field + " | selected_value = " + user_login[key]);
-            }
-        } else {
-            var field = "my_user." + key;
-            RMPApplication.set(field, user_login[key]);
-            c_debug(dbug.user_info, "=> set_user_info: field = ", field + " | value = " + user_login[key]);
-        }
-    }
-
-    c_debug(dbug.user_info, "=> set_user_info: selected_action = ", selected_action);
-    if (selected_action == "replace_user_action") {
-        c_debug(dbug.user_info, "=> set_user_info: Appel à copy_user_info avec user_login = ", user_login);
-        copy_user_info(user_login);
-    }
-
-    RMPApplication.debug("end set_user_info");
-}
-
-// ============================================
-//   set user's Metadata information on screen
-// ============================================
-function copy_user_info(user_login) 
-{
-    RMPApplication.debug("begin copy_user_info");
-    c_debug(dbug.user_info, "=> copy_user_info: user_login = ", user_login);
-
-    for (key in user_properties) {
-        if (!(not_copied_field_list.indexOf(key) > -1)) {
-            if (type_choice_list.indexOf(key) > -1) {
-                var id_user_field = "id_my_user.id_" + key;
-                var id_new_user_field = "id_my_new_user.id_" + key;
-                if (key == "country") {
-                    eval(id_new_user_field).setSelectedValue(capitalize(user_login[key]));
-                    c_debug(dbug.user_info, "=> copy_user_info: id_new_user_field = ", id_new_user_field + " | selected_value = " + capitalize(user_login[key]));
-                } else {
-                    eval(id_new_user_field).setSelectedValue(user_login[key]);
-                    c_debug(dbug.user_info, "=> copy_user_info: id_new_user_field = ", id_new_user_field + " | selected_value = " + user_login[key]);
-                }
-            } else {
-                var new_user_field = "my_new_user." + key;
-                RMPApplication.set(new_user_field, user_login[key]);
-                c_debug(dbug.user_info, "=> copy_user_info: new_user_field = ", new_user_field + " | value = " + user_login[key]);
-            }
-        }
-    }
-
-    RMPApplication.debug("end copy_user_info");
-}
-
-
-// ============================================
-//   reset user's Metadata information part
-// ============================================
-function reset_info_user() 
-{
-    RMPApplication.debug("begin reset_info_user");
-    c_debug(dbug.user_info, "=> reset_info_user");
-    RMPApplication.set("my_user", {});
-    RMPApplication.debug("end reset_info_user");
-}
-
-// ============================================
-//   reset new user's Metadata information part
-// ============================================
-function reset_info_new_user() 
-{
-    RMPApplication.debug("begin reset_info_new_user");
-    c_debug(dbug.user_info, "=> reset_info_new_user");
-    RMPApplication.set("my_new_user", {});
-    RMPApplication.debug("end reset_info_new_user");
-}
-
-// ==================================================
-//   According to user's choice, make somme actions
-// ==================================================
-function prepare_user_action()
-{
-     RMPApplication.debug("begin prepare_user_action");
-    c_debug(dbug.pres, "=> prepare_user_action: widget_name");
-    
-    selected_action = RMPApplication.get("user_action");
-    
-    if (!(isEmpty(selected_action))) {
-        selected_user.name = RMPApplication.get("existing_account");
-        var account_selected = (!isEmpty(selected_user.name));
-
-        switch (selected_action) {
-                case "add_user_action" :
-                    reset_info_user();
-                    id_user.setVisible(true);
-                    id_new_user.setVisible(false);
-                    id_existing_account.setVisible(false);
-                    RMPApplication.set("existing_account", "");
-                    set_fields_active("id_my_user", true);
-                    break;
-                
-                case "delete_user_action" :
-                    id_user.setVisible(account_selected);
-                    id_new_user.setVisible(false);
-                    set_fields_active("id_my_user", false);
-                    
-                    break;
-                
-                case "replace_user_action" :
-                    reset_info_user();
-                    reset_info_new_user();
-                    id_user.setVisible(account_selected);
-                    id_new_user.setVisible(account_selected);
-                    set_fields_active("id_my_user", false);
-                    break;
-                
-                case "update_user_action" :  
-                    // reset_info_user();
-                    id_user.setVisible(account_selected);
-                    id_new_user.setVisible(false);
-                    set_fields_active("id_my_user", true);
-                    break;
-
-                default:                        // no selection
-                    reset_info_user();
-                    id_user.setVisible(false);
-                    id_new_user.setVisible(false);
-                    id_existing_account.setVisible(false);
-                    RMPApplication.set("existing_account", "");
-                    break;
-            }
-
-            if (account_selected) {
-                get_user_basic_info();
-            }
-        } else {
-            reset_info_user();
-            id_user.setVisible(false);
-            id_new_user.setVisible(false);
-            id_existing_account.setVisible(false);
-            RMPApplication.set("existing_account", "");
-        }
-
-    RMPApplication.debug("end prepare_user_action");
-}
-
-// ============================================
-//   We set as active or inactive all Widget fields
-// ============================================
-function set_fields_active(widget_name, bool)
-{
-    RMPApplication.debug("begin set_fields_active");
-    c_debug(dbug.pres, "=> set_fields_active: widget_name = ", widget_name);
-    c_debug(dbug.pres, "=>                  : bool = ", bool);
-
-    var action = RMPApplication.get("user_action");
-    for (key in user_properties) {
-        var id_widget = widget_name + ".id_" + key;
-        c_debug(dbug.pres, "=>                  : id_widget = ", id_widget);
-        if (key != "email") {
-            eval(id_widget).setEnabled(bool);
-        } else if (action == "update_user_action") {
-            eval(id_widget).setEnabled(false);
-        } else {
-            eval(id_widget).setEnabled(bool);
-        }
-    }
-
-    RMPApplication.debug("end set_fields_active");
-}
-
 // ============================
 //  udpate user's information
 // ============================
 function update_user()
 {
     RMPApplication.debug ("begin update_user");
-    c_debug(dbug.item, "=> update_user");
+    c_debug(dbug.update, "=> update_user");
     var my_pattern = {};
-    var user = retrieve_info_user(RMPApplication.get("my_user"));
+    var user = retrieve_info_user(JSON.parse(RMPApplication.get("my_user")));
+    c_debug(dbug.update, "=> update_user: user = ", user);
     my_pattern.email = user.email;
-    id_update_user_api.trigger (my_pattern, user , update_user_ok, update_user_ko); 
+    c_debug(dbug.update, "=> update_user: my_pattern = ", my_pattern);
+    // id_update_user_api.trigger (my_pattern, user , update_user_ok, update_user_ko); 
     // eval(collectionid).updateCallback(my_pattern, my_user, update_user_ok, update_user_ko);
     RMPApplication.debug ("end update_user");
 }
@@ -471,19 +474,24 @@ function update_user()
 function retrieve_info_user(my_user)
 {
     RMPApplication.debug ("begin retrieve_info_user");
-    c_debug(dbug.item, "=> retrieve_info_user: my_user = ", my_user);
+    c_debug(dbug.user_info, "=> retrieve_info_user: my_user = ", my_user);
     var info_user = {};
     for (key in user_properties) {
-        info_user[key] = my_user[key];
+        if (key in upper_var) {
+            info_user[key] = my_user[key].toUpperCase();
+            c_debug(dbug.user_info, "=> retrieve_info_user: ToUpperCase  => key = ", key);
+        } else {
+            info_user[key] = my_user[key];
+        }
     }
-    return info_user;
     RMPApplication.debug ("end retrieve_info_user");
+    return info_user;
 }
 
 function update_user_ok(result)
 {
     RMPApplication.debug ("begin update_user_ok");
-    c_debug(dbug.item, "=> update_user_ok: result = ", result);
+    c_debug(dbug.update, "=> update_user_ok: result = ", result);
     var success_msg = ${P_quoted(i18n("update_user_ok_msg", "Informations correctement mises à jour !"))};
     notify_success(success_title_notify, success_msg);
     RMPApplication.debug ("end update_user_ok");
@@ -492,7 +500,7 @@ function update_user_ok(result)
 function update_user_ko(error)
 {
     RMPApplication.debug ("begin update_ko");
-    c_debug(dbug.item, "=> update_ko: error = ", error);
+    c_debug(dbug.update, "=> update_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("update_user_ko_msg", "Mise à jour impossible de l'utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_user_ko");

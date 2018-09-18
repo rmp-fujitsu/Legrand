@@ -1,12 +1,6 @@
 // id_update_kiosks_list
 // Listen variable: location_code
 
-var dbug = {
-    "item": false
-};
-
-dbug.item = true;
-
 var kiosks_list = RMPApplication.get("my_user.kiosks_list");
 kiosks_list = (isEmpty(kiosks_list)) ? "" : kiosks_list.toUpperCase();
 var main_kiosk = RMPApplication.get("my_user.main_kiosk");
