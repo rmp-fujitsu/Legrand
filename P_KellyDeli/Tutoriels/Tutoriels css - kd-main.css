@@ -7,11 +7,10 @@
 }
 
 
-
-.fa-play:before{
+.fa-video-camera{
     color:#B1C900;
 }
 
-.fa-file-pdf-o:before{
-    color:#B1C900;
+.fa-file-pdf-o{
+    color:red;
 }
