@@ -65,6 +65,16 @@ var var_list =
     "st_inv_in_progress" : "st_inv_in_progress",
     "st_inv_unknown" : "st_inv_unknown",
 
+    "clot_vis_echg" : "clot_vis_echg",
+    "clot_vis_netreg" : "clot_vis_netreg",
+    "clot_vis_piece" : "clot_vis_piece",
+    "clot_vis_remast" : "clot_vis_remast",
+    "clot_erreur_diag" : "clot_erreur_diag",
+    "clot_hd_annul_clt" : "clot_hd_annul_clt",
+    "clot_hd_annul_int" : "clot_hd_annul_int",
+    "clot_hd_doubl_rel" : "clot_hd_doubl_rel",
+    "clot_hd_telephone" : "clot_hd_telephone",
+
     "date_full" : "date_full",
     "date_semi_full" : "date_semi_full",
     "date_only_date" : "date_only_date",
@@ -233,7 +243,7 @@ function delete_ok(result)
 {
     RMPApplication.debug ("begin delete_ok");
     c_debug(debug.item, "=> delete_ok: result", result);
-    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Site supprimé !"))};
+    var success_msg = ${P_quoted(i18n("delete_ok_msg", "Langue supprimée !"))};
     notify_success(success_title_notify, success_msg);
     // clean_item();
     RMPApplication.debug ("end delete_ok");
@@ -244,7 +254,7 @@ function delete_ko(error)
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
     c_debug(debug.item, "=> delete_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible du site !"))};
+    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Suppression impossible de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
 }

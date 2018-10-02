@@ -19,6 +19,10 @@
         "visible" : "${has_right('405111')=='true' || has_right('405201')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/352321?P_mode=${P_mode}&P_language=${P_language}"
     }, {
+        "title" : "Gestion Langues",
+        "visible" : "${has_right('405111')=='true' || has_right('405201')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/384417?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
         "title" : "ADMINISTRATION",
         "visible" : "${has_right('405111')=='true' || has_right('405201')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/352322?P_mode=${P_mode}&P_language=${P_language}"

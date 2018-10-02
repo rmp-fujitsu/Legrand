@@ -65,7 +65,7 @@ function order_ko(error)
 {
     RMPApplication.debug("begin order_ko : error =  " + JSON.stringify(error));
 	id_spinner.setVisible(false);
-    var error_msg = ${P_quoted(i18n("order_ko_msg", "INFO: Erreur lors de la recherche des Work Order!"))};
+    var error_msg = ${P_quoted(i18n("order_ko_msg", "INFO - Erreur lors de la recherche des Work Order!"))};
     alertify.error(error_msg);
     RMPApplication.debug("end order_ko");
 }
@@ -111,7 +111,7 @@ function inv_ko(error)
 {
     RMPApplication.debug("begin inv_ko : error =  " + JSON.stringify(error));
 	id_spinner.setVisible(false);
-    var error_msg = ${P_quoted(i18n("inv_ko_msg", "INFO: Erreur lors de la recherche des Interventions!"))};
+    var error_msg = ${P_quoted(i18n("inv_ko_msg", "INFO - Erreur lors de la recherche des Interventions!"))};
     alertify.error(error_msg);
     RMPApplication.debug("end inv_ko");
 }

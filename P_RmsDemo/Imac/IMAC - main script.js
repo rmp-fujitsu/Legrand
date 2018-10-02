@@ -6,6 +6,17 @@ RMPApplication.debug("IMAC : Application started");
 // ========================
 // Variables declaration
 // ========================
+
+// if "true", logs will be showed on the browser console
+var dbug = {
+    "init" : false,
+    "action" : false,
+    "lane" : false,
+    "choice" : false,
+    "data" : false,
+    "update" : false
+};
+
 var login = {};					// metadata user
 var view;						// view definition according to metadata values
 var affiliateList = null;       // group of alliliates for specific GRP_AFF view/scope
@@ -17,7 +28,7 @@ var request = {};				// all informations related to the IMAC request
 								// => should be used as pattern to retrieve cost line in collection
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 resetWI();	// reset WI
@@ -30,7 +41,7 @@ init();		// execute main program
 function resetWI()
 {
 	RMPApplication.debug("begin resetWI");
-	// console.log("=> resetWI");
+	c_debug(dbug.action, "=> resetWI");
 
 	var selectedLang = "fr";                // french by default
 	var datebox_lang = selectedLang;
@@ -89,7 +100,7 @@ function resetWI()
 
     var req_type = id_request_type.getValue();
     if (isEmpty(req_type)) {
-    	// console.log("=> resetWI: req_type is empty!");
+    	c_debug(dbug.action, "=> resetWI: req_type is empty!");
     	var categ = id_category.getValue();
     	if (!isEmpty(categ)) {
     		id_request_type.setValue(findRequestType(categ));
@@ -97,14 +108,14 @@ function resetWI()
     		setFamCat(req_type);
     	}
     } else {
-    	// console.log("=> resetWI: req_type is NOT empty!");
+    	c_debug(dbug.action, "=> resetWI: req_type is NOT empty!");
     	setFamCat(req_type);
     }
 
 	switch (id_state.getValue()) {			// What informations to show
 
 		case "draft" : 		// IMAC request contains some datas
-			// console.log('=> resetWI: case "draft"');
+			c_debug(dbug.action, '=> resetWI: case "draft"');
 			$("#id_module_cards").hide();
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
@@ -116,7 +127,7 @@ function resetWI()
 			retrieveAllDatas();
 			break;
 		case "sent" : 		// IMAC fullfilled by customer and already sent to Fujitsu
-			// console.log('=> resetWI: case "sent"');
+			c_debug(dbug.action, '=> resetWI: case "sent"');
 			$("#id_module_cards").hide();
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
@@ -136,7 +147,7 @@ function resetWI()
 			retrieveAllDatas();
 			break;
 		case "work_in_progress" : 		// IMAC saved on Fujitsu side with additionnal informations
-			// console.log('=> resetWI: case "work_in_progress"');
+			c_debug(dbug.action, '=> resetWI: case "work_in_progress"');
 			$("#id_module_cards").hide();
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
@@ -156,7 +167,7 @@ function resetWI()
 			retrieveAllDatas();
 			break;
 		case "validated" : 	// IMAC validated by Fujitsu SDMO
-			// console.log('=> resetWI: case "validated"');
+			c_debug(dbug.action, '=> resetWI: case "validated"');
 			$("#id_module_cards").hide();
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
@@ -171,7 +182,7 @@ function resetWI()
 			retrieveAllDatas();
 			break;
 		case "cancelled" : 	// IMAC cancelled by Fujitsu SDMO
-			// console.log('=> resetWI: case "cancelled"');
+			c_debug(dbug.action, '=> resetWI: case "cancelled"');
 			$("#id_module_cards").hide();
 			$("#id_user_choice_row").show();
 			id_location_info.setVisible(true);
@@ -186,7 +197,7 @@ function resetWI()
 			retrieveAllDatas();
 			break;
 		default :  		// New IMAC request
-			// console.log('=> resetWI: case "default"');
+			c_debug(dbug.action, '=> resetWI: case "default"');
 			$("#id_module_cards").show();
 			$("#id_user_choice_row").hide();	
 			id_location_info.setVisible(false);
@@ -210,7 +221,7 @@ function resetWI()
 function fillTechnicianBox() 
 {
     RMPApplication.debug("begin fillTechnicianBox");
-    // console.log("=> fillTechnicianBox");
+    c_debug(dbug.init, "=> fillTechnicianBox");
 
     var id_technicianRequest = $("#id_technicianRequest");
     var defaultValue = "yes";
@@ -232,7 +243,7 @@ function fillTechnicianBox()
 function fillServerBox() 
 {
     RMPApplication.debug("begin fillServerBox");
-    // console.log("=> fillServerBox");
+    c_debug(dbug.init, "=> fillServerBox");
 
     var id_serverRequest = $("#id_serverRequest");
     var defaultValue = "no";
@@ -256,8 +267,7 @@ function fillServerBox()
 function resetAction() 
 {
 	RMPApplication.debug("begin resetAction");
-	// console.log("=> resetAction");
-
+	c_debug(dbug.action, "=> resetAction");
 	RMPApplication.debug("end resetAction");
 }
 
@@ -267,13 +277,13 @@ function resetAction()
 function init() 
 {
 	RMPApplication.debug("begin init");
-	// console.log("begin init");
+	c_debug(dbug.init, "=> init");
 
 	// resetWI();						// reset Web Interface  & hide sub-level area
 	var options = {};
 	var pattern = {};
 	pattern.login = RMPApplication.get("login");
-    // console.log("=> init: pattern = ", pattern);
+	c_debug(dbug.init, "=> init: pattern = ", pattern);
 
     // CAPI for getting user information
 	id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
@@ -286,24 +296,26 @@ function init()
 function get_info_ok(result)
 {
 	RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-	// console.log("=> get_info_ok: result = ", result);
+	c_debug(dbug.init, "=> get_info_ok: result = ", result);
 
     // define "login" variable properties
 	login.user = result.user;
 	login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
     login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
 	login.timezone = result.timezone;
+	login.profil = result.profil;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
-    login.affiliates_access = (!isEmpty(result.acces_enseignes)) ? result.acces_enseignes.trim().toUpperCase() : '';
     login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
+    login.affiliates_access = (!isEmpty(result.acces_enseignes)) ? result.acces_enseignes.trim().toUpperCase() : '';
     login.country = (!isEmpty(result.pays)) ? result.pays.trim().toUpperCase() : '';
     login.location_code = (!isEmpty(result.code_magasin)) ? result.code_magasin.trim().toUpperCase() : '';
     login.division = (!isEmpty(result.division)) ? result.division.trim().toUpperCase() : '';
     login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
 	login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
-    // console.log("=> get_info_ok: login = ", login);
 	enseigne = login.affiliate;
+    c_debug(dbug.init, "=> get_info_ok: login = ", login);
+
 	if (!isEmpty(login.affiliate)) {
 		id_enseigne.setValue(login.affiliate);
 		if (isEmpty(login.grp_affiliates)) {
@@ -330,24 +342,23 @@ function get_info_ok(result)
     } else if ( (!isEmpty(login.grp_affiliates)) && (login.grp_affiliates != "NOT DEFINED") ) {    // a group of affiliates
         view = "GRP_AFF";
 
-    } else if ( (login.region == login.affiliate) || (login.division == login.affiliate) ) {    // One affiliate, but country can be selected
+     } else if ( (!isEmpty(login.affiliate)) && ((login.region == login.affiliate) || (login.division == login.affiliate)) ) {    // One affiliate, but country can be selected
         view = "AFFILIATE";
 
-	} else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
-	    view = "COUNTRY";
+    } else if ( (!isEmpty(login.country)) && ((login.region == login.country) || (login.division == login.country)) ) {    // One country, but affiliate can be selected
+        view = "COUNTRY";
 
+    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") && (login.profil == "DIVISION") ) {
+        view = "DIVISION";
 
-	} else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
-	    view = "DIVISION";
-
-	} else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") ) {
-	    view = "REGION";
+    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") && (login.profil == "REGION") ) {
+        view = "REGION";
 
 	} else {               // Only one site: 1 country - 1 affiliate - 1 location
 	    view = "LOCAL";   
 	}
     id_view.setValue(view);
-    // console.log("get_info_ok: view = ", view);
+    c_debug(dbug.init, "get_info_ok: view = ", view);
 
     var affiliateList = '';
     switch (login.grp_affiliates) {
@@ -370,8 +381,8 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    // console.log("=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    c_debug(dbug.init, "=> get_info_ko: error = ", error);
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko"); 
 } 
@@ -382,20 +393,20 @@ function get_info_ko(error)
 function check_user_lanes() 
 {
 	RMPApplication.debug("begin check_user_lanes : login = " + login);
-	// console.log("=> check_user_lanes: login = ", login);
+	c_debug(dbug.lane, "=> check_user_lanes: login = ", login);
 
 	var options = {};
 	var pattern = {};
 
     // CAPI for checking if user belong to some lanes
-	id_check_user_lanes_api.trigger (pattern, options , check_user_lanes_ok, check_user_lanes_ko); 
+	id_check_user_lanes_api.trigger (pattern, options , check_user_lanes_ok, check_user_lanes_ko);
 	RMPApplication.debug("end check_user_lanes");
 }
 
 function check_user_lanes_ok(result) 
 {
 	RMPApplication.debug("begin check_user_lanes_ok: result =  " + JSON.stringify(result));
-	// console.log("=> check_user_lanes_ok: result = ", result);
+	c_debug(dbug.lane, "=> check_user_lanes_ok: result = ", result);
 
 	// define other "login" variable properties
 	login.is_sdmo = (result.is_sdmo == "true") ? true : false;
@@ -410,7 +421,7 @@ function check_user_lanes_ok(result)
 	login.is_imac_requestor = (result.is_imac_requestor == "true") ? true : false;
 	login.is_imac_validator = (result.is_imac_validator == "true") ? true : false;
 	login.is_imac_contributor = (result.is_imac_contributor == "true") ? true : false;
-	// console.log("=> check_user_lanes_ok: login = ", login);
+	c_debug(dbug.lane, "=> check_user_lanes_ok: login = ", login);
 
 	set_section_visibility();
 
@@ -420,8 +431,8 @@ function check_user_lanes_ok(result)
 function check_user_lanes_ko(error) 
 {
     RMPApplication.debug("begin check_user_lanes_ko: error = " + JSON.stringify(error));
-    // console.log("=> check_user_lanes_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Vérification impossible des droits de l'utilisateur!"))};
+    c_debug(dbug.lane, "=> check_user_lanes_ko: error = ", error);
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Vérification impossible des droits de l'utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end check_user_lanes_ko"); 
 } 
@@ -433,7 +444,7 @@ function check_user_lanes_ko(error)
 function set_section_visibility() 
 {
 	RMPApplication.debug("begin set_section_visibility : login = " + login);
-	// console.log("=> set_section_visibility: login.is_sdmo = ", login.is_sdmo);
+	c_debug(dbug.lane, "=> set_section_visibility: login.is_sdmo = ", login.is_sdmo);
 
 	// Following section shoubd be visible only for SDMO usersPRET
 	id_fujitsu_follow_up.setVisible(login.is_sdmo);
@@ -452,7 +463,7 @@ function set_section_visibility()
 function setFamCat(type) 
 {
 	RMPApplication.debug("begin setFamCat");
-	// console.log("=> setFamCat: type = ", type);
+	c_debug(dbug.init, "=> setFamCat: type = ", type);
 
 	// save type of request for windows title
    	id_request_type.setValue(type);
@@ -512,7 +523,7 @@ function setFamCat(type)
 function findRequestType(cat) 
 {
 	RMPApplication.debug("begin findRequestType");
-	// console.log("=> findRequestType: cat = ", cat);
+	c_debug(dbug.init, "=> findRequestType: cat = ", cat);
 	var req_type = "";
 
 	// Complete country selection filter according connected profile
@@ -546,7 +557,7 @@ function findRequestType(cat)
             break;
     }
 
-    // console.log('=> findRequestType: req_type = ', req_type);
+    c_debug(dbug.init, "=> findRequestType: req_type = ", req_type);
     return req_type;
 
 	RMPApplication.debug("end findRequestType");
@@ -558,7 +569,7 @@ function findRequestType(cat)
 function showUserChoice() 
 {
 	RMPApplication.debug("begin showUserChoice");
-	// console.log("=> showUserChoice: request = ", request);
+	c_debug(dbug.choice, "=> showUserChoice: request = ", request);
 
 	var id_moduleCards = $("#id_module_cards");
 	var id_userChoiceRow = $("#id_user_choice_row");
@@ -574,7 +585,7 @@ function showUserChoice()
 	var fontAwesome = "";
 	var matAction = "";
 	var title = ${P_quoted(i18n("error_showUserChoice_title", "Information"))};
-	var content = ${P_quoted(i18n("error_showUserChoice_msg", "Le type d'opération demandée n'a pas encore été implémenté!"))};
+	var content = ${P_quoted(i18n("error_showUserChoice_msg", "Le type d'opération demandée n'a pas encore été implémenté !"))};
 
 	switch (request.category) {
 		case "ouverture" :
@@ -680,8 +691,7 @@ function showUserChoice()
 			action = ${P_quoted(i18n("out_of_scope_action", "Préciser le périmètre concerné"))};
 			break;
 	}
-
-	// console.log('=> showUserChoice: matAction = ' + matAction + '\n + action: ' + action);
+	c_debug(dbug.choice, "=> showUserChoice: matAction = " + matAction + "\n + action: " + action);
 
 	// hide choice modules part
 	id_moduleCards.hide();
@@ -720,7 +730,7 @@ function dataValidation()
 {
 	RMPApplication.debug("begin dataValidation");
 	var state_value = id_state.getValue();
-	// console.log("=> dataValidation: state = ", state_value);
+	c_debug(dbug.data, "=> dataValidation: state = ", state_value);
 
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");			// technicianRequest input
@@ -812,30 +822,30 @@ function dataValidation()
 		case "sent" :
 			// id_save_draft.setVisible(false);
 			// id_transfer_to_sdmo.setVisible(false);
-			// console.log("DRAFT & SENT TO FUJITSU buttons should be hidden");
+			c_debug(dbug.data, "=> dataValidation: DRAFT & SENT TO FUJITSU buttons should be hidden");
 			break;
 		case "work_in_progress" :
 			id_imac_update.setVisible(true);
 			id_sdmo_validation.setVisible(true);
 			id_sdmo_cancellation.setVisible(true);
-			// console.log("3 SDMO buttons should be visible");
+			c_debug(dbug.data, "=> dataValidation: 3 SDMO buttons should be visible");
 			break;
 		case "validated" :
 			id_imac_update.setVisible(false);
 			id_sdmo_validation.setVisible(false);
 			id_sdmo_cancellation.setVisible(false);
-			// console.log("3 SDMO buttons should be hidden");
+			c_debug(dbug.data, "=> dataValidation: 3 SDMO buttons should be hidden");
 			break;
 		case "cancelled" :
 			id_imac_update.setVisible(false);
 			id_sdmo_validation.setVisible(false);
 			id_sdmo_cancellation.setVisible(false);
-			// console.log("3 SDMO buttons should be hidden");
+			c_debug(dbug.data, "=> dataValidation: 3 SDMO buttons should be hidden");
 			break;
 		default: 		// state = "draft" or EMPTY
 			id_save_draft.setVisible(true);
 			id_transfer_to_sdmo.setVisible(true);
-			// console.log("DRAFT & SENT TO FUJITSU buttons should be visible");
+			c_debug(dbug.data, "=> dataValidation: DRAFT & SENT TO FUJITSU buttons should be visible");
 			break;		
 	}
 
@@ -881,7 +891,7 @@ function dataValidation()
 function saveDraft() 
 {
 	RMPApplication.debug("begin saveDraft");
-	// console.log("=> saveDraft");
+	c_debug(dbug.action, "=> saveDraft");
 
 	id_state.setValue("draft");
 	dataValidation();
@@ -897,7 +907,7 @@ function saveDraft()
 function sendRequest() 
 {
 	RMPApplication.debug("begin sendRequest");
-	// console.log("=> sendRequest");
+	c_debug(dbug.action, "=> sendRequest");
 
 	var contexte = id_context.getValue();
 	// contexte == "web" for desktop screen; otherwise (for tablet & mobile) warehouse Module is not available as actual data report's presentation is poor with Google tables
@@ -908,7 +918,7 @@ function sendRequest()
 
 	if (missing_info) { 
 
-		var content = ${P_quoted(i18n("error_sendRequest_msg", "L'un des 2 champs doit être rempli (Date d'intervention souhaitée OU Semaine approximative d'intervention!"))};
+		var content = ${P_quoted(i18n("error_sendRequest_msg", "L'un des 2 champs doit être rempli (Date d'intervention souhaitée OU Semaine approximative d'intervention !"))};
 		dialog_warning(error_title_notify, content, btn_ok);
 		return false;		// not sent to SDMO as mandatory info are not provided
 
@@ -930,13 +940,13 @@ function sendRequest()
 function retrieveAllDatas() 
 {
 	RMPApplication.debug("begin retrieveAllDatas");
-	// console.log("=> retrieveAllDatas");
+	c_debug(dbug.data, "=> retrieveAllDatas");
 
 	// Fill technician & server boxes before retrieving real values
     fillTechnicianBox();
     fillServerBox();
 	var state_value = id_state.getValue();
-	// console.log("=> retrieveAllDatas: state = ", state_value);
+	c_debug(dbug.data, "=> retrieveAllDatas: state = ", state_value);
 
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");			// technicianRequest input
@@ -1045,7 +1055,7 @@ function sdmoValidation()
 {
 	RMPApplication.debug("begin sdmoValidation");
 	var state_value = id_state.getValue();
-	// console.log("=> sdmoValidation: state = ", state_value);
+	c_debug(dbug.data, "=> sdmoValidation: state = ", state_value);
 
 	// set temporary variables for each HTML fields
 	var id_technicianRequest = $("#id_technicianRequest");
@@ -1179,6 +1189,7 @@ function sdmoValidation()
 			break;
 	}
 	update_done = true;
+	c_debug(dbug.data, "=> sdmoValidation: update_done = ", update_done);
 
 	RMPApplication.debug("end sdmoValidation");
 }
@@ -1189,15 +1200,17 @@ function sdmoValidation()
 function woCreationValidate() 
 {
 	RMPApplication.debug("begin woCreationValidate");
-	var id_woNb = $("#id_woNb");
-	// console.log("=> woCreationValidate: id_woNb = ", id_woNb.val());
 	update_done = false;
+	c_debug(dbug.action, "=> woCreationValidate: update_done = ", update_done);
+	var id_woNb = $("#id_woNb");
+	c_debug(dbug.action, "=> woCreationValidate: id_woNb = ", id_woNb.val());
 
 	if (isEmpty(id_woNb.val())) {
 		var title = ${P_quoted(i18n("error_woCreationValidate_title", "Erreur"))};
-        var content = ${P_quoted(i18n("error_woCreationValidate_msg", "Validation impossible tant que le n° de Work Order n'est pas renseigné!"))};
+        var content = ${P_quoted(i18n("error_woCreationValidate_msg", "Validation impossible tant que le n° de Work Order n'est pas renseigné !"))};
         dialog_warning(title, content, btn_ok);
 		return false;
+
 	} else {
 		id_state.setValue("validated");
 		id_imac_achieved.setChecked(true);
@@ -1206,7 +1219,7 @@ function woCreationValidate()
 
 		RMPApplication.debug("end woCreationValidate");
 
-		// console.log("=> woCreationValidate: before returning TRUE");
+		c_debug(dbug.action, "=> woCreationValidate: before returning TRUE");
 		while (update_done == false) {
 			// wait until flag update_done is setted to true
 		}
@@ -1221,14 +1234,15 @@ function woCreationValidate()
 function woImacCancel() 
 {
 	RMPApplication.debug("begin woImacCancel");
-	// console.log("=> woImacCancel");
 	update_done = false;
+	c_debug(dbug.action, "=> woImacCancel: update_done = ", update_done);
 
 	if (isEmpty(id_cancellation_reason.getValue())) {
 		var title = ${P_quoted(i18n("error_woImacCancel_title", "Erreur"))};
-        var content = ${P_quoted(i18n("error_woImacCancel_msg", "En cas d'annulation d'un IMAC, la raison doit être indiquée dans le champ prévu à cet effet!"))};
+        var content = ${P_quoted(i18n("error_woImacCancel_msg", "En cas d'annulation d'un IMAC, la raison doit être indiquée dans le champ prévu à cet effet !"))};
         dialog_warning(title, content, btn_ok);
 		return false;
+
 	} else {
 		var id_fujitsuComments = $("#id_fujitsuComments");
 		var new_fuji_comments = (isEmpty(id_fujitsu_comments.getValue()) ? "" : id_fujitsu_comments.getValue() + "\n-------------------\n" ) + "- Raison annulation: " + id_cancellation_reason.getValue();
@@ -1241,7 +1255,7 @@ function woImacCancel()
 
 		RMPApplication.debug("end woImacCancel");
 
-		// console.log("=> woImacCancel: before returning TRUE");
+		c_debug(dbug.action, "=> woImacCancel: before returning TRUE");
 		while (update_done == false) {
 				// wait until flag update_done is setted to true
 			}
@@ -1255,8 +1269,8 @@ function woImacCancel()
 function updateImac() 
 {
 	RMPApplication.debug("begin updateImac");
-	// console.log("=> updateImac");
 	update_done = false;
+	c_debug(dbug.update, "=> updateImac: update_done = ", update_done);
 
 	id_state.setValue("work_in_progress");
 	// update IMAC global state
@@ -1265,7 +1279,7 @@ function updateImac()
 
 	RMPApplication.debug("end updateImac");
 	
-	// console.log("=> updateImac: before returning TRUE");
+	c_debug(dbug.update, "=> updateImac: before returning TRUE");
 	while (update_done == false) {
 		// wait until flag update_done is setted to true
 	}
@@ -1278,7 +1292,7 @@ function updateImac()
 function updateImacBeforeEnd() 
 {
 	RMPApplication.debug("begin updateImacBeforeEnd");
-	// console.log("=> updateImacBeforeEnd");
+	c_debug(dbug.update, "=>  updateImacBeforeEnd");
 
 	// update IMAC global state
 	imacStateUpdate();
@@ -1293,11 +1307,11 @@ function updateImacBeforeEnd()
 function updateImacFail() 
 {
 	RMPApplication.debug("begin updateImacFail");
-	// console.log("=> updateImacFail");
+	c_debug(dbug.update, "=>  updateImacFail");
 	
 	RMPApplication.debug("end updateImacFail");
 	
-	// console.log("=> updateImac: before returning TRUE");
+	c_debug(dbug.update, "=> updateImacFail => return FALSE");
 	return false;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
 }
 
@@ -1307,7 +1321,7 @@ function updateImacFail()
 function imacStateUpdate() 
 {
 	RMPApplication.debug("begin ImacStateUpdate");
-	// console.log("=> ImacStateUpdate");
+	c_debug(dbug.update, "=>  ImacStateUpdate");
 
 	var sent_state = ${P_quoted(i18n("sent_state", "Transmise"))};
 	var accepted_state = ${P_quoted(i18n("accepted_state", "Acceptée"))};

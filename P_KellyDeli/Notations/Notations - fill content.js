@@ -9,7 +9,7 @@
 function fillContent()
 {
     RMPApplication.debug("begin fillContent");
-    c_debug(debug.content, "=> fillContent: content_value = "  + JSON.stringify(content_value));
+    c_debug(dbug.content, "=> fillContent: content_value = "  + JSON.stringify(content_value));
     // var content_value = JSON.parse(RMPApplication.get("my_json"));
     $("#id_number_detail").val (content_value.FUJITSU_NUMBER);
     $("#id_contract_detail").val (content_value.company);
@@ -17,10 +17,10 @@ function fillContent()
     $("#id_opened_detail").val (content_value.OPENED_DATE);
     // translate priority and status coming from SNOW into the user language
     var priority = translateExp(col_lang_opt.code_language, getVarPrioriyValue(content_value.PRIORITY));
-    c_debug(debug.content, "=> fillContent: priority = ", priority);
+    c_debug(dbug.content, "=> fillContent: priority = ", priority);
     $("#id_priority_detail").val (priority);
     var status = translateExp(col_lang_opt.code_language, getVarStatusValue(content_value.STATUS));
-    c_debug(debug.content, "=> fillContent: status = ", status);
+    c_debug(dbug.content, "=> fillContent: status = ", status);
     $("#id_state_detail").val (status);
 
     $("#id_closed_detail").val (content_value.CLOSURE_DATE);
@@ -32,7 +32,7 @@ function fillContent()
 function fillSatisfaction()
 {
     RMPApplication.debug("begin fillSatisfaction");
-    c_debug(debug.content, "=> fillSatisfaction");
+    c_debug(dbug.content, "=> fillSatisfaction");
     // not yet evaluated & ticket status: solved or closed
     $("#id_rowSatisfaction").addClass("bkg-light-blue");
     $("#id_rowSatisfaction").show();
@@ -48,7 +48,7 @@ function fillSatisfaction()
 function setNotationValue(note)
 {
     RMPApplication.debug("begin setNotationValue");
-    c_debug(debug.content, "=> setNotationValue");
+    c_debug(dbug.content, "=> setNotationValue");
     RMPApplication.set("notation", note);
     RMPApplication.debug("end setNotationValue");
 }
@@ -58,7 +58,7 @@ function check_eval(note, comments)
     RMPApplication.debug("begin check_eval");
     if ((parseInt(note) >= 1) && (parseInt(note) <= 3)) {
         // comment is mandatory for note <= 3
-        c_debug(debug.content, "=> check_eval: note <= 3");
+        c_debug(dbug.content, "=> check_eval: note <= 3");
         if (isEmpty(comments)) {
             var title_dialog_empty = ${P_quoted(i18n("title_dialog_empty", "Commentaire obligatoire"))};
             var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire !"))};

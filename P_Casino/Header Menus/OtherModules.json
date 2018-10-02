@@ -1,0 +1,36 @@
+[{
+        "title" : "Accueil",
+        "image" : "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/382997?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Demande IMAC",
+        "visible" : "${has_right('439441')=='true' || has_right('439346')=='true' || has_right('439393')=='true' || has_right('439309')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}" 
+    }, {
+        "title" : "Base de connaissances",
+        "visible" : "${has_right('439465')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/389405?P_mode=${P_mode}&P_language=${P_language}" 
+    }, {
+        "title" : "Fermeture de ticket",
+        "visible" : "${has_right('439465')=='true' || has_right('439309')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/389407?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Diffusion de message",
+        "visible" : "${has_right('447089')=='true' || has_right('439309')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/389442?P_mode=${P_mode}&P_language=${P_language}"
+    }
+]
+
+// 439309 => CASINO - Designers
+// 447089 => CASINO - Admin IT
+// 439347 => CASINO - Desk Support
+// 439310 => CASINO - Local users
+// 439948 => CASINO - Region-Division Managers
+// 439348 => CASINO - Affiliate Managers
+// 439993 => CASINO - Country Managers
+// 439346 => CASINO - IT Group Managers
+// 439393 => CASINO - SDMO Fujitsu
+// 439443 => CASINO - Fujitsu Countries
+// 439441 => CASINO - IMAC - Requestor
+// 439465 => RMS - CASINO (Partners)
+// 439440 => RMS - CASINO 

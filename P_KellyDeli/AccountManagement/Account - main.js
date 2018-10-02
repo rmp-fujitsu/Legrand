@@ -5,7 +5,7 @@ RMPApplication.debug ("Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "item": false
 };
 
@@ -21,7 +21,7 @@ function count_locations()
 {
 	RMPApplication.debug ("begin count_locations");
 	var my_pipelines = [{$group: {_id: null,count: {$sum: 1}}}];
-	c_debug(debug.item, "=> count_locations: my_pipelines = ", my_pipelines);
+	c_debug(dbug.item, "=> count_locations: my_pipelines = ", my_pipelines);
 	var my_options = {};
 
 	eval(col_locations).aggregateCallback(my_pipelines, my_options, count_locations_ok, count_locations_ko);
@@ -31,7 +31,7 @@ function count_locations()
 function count_locations_ok (result) 
 {
 	RMPApplication.debug("begin count_locations_ok");
-	c_debug(debug.item, "=> count_locations_ok: result = ", result);
+	c_debug(dbug.item, "=> count_locations_ok: result = ", result);
 	var success_msg = ${P_quoted(i18n("count_locations_ok", "kiosks recensés dans la collection!"))};
     notify_success(success_title_notify, result + ' ' + success_msg);
 	// TO DO
@@ -41,7 +41,7 @@ function count_locations_ok (result)
 function count_locations_ko (error) 
 {
 	RMPApplication.debug("begin count_locations_ko");
-	c_debug(debug.item, "=> count_locations_ko: error = ", error);
+	c_debug(dbug.item, "=> count_locations_ko: error = ", error);
 	var error_msg = ${P_quoted(i18n("add_ko_msg", "Impossible de dénombrer le nombre de kioks!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end count_locations_ko");
@@ -51,7 +51,7 @@ function count_language()
 {
 	RMPApplication.debug ("begin count_language");
 	var my_pipelines = [{$group: {_id: null,count: {$sum: 1}}}];
-	c_debug(debug.item, "=> count_language: my_pipelines = ", my_pipelines);
+	c_debug(dbug.item, "=> count_language: my_pipelines = ", my_pipelines);
 	var my_options = {};
 	eval(col_languages).aggregateCallback(my_pipelines, my_options, count_language_ok, count_language_ko);
 	RMPApplication.debug ("end count_language");
@@ -60,7 +60,7 @@ function count_language()
 function count_language_ok (result) 
 {
 	RMPApplication.debug("begin count_language_ok");
-	c_debug(debug.item, "=> count_language_ok: result = ", result);
+	c_debug(dbug.item, "=> count_language_ok: result = ", result);
 	var success_msg = ${P_quoted(i18n("count_language_ok", "langues recensées dans la collection!"))};
     notify_success(success_title_notify, result + ' ' + success_msg);
 	// TO DO
@@ -71,7 +71,7 @@ function count_language_ok (result)
 function count_language_ko (error) 
 {
 	RMPApplication.debug("begin count_language_ko");
-	c_debug(debug.item, "=> count_language_ok: error = ", error);
+	c_debug(dbug.item, "=> count_language_ok: error = ", error);
     var error_msg = ${P_quoted(i18n("add_ko_msg", "Impossible de dénombrer le nombre de langues!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end count_language_ko");
