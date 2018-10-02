@@ -6,185 +6,220 @@ RMPApplication.debug("SD Screen : Application started");
 // ========================
 // Variables declaration
 // ========================
+
+// if "true", logs will be showed on the browser console
+var dbug = {
+    "init" : false,
+    "insert" : false,
+    "media" : false
+};
+
 var view;
 var login = {};
 var selected_location = null;   // selected location according to input's user
 var selected_affiliate = {};    // selected affiliate according to input's user
 var wm_order = null;            // work order details saved in Service Now
 
-// execute main program
-init();
+// other global variables
+var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
+var close_title_notify = ${P_quoted(i18n("close_title_notify", "Information"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
+var close_msg_notify = ${P_quoted(i18n("close_msg_notify", "Merci d'avoir utilisé RunMyStore !"))};
+var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 
-// ===============================
-//   Initialization part
-// ===============================
-function init() 
+// =============================================================
+// Create Work Order insertion request to Service Now
+// =============================================================
+function createRequest()
 {
-	RMPApplication.debug("begin init : login = " + login);
+    RMPApplication.debug("begin createRequest");
+    c_debug(dbug.insert, "begin createRequest");
+    $("#id_spinner_insert").show();
 
-	RMPApplication.set("variables.location_code", RMPApplication.get("location_code"));
-    RMPApplication.set("last_question","Aucune solution trouvée, décrivez votre problème de façon précise!");   
-	var options = {};
-	var pattern = {};
-	pattern.login = RMPApplication.get("login");
-    // console.log("=> init: pattern = ", pattern);
+    var caller, logical_name, location, separator;
+    var num_pos = "01";     // Cashdesk n° => we sinplify RMSDEMO case
+    selected_location = JSON.parse(RMPApplication.get("selected_location"));
+    selected_affiliate = JSON.parse(RMPApplication.get("selected_affiliate"));
+    
+    switch (selected_location.affiliate) {
 
-    // CAPI for getting user information
-	id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
-	RMPApplication.debug("end init");
-}
+        case 'societeXX':      // EXAMPLE
+            caller = "hotline@societexx.com";
+            location = $.trim(selected_location.location_name);
+            // logical_name format => MAG00BxxxCAI01
+            logical_name = "MAG00" + selected_location.location_code + RMPApplication.get("variables.short_cat") + num_pos;
+            break;
 
-// ============================================
-// Get user details from user metadata details
-// ============================================
-function get_info_ok(result)
-{
-	RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-	// console.log("=> get_info_ok: result = ", result);
+        default:
+            separator = "-";
+            location = $.trim(selected_location.location) + separator + $.trim(selected_location.location_code);
+            // caller = login.user;
+            caller = "Resp " + location;
+            logical_name = "MAG" + selected_location.location_code + RMPApplication.get("variables.short_cat") + num_pos;
+    }
 
-    // define "login" variable properties
-	login.user = result.user;
-	login.email = result.user;
-	login.phone = result.phone;
-    login.timezone = result.timezone;
-    login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
-    login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
-    login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
-    login.country = (!isEmpty(result.pays)) ? result.pays.trim().toUpperCase() : '';
-    login.location_code = (!isEmpty(result.code_magasin)) ? result.code_magasin.trim().toUpperCase() : '';
-    login.division = (!isEmpty(result.division)) ? result.division.trim().toUpperCase() : '';
-    login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
-	login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
-    // console.log("=> get_info_ok: login = ", login);
+    var contract = selected_affiliate.company + "\\" + selected_affiliate.abbreviation;    // SNOW contract name
+    var customer_site = location; 
+    var requestType = "intervention";
+    var work_order_type = requestType;
+    var contact_type = "RunMyStore";
+    var qualification_group = "";
+    var customer_reference = ""; 
+    var contact = login.user;
+    var description = RMPApplication.get("description");;
+    var short_description = description.substring(0,99);
+    var state = "1";    // draft
+    var expected_start = "";
+    var priority = "2";
+    var contact_detail = (isEmpty(selected_location.email)) ? "" : selected_location.email;
+    contact_detail += (isEmpty(selected_location.phone)) ? "" :  "\n" +selected_location.phone;
+    var photo_consult = ${P_quoted(i18n("photo_consult_txt", "Connectez-vous à RMS pour consulter les photos jointes lors de l'ouverture de l'incident"))};
 
-	// Define 'view' global variable, used to filter locations scope
-    // Different profiles are: SUPERUSER-COMPANY-COUNTRY-DIVISION-REGION-LOCAL
-	if (login.is_super_user == "YES") {   // View as SuperUser
-	    view = "SUPERUSER";
+    // define insertion query before sending to Service Now
+    var work_order = {};
+    work_order.sn_caller = caller
+    work_order.sn_contract = contract;
+    work_order.sn_contact_type = contact_type;
+    work_order.sn_correlation_id = customer_reference;
+    work_order.sn_location = location;
+    work_order.sn_u_customer_site = customer_site;
+    work_order.sn_state = state;
+    work_order.sn_qualification_group = qualification_group;
+    work_order.sn_short_description = short_description;
+    work_order.sn_priority = priority;
+    work_order.sn_u_contact_details = contact_detail;
+    work_order.sn_u_work_order_type = work_order_type;
+    work_order.sn_category = RMPApplication.get("variables.category") + " " + selected_affiliate.affiliate;;
+    work_order.sn_u_problem_type = RMPApplication.get("variables.problem_type");
+    work_order.sn_u_product_type = RMPApplication.get("variables.product_type");
+    work_order.sn_expected_start = expected_start;
+    work_order.sn_cmdb_ci = logical_name;
+    work_order.location_code = selected_location.location_code;
+    
+    var my_array = eval(RMPApplication.get("attachment"));
+    if (my_array.length !=0) {
+        var medias = [];
+        for (var i = 0; i < my_array.length; i++) {
+            medias.push(my_array[i].id);
+        }
+        work_order.media = medias;
+        description += "\n => " + photo_consult;
+    }
+    work_order.sn_description = description;
 
-	} else if ( (login.region == login.company) || (login.division == login.company) ) {    // All countries & affiliates are available
-	    view = "COMPANY";
-
-    } else if ( (!isEmpty(login.grp_affiliates)) && (login.grp_affiliates != "NOT DEFINED") ) {    // a group of affiliates
-        view = "GRP_AFF";
-
-    } else if ( (login.region == login.affiliate) || (login.division == login.affiliate) ) {    // One affiliate, but country can be selected
-        view = "AFFILIATE";
-
-	} else if ( (login.region == login.country) || (login.division == login.country) ) {    // One country, but affiliate can be selected
-	    view = "COUNTRY";
-
-
-	} else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
-	    view = "DIVISION";
-
-	} else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") ) {
-	    view = "REGION";
-
-	} else {               // Only one site: 1 country - 1 affiliate - 1 location
-	    view = "LOCAL";   
-	}
-    // console.log("get_info_ok: view = ", view);
-
-    load_location();
-
-	RMPApplication.debug("end get_info_ok");
-}
-
-function get_info_ko(error) 
-{
-    RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    // console.log("=> get_info_ko: error = ", error);
-
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Erreur lors de la récupération des informations utilisateur!"))};
-    alertify.error(error_msg);
-    RMPApplication.debug("end get_info_ko"); 
-} 
-
-// ======================
-//   Load_location
-// ======================
-function load_location()
-{
-    RMPApplication.debug("begin load_location");
-	var locationCode = RMPApplication.get("variables.location_code");
-	// console.log("=> load_location: locationCode = ", locationCode);
-	if (isEmpty(locationCode) || locationCode === "false" || locationCode === "tous") {
-        // $("#id_locationFilter").select2("close");
-        /*var  title = ${P_quoted(i18n("error_location_title", "Erreur"))};
-        var  content = ${P_quoted(i18n("location_selection", "Veuillez sélectionner un seul site, en utilisant si besoin les filtres PAYS et/ou ENSEIGNE..."))};
-		RMPApplication.showErrorBox(title, content);*/
-		return;
-	}
-
-    // capi
-    var my_pattern = {};
+    c_debug(dbug.insert, "=> createRequest: work_order = ", work_order);
     var options = {};
-    my_pattern.location_code = locationCode;
-    // console.log("my_pattern = ", JSON.stringify(my_pattern));
-    id_get_location_by_code_api.trigger(my_pattern , options, load_location_ok, load_location_ko);
-    RMPApplication.debug ("end load_location");
+    id_insert_work_order_api.trigger (work_order, options, insert_ok, insert_ko);
+    
+    RMPApplication.debug("end createRequest");
 }
 
-function load_location_ok(result)
+function insert_ok(result) 
 {
-    RMPApplication.debug("begin load_location_ok : result = " + JSON.stringify(result));
-	// console.log("=> load_location_ok: result = ", result);
-    selected_location = result;
-    RMPApplication.set("selected_location", selected_location);
-    selected_affiliate.affiliate = selected_location.affiliate.toUpperCase();
+    RMPApplication.debug("begin insert_ok : " + JSON.stringify(result));
+    c_debug(dbug.insert, "=> insert_ok: result = ", JSON.stringify(result));
 
-    // get abbreviate name of affiliate
-    getAffiliate(selected_affiliate.affiliate);
-
-    RMPApplication.debug ("end load_location_ok");    
-}
-
-function load_location_ko(error) 
-{
-    RMPApplication.debug ("begin load_location_ko : error = " + JSON.stringify(error)); 
-    // console.log("=> load_location_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Erreur lors de la récupération des informations du site!"))};
-    alertify.error(error_msg);
-    RMPApplication.debug ("end load_location_ko");    
-}
-
-// ========================================================
-//  get complete informations of selected affiliate
-// ========================================================
-function getAffiliate(affiliate_value)
-{
-    RMPApplication.debug("=> begin getAffiliate: affiliate_value = ", affiliate_value);
-    // console.log("=> getAffiliate: affiliate_value = ", affiliate_value);
-
-    var options = {};
+    wm_order = result;
     var input = {};
-    var query = {};
+    var my_array = eval(RMPApplication.get("attachment"));
+    if (my_array.length !=0) {
+        var entries = [];
+        for (var i = 0; i < my_array.length; i++) {
+            var entry_json = {};
+            entry_json.url = my_array[i].url;
+            entry_json.name= my_array[i].name;
+            entry_json.wo_number = wm_order.insertResponse.number
+            entries.push(entry_json);
+        }
+        input.media = entries;
+    } else {
+        input.media = [];
+    }
 
-    // query.abbreviation = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
-    query.affiliate = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
-    input.input_query = query; 
-    // console.log("getAffiliate: input = ", input);
-    id_get_affiliate_api.trigger(input, options, affiliate_ok, affiliate_ko);
-    RMPApplication.debug("end getAffiliate");
+    var options = {};
+    c_debug(dbug.insert, "=> insert_ok: input = ", input);
+    id_save_media_in_collection_api.trigger (input, options, save_media_ok, save_media_ko);
+    
+    var title = ${P_quoted(i18n("insert_ok_title", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("insert_ok_msg1", "Demande créée sous la référence"))};
+    var content2 = ${P_quoted(i18n("insert_ok_msg2", "Vous allez être contacté dans les plus brefs délais."))};
+    notify_then_close_process(title, content1 + ": <br><strong>" + wm_order.insertResponse.number + "</strong><br>" + content2, btn_ok);
+    
+    // $("#id_ouvrir_ticket").click();
+
+    RMPApplication.debug("end insert_ok");
 }
 
-function affiliate_ok(result)
+function insert_ko(error) 
 {
-    RMPApplication.debug("begin affiliate_ok : result = " + JSON.stringify(result));
-    // console.log("=> affiliate_ok: result = ",result);
-    selected_affiliate = result.records[0];
-    RMPApplication.set("selected_affiliate", selected_affiliate);
-
-    RMPApplication.debug("end affiliate_ok");
+    RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
+    c_debug(dbug.insert, "=> insert_ko: error = ", error);
+    var title = ${P_quoted(i18n("id_title_insert_ko_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_insert_ko_1", "Le processus de création du ticket a été anormalement long OU n'a pas abouti !"))};
+    var content2 = ${P_quoted(i18n("id_msg_insert_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
+    var content3 = ${P_quoted(i18n("id_msg_insert_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
+    alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
+    RMPApplication.debug("end insert_ko");  
 }
 
-function affiliate_ko(error)
+function save_media_ok(result)
 {
-    RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
-    // console.log("=> affiliate_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Erreur lors de la composition du nom de contrat! Merci de reporter votre incident!"))};
-    alertify.error(error_msg);  
-    RMPApplication.debug("end affiliate_ko");
+    RMPApplication.debug("begin save_media_ok: result =  " + JSON.stringify(result));
+    c_debug(dbug.media, "=> save_media_ok: result = ", result);
+    RMPApplication.debug("end save_media_ok");
+}
+
+function save_media_ko(error) 
+{
+    RMPApplication.debug("begin save_media_ko: error = " + JSON.stringify(error));
+    c_debug(dbug.media, "=> save_media_ko: error = ", error);
+    var title = ${P_quoted(i18n("id_title_save_picture_ko_1", "Information Suivi Demande"))};
+    var content1 = ${P_quoted(i18n("id_msg_save_picture_ko_1", "Le document n'a pu être sauvegardé !"))};
+    var content2 = ${P_quoted(i18n("id_msg_save_picture_ko_2", "-> Veuillez vérifier dans 'Suivi des demandes' si le ticket a cependant bien été créé."))};
+    var content3 = ${P_quoted(i18n("id_msg_save_picture_ko_3", "Dans le cas contraire, renouvelez une création de ticket."))};
+    alert_then_close_process(title, content1 + "<br><strong>" + wm_order.insertResponse + "</strong><br>" + content2 + "<br>" + content3, btn_ok);
+    RMPApplication.debug("end save_media_ko");
+}
+
+// =====================================================================================
+//   Show a notification then redirect to an another page when dialog box is validated
+// =====================================================================================
+function notify_then_close_process(title, content, labelBtn)
+{
+    $("#id_spinner_insert").hide();
+    ssi_modal.dialog({
+        title: title,
+        content: content, 
+        okBtn:
+            {
+                className:'btn btn-success btn-responsive',
+                label: labelBtn
+            }
+    },
+    function() {
+        // update the process => next step
+        document.getElementById("id_close_process").click();
+    });
+}
+
+// =====================================================================================
+//   Show an alert then redirect to an another page when dialog box is validated
+// =====================================================================================
+function alert_then_close_process(title, content, labelBtn)
+{
+    $("#id_spinner_insert").hide();
+    ssi_modal.dialog({
+        title: title,
+        content: content, 
+        okBtn:
+            {
+                className:'btn btn-danger btn-responsive',
+                label: labelBtn
+            }
+    },
+    function() {
+        // update the process => next step
+        document.getElementById("id_close_process").click();
+    });
 }

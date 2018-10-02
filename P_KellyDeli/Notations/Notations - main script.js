@@ -5,7 +5,7 @@ RMPApplication.debug("Main : Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
     "init" : false,
     "language" : false,
     "status" : false,
@@ -44,7 +44,7 @@ function init()
     var option = {};
     var pattern = {};
     pattern.login = RMPApplication.get("login");
-    c_debug(debug.init, "=> init: pattern = ", pattern);
+    c_debug(dbug.init, "=> init: pattern = ", pattern);
 
     id_get_user_info_as_admin_api.trigger(pattern, option , get_info_ok, get_info_ko); 
 
@@ -57,13 +57,14 @@ function init()
 function get_info_ok(result) 
 {
     RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-    c_debug(debug.init, "=> get_info_ok: result = ", result);
+    c_debug(dbug.init, "=> get_info_ok: result = ", result);
 
     // define "login" variable properties
     login.user = result.user;
     login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
     login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
+    login.profil = result.profil;
     login.contract = result.compagnie.toUpperCase() + "\\" + result.enseigne.toUpperCase();
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
@@ -84,10 +85,10 @@ function get_info_ok(result)
     } else if ( (login.region == login.country) || (login.division == login.country) ) {    // COUNTRY view
         view = "COUNTRY";
 
-    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") && (login.profil == "DIVISION") ) {
         view = "DIVISION";
 
-    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") && (login.profil == "REGION") ) {
         view = "REGION";
 
     } else {                // Only one site: 1 country - 1 affiliate - 1 location
@@ -100,7 +101,7 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    c_debug(debug.init, "=> get_info_ko: error = ", error);
+    c_debug(dbug.init, "=> get_info_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
@@ -112,7 +113,7 @@ function get_info_ko(error)
 function load_language(code_language)
 {
     RMPApplication.debug ("begin load_language");
-    c_debug(debug.language, "=> load_language: code_language = ", code_language);
+    c_debug(dbug.language, "=> load_language: code_language = ", code_language);
     var my_pattern = {};
     var options = {};
     my_pattern.code_language = code_language;
@@ -123,7 +124,7 @@ function load_language(code_language)
 function load_language_ok(result)
 {
     RMPApplication.debug ("begin load_language_ok");
-    c_debug(debug.language, "=> load_language_ok: result", result);
+    c_debug(dbug.language, "=> load_language_ok: result", result);
     if (result.length > 0) {
         col_lang_opt = result[0];
         var success_msg = ${P_quoted(i18n("load_ok_msg", "Informations de la collection chargées !"))};
@@ -139,7 +140,7 @@ function load_language_ok(result)
 function load_language_ko(error)
 {
     RMPApplication.debug ("begin load_language_ko");
-    c_debug(debug.language, "=> load_language_ko: error = ", error);
+    c_debug(dbug.language, "=> load_language_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_ko_msg", "Récupération impossible des données de la langue !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_language_ko");
@@ -151,7 +152,7 @@ function load_language_ko(error)
 function getVarStatusValue (libelle)
 {
     RMPApplication.debug("begin getVarStatusValue");
-    c_debug(debug.status, "=> getVarStatusValue: libelle = ", libelle);
+    c_debug(dbug.status, "=> getVarStatusValue: libelle = ", libelle);
 
     switch (libelle)  {
         case "Brouillon" :
@@ -239,7 +240,7 @@ function getVarStatusValue (libelle)
 function getVarPriorityValue (priority)
 {
     RMPApplication.debug("begin getVarPriorityValue");
-    c_debug(debug.status, "=> getVarPriorityValue: priority = ", priority);
+    c_debug(dbug.status, "=> getVarPriorityValue: priority = ", priority);
 
     switch (priority)  {
         case '1':
@@ -279,8 +280,8 @@ function getVarPriorityValue (priority)
 function translateExp (lang, expr)
 {
     RMPApplication.debug("begin translateExp");
-    c_debug(debug.status, "=> translateExp: lang = ", lang);
-    c_debug(debug.status, "=>               expr = ", expr);
+    c_debug(dbug.status, "=> translateExp: lang = ", lang);
+    c_debug(dbug.status, "=>               expr = ", expr);
     return col_lang_opt[expr];
     RMPApplication.debug("end translateExp");
 }
@@ -289,7 +290,7 @@ function translateExp (lang, expr)
 function fillContent()
 {
     RMPApplication.debug("begin fillContent");
-    c_debug(debug.content, "=> fillContent: content_value = "  + JSON.stringify(content_value));
+    c_debug(dbug.content, "=> fillContent: content_value = "  + JSON.stringify(content_value));
     // var content_value = JSON.parse(RMPApplication.get("my_json"));
     $("#id_number_detail").val (content_value.FUJITSU_NUMBER);
     $("#id_contract_detail").val (content_value.company);
@@ -297,10 +298,10 @@ function fillContent()
     $("#id_opened_detail").val (content_value.OPENED_DATE);
     // translate priority and status coming from SNOW into the user language
     var priority = translateExp(col_lang_opt.code_language, getVarPriorityValue(content_value.PRIORITY));
-    c_debug(debug.content, "=> fillContent: priority = ", priority);
+    c_debug(dbug.content, "=> fillContent: priority = ", priority);
     $("#id_priority_detail").val (priority);
     var status = translateExp(col_lang_opt.code_language, getVarStatusValue(content_value.STATUS));
-    c_debug(debug.content, "=> fillContent: status = ", status);
+    c_debug(dbug.content, "=> fillContent: status = ", status);
     $("#id_state_detail").val (status);
 
     $("#id_closed_detail").val (content_value.CLOSURE_DATE);
@@ -312,7 +313,7 @@ function fillContent()
 function fillSatisfaction()
 {
     RMPApplication.debug("begin fillSatisfaction");
-    c_debug(debug.content, "=> fillSatisfaction");
+    c_debug(dbug.content, "=> fillSatisfaction");
     // not yet evaluated & ticket status: solved or closed
     $("#id_rowSatisfaction").addClass("bkg-light-blue");
     $("#id_rowSatisfaction").show();
@@ -328,7 +329,7 @@ function fillSatisfaction()
 function setNotationValue(note)
 {
     RMPApplication.debug("begin setNotationValue");
-    c_debug(debug.content, "=> setNotationValue");
+    c_debug(dbug.content, "=> setNotationValue");
     RMPApplication.set("notation", note);
     RMPApplication.debug("end setNotationValue");
 }
@@ -338,7 +339,7 @@ function check_eval(note, comments)
     RMPApplication.debug("begin check_eval");
     if ((parseInt(note) >= 1) && (parseInt(note) <= 3)) {
         // comment is mandatory for note <= 3
-        c_debug(debug.content, "=> check_eval: note <= 3");
+        c_debug(dbug.content, "=> check_eval: note <= 3");
         if (isEmpty(comments)) {
             var title_dialog_empty = ${P_quoted(i18n("title_dialog_empty", "Commentaire obligatoire"))};
             var content_dialog_empty = ${P_quoted(i18n("content_dialog_empty", "Toute note inférieure à 3 doit être accompagnée d'un commentaire !"))};

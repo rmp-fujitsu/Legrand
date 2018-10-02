@@ -55,7 +55,7 @@ setLabels();	// set Labels for different periods
 function setLabels () 
 {
 	RMPApplication.debug("begin setLabels");
-	c_debug(debug.chart, "=> setLabels"); 
+	c_debug(dbug.chart, "=> setLabels"); 
 	$("#id_spinner_search").show();
 
 	// hide actual & previous period during definitions
@@ -107,7 +107,7 @@ function setLabels ()
 function getFilter() 		
 {
 	RMPApplication.debug("begin getFilter");
-	c_debug(debug.chart, "=> getFilter");
+	c_debug(dbug.chart, "=> getFilter");
 	$("#id_spinner_search").show();
 
 	var today = new Date();
@@ -129,7 +129,7 @@ function getFilter()
 	wo_query = {};			// reset of previous
 	wo_query.current_exercise = {"sn_query" : current_exercise_query};
 
-	c_debug(debug.chart, "getFilter: wo_query = ", wo_query);
+	c_debug(dbug.chart, "getFilter: wo_query = ", wo_query);
 
 	// load Google Charts Library
 	google.charts.load('current', {packages: ['corechart']});
@@ -144,7 +144,7 @@ function getFilter()
 function drawChart()
 {
 	RMPApplication.debug("begin drawChart");
-	c_debug(debug.chart, "=> drawChart");
+	c_debug(dbug.chart, "=> drawChart");
 
 	var options = {};
 	// Following CAPI is only implemented for 6 periods (current & previous months, quarters, exercises)
@@ -159,25 +159,31 @@ function drawChart()
 function wo_list_ok(P_computed)
 {
 	RMPApplication.debug("begin wo_list_ok : ", JSON.stringify(P_computed));
-	c_debug(debug.chart, "=> wo_list_ok: P_computed = ", P_computed);
+	c_debug(dbug.chart, "=> wo_list_ok: P_computed = ", P_computed);
 
 	var wm_order_list = P_computed.result;
 	
 	for (var i=0; i<wm_order_list.length; i++) {
 		var v_ol = wm_order_list[i];
-		var wo_opened_at = Date.parse(v_ol.wo_opened_at);
+		var wo_opened_at = parseDate(v_ol.wo_opened_at);
 		// Calculate if work order creation date belongs to specific periods
 		var in_period = {};
-		in_period.current_month = ( (Date.parse(getFirstDayCurrentMonth()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentMonth()))) ) ? true : false;
-		in_period.previous_month = ( (Date.parse(getFirstDayPreviousMonth()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayPreviousMonth()))) ) ? true : false;
-		in_period.current_quarter =  ( (Date.parse(getFirstDayCurrentQuarter()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentQuarter()))) ) ? true : false;
-		in_period.previous_quarter = ( (Date.parse(getFirstDayPreviousQuarter()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayPreviousQuarter()))) ) ? true : false;
-		in_period.current_exercise = ( (Date.parse(getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE)) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE)))) ) ? true : false;
+		// in_period.current_month = ( (Date.parse(getFirstDayCurrentMonth()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentMonth()))) ) ? true : false;
+		// in_period.previous_month = ( (Date.parse(getFirstDayPreviousMonth()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayPreviousMonth()))) ) ? true : false;
+		// in_period.current_quarter =  ( (Date.parse(getFirstDayCurrentQuarter()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentQuarter()))) ) ? true : false;
+		// in_period.previous_quarter = ( (Date.parse(getFirstDayPreviousQuarter()) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayPreviousQuarter()))) ) ? true : false;
+		// in_period.current_exercise = ( (Date.parse(getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE)) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE)))) ) ? true : false;
 		// in_period.previous_exercise = ( (Date.parse(getFirstDayPreviousExercise(FIRSTMONTHOFEXERCISE)) <= wo_opened_at) && (wo_opened_at <= (Date.parse(getLastDayPreviousExercise(FIRSTMONTHOFEXERCISE)))) ) ? true : false;
+		in_period.current_month = ( (parseDate(getFirstDayCurrentMonth()) <= wo_opened_at) && (wo_opened_at <= (parseDate(getLastDayCurrentMonth()))) ) ? true : false;
+		in_period.previous_month = ( (parseDate(getFirstDayPreviousMonth()) <= wo_opened_at) && (wo_opened_at <= (parseDate(getLastDayPreviousMonth()))) ) ? true : false;
+		in_period.current_quarter =  ( (parseDate(getFirstDayCurrentQuarter()) <= wo_opened_at) && (wo_opened_at <= (parseDate(getLastDayCurrentQuarter()))) ) ? true : false;
+		in_period.previous_quarter = ( (parseDate(getFirstDayPreviousQuarter()) <= wo_opened_at) && (wo_opened_at <= (parseDate(getLastDayPreviousQuarter()))) ) ? true : false;
+		in_period.current_exercise = ( (parseDate(getFirstDayCurrentExercise(FIRSTMONTHOFEXERCISE)) <= wo_opened_at) && (wo_opened_at <= (parseDate(getLastDayCurrentExercise(FIRSTMONTHOFEXERCISE)))) ) ? true : false;
 
 		wm_order_list[i].in_period = in_period;
-		// c_debug(debug.chart, "=> wo_list_ok: wm_order_list[" + i + "].in_period", in_period);
+		// c_debug(dbug.chart, "=> wo_list_ok: wm_order_list[" + i + "].in_period", in_period);
 	}
+	c_debug(dbug.chart, "=> wo_list_ok: wm_order_list = ", wm_order_list);
 
 	var wo_period_array = [];
 	for (key in reports_list) {
@@ -193,7 +199,7 @@ function wo_list_ok(P_computed)
 			}
 		}
 	}
-	c_debug(debug.chart, "=> wo_list_ok: wo_period_array = ", wo_period_array);
+	c_debug(dbug.chart, "=> wo_list_ok: wo_period_array = ", wo_period_array);
 
 	data_query = {};			// reset previous data_query
 	for (key in reports_list) {
@@ -205,8 +211,8 @@ function wo_list_ok(P_computed)
 		} else {
 				array[0] = wo_period_array[key];
 		}
-		c_debug(debug.chart, "=> wo_list_ok: *** KEY = ", key);
-		c_debug(debug.chart, "                 array = ", array);
+		c_debug(dbug.chart, "=> wo_list_ok: *** KEY = ", key);
+		c_debug(dbug.chart, "                 array = ", array);
 
 		var result = {};
 		if (!isEmpty(array)) {
@@ -239,17 +245,17 @@ function wo_list_ok(P_computed)
 			result.wo_prod_reduced = reduce_array(result.wo_prod);
 			result.wo_prob_reduced = reduce_array(result.wo_prob);
 
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_state = ", result.wo_state);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_type = ", result.wo_type);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_type_reduced = ", result.wo_type_reduced);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prod = ", result.wo_prod);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prod_reduced = ", result.wo_prod_reduced);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prob = ", result.wo_prob);
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prob_reduced = ", result.wo_prob_reduced);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_state = ", result.wo_state);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_type = ", result.wo_type);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_type_reduced = ", result.wo_type_reduced);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prod = ", result.wo_prod);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prod_reduced = ", result.wo_prod_reduced);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prob = ", result.wo_prob);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prob_reduced = ", result.wo_prob_reduced);
 
 			// Get number per state
 			for (var i=0; i<result.wo_state.length; i++) {
-				// c_debug(debug.chart, "=> wo_list_ok: result.wo_state[" + i + "] : ", result.wo_state[i]);
+				// c_debug(dbug.chart, "=> wo_list_ok: result.wo_state[" + i + "] : ", result.wo_state[i]);
 				switch (result.wo_state[i]) {
 					case "1" :
 					case "Draft":
@@ -308,7 +314,7 @@ function wo_list_ok(P_computed)
 						+ result.nb_comp + result.nb_inc + result.nb_canc + result.nb_err;
 			// result.nb_fcomp = result.nb_comp + result.nb_res;		// "Finished - Complete" = Resolved + Closed Complete
 			// result.nb_finc = result.nb_inc + result.nb_unr;		// "Finished - Incomplete" = Unresolved + Closed Incomplete
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_number = ", result.wo_number);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_number = ", result.wo_number);
 
 			//Get number per work order type
 			result.wo_type_details = new Array (result.wo_type_reduced.length);
@@ -322,7 +328,7 @@ function wo_list_ok(P_computed)
 					}
 				}
 			}
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_type_details = ", result.wo_type_details);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_type_details = ", result.wo_type_details);
 
 			// Get number per work order product
 			result.wo_prod_details = new Array (result.wo_prod_reduced.length);
@@ -336,7 +342,7 @@ function wo_list_ok(P_computed)
 					}
 				}
 			}
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prod_details = ", result.wo_prod_details);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prod_details = ", result.wo_prod_details);
 
 			// Get number per work order problem
 			result.wo_prob_details = new Array (result.wo_prob_reduced.length);
@@ -350,15 +356,15 @@ function wo_list_ok(P_computed)
 					}
 				}
 			}
-			c_debug(debug.chart, "=> wo_list_ok: result.wo_prob_details = ", result.wo_prob_details);
+			c_debug(dbug.chart, "=> wo_list_ok: result.wo_prob_details = ", result.wo_prob_details);
 			
-			c_debug(debug.chart, "=> wo_list_ok: result = ", result);
+			c_debug(dbug.chart, "=> wo_list_ok: result = ", result);
 		}
 		data_query[key] = result;
 		data_query[key].wo_array = wo_period_array[key];
-		c_debug(debug.chart, "=> wo_list_ok: data_query[" + key + "] = ", data_query[key]);
+		c_debug(dbug.chart, "=> wo_list_ok: data_query[" + key + "] = ", data_query[key]);
 	}
-	c_debug(debug.chart, "=> wo_list_ok: data_query = ", data_query);
+	c_debug(dbug.chart, "=> wo_list_ok: data_query = ", data_query);
 
 	ready = true;			// tabs on WI can now executed the different drawing functions
 	drawSelectedPeriodChart();
@@ -369,7 +375,7 @@ function wo_list_ok(P_computed)
 function wo_list_ko(P_error) 
 {
 	RMPApplication.debug("begin wo_list_ko: P_error = ", JSON.stringify(P_error));
-	c_debug(debug.chart, "=> wo_list_ko  P_error = ", P_error);
+	c_debug(dbug.chart, "=> wo_list_ko  P_error = ", P_error);
 	var error_msg = ${P_quoted(i18n("wo_list_ko_msg", "Chargement impossible des rapports !"))};
     notify_error(chart_title_notify, error_msg + ' ' + chart_thanks_notify);
     RMPApplication.debug("end wo_list_ko");
@@ -381,7 +387,7 @@ function wo_list_ko(P_error)
 function drawSelectedPeriodChart()
 {
 	RMPApplication.debug("begin drawSelectedPeriodChart");
-	c_debug(debug.chart, "=> drawSelectedPeriodChart");
+	c_debug(dbug.chart, "=> drawSelectedPeriodChart");
 
 	// input to store selected tabs
 	var selected_dashboard_tab = id_selected_dashboard_tab.getValue();
@@ -389,8 +395,8 @@ function drawSelectedPeriodChart()
 	var selected_month_tab = id_selected_month_tab.getValue();
 	var selected_quarter_tab = id_selected_quarter_tab.getValue();
 	var selected_exercise_tab = id_selected_exercise_tab.getValue();
-	c_debug(debug.chart, "=> drawSelectedPeriodChart: selected_dashboard_tab = ", selected_dashboard_tab);
-	c_debug(debug.chart, "=> drawSelectedPeriodChart: selected_period_tab = ", selected_period_tab);
+	c_debug(dbug.chart, "=> drawSelectedPeriodChart: selected_dashboard_tab = ", selected_dashboard_tab);
+	c_debug(dbug.chart, "=> drawSelectedPeriodChart: selected_period_tab = ", selected_period_tab);
 	
 	if (selected_dashboard_tab == "chart") {
 		switch (selected_period_tab) {
@@ -427,7 +433,7 @@ function drawSelectedPeriodChart()
 function drawCurrentMonthChart()
 {
 	RMPApplication.debug("begin drawCurrentMonthChart");
-	c_debug(debug.chart, "=> drawCurrentMonthChart");
+	c_debug(dbug.chart, "=> drawCurrentMonthChart");
 	var id_current_month_chart = $("#id_current_month_chart");
 	id_currMonth.removeClass('hidden');
 	id_currMonth.show();
@@ -448,7 +454,7 @@ function drawCurrentMonthChart()
 function drawPreviousMonthChart()
 {
 	RMPApplication.debug("begin drawPreviousMonthChart");
-	c_debug(debug.chart, "=> drawPreviousMonthChart");
+	c_debug(dbug.chart, "=> drawPreviousMonthChart");
 	var id_previous_month_chart = $("#id_previous_month_chart");
 	id_prevMonth.show();
 	if (data_query.previous_month.wo_array.length == 0) {				// for array
@@ -468,7 +474,7 @@ function drawPreviousMonthChart()
 function drawCurrentQuarterChart()
 {
 	RMPApplication.debug("begin drawCurrentQuarterChart");
-	c_debug(debug.chart, "=> drawCurrentQuarterChart");
+	c_debug(dbug.chart, "=> drawCurrentQuarterChart");
 	var id_current_quarter_chart = $("#id_current_quarter_chart");
 	id_currQuart.show();
 	if (data_query.current_quarter.wo_array.length == 0) {				// for array
@@ -488,7 +494,7 @@ function drawCurrentQuarterChart()
 function drawPreviousQuarterChart()
 {
 	RMPApplication.debug("begin drawPreviousQuarterChart");
-	c_debug(debug.chart, "=> drawPreviousQuarterChart");
+	c_debug(dbug.chart, "=> drawPreviousQuarterChart");
 	var id_previous_quarter_chart = $("#id_previous_quarter_chart");
 	id_prevQuart.show();
 	if (data_query.previous_quarter.wo_array.length == 0) {				// for array
@@ -508,7 +514,7 @@ function drawPreviousQuarterChart()
 function drawCurrentExerciseChart()
 {
 	RMPApplication.debug("begin drawCurrentExerciseChart");
-	c_debug(debug.chart, "=> drawCurrentExerciseChart");
+	c_debug(dbug.chart, "=> drawCurrentExerciseChart");
 	var id_current_exercise_chart = $("#id_current_exercise_chart");
 	id_currExercise.show();
 	if (data_query.current_exercise.wo_array.length == 0) {				// for array
@@ -528,7 +534,7 @@ function drawCurrentExerciseChart()
 function drawPreviousExerciseChart()
 {
 	RMPApplication.debug("begin drawPreviousExerciseChart");
-	c_debug(debug.chart, "=> drawPreviousExerciseChart");
+	c_debug(dbug.chart, "=> drawPreviousExerciseChart");
 	var id_previous_exercise_chart = $("#id_previous_exercise_chart");
 	id_prevExercise.show();
 	if (data_query.previous_exercise.wo_array.length == 0) {			// for array
@@ -551,7 +557,7 @@ function drawPreviousExerciseChart()
 function drawBarChart(d_obj, id_div) 
 {
 	RMPApplication.debug("begin drawBarChart");
-	c_debug(debug.chart, "=> drawBarChart");
+	c_debug(dbug.chart, "=> drawBarChart");
 	// Style Bar options
 	var opac = 'opacity: 0.5';
 	var greCol = 'color: #00C851;' + opac;
@@ -629,7 +635,7 @@ function drawBarChart(d_obj, id_div)
 function drawColumnChart(d_obj, id_div) 
 {
 	RMPApplication.debug("begin drawColumnChart");
-	c_debug(debug.chart, "=> drawColumnChart");
+	c_debug(dbug.chart, "=> drawColumnChart");
 
 	// Data & option definitions for work order per type Chart
 	var wo_per_type_array = new Array(d_obj.wo_type_reduced.length);
@@ -640,7 +646,7 @@ function drawColumnChart(d_obj, id_div)
 		wo_per_type_array[i+1] = [d_obj.wo_type_reduced[i], d_obj.wo_type_details[i]];
 	}
 
-	c_debug(debug.chart, "=> drawColumnChart: wo_per_type_array: ", wo_per_type_array);
+	c_debug(dbug.chart, "=> drawColumnChart: wo_per_type_array: ", wo_per_type_array);
 	var wo_per_type_data = google.visualization.arrayToDataTable(wo_per_type_array);
 	var wo_per_type_options_title = ${P_quoted(i18n('column_title_id1', 'Répartition des'))} + " (" + d_obj.wo_type_number + ") " + ${P_quoted(i18n('column_title_id2', 'tickets par TYPE'))};
 	var wo_per_type_options = {
@@ -668,7 +674,7 @@ function drawColumnChart(d_obj, id_div)
 function drawPieChart(d_obj, id_div) 
 {
 	RMPApplication.debug("begin drawPieChart");
-	c_debug(debug.chart, "=> drawPieChart");
+	c_debug(dbug.chart, "=> drawPieChart");
 
 	// Data & option definitions for work order per product Chart
 	var wo_per_prod_array = new Array(d_obj.wo_prod_reduced.length);
@@ -679,7 +685,7 @@ function drawPieChart(d_obj, id_div)
 		wo_per_prod_array[i+1] =  [d_obj.wo_prod_reduced[i], d_obj.wo_prod_details[i]];
 	}
 
-	c_debug(debug.chart, "=> drawPieChart: wo_per_prod_array: ", wo_per_prod_array);
+	c_debug(dbug.chart, "=> drawPieChart: wo_per_prod_array: ", wo_per_prod_array);
 	var wo_per_prod_data = google.visualization.arrayToDataTable(wo_per_prod_array);
 	var wo_per_prod_options_title = ${P_quoted(i18n('pie_title_id1', 'Répartition des'))} + " (" + d_obj.wo_prod_number + ") " + ${P_quoted(i18n('pie_title_id2', 'tickets par PRODUIT'))};
 	var wo_per_prod_options = {
@@ -710,8 +716,8 @@ function drawPieChart(d_obj, id_div)
 function translateExp (lang, expr)
 {
     RMPApplication.debug("begin translateExp");
-    c_debug(debug.status, "=> translateExp: lang = ", lang);
-    c_debug(debug.status, "=>               expr = ", expr);
+    c_debug(dbug.status, "=> translateExp: lang = ", lang);
+    c_debug(dbug.status, "=>               expr = ", expr);
     return col_lang_opt[expr];
     RMPApplication.debug("end translateExp");
 }
@@ -722,7 +728,7 @@ function translateExp (lang, expr)
 function getVarStatusValue (libelle)
 {
     RMPApplication.debug("begin getVarStatusValue");
-    c_debug(debug.status, "=> getVarStatusValue: libelle = ", libelle);
+    c_debug(dbug.status, "=> getVarStatusValue: libelle = ", libelle);
 
     switch (libelle)  {
         case "Brouillon" :
@@ -844,7 +850,7 @@ function getVarStatusValue (libelle)
 function load_panne_ok(result) 
 {
     RMPApplication.debug ("begin load_panne_ok");
-    c_debug(debug.chart, "=> load_panne_ok: result = ", result);
+    c_debug(dbug.chart, "=> load_panne_ok: result = ", result);
 
     RMPApplication.debug ("end load_panne_ok");    
 }
@@ -852,7 +858,7 @@ function load_panne_ok(result)
 function load_panne_ko(error) 
 {
     RMPApplication.debug ("begin load_panne_ko : error = " + JSON.stringify(error));
-    c_debug(debug.chart, "=> load_panne_ko: error = ", error);
+    c_debug(dbug.chart, "=> load_panne_ko: error = ", error);
 	var error_msg = ${P_quoted(i18n("error_load_panne_ko_msg", "Calcul impossible du taux de panne !"))};
 	notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_panne_ko");

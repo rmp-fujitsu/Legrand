@@ -3,6 +3,21 @@
 // ================================================================================
 
 // ====================================================================================
+//   Date parsing in javascript is different between safari and chrome
+//   A NaN value is returned sometimes with Safari browser
+// ====================================================================================
+
+function parseDate(date)
+{
+    const parsed = Date.parse(date);
+    if (!isNaN(parsed)) {
+        return parsed;
+    }
+
+    return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+}
+
+// ====================================================================================
 //   For debugging purpose
 // ====================================================================================
 function c_debug(part, str_content, vb_content) 

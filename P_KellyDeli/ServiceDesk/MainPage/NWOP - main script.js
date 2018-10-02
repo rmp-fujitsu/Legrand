@@ -8,7 +8,7 @@ RMPApplication.debug("New Work Order : Application started");
 // ========================
 
 // if "true", logs will be showed on the browser console
-var debug = {
+var dbug = {
 	"init" : false,
 	"box" : false,
     "location" : false,
@@ -44,7 +44,7 @@ function init()
     var options = {};
     var pattern = {};
     pattern.login = RMPApplication.get("login");
-    c_debug(debug.init, "=> init: pattern = ", pattern);
+    c_debug(dbug.init, "=> init: pattern = ", pattern);
 
     // CAPI for getting user information
     id_get_user_info_as_admin_api.trigger (pattern, options , get_info_ok, get_info_ko); 
@@ -68,13 +68,14 @@ function resetWI()
 function get_info_ok(result)
 {
     RMPApplication.debug("begin get_info_ok: result =  " + JSON.stringify(result));
-    c_debug(debug.init, "=> get_info_ok: result = ", result);
+    c_debug(dbug.init, "=> get_info_ok: result = ", result);
 
     // define "login" variable properties
     login.user = result.user;
     login.email = (!isEmpty(result.user)) ? result.user.trim() : '';
     login.phone = (!isEmpty(result.phone)) ? result.phone.trim() : '';
     login.timezone = result.timezone;
+    login.profil = result.profil;
     login.company = (!isEmpty(result.compagnie)) ? result.compagnie.trim().toUpperCase() : '';
     login.grp_affiliates = (!isEmpty(result.grp_ens)) ? result.grp_ens.trim().toUpperCase() : '';
     login.affiliate = (!isEmpty(result.enseigne)) ? result.enseigne.trim().toUpperCase() : '';
@@ -85,7 +86,7 @@ function get_info_ok(result)
     login.region = (!isEmpty(result.region)) ? result.region.trim().toUpperCase() : '';
     login.is_super_user = (!isEmpty(result.is_super_user)) ? result.is_super_user.toUpperCase() : '';
     enseigne = login.affiliate;
-    c_debug(debug.init, "=> get_info_ok: login = ", login);
+    c_debug(dbug.init, "=> get_info_ok: login = ", login);
 
     // Fill contact fields on screen
     id_contact.value = login.user;
@@ -112,16 +113,16 @@ function get_info_ok(result)
     } else if ( (!isEmpty(login.country)) && ((login.region == login.country) || (login.division == login.country)) ) {    // One country, but affiliate can be selected
         view = "COUNTRY";
 
-    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.division) && (login.division != "NOT DEFINED") && (login.profil == "DIVISION") ) {
         view = "DIVISION";
 
-    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") ) {
+    } else if ( !isEmpty(login.region) && (login.region != "NOT DEFINED") && (login.profil == "REGION") ) {
         view = "REGION";
 
     } else {               // Only one site: 1 country - 1 affiliate - 1 location
         view = "LOCAL";   
     }
-    c_debug(debug.init, "get_info_ok: view = ", view);
+    c_debug(dbug.init, "get_info_ok: view = ", view);
     fillCountryBox(view);
     fillAffiliateBox(view);
     getFilteredLocations();
@@ -132,7 +133,7 @@ function get_info_ok(result)
 function get_info_ko(error) 
 {
     RMPApplication.debug("begin get_info_ko: error = " + JSON.stringify(error));
-    c_debug(debug.init, "=> get_info_ko: error = ", error);
+    c_debug(dbug.init, "=> get_info_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko"); 
@@ -144,10 +145,10 @@ function get_info_ko(error)
 function fillAffiliateBox(vue) 
 {
     RMPApplication.debug("begin fillAffiliateBox : vue = ", vue);
-    c_debug(debug.box, "=>  fillAffiliateBox: vue = ", vue);
+    c_debug(dbug.box, "=>  fillAffiliateBox: vue = ", vue);
 
     var affiliateListTemp = JSON.parse(id_affiliate_cl.getList()).list;
-    c_debug(debug.box, "=>  fillAffiliateBox: affiliateListTemp = ", affiliateListTemp);
+    c_debug(dbug.box, "=>  fillAffiliateBox: affiliateListTemp = ", affiliateListTemp);
     var text_affiliateFilter = "";
 
     // Complete affiliate selection filter according connected profile
@@ -192,7 +193,7 @@ function fillAffiliateBox(vue)
                      affiliateList = [{ 'label': affiliateListTemp[i].label.toUpperCase(), 'value': affiliateListTemp[i].value }];
                 }
             }
-            c_debug(debug.box, "fillAffiliateBox: affiliateList = ", affiliateList);
+            c_debug(dbug.box, "fillAffiliateBox: affiliateList = ", affiliateList);
             $("#id_affiliateFilter").append($("<option selected />").val(affiliateList[0].value).html(affiliateList[0].label.toUpperCase()));
             $("#id_affiliateFilter").attr('readonly', 'readonly');
             break;
@@ -209,7 +210,7 @@ function fillAffiliateBox(vue)
 function fillCountryBox(vue) 
 {
     RMPApplication.debug("begin fillCountryBox: vue = " + JSON.stringify(vue));
-    c_debug(debug.box, "=>  fillCountryBox: vue = ", vue);
+    c_debug(dbug.box, "=>  fillCountryBox: vue = ", vue);
 
     var text_countryFilter = "";
 
@@ -260,7 +261,7 @@ function fillCountryBox(vue)
 function fillLocationBox(locations_array)
 {
     RMPApplication.debug("begin fillLocationBox : locations_array = " + JSON.stringify(locations_array));
-    c_debug(debug.box, "=>  fillLocationBox: locations_array = ", locations_array);
+    c_debug(dbug.box, "=>  fillLocationBox: locations_array = ", locations_array);
     
     $("#id_locationFilter").empty();    // field reset
 
@@ -289,7 +290,7 @@ function fillLocationBox(locations_array)
         var text_locationFilter = ${P_quoted(i18n("no_locationFilter_text", "Aucun site pour la selection !"))};
         $("#id_locationFilter").append($("<option selected />").val('false').html(text_locationFilter));
     }
-    c_debug(debug.box, "=> end fillLocationBox: locations_array = ", locations_array);
+    c_debug(dbug.box, "=> end fillLocationBox: locations_array = ", locations_array);
 
     // Listen changes before populating dynamically locations select box
     $("#id_locationFilter").change(load_location);
@@ -299,6 +300,7 @@ function fillLocationBox(locations_array)
 
 // ======================================================================================================
 // Retrieve values from country, affiliate & location to define request pattern to location collection
+// Specific case: With KD customer, a Kiosk manager can manage several kiosks => list of kiosks
 // ======================================================================================================
 function getFilteredLocations()
 {
@@ -307,7 +309,7 @@ function getFilteredLocations()
     // Retrieving user's input value
     var country_value = $("#id_countryFilter").val();
     var affiliate_value = $("#id_affiliateFilter").val();
-    c_debug(debug.location, "=>  getFilteredLocations: affiliate_value = ", affiliate_value);
+    c_debug(dbug.location, "=>  getFilteredLocations: affiliate_value = ", affiliate_value);
     var affiliate_label = $("#id_affiliateFilter").text();    
     var division_value = login.division; 
     var region_value = login.region;
@@ -321,7 +323,7 @@ function getFilteredLocations()
         // we propose only one value for all locations "Ensemble des sites"
         $("#id_locationFilter").empty();    // previous value reset
         $("#id_locationFilter").append($("<option selected />").val('tous').html(text_locationFilter));
-        c_debug(debug.location, "getFilteredLocations: => Ensemble des sites");
+        c_debug(dbug.location, "getFilteredLocations: => Ensemble des sites");
 
     } else {
 
@@ -334,12 +336,12 @@ function getFilteredLocations()
             for (var i=0; i < affiliateList.length; i++) {
                 if ( affiliate_value.toUpperCase() ==  affiliateList[i].value.toUpperCase() ) {
                     affiliate_value = affiliateList[i].label.toUpperCase();
-                    c_debug(debug.location, "getFilteredLocations: affiliate_value = ", affiliate_value);
+                    c_debug(dbug.location, "getFilteredLocations: affiliate_value = ", affiliate_value);
                 }
             }
         }
 
-        c_debug(debug.location, "=> getFilteredLocations: switch view = ", view);
+        c_debug(dbug.location, "=> getFilteredLocations: switch view = ", view);
         switch (view) {
             case "COMPANY" :
                 if ( (country_value !== "tous") && (!isEmpty(country_value)) ) {
@@ -428,7 +430,7 @@ function getFilteredLocations()
                     if (!(isEmpty(kiosk_list))) {       // Regional Manager manages several kiosks
                         var kiosk_list_array = [];
                         kiosk_list_array = kiosk_list.split(",");
-                        c_debug(debug.location, "getFilteredLocations : kiosk_list_array = ", kiosk_list_array);
+                        c_debug(dbug.location, "getFilteredLocations : kiosk_list_array = ", kiosk_list_array);
                         input.location_code.$in = kiosk_list_array;
                     
                     } else {                            // only one kiosk is managed by this manager
@@ -438,7 +440,7 @@ function getFilteredLocations()
         }
         
         // call api to location collection
-        c_debug(debug.location, "getFilteredLocations : input = ", input);
+        c_debug(dbug.location, "getFilteredLocations : input = ", input);
         id_get_filtered_locations_api.trigger(input, options, get_locations_ok, get_locations_ko);
     }
     RMPApplication.debug("end getFilteredLocations");
@@ -447,7 +449,7 @@ function getFilteredLocations()
 function get_locations_ok(result)
 {
     RMPApplication.debug("begin get_locations_ok : result = " + JSON.stringify(result));
-    c_debug(debug.location, "=> get_locations_ok : result = ", result);
+    c_debug(dbug.location, "=> get_locations_ok : result = ", result);
     var result_array = result.res ;
     // Fill locations select box with locations result
     fillLocationBox(result_array);
@@ -457,7 +459,7 @@ function get_locations_ok(result)
 function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
-    c_debug(debug.location, "=> get_locations_ko: error = ", error);
+    c_debug(dbug.location, "=> get_locations_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
@@ -469,7 +471,7 @@ function get_locations_ko(error)
 function load_location()
 {
     RMPApplication.debug("begin load_location");
-    c_debug(debug.location, "=> load_location");
+    c_debug(dbug.location, "=> load_location");
     var locationCode = $('#id_locationFilter').val();
     if (isEmpty(locationCode) || locationCode === "false" || locationCode === "tous") {
         $("#id_locationFilter").select2("close");
@@ -482,7 +484,7 @@ function load_location()
     var my_pattern = {};
     var options = {};
     my_pattern.location_code = locationCode;
-    c_debug(debug.location, "=> load_location: my_pattern =", my_pattern);
+    c_debug(dbug.location, "=> load_location: my_pattern =", my_pattern);
     id_get_location_by_code_api.trigger(my_pattern , options, load_location_ok, load_location_ko);
     RMPApplication.debug ("end load_location");
 }
@@ -490,16 +492,17 @@ function load_location()
 function load_location_ok(result)
 {
     RMPApplication.debug("begin load_location_ok : result = " + JSON.stringify(result));
-    c_debug(debug.location, "=> load_location_ok: result = ", result);
+    c_debug(dbug.location, "=> load_location_ok: result = ", result);
     selected_location = result;
     
     // Following line is enabled for a company with only one affiliate 
     enseigne = selected_location.affiliate.toUpperCase();
-    /* // Following lines can be disabled if the concerned company only have one affiliate 
+    /* 
+    // Following 3 lines can be disabled if the concerned company only have one affiliate 
     selected_affiliate.affiliate = selected_location.affiliate.toUpperCase();
     $("#id_countryFilter").val(selected_location.country);
-    // get abbreviate name of affiliate
-    getAffiliate(selected_affiliate.affiliate); */
+    getAffiliate(selected_affiliate.affiliate);         // get abbreviate name of affiliate
+    */
 
     // load and start decision tree to find an existing soluce or open a ticket
     load_decision_tree();
@@ -509,25 +512,25 @@ function load_location_ok(result)
 function load_location_ko(error) 
 {
     RMPApplication.debug ("begin load_location_ko : error = " + JSON.stringify(error)); 
-    c_debug(debug.location, "=> load_location_ko: error = ", error);
+    c_debug(dbug.location, "=> load_location_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("load_location_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end load_location_ko");    
 }
 
-// ========================================================
-//  get complete informations of selected affiliate
-// ========================================================
+// ========================================================================================
+//  get complete informations of selected affiliate (not used if only one affiliate)
+// ========================================================================================
 function getAffiliate(affiliate_value)
 {
     RMPApplication.debug("=> begin getAffiliate: affiliate_value = ", affiliate_value);
-    c_debug(debug.affiliate, "=> getAffiliate: affiliate_value = ", affiliate_value);
+    c_debug(dbug.affiliate, "=> getAffiliate: affiliate_value = ", affiliate_value);
     var options = {};
     var input = {};
     var query = {};
-    query.affiliate = { "$regex" : affiliate_value, "$options" : "i"};    // get selected affiliate value
+    query.affiliate = { "$regex" : affiliate_value, "$options" : "i"};    // options for case INSENSITIVE
     input.input_query = query; 
-    c_debug(debug.affiliate, "=> getAffiliate: input = ", input);
+    c_debug(dbug.affiliate, "=> getAffiliate: input = ", input);
     id_get_affiliate_api.trigger(input, options, affiliate_ok, affiliate_ko);
     RMPApplication.debug("end getAffiliate");
 }
@@ -535,7 +538,7 @@ function getAffiliate(affiliate_value)
 function affiliate_ok(result)
 {
     RMPApplication.debug("begin affiliate_ok : result = " + JSON.stringify(result));
-    c_debug(debug.affiliate, "=> affiliate_ok: result = ", result);
+    c_debug(dbug.affiliate, "=> affiliate_ok: result = ", result);
     var affiliate_obj = result.records[0];
 
     // createRequest(affiliate_obj);    // not called as get_affiliate function is not executed
@@ -545,7 +548,7 @@ function affiliate_ok(result)
 function affiliate_ko(error)
 {
     RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
-    c_debug(debug.affiliate, "=> affiliate_ko: error = ", error);
+    c_debug(dbug.affiliate, "=> affiliate_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);  
     RMPApplication.debug("end affiliate_ko");
@@ -557,7 +560,7 @@ function affiliate_ko(error)
 function createRequest(aff_obj)
 {
     RMPApplication.debug("begin createRequest: aff_obj = " + JSON.stringify(aff_obj));
-    c_debug(debug.insert, "=> createRequest: aff_obj = ", aff_obj);
+    c_debug(dbug.insert, "=> createRequest: aff_obj = ", aff_obj);
 
     var num_pos = $("#id_numPOS").val();
     var selectedFam = $("#id_selectedFamily").val();
@@ -619,22 +622,22 @@ function createRequest(aff_obj)
     work_order.sn_correlation_id = customer_reference;
     work_order.sn_description = description;
     work_order.sn_location = location;
-    work_order.sn_u_customer_site = customer_site;
     work_order.sn_state = state;
     work_order.sn_qualification_group = qualification_group;
     work_order.sn_short_description = short_description;
     work_order.sn_priority = priority;
-    work_order.sn_u_contact_details = contact_detail;
-    work_order.sn_u_work_order_type = work_order_type;
     work_order.sn_category = category;
-    work_order.sn_u_product_type = product_type;
+    work_order.sn_u_contact_details = contact_detail;
+    work_order.sn_u_customer_site = customer_site;
+    work_order.sn_u_work_order_type = work_order_type;
     work_order.sn_u_problem_type = problem_type;
+    work_order.sn_u_product_type = product_type;
     work_order.sn_expected_start = expected_start;
     work_order.sn_cmdb_ci = logical_name;
 
     $("#id_spinner_insert").show();
 
-    c_debug(debug.insert, "=> createRequest: work_order = ", work_order);
+    c_debug(dbug.insert, "=> createRequest: work_order = ", work_order);
     id_insert_work_order_api.trigger (work_order, options, insert_ok, insert_ko);
 
     // after insertion in Service Now => reload a new work order request screen
@@ -645,7 +648,7 @@ function createRequest(aff_obj)
 function insert_ok(result) 
 {
     RMPApplication.debug("begin insert_ok : " + JSON.stringify(result));
-    c_debug(debug.insert, "=> insert_ok: result = ", result);
+    c_debug(dbug.insert, "=> insert_ok: result = ", result);
     $("#id_spinner_insert").hide();
     wm_order = result;
     var title = ${P_quoted(i18n("id_title_1", "Information Suivi Demande"))};
@@ -659,7 +662,7 @@ function insert_ok(result)
 function insert_ko(error) 
 {
     RMPApplication.debug("begin insert_ko : error = " + JSON.stringify(error));
-    c_debug(debug.insert, "=> insert_ko: error = ", error);
+    c_debug(dbug.insert, "=> insert_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("insert_ko_msg", "Création impossible du ticket !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     $("#id_spinner_insert").hide();
@@ -669,7 +672,7 @@ function insert_ko(error)
 function load_decision_tree()
 {
     RMPApplication.debug("begin load_decision_tree");
-    c_debug(debug.decision, "begin load_decision_tree");
+    c_debug(dbug.decision, "begin load_decision_tree");
     RMPApplication.set("loc_code", $('#id_locationFilter').val()); 
 
     // once location is set, we can start to browse the decision tree
@@ -684,7 +687,7 @@ function load_next_screen(n_interface)
     var url = "https://live.runmyprocess.com/live/112501480325272109/appli/";
     url += n_interface + "?P_mode=${P_mode}&P_language=${P_language}&location_code="
     url += RMPApplication.get("loc_code");
-    c_debug(debug.decision, "=> load_next_screen: url = ", url);
+    c_debug(dbug.decision, "=> load_next_screen: url = ", url);
     window.location = url;
     RMPApplication.debug("end load_next_screen");
 }

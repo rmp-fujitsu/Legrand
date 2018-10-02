@@ -31,7 +31,7 @@ var locationsListQuery = '';    // part of query with involved contracts will be
 var wos_array = null;           // all opened work orders with active SLA for selected locations
 
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur!"))};
+var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 var btn_ok = ${P_quoted(i18n("btn_ok", "OK"))};
 
 // Identify special DIV for informations
@@ -125,7 +125,7 @@ function get_info_ko(error)
 {
     RMPApplication.debug("get_info_ko : " + JSON.stringify(error));
     c_debug(debug.init, "=> get_info_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur!"))};
+    var error_msg = ${P_quoted(i18n("get_info_ko_msg", "Récupération impossible des informations utilisateur !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_info_ko");
 } 
@@ -492,7 +492,7 @@ function get_locations_ko(error)
 {
     RMPApplication.debug("begin get_locations_ko : error = " + JSON.stringify(error));
     c_debug(debug.site, "=> get_locations_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site!"))};
+    var error_msg = ${P_quoted(i18n("get_locations_ko_msg", "Récupération impossible des informations du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end get_locations_ko");
 }
@@ -595,7 +595,7 @@ function getCompanyQuery()
     RMPApplication.debug("begin getCompanyQuery");
     var company = login.company;
     if (isEmpty(company)) {
-        var error_msg = ${P_quoted(i18n("error_getCompanyQuery_msg", "Le nom de la compagnie n'est pas pas défini!"))};
+        var error_msg = ${P_quoted(i18n("error_getCompanyQuery_msg", "Le nom de la compagnie n'est pas pas défini !"))};
         notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify); 
         return;
     } else {
@@ -671,7 +671,7 @@ function affiliate_ok(result)
     c_debug(debug.query, "=> affiliate_ok: result = ", result);
     if ( (result.records.length == undefined) || (result.records.length == 0) ) {
         var  error_affiliate_ok_title = ${P_quoted(i18n("error_affiliate_ok_title", "Résultat de la recherche"))};
-        var  error_affiliate_ok_msg = ${P_quoted(i18n("error_affiliate_ok_msg", "Aucune enseigne ne répond aux critères!"))};
+        var  error_affiliate_ok_msg = ${P_quoted(i18n("error_affiliate_ok_msg", "Aucune enseigne ne répond aux critères !"))};
         dialog_error(error_affiliate_ok_title, error_affiliate_ok_msg, btn_ok);
         return;
     } else {
@@ -693,7 +693,7 @@ function affiliate_ko(error)
 {
     RMPApplication.debug("begin affiliate_ko : error = " + JSON.stringify(error));
     c_debug(debug.query, "=> affiliate_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale!"))};
+    var error_msg = ${P_quoted(i18n("affiliate_ko_msg", "Récupération impossible des informations de la filiale !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify); 
     RMPApplication.debug("end affiliate_ko");
 }
@@ -818,7 +818,7 @@ function get_wos_sla_ko(error)
     RMPApplication.debug("begin get_wos_sla_ko : error = " + JSON.stringify(error));
     c_debug(debug.sla, "=> get_wos_sla_ko: error", error);
     $("#id_spinner_search").hide();
-    var error_msg = ${P_quoted(i18n("get_wos_sla_ko_msg", "Récupération impossible des interventions avec SLA en cours!"))};
+    var error_msg = ${P_quoted(i18n("get_wos_sla_ko_msg", "Récupération impossible des interventions avec SLA en cours !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify); 
     RMPApplication.debug("end get_wos_sla_ko");
 }
