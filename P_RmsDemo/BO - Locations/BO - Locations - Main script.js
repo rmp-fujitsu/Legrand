@@ -38,6 +38,20 @@ var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 
+// execute main program
+init();
+
+
+// ===============================
+//   Initialization part
+// ===============================
+function init() 
+{
+    RMPApplication.debug("begin init");
+    id_details_item.setVisible(false);
+    RMPApplication.debug("end init");
+}
+
 // ==============================
 // clean custom widget (CW) area
 // variable: my_item
@@ -61,7 +75,7 @@ function add_item()
 {
     RMPApplication.debug ("begin add_item");
     var my_object = eval('(' + RMPApplication.get("my_item") + ')');
-    c_debug(dbug.item, "=> add_item: itemid = ", itemid);
+    c_debug(dbug.item, "=> add_item");
 
     for (key in var_list)  {
         if ( RMPApplication.validate() == false ) {

@@ -251,17 +251,19 @@ function get_user_basic_info_ok(result)
 
     // define "selected_user" variable properties
     selected_user = {};
-    for (key in user_properties) {
-        if (!(root_lvl.indexOf(key) > -1)) {
-            selected_user[key] = ((!(isEmpty(eval(user_properties[key]))))) ? eval(user_properties[key]) : "";
-            // c_debug(dbug.user_info, "=> get_user_basic_info_ok: key = " + key + " - " + user_properties[key] + " = " + eval(user_properties[key]));
-        } else {
-            selected_user[key] = eval(user_properties[key]);
-            // c_debug(dbug.user_info, "=> get_user_basic_info_ok: (NOT IN) key = " + key + " - " + user_properties[key] + " = " + eval(user_properties[key]));
-        }        
+    if (result.user_info.indexOf(extended) > -1) {
+        for (key in user_properties) {
+            if (!(root_lvl.indexOf(key) > -1)) {
+                selected_user[key] = ((!(isEmpty(eval(user_properties[key]))))) ? eval(user_properties[key]) : "";
+                // c_debug(dbug.user_info, "=> get_user_basic_info_ok: key = " + key + " - " + user_properties[key] + " = " + eval(user_properties[key]));
+            } else {
+                selected_user[key] = eval(user_properties[key]);
+                // c_debug(dbug.user_info, "=> get_user_basic_info_ok: (NOT IN) key = " + key + " - " + user_properties[key] + " = " + eval(user_properties[key]));
+            }        
+        }
+        c_debug(dbug.user_info, "=> get_user_basic_info_ok: selected_user = ", selected_user);
+        set_user_info(selected_user);
     }
-    c_debug(dbug.user_info, "=> get_user_basic_info_ok: selected_user = ", selected_user);
-    set_user_info(selected_user);
 
     RMPApplication.debug("end get_user_basic_info_ok");
 }

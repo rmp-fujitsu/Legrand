@@ -539,13 +539,14 @@ function get_locations_ko(error)
 function load_location()
 {
     RMPApplication.debug("begin load_location");
-    c_debug(dbug.location, "=> load_location");
+    c_debug(dbug.location, "=> begin load_location");
     var locationCode = $('#id_locationFilter').val();
     if (isEmpty(locationCode) || locationCode === "false" || locationCode === "tous") {
         $("#id_locationFilter").select2("close");
         /*var  title = ${P_quoted(i18n("error_location_title", "Erreur"))};
         var  content = ${P_quoted(i18n("location_selection", "Veuillez sélectionner un seul site, en utilisant si besoin les filtres PAYS et/ou ENSEIGNE..."))};
         dialog_error(title, content, btn_ok);*/
+        c_debug(dbug.location, "=> load_location : pas de site sélectionné !");
         return;
     }
 
