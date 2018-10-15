@@ -1,0 +1,30 @@
+[{
+        "title" : "Accueil",
+        "image" : "https://rmp-public.s3.amazonaws.com/public/icons/home-icon.png",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395400?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "New intervention",
+        "visible" : "${has_right('452695')=='true' || has_right('452558')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395486?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "My Tasks",
+        "visible" : "${has_right('452637')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Dashboard",
+        "visible" : "${has_right('452637')=='false' && has_right('452593')=='false'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}"
+    }, {
+        "title" : "Account Management",
+        "visible" : "${has_right('452695')=='true' || has_right('452558')=='true'}",
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}"
+    }
+]
+
+
+// 452558  => LEGRAND- Designers
+
+// 452637  => LEGRAND - Users
+// 452593  => LEGRAND - Onsite Engineers
+// 452638  => LEGRAND - FJ Country Desk
+// 452695  => LEGRAND - FJ GDC

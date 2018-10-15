@@ -1,0 +1,11 @@
+{
+    "my_var_main": 
+    {
+        "legrand_ref": "${legrand_ref?default('')}",
+        "fujitsu_ref": "${fujitsu_ref?default('')}",
+        "location": "${location?default('')}",
+        "user": "${user?default('')}",
+        "nb_visits": "${nb_visits?default('0')}",
+        "ex_string": "This is an exemple"
+    }
+}
