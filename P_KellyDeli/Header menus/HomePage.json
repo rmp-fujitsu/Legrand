@@ -8,7 +8,6 @@
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/345849?P_mode=${P_mode}&P_language=${P_language}"
     }, {
         "title" : "Suivi demandes",
-        "visible" : "${has_right('403277')=='false'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/345851?P_mode=${P_mode}&P_language=${P_language}"
     },{
         "title" : "Evaluations",
