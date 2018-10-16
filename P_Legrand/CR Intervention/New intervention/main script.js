@@ -1,5 +1,5 @@
 // ========================
-//   New Work Order : MAIN
+//   New Intervention : MAIN
 // ========================
 RMPApplication.debug("New Intervention : Application started");
 
@@ -48,7 +48,7 @@ function modules_visibility(module_name)
 
 
 	// Global part
-    id_progress_status.setVisible(global);
+    // id_progress_status.setVisible(global);
 	id_global_info_title.setVisible(global);
 	id_type.setVisible(global);
     id_legrand_ref.setVisible(global);
@@ -81,6 +81,10 @@ function modules_visibility(module_name)
 
 }
 
+
+//=================================================
+// Dynamically change the title of PC's information
+//=================================================
 function fill_all_cw_pc() 
 {
 
@@ -103,14 +107,16 @@ function fill_cw_title(id_cw, title)
     temp.text(title);
 }
 
-
+//==================================================
+// Dynamically change the degree of the intervention
+//==================================================
 function fill_all_cw_visit() 
 {
 
     var var_newTitle_visit = {
-        "id_my_intervention_1" : "#1",
-        "id_my_intervention_2" : "#2",
-        "id_my_intervention_3" : "#3"
+        "id_my_intervention_1" : "Visit #1",
+        "id_my_intervention_2" : "Visit #2",
+        "id_my_intervention_3" : "Visit #3"
     };
 
     for (key in var_newTitle_visit){
@@ -120,8 +126,8 @@ function fill_all_cw_visit()
 }
 function fill_cw_title_visit(id_cw, number) 
 {  
-    var modification = $("#" + id_cw + " #visit_content");
-    modification.text(number);
+    var temp = $("#" + id_cw + " #visit_content");
+    temp.text(number);
 }
 
 
