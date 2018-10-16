@@ -1,0 +1,1 @@
+RMPApplication.set('date_de_creation', new Date()/1000);
