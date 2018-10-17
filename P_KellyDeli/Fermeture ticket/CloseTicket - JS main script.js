@@ -127,7 +127,13 @@ function setDispatchGroup()
 	} else if (RMPApplication.get("country") == "NETHERLANDS") {
 		dispatch_group = "Fujitsu Pays-Bas";
 	} else if (RMPApplication.get("country") == "ITALY") {
-		dispatch_group = "Fujitsu Italie";				
+		dispatch_group = "Fujitsu Italie";
+	} else if (RMPApplication.get("country") == "PORTUGAL") {
+		dispatch_group = "Fujitsu Portugal";
+	} else if (RMPApplication.get("country") == "UNITED KINGDOM") {
+		dispatch_group = "Fujitsu United KingDom";					
+	} else if (RMPApplication.get("country") == "DENMARK") {
+		dispatch_group = "Fujitsu Danemark";					
 	} else if (include_string(RMPApplication.get("email"), "kellydeli")) {
 		dispatch_group = "IT KellyDeli";
 	} else {
