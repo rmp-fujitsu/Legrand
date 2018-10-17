@@ -101,3 +101,8 @@ function fill_cw_title_visit(id_cw, number)
     var temp = $("#" + id_cw + " #visit_content");
     temp.text(number);
 }
+
+//===================================================================================
+// Retrieve the id of the tab to assign it a color / background color inside ready.js
+//===================================================================================
+var selected_item = "#rmpoption0_1";
