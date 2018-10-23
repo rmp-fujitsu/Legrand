@@ -10,14 +10,14 @@
     }, {
         "title" : "My Tasks",
         "visible" : "${has_right('452637')=='false' && has_right('452638')=='false'}",
-        "url" : ""
+        "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/396333?P_mode=${P_mode}&P_language=${P_language}"
     }, {
         "title" : "Dashboard",
         "visible" : "${has_right('452637')=='false' && has_right('452638')=='false' && has_right('452593')=='false'}",
         "url" : ""
     }, {
         "title" : "Account Management",
-        "visible" : "${has_right('452695')=='true' || ${has_right('453117')=='true' || has_right('452558')=='true'}",
+        "visible" : "${has_right('452695')=='true' || has_right('453117')=='true' || has_right('452558')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395704?P_mode=${P_mode}&P_language=${P_language}"
     }
 ]

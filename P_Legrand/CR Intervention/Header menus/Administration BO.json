@@ -5,11 +5,11 @@
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395400?P_mode=${P_mode}&P_language=${P_language}"
     },{
         "title" : "Sites Management",
-        "visible" : "${has_right('452695')=='true' || ${has_right('453117')=='true' || has_right('452558')=='true'}",
+        "visible" : "${has_right('452695')=='true' || has_right('453117')=='true' || has_right('452558')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395673?P_mode=${P_mode}&P_language=${P_language}"
     },{
         "title" : "Notifications Management",
-        "visible" : "${has_right('452695')=='true' || ${has_right('453117')=='true' || has_right('452558')=='true'}",
+        "visible" : "${has_right('452695')=='true' || has_right('453117')=='true' || has_right('452558')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/395863?P_mode=${P_mode}&P_language=${P_language}"
     }
 ]

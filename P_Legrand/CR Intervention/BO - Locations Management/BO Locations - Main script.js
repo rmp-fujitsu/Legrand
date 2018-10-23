@@ -11,7 +11,7 @@ var dbug = {
 };
 
 var itemName = "Location";      // what kind of item ?
-var collectionid = "col_locations_legrand";
+var collectionid = "col_legrand_locations";
 
 var var_list = 
 {
@@ -25,6 +25,11 @@ var var_list =
     "phone_number" : "phone_number",
     "site_contact" : "site_contact"
 };
+
+var upper_var = ["site_code", "company"];
+var capitalize_var = ["site_code", "country"];
+
+var selected_item = "rmpoption0_1"; // Retrieve the id of the tab to assign it a color / background color
 
 var success_title_notify = ${P_quoted(i18n("success_title_notify", "Success"))};
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Error"))};
@@ -66,8 +71,18 @@ function clean_item()
 function add_item()
 {
     RMPApplication.debug ("begin add_item");
+    var my_pattern = {};
+    my_pattern.site_name = {
+        "$regex": RMPApplication.get("my_item.site_name"),
+        "$options": "i"
+    };
+    my_pattern.country = {
+        "$regex": RMPApplication.get("my_item.country"),
+        "$options": "i"
+    };
+    c_debug(dbug.item, "=> add_item: my_pattern = ", my_pattern);
+
     var my_object = eval('(' + RMPApplication.get("my_item") + ')');
-    c_debug(dbug.item, "=> add_item");
 
     for (key in var_list)  {
         if ( RMPApplication.validate() == false ) {
@@ -78,14 +93,14 @@ function add_item()
         }
     }
     
-    if (!item_already_exists(my_object)) {
+    if (!item_already_exists(my_object, my_pattern)) {
 
         c_debug(dbug.item, "=> add_item: my_object", my_object);
         eval(collectionid).saveCallback(my_object, add_ok, add_ko);
         RMPApplication.debug (my_object);
         RMPApplication.debug ("New" + itemName.toUpperCase() + " added");
     } else {
-        var error_msg2 = ${P_quoted(i18n("add_item_msg2", "Le site existe déjà !"))};
+        var error_msg2 = ${P_quoted(i18n("add_item_msg2", "The site already exists!"))};
         notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
         RMPApplication.debug (itemName.toUpperCase() + " already exists!");
     }
@@ -108,7 +123,7 @@ function add_ko(error)
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
     c_debug(dbug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("add_ko_msg", "Impossible to save the site!"))};
+    var error_msg = ${P_quoted(i18n("add_ko_msg", "Unable to save the site!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
 }
@@ -116,23 +131,54 @@ function add_ko(error)
 // ======================
 // udpate_item
 // ======================
-function update_item(locationcode)
+function update_item()
 {
     RMPApplication.debug ("begin update_item");
-    c_debug(dbug.item, "=> update_item: locationcode = ", locationcode);
-    var my_pattern = {};
-    my_pattern.site_name = RMPApplication.get("my_item.site_name");
+    var my_old_pattern = {};
+    my_old_pattern.site_name = RMPApplication.get("loaded_site_name");
+    my_old_pattern.country = RMPApplication.get("loaded_country");
+    c_debug(dbug.item, "=> update_item: my_old_pattern = ", my_old_pattern);
+    var my_new_pattern = {};
+    my_new_pattern.site_name = {
+        "$regex": RMPApplication.get("my_item.site_name"),
+        "$options": "i"
+    };
+    my_new_pattern.country = {
+        "$regex": RMPApplication.get("my_item.country"),
+        "$options": "i"
+    };
+    c_debug(dbug.item, "=> update_item: my_new_pattern = ", my_new_pattern);
+
     var my_object = eval('(' + RMPApplication.get("my_item") + ')');
-    c_debug(dbug.item, "=> update_item: my_object = ", my_object);
-    eval(collectionid).updateCallback(my_pattern, my_object, update_ok, update_ko);
-    RMPApplication.debug ("end update_item");
+
+    if (!item_already_exists(my_object, my_new_pattern)) {
+
+        c_debug(dbug.item, "=> update_item: my_object", my_object);
+        eval(collectionid).updateCallback(my_old_pattern, my_object, update_ok, update_ko); 
+        RMPApplication.debug ( itemName.toUpperCase() + " updated");
+
+    } else {
+
+        var site_name_pattern_equal = (my_old_pattern.site_name == my_new_pattern.site_name) ? true : false;
+        var country_pattern_equal = (my_old_pattern.country == my_new_pattern.country) ? true : false;
+        if (site_name_pattern_equal && site_name_pattern_equal) {
+            c_debug(dbug.item, "=> update_item: my_object", my_object);
+            eval(collectionid).updateCallback(my_old_pattern, my_object, update_ok, update_ko); 
+            RMPApplication.debug ( itemName.toUpperCase() + " updated");
+        } else {
+            var error_msg2 = ${P_quoted(i18n("add_item_msg2", "A site already exists with same site_name & country values. The update is aborted!"))};
+            notify_error(error_title_notify, error_msg2 + ' ' + error_thanks_notify);
+            RMPApplication.debug (itemName.toUpperCase() + " already exists!");
+        }
+    }
+    RMPApplication.debug ("end update_item"); 
 }
 
 function update_ok(result)
 {
     RMPApplication.debug ("begin update_ok");
     c_debug(dbug.item, "=> update_ok: result = ", result);
-    var success_msg = ${P_quoted(i18n("update_ok_msg", "Informations correctement mises à jour !"))};
+    var success_msg = ${P_quoted(i18n("update_ok_msg", "Information correctly updated!"))};
     notify_success(success_title_notify, success_msg);
     clean_item();
     id_report.refresh();
@@ -144,7 +190,7 @@ function update_ko(error)
     //Error while updating item in the collection
     RMPApplication.debug ("begin update_ko");
     c_debug(dbug.item, "=> update_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("update_ko_msg", "Mise à jour impossible du site !"))};
+    var error_msg = ${P_quoted(i18n("update_ko_msg", "Unable to update the site!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end update_ko");
 }
@@ -152,13 +198,13 @@ function update_ko(error)
 // ======================
 // load_item
 // ======================
-function load_item(locationcode)
+function load_item(locationcode, countrycode)
 {
     RMPApplication.debug ("begin load_item");
-    c_debug(dbug.item, "=> load_item: locationcode = ", locationcode);
     var my_pattern = {};
     my_pattern.site_name = locationcode;
-    RMPApplication.debug ("my_pattern." + locationcode + " = " + my_pattern.site_name);    
+    my_pattern.country = countrycode;
+    c_debug(dbug.item, "=> load_item: my_pattern = ", my_pattern);
     eval(collectionid).listCallback(my_pattern, {}, load_ok, load_ko);
     RMPApplication.debug ("end load_item");
 }
@@ -167,20 +213,24 @@ function load_ok(result)
 {
     RMPApplication.debug ("begin load_ok");
     c_debug(dbug.item, "=> load_ok: result = ", result);
-    var success_msg = ${P_quoted(i18n("load_ok_msg", "Site 's informations loaded!"))};
+    var success_msg = ${P_quoted(i18n("load_ok_msg", "Site information loaded!"))};
     notify_success(success_title_notify, success_msg);
     id_details_item.setVisible(true);
     id_details_item.open();
     RMPApplication.set("my_item", result[0]);
     RMPApplication.set("action", "update");
+    // Keep hidden "site_name" and "country" values before any new change
+    RMPApplication.set("loaded_site_name", result[0].site_name);
+    RMPApplication.set("loaded_country", result[0].country);
     RMPApplication.debug ("end load_ok");
 }
 
 function load_ko(error)
 {
+    //Error while loading item from the collection
     RMPApplication.debug ("begin load_ko");
     c_debug(dbug.item, "=> load_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("load_ko_msg", "Site recovery not possible!"))};
+    var error_msg = ${P_quoted(i18n("load_ko_msg", "Unable to retrieve site's information!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     id_report.refresh();
     RMPApplication.debug ("end load_ko");
@@ -189,13 +239,14 @@ function load_ko(error)
 // ======================
 // delete_item
 // ======================
-function delete_item(locationcode)
+function delete_item(locationcode, countrycode)
 {
     RMPApplication.debug ("begin delete_item");
-    c_debug(dbug.item, "=> delete_item: locationcode = ", locationcode);
+    // var my_pattern = eval('(' + RMPApplication.get("my_item") + ')');
     var my_pattern = {};
     my_pattern.site_name = locationcode;
-    RMPApplication.debug ("my_pattern." + locationcode + " = " + my_pattern.site_name);  
+    my_pattern.country = countrycode;
+    c_debug(dbug.item, "=> delete_item: my_pattern = ", my_pattern);
     eval(collectionid).removeCallback(my_pattern, delete_ok, delete_ko);
     RMPApplication.debug ("end delete_item");
 }
@@ -218,7 +269,7 @@ function delete_ko(error)
     //Error while deleting item from the collection
     RMPApplication.debug ("begin delete_ko");
     c_debug(dbug.item, "=> delete_ko: error = ", error);
-    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Impossible to delete site !"))};
+    var error_msg = ${P_quoted(i18n("delete_ko_msg", "Unable to delete site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end delete_ko");
 }
@@ -226,14 +277,11 @@ function delete_ko(error)
 // ======================
 // Other functions
 // ======================
-function item_already_exists(my_object) 
+function item_already_exists(my_object, my_pattern) 
 {
     RMPApplication.debug ("begin function item_already_exists");
     c_debug(dbug.item, "=> item_already_exists: my_object = ", my_object);
-    var my_pattern = {};
-    for (key in my_object)  {
-        my_pattern[key] = ( my_object[key] !== "" ) ? my_object[key] : "";
-    }
+    c_debug(dbug.item, "=> item_already_exists: my_pattern = ", my_pattern);
     var options = {};
     options.asynchronous = false;
     res = false;
@@ -251,6 +299,7 @@ function exists_ok(result)
     } else {
         res = false;
     }
+    c_debug(dbug.item, "=> exists_ok: res = ", res);
     RMPApplication.debug ("end exists_ok");
 }
 
@@ -262,8 +311,3 @@ function exists_ko(error)
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end exists_ko");
 }
-
-//===================================================================================
-// Retrieve the id of the tab to assign it a color / background color inside ready.js
-//===================================================================================
-var selected_item = "rmpoption0_1";
