@@ -1241,9 +1241,10 @@ function sdmoValidation()
         id_collect_date.setValue(null);
     }
 
-	checkStates();		// check or uncheck SDMO State options
-	setTimeout(function(){}, 1000);
-	var state_value = id_state.getValue();
+	// checkStates();		// check or uncheck SDMO State options
+	// setTimeout(function(){}, 1000);
+	// var state_value = id_state.getValue();
+	var state_value = checkStates();		// check or uncheck SDMO State options
 	c_debug(debug.datas, "=> sdmoValidation: state at END = ", state_value);
 
 	switch (state_value) {
@@ -1298,7 +1299,6 @@ function woCloseIMAC()
 	}
 }
 
-
 // ====================================================================================
 //   IMAC cancellation by Fujitsu SDMO
 // ====================================================================================
@@ -1319,7 +1319,6 @@ function woImacCancel()
 		var new_fuji_comments = (isEmpty(id_fujitsu_comments.getValue()) ? "" : id_fujitsu_comments.getValue() + "\n-------------------\n" ) + "- Raison annulation: " + id_cancellation_reason.getValue();
 		id_fujitsu_comments.setValue(new_fuji_comments);
 		id_fujitsuComments.val(new_fuji_comments);
-		// id_state.setValue("cancelled");
 		id_imac_cancelled.setChecked(true);
 		
 		// update IMAC global state
@@ -1344,7 +1343,10 @@ function updateImac()
 	update_done = false;
 
 	// validate data before continuing the process or saving the form
-	sdmoValidation();
+	// sdmoValidation();
+
+	// update IMAC global state
+	updateImacBeforeEnd();
 
 	while (update_done == false) {
 		// wait until flag update_done is setted to true
@@ -1353,53 +1355,6 @@ function updateImac()
 	RMPApplication.debug("end updateImac");
 	return true;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button	
 	
-}
-
-// ====================================================================================
-//   Command to execute before saving form => INACTIVE
-// ====================================================================================
-function prepareSaveImac() 
-{
-    RMPApplication.debug("begin prepareSaveImac");
-    c_debug(debug.process_btn, "=> prepareSaveImac");
-
-    dataValidation();
-	setTimeout( function() {}, 500);
-	c_debug(debug.process_btn, "=> prepareSaveImac: simulate click to continue process");
-    document.getElementById("id_continue_process").click();
-	// RMPApplication.save(updateImacSuccess, updateImacFail);
-	
-	RMPApplication.debug("end prepareSaveImac");
-}
-
-// ====================================================================================
-//   Update IMAC success
-// ====================================================================================
-function updateImacSuccess() 
-{
-    RMPApplication.debug("begin updateImacSuccess");
-	c_debug(debug.process_btn, "=> updateImacSuccess");
-	var success_msg = ${P_quoted(i18n("updateImacSuccess_msg", "Le formulaire a bien été mis à jour!"))};
-    notify_success(success_title_notify, success_msg);
-
-    RMPApplication.debug("end updateImacSuccess");
-    
-	// return true;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
-}
-
-// ====================================================================================
-//   Update IMAC failure
-// ====================================================================================
-function updateImacFail() 
-{
-    RMPApplication.debug("begin updateImacFail");
-	c_debug(debug.process_btn, "=> updateImacFail");
-	var error_msg = ${P_quoted(i18n("updateImacFail_msg", "La sauvegarde du formulaire a généré une erreur!"))};
-    notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
-	
-    RMPApplication.debug("end updateImacFail");
-    
-	// return false;		// needed as called by pre-launch script "Mettre à jour l'IMAC" button
 }
 
 // ====================================================================================
