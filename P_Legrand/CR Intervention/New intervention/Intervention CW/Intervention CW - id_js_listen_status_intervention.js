@@ -1,16 +1,17 @@
-var conf_parent =  RMP_this.id_intervention_finished.getParent();
+// id_js_listen_status_intervention
+// Variables listened: intervention_finished
+
+var listened_var = "intervention_finished";
+var show_var = "reason";
+var condition_value = "yes";
+
+var id_listened_var = "id_" + listened_var;
+var id_conf_parent = "RMP_this." + id_listened_var;
+var conf_parent =  eval(id_conf_parent).getParent();
 var id_parent = conf_parent.conf.id;
 var conf_global_parent = eval(id_parent).getParent();
 var id_global_parent = conf_global_parent.conf.id 
-var id_local_inter_finished = id_global_parent + ".id_intervention_finished";
-RMPApplication.set("RMP_this.variable.global_parent", id_local_inter_finished);
-var id_local_reason = id_global_parent + ".id_reason";
-displayReason();
+var id_selected_field = id_global_parent + "." + id_listened_var;
+var id_show_var = "id_" + show_var;
 
-function displayReason()
-{
-    var selected_val = eval(id_local_inter_finished).getSelectedValue();
-    var display_reason = (selected_val == "yes") ? false : true;
-    eval(id_local_reason).setVisible(display_reason);
-}    
-
+display_reason(id_selected_field, condition_value, id_show_var);
