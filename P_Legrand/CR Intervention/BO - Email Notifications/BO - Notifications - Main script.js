@@ -9,9 +9,9 @@ RMPApplication.debug("BO - Notifications: Application started");
 
 // if "true", logs will be showed on the browser console
 var debug = {
-	"hidden": false,
-    "init": false,
-    "email_notif": false
+	"hidden": true,
+    "init": true,
+    "email_notif": true
 };
 
 var selected_item = "rmpoption0_2"; // Retrieve the id of the tab to assign it a color / background color inside ready.js

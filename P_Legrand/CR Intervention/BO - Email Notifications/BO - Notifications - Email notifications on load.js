@@ -6,12 +6,14 @@ var collectionid_var = "col_legrand_notifications_cri";
 var notifications = {
 	"notif_new_request_to_country": {},
 	"notif_gdc_about_eta": {},
-	"notif_acknowledgement_of_new_intervention": {},
+	"notif_inform_legrand_next_intervention": {},
 	"notif_legrand_about_closure": {},
 	"notif_gdc_about_closure": {},
 	"notif_gdc_about_issue": {},
-	"notif_country_plan_new_intervention": {}
+	"notif_country_plan_new_intervention": {},
+	"notif_test_mode": {}
 };
+var nb_objects_in_collection = 0;
 
 
 set_email_notifications();
@@ -53,6 +55,35 @@ function set_email_notifications_ko(error)
     RMPApplication.debug ("end set_email_notifications_ko");
 }
 
+// count the number of objects in collection and set "nb_objects_in_collection" variable
+function entries_count()
+{
+	RMPApplication.debug ("begin entries_count");
+    var my_pattern = {};
+    var options = {};
+    eval(collectionid_var).listCallback(my_pattern, options, entries_count_ok, entries_count_ko);
+    RMPApplication.debug ("end entries_count");
+}
+
+function entries_count_ok(result) 
+{
+    RMPApplication.debug ("begin entries_count_ok");
+	c_debug(debug.email_notif, "=> entries_count_ok: result = ", result);
+	nb_objects_in_collection = result.length;
+	c_debug(debug.email_notif, "=> entries_count_ok: nb_objects_in_collection = ", nb_objects_in_collection);
+	
+	save_changes();
+    RMPApplication.debug ("end entries_count_ok");
+}
+
+function entries_count_ko(error) 
+{
+    RMPApplication.debug ("begin entries_count_ko");
+    alert("ERROR: no entries in Noficiations collection: " + JSON.stringify(error));
+    RMPApplication.debug ("end entries_count_ko");
+}
+
+// =====================================================
 function save_changes()
 {
 	RMPApplication.debug ("begin save_changes");
@@ -71,7 +102,12 @@ function save_changes()
 			my_object.acceptance_email_to = RMPApplication.get(eval("\"" + my_notif_var + "." + "acceptance_email_to" + "\""));
 		}
 		c_debug(debug.email_notif, "=> save_changes: my_object = ", my_object);
-		eval(collectionid_var).updateCallback(my_pattern, my_object, save_changes_ok, save_changes_ko);
+		if (nb_objects_in_collection == 0) {
+			eval(collectionid_var).saveCallback(my_object, save_changes_ok, save_changes_ko);
+			nb_objects_in_collection += 1;
+		} else {
+			eval(collectionid_var).updateCallback(my_pattern, my_object, save_changes_ok, save_changes_ko);
+		}
 	}
 	var success_msg = ${P_quoted(i18n("save_changes_ok_msg", "Email notifications are updated with success!"))};
 	notify_success(success_title_notify, success_msg);
@@ -81,7 +117,7 @@ function save_changes()
 function save_changes_ok(result)
 {
 	RMPApplication.debug ("begin save_changes_ok");
-	// c_debug(debug.email_notif, "=> save_changes_ok: result = ", result);
+	c_debug(debug.email_notif, "=> save_changes_ok: result = ", result);
     RMPApplication.debug ("end save_changes_ok");
 }
 
