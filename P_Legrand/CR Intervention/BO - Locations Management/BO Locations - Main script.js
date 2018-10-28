@@ -159,9 +159,11 @@ function update_item()
 
     } else {
 
-        var site_name_pattern_equal = (my_old_pattern.site_name == my_new_pattern.site_name) ? true : false;
-        var country_pattern_equal = (my_old_pattern.country == my_new_pattern.country) ? true : false;
-        if (site_name_pattern_equal && site_name_pattern_equal) {
+        var site_name_pattern_equal = (my_old_pattern.site_name == my_new_pattern.site_name.$regex) ? true : false;
+        var country_pattern_equal = (my_old_pattern.country == my_new_pattern.country.$regex) ? true : false;
+        c_debug(dbug.item, "=> update_item: site_name_pattern_equal", site_name_pattern_equal);
+        c_debug(dbug.item, "=> update_item: country_pattern_equal", country_pattern_equal);
+        if (site_name_pattern_equal && country_pattern_equal) {
             c_debug(dbug.item, "=> update_item: my_object", my_object);
             eval(collectionid).updateCallback(my_old_pattern, my_object, update_ok, update_ko); 
             RMPApplication.debug ( itemName.toUpperCase() + " updated");

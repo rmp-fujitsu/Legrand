@@ -21,11 +21,9 @@ var int_not_finished = "id_intervention_finished_1";
 var label_reason = "id_reason_label";
 var reason = "id_reason";
 
-
-
 var login = {};
 var module_selected;
-
+var collectionid = "col_legrand_locations";
 
 // execute main program
 init();
@@ -43,6 +41,7 @@ function init()
     // modules_visibility("global");
     fill_all_cw_pc();
     fill_all_cw_visit();
+    set_required_swap_pc();
 	RMPApplication.debug("end init");
 }
 
@@ -145,3 +144,15 @@ function set_required_option_cw(obj, bool)
         c_debug(dbug.function, '=> set_required_option_cw: Required option of "' + id_complete_path + '" has been changed!');
     }
 } 
+
+function set_required_swap_pc()
+{
+    c_debug(dbug.function, "=> begin set_required_swap_pc");
+    var instal_type_val = RMPApplication.get("installation_type");
+    var swap_pc_requested = (instal_type_val == "computer_swap") ? true : false;
+    var obj_cw = {
+        "id": "id_my_new_pc_swap",
+        "widgets_var_list" : ["windows_version", "pc_name", "pc_model", "serial_number"]
+    };
+    set_required_option_cw(obj_cw, swap_pc_requested);
+}
