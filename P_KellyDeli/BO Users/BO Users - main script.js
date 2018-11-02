@@ -251,7 +251,10 @@ function get_user_basic_info_ok(result)
 
     // define "selected_user" variable properties
     selected_user = {};
-    if (result.user_info.indexOf(extended) > -1) {
+
+    // if (result.user_info.indexOf(extended) > -1) {
+    if (((Object.keys(result.user_info)).indexOf("extended")) > -1) {
+
         for (key in user_properties) {
             if (!(root_lvl.indexOf(key) > -1)) {
                 selected_user[key] = ((!(isEmpty(eval(user_properties[key]))))) ? eval(user_properties[key]) : "";
@@ -468,8 +471,10 @@ function update_user()
     c_debug(dbug.update, "=> update_user: user = ", user);
     my_pattern.email = user.email;
     c_debug(dbug.update, "=> update_user: my_pattern = ", my_pattern);
-    // id_update_user_api.trigger (my_pattern, user , update_user_ok, update_user_ko); 
+    // id_update_an_user_api.trigger (my_pattern, user, update_user_ok, update_user_ko); 
     // eval(collectionid).updateCallback(my_pattern, my_user, update_user_ok, update_user_ko);
+
+    id_run_update_process_btn
     RMPApplication.debug ("end update_user");
 }
 
