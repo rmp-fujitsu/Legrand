@@ -1,0 +1,16 @@
+
+/******** Customized i18n ********/
+
+#i18nBox option[value='default']
+{
+    display:none;
+}
+
+
+.fa-video-camera{
+    color:#B1C900;
+}
+
+.fa-file-pdf-o{
+    color:red;
+}

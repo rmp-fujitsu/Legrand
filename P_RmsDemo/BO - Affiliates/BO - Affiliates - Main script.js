@@ -33,7 +33,19 @@ var success_title_notify = ${P_quoted(i18n("success_title_notify", "Succès"))};
 var error_title_notify = ${P_quoted(i18n("error_title_notify", "Erreur"))};
 var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Merci de signaler cette erreur !"))};
 
+// execute main program
+init();
 
+
+// ===============================
+//   Initialization part
+// ===============================
+function init() 
+{
+    RMPApplication.debug("begin init");
+    id_details_item.setVisible(false);
+    RMPApplication.debug("end init");
+}
 // ==============================
 // clean custom widget (CW) area
 // variable: my_item
@@ -260,10 +272,12 @@ function item_already_exists(my_object)
     var my_pattern = {};
     for (key in my_object)  {
         my_pattern[key] = ( my_object[key] !== "" ) ? my_object[key] : "";
+        // my_pattern[key] = my_object[key];
     }
     var options = {};
     options.asynchronous = false;
     res = false;
+    c_debug(dbug.item, "=> item_already_exists: my_pattern = ", my_pattern);
     eval(collectionid).listCallback(my_pattern, options, exists_ok, exists_ko);
     RMPApplication.debug ("end function item_already_exists");
     return res;

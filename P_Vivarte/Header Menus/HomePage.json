@@ -26,7 +26,7 @@
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/331344?P_mode=${P_mode}"
     }, {
         "title" : "Vue Stocks",
-        "visible" : "${has_right('408485')=='false' && has_right('392101')=='false' && has_right('384675')=='false' && has_right('396042')=='false' && has_right('405109')=='false'}",
+        "visible" : "${has_right('380783')=='true'}",
         "url" : "https://live.runmyprocess.com/live/112501480325272109/appli/332420?P_mode=${P_mode}"
     }, {
         "title" : "Gestion Compte",
