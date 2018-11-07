@@ -20,6 +20,7 @@ var int_finished = "id_intervention_finished_0";
 var int_not_finished = "id_intervention_finished_1";
 var label_reason = "id_reason_label";
 var reason = "id_reason";
+var visit_counter;
 
 var login = {};
 var module_selected;
@@ -41,7 +42,7 @@ function init()
     // modules_visibility("global");
     fill_all_cw_pc();
     fill_all_cw_visit();
-    set_required_swap_pc();
+    set_required_current_pc();
 	RMPApplication.debug("end init");
 }
 
@@ -119,6 +120,7 @@ function display_reason(id_sel_field, cond_val, id_show_field)
     var selected_val = eval(id_sel_field).getSelectedValue();
     var display_reason = (selected_val == cond_val) ? false : true;
     eval(id_show_field).setVisible(display_reason);
+    id_my_pc_check.setVisible(!display_reason);
 } 
 
 // ====================================================================================================
@@ -145,14 +147,210 @@ function set_required_option_cw(obj, bool)
     }
 } 
 
-function set_required_swap_pc()
+function set_required_current_pc()
+{
+    c_debug(dbug.function, "=> begin set_required_current_pc");
+    // var instal_type_val = RMPApplication.get("installation_type");
+    // var swap_pc_requested = (instal_type_val == "computer_swap") ? true : false;
+    var obj_cw = {
+        "id": "id_my_current_pc_initial",
+        "widgets_var_list" : ["windows_version", "pc_name", "pc_model", "serial_number"]
+    };
+    set_required_option_cw(obj_cw, true);
+}
+
+
+function set_required_pc_confirm()
 {
     c_debug(dbug.function, "=> begin set_required_swap_pc");
     var instal_type_val = RMPApplication.get("installation_type");
     var swap_pc_requested = (instal_type_val == "computer_swap") ? true : false;
     var obj_cw = {
-        "id": "id_my_new_pc_swap",
+        "id": "id_my_new_pc_confirm",
         "widgets_var_list" : ["windows_version", "pc_name", "pc_model", "serial_number"]
     };
     set_required_option_cw(obj_cw, swap_pc_requested);
+}
+
+function set_required_visits()
+{
+    c_debug(dbug.function, "=> begin set_required_visits");
+    // id_intervention_grid.setVisible(true);				// debug
+    for (i=1; i<(visit_counter+1); i++) {
+	    var id_cw_current_visit = "id_my_intervention_" + i.toString();
+	    var obj_cw = {
+	        "id": id_cw_current_visit,
+	        "widgets_var_list" : ["arrival_time", "end_time", "intervention_finished"]
+	    };
+	    set_required_option_cw(obj_cw, true);
+	    // eval(id_cw_current_visit).setVisible(true);		// debug
+	}
+}
+
+
+// prepare data from GDC to Country Desk
+function prepare_data_for_country_desk()
+{
+    c_debug(dbug.function, "=> begin prepare_data_for_country_desk");
+    visit_counter = 0;      // initialize # of visit
+    RMPApplication.set("visit_counter", visit_counter);
+}
+
+// fill or not the last visit's reason of cancellation
+function load_data_for_country_desk_screen()
+{
+    c_debug(dbug.function, "=> begin load_data_for_country_desk_screen");
+    visit_counter = parseInt(RMPApplication.get("visit_counter"));
+
+    // set Required some fileds of #CW-Visit
+    set_required_visits();
+    
+    // following #visit
+    if (visit_counter > 0) {
+    	c_debug(dbug.function, "=> load_data_for_country_desk_screen: visit_counter = ", visit_counter);
+        // Reset ETA if new intervention should be planned
+        RMPApplication.set('my_issue_intervention.info_eta', null);
+
+        // let the Country Desk define a new "readable" comment intended to the customer
+        id_my_issue_intervention.id_last_cancellation_reason.setVisible(true);
+        id_my_issue_intervention.id_last_cancellation_reason.setActive(false);
+        id_my_issue_intervention.id_cancellation_attention.setVisible(true);
+        id_my_issue_intervention.id_new_cancellation_reason.setVisible(true);
+
+		// set "delivery_done" variable before to continue process
+		var id_intervention_num_previous = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_reason";
+		var last_cancellation_str = eval(id_intervention_num_previous).getValue();
+		RMPApplication.set("my_issue_intervention.last_cancellation_reason", last_cancellation_str);
+        RMPApplication.set("my_issue_intervention.new_cancellation_reason", last_cancellation_str);
+        c_debug(dbug.function, "=> load_data_for_country_desk_screen: last_cancellation_str = ", last_cancellation_str);
+    }
+
+}
+
+// test if 2 strings are equal
+function string_compare(st1, st2)
+{
+    var string_eq = (st1 === st2) ? true : false;
+    return string_eq;
+}
+
+// prepare data from Country Desk to Engineer
+function prepare_data_for_engineer()
+{
+    c_debug(dbug.function, "=> begin prepare_data_for_engineer");
+    var confirmation = true;
+    var attendre = true;
+    // visit_counter = parseInt(RMPApplication.get("visit_counter")) + 1;        // increment nb of visits
+    // RMPApplication.set("visit_counter", visit_counter);
+    c_debug(dbug.function, "=> prepare_data_for_engineer: visit_counter = ", visit_counter);
+
+    if (visit_counter > 0) {
+
+        var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
+        var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
+
+        var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
+        c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
+        if (cancellation_eq) {
+            // traitement si egaux
+            var question = "You decide not to change the reason of cancellation. Do you confirm ?"
+            
+            modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
+
+            function confirm_OK()
+            {
+                confirmation = true;
+                attendre = false;
+            }
+            function cancel_KO()
+            {
+                confirmation = false;
+                attendre = false;
+            }
+
+            while (attendre == true) { 
+            	setTimeout( () => {}, 500 );
+           	}
+
+        } else {
+            confirmation = false;
+        }
+    }
+
+    c_debug(dbug.function, "=> prepare_data_for_engineer: confirmation = ", confirmation);
+    return confirmation;
+}
+
+// prepare engineer data screen
+function load_data_for_engineer_screen()
+{
+    c_debug(dbug.function, "=> begin load_data_for_engineer_screen");
+    visit_counter = parseInt(RMPApplication.get("visit_counter"));
+    c_debug(dbug.function, "=> load_data_for_engineer_screen: visit_counter = ", visit_counter);
+    
+
+    // let the Country Desk define a new "readable" comment intended to the customer
+    id_my_issue_intervention.id_last_cancellation_reason.setVisible(false);
+    id_my_issue_intervention.id_cancellation_attention.setVisible(false);
+    id_my_issue_intervention.id_new_cancellation_reason.setVisible(false);
+
+    // set Required some fileds of #CW-Visit
+    set_required_visits();
+
+}
+
+// retrieve data following the engineer's intervention and decide to close or plan a new one
+function prepare_data_for_closure()
+{
+    c_debug(dbug.function, "=> begin prepare_data_for_closure");
+    var confirmation = true;
+
+    visit_counter = parseInt(RMPApplication.get("visit_counter"));
+
+    // set "delivery_done" variable before to continue process
+    var id_intervention_num_finished = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_intervention_finished";
+    var current_intervention_finished = eval(id_intervention_num_finished).getSelectedValue();
+    c_debug(dbug.function, "=> prepare_data_for_closure: current_intervention_finished = ", current_intervention_finished);
+    RMPApplication.set("delivery_done", current_intervention_finished);
+    c_debug(dbug.function, "=> prepare_data_for_closure: delivery_done = ", current_intervention_finished);
+
+    /*if (visit_counter > 1) {
+
+        var last_cancellation_visit_str = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_reason";
+        RMPApplication.set("my_issue_intervention.last_cancellation_reason", last_cancellation_visit_str);
+        var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
+        var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
+
+        var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
+        c_debug(dbug.function, "=> prepare_data_for_closure: cancellation_eq = ", cancellation_eq);
+        if (cancellation_eq) {
+            // traitement si egaux
+            var question = "You decide not to change the reason of cancellation. Do you confirm ?"
+            
+            modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
+
+            function confirm_OK()
+            {
+                confirmation = true;
+            }
+            function cancel_KO()
+            {
+                confirmation = false;
+            }
+
+        } else {
+            confirmation = false;
+        }
+    }*/
+    c_debug(dbug.function, "=> prepare_data_for_closure: confirmation = ", confirmation);
+    return confirmation;
+}
+
+
+// 
+function close_request()
+{
+    c_debug(dbug.function, "=> begin close_request");
+
+
 }
