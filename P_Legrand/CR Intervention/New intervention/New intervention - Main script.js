@@ -237,12 +237,14 @@ function string_compare(st1, st2)
 // prepare data from Country Desk to Engineer
 function prepare_data_for_engineer()
 {
-    c_debug(dbug.function, "=> begin prepare_data_for_engineer");
-    var confirmation = true;
-    var attendre = true;
-    // visit_counter = parseInt(RMPApplication.get("visit_counter")) + 1;        // increment nb of visits
-    // RMPApplication.set("visit_counter", visit_counter);
-    c_debug(dbug.function, "=> prepare_data_for_engineer: visit_counter = ", visit_counter);
+    c_debug(dbug.function, "=> begin prepare_data_for_engineer: visit_counter = ", visit_counter);
+
+    function confirm_OK()
+    {
+        // continue the process and transfer to the engineer
+        document.getElementById("id_process_to_engineer_btn").click();
+    }
+    function cancel_KO() {}
 
     if (visit_counter > 0) {
 
@@ -253,32 +255,14 @@ function prepare_data_for_engineer()
         c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
         if (cancellation_eq) {
             // traitement si egaux
-            var question = "You decide not to change the reason of cancellation. Do you confirm ?"
-            
+            var question = "You decide to keep the same reason of cancellation. Do you confirm ?"
             modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
-
-            function confirm_OK()
-            {
-                confirmation = true;
-                attendre = false;
-            }
-            function cancel_KO()
-            {
-                confirmation = false;
-                attendre = false;
-            }
-
-            while (attendre == true) { 
-            	setTimeout( () => {}, 500 );
-           	}
-
         } else {
-            confirmation = false;
+            confirm_OK();
         }
+    } else {
+        confirm_OK();
     }
-
-    c_debug(dbug.function, "=> prepare_data_for_engineer: confirmation = ", confirmation);
-    return confirmation;
 }
 
 // prepare engineer data screen

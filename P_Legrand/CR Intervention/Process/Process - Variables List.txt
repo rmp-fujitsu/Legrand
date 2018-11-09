@@ -1,0 +1,35 @@
+visit_counter           ${visit_counter}
+status                  Submitted to Country Desk
+
+submission_date         <#setting time_zone="Europe/Lisbon">
+                        ${now("MMM dd, yyyy HH:mm '('zzz')'")}
+request_id              ${legrand_ref?default("Unkonwn ref.")}
+project_title           PC Change
+location_site_name      ${my_location.site_name?default("")}
+user_name               ${my_user.name?default("")}
+user_contact_email      ${my_user.contact_email?default("")}
+intervention_type       ${type}
+issue_description       ${my_gdc_details.issue_description?default("")}
+action_to_be_done       ${my_gdc_details.action_to_be_done?default("")}
+
+IN
+status                      Intervention planning in progress
+progress_bar                {"0":"previous", "1": "active"}
+OUT
+visit_counter               <#assign v_c = visit_counter>
+                            <#assign temp = v_c?number + 1>
+                            ${temp}
+info_eta_str                ${info_eta_str}
+new_cancellation_reason     ${new_cancellation_reason?default('')}
+info_for_this_engineer      ${info_for_this_engineer?default('')}
+
+IN
+status              <#assign v_c = visit_counter>
+                    <#assign status_temp = "Visit #" + v_c + " planned">
+                    ${status_temp}
+progress_bar        {"1":"previous", "2": "active"}
+OUT
+delivery_done       ${delivery_done}
+status              <#assign v_c = visit_counter>
+                    <#assign status_temp = "Visit #" + v_c + " is done">
+                    ${status_temp}
