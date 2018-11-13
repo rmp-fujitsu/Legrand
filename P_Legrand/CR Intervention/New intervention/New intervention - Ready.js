@@ -1,6 +1,4 @@
-//=====================================================
-// Assign a color / background color to the active tab
-//====================================================
+// Color of the navbar
 
-$("#"+selected_item).css("background-color", "#FFFFFF");
-$("#" +selected_item+" a").css("color", "#FF9600");
+$("#" + selected_item).css("background-color", "#000000");
+$("#" + selected_item + " a").css("color", "#FFFFFF");
