@@ -43,6 +43,12 @@ function init()
     fill_all_cw_pc();
     fill_all_cw_visit();
     set_required_current_pc();
+
+    // initialize visit_counter if needed
+    if (isEmpty(RMPApplication.get ("visit_counter"))) {
+        RMPApplication.set("visit_counter", 0);
+    }
+
 	RMPApplication.debug("end init");
 }
 
@@ -58,7 +64,7 @@ function fill_all_cw_pc()
     var var_newTitle = {
         "id_my_current_pc_initial" : "Current user's PC",
         "id_my_new_pc_swap" : "New PC in case of swap requested",
-        "id_my_current_pc_confirm" : "Current user's PC",
+        "id_my_current_pc_confirm" : "Confirmation of the user's PC",
         "id_my_new_pc_confirm" : "New PC"
     };
     // Do a loop for all the Title

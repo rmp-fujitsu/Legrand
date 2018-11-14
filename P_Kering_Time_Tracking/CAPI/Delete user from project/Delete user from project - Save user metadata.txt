@@ -1,0 +1,14 @@
+Input variables
+                    <#assign old_list = get_user_metadata(user).Kering?default([])>
+                    <#assign new_list = []>
+                    ${old_list}
+                    <#list old_list as x>
+                        <#if x != project>
+                            <#assign new_list = new_list + [x]>
+                        </#if>
+                    </#list>
+                    ${new_list}
+                    <#assign new_mdt = get_user_metadata(user)>
+                    <#assign new_mdt = P_json_put( new_mdt, "Kering", new_list, true)>
+                    ${new_mdt}
+                    <#assign new_mdt = save_user_metadata(user,new_mdt)>

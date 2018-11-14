@@ -1,0 +1,3 @@
+Output variables
+connected_user          ${connected_user}
+P_first                 0

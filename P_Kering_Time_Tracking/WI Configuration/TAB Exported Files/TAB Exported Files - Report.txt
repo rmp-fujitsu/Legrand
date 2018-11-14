@@ -1,0 +1,5 @@
+Report: Files report
+
+Champs: name - Status - published - updated - File
+
+Date format: MM/dd/yyyy HH:mm:ss Z
