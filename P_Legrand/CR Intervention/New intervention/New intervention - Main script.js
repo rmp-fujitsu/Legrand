@@ -166,13 +166,13 @@ function set_required_current_pc()
 }
 
 
-function set_required_pc_confirm()
+function set_required_swap_pc()
 {
     c_debug(dbug.function, "=> begin set_required_swap_pc");
     var instal_type_val = RMPApplication.get("installation_type");
     var swap_pc_requested = (instal_type_val == "computer_swap") ? true : false;
     var obj_cw = {
-        "id": "id_my_new_pc_confirm",
+        "id": "id_my_new_pc_swap",
         "widgets_var_list" : ["windows_version", "pc_name", "pc_model", "serial_number"]
     };
     set_required_option_cw(obj_cw, swap_pc_requested);
@@ -293,7 +293,7 @@ function load_data_for_engineer_screen()
 function prepare_data_for_closure()
 {
     c_debug(dbug.function, "=> begin prepare_data_for_closure");
-    var confirmation = true;
+    // var confirmation = true;
 
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
 
@@ -304,36 +304,57 @@ function prepare_data_for_closure()
     RMPApplication.set("delivery_done", current_intervention_finished);
     c_debug(dbug.function, "=> prepare_data_for_closure: delivery_done = ", current_intervention_finished);
 
-    /*if (visit_counter > 1) {
+    // POP up if current pc = current pc confirm 
+    var obj_initial = {};
+    var obj_final = {};
 
-        var last_cancellation_visit_str = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_reason";
-        RMPApplication.set("my_issue_intervention.last_cancellation_reason", last_cancellation_visit_str);
-        var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
-        var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
+    var cw_widget_initial = "my_current_pc_initial";
+    var cw_widget_final = "my_current_pc_confirm";
+    var cw_equals = true;
 
-        var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
-        c_debug(dbug.function, "=> prepare_data_for_closure: cancellation_eq = ", cancellation_eq);
-        if (cancellation_eq) {
-            // traitement si egaux
-            var question = "You decide not to change the reason of cancellation. Do you confirm ?"
-            
-            modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
+    var keys = {
+        "windows_version" : "windows_version",
+        "pc_name" : "pc_name",
+        "pc_model" : "pc_model",
+        "serial_number" : "serial_number",
+        "software_installed" : "software_installed"
+    };
+    
+    for (key in keys) {
+        c_debug(dbug.function, "=========================");
+        c_debug(dbug.function, "=> prepare_data_for_closure: KEY = ", key);
+        var prop_initial = cw_widget_initial + "." + key;
+        obj_initial[key] = (isEmpty(RMPApplication.get(prop_initial))) ? "" : RMPApplication.get(prop_initial);
+        c_debug(dbug.function, "=> prepare_data_for_closure: obj_initial = ", obj_initial);
 
-            function confirm_OK()
-            {
-                confirmation = true;
-            }
-            function cancel_KO()
-            {
-                confirmation = false;
-            }
+        var prop_final = cw_widget_final + "." + key;
+        obj_final[key] = (isEmpty(RMPApplication.get(prop_final))) ? "" : RMPApplication.get(prop_final);
+        c_debug(dbug.function, "=> prepare_data_for_closure: obj_final = ", obj_final);
 
-        } else {
-            confirmation = false;
+        if (obj_initial[key] != obj_final[key]) {
+            cw_equals = false;
+            break;
         }
-    }*/
-    c_debug(dbug.function, "=> prepare_data_for_closure: confirmation = ", confirmation);
-    return confirmation;
+    }
+    c_debug(dbug.function, "=> **** prepare_data_for_closure: obj_initial = ", obj_initial);
+    c_debug(dbug.function, "=> prepare_data_for_closure: obj_final = ", obj_final);
+    c_debug(dbug.function, "=> prepare_data_for_closure: cw_equals = ", cw_equals);
+
+    if (cw_equals == true) {
+        var question = "You decide to keep the same user's info PC. Do you confirm ?"
+        modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
+    } else {
+        confirm_OK();
+    }
+    
+    function confirm_OK()
+    {
+        // continue the process and transfer to the engineer
+        document.getElementById("id_process_visit_btn").click();
+    }
+
+    function cancel_KO() {}
+    
 }
 
 
