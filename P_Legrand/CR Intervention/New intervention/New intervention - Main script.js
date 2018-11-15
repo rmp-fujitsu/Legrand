@@ -200,6 +200,8 @@ function prepare_data_for_country_desk()
     c_debug(dbug.function, "=> begin prepare_data_for_country_desk");
     visit_counter = 0;      // initialize # of visit
     RMPApplication.set("visit_counter", visit_counter);
+
+    document.getElementById("id_process_to_cd_btn").click();
 }
 
 // fill or not the last visit's reason of cancellation
@@ -243,6 +245,7 @@ function string_compare(st1, st2)
 // prepare data from Country Desk to Engineer
 function prepare_data_for_engineer()
 {
+
     c_debug(dbug.function, "=> begin prepare_data_for_engineer: visit_counter = ", visit_counter);
 
     function confirm_OK()
@@ -250,26 +253,45 @@ function prepare_data_for_engineer()
         // continue the process and transfer to the engineer
         document.getElementById("id_process_to_engineer_btn").click();
     }
-    function cancel_KO() {}
+    function cancel_KO() {
+        // stop the process
+    }
 
-    if (visit_counter > 0) {
+    // Timestamp of the actual date
+    my_date = new Date();  
+    currentTime = Math.round(my_date.getTime()/ 1000);  
 
-        var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
-        var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
+    // get the date picked and transform it into an integer
+    var date_eta = RMPApplication.get("my_issue_intervention.info_eta");
+    var date_eta_parse = parseInt(date_eta);
 
-        var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
-        c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
-        if (cancellation_eq) {
-            // traitement si egaux
-            var question = "You decide to keep the same reason of cancellation. Do you confirm ?"
-            modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
+
+    if (date_eta_parse < currentTime) {
+        var title = "Warning";
+        var content = "The date choosen is in the past !";
+        dialog_warning(title, content); 
+    } else { 
+
+        if (visit_counter > 0) {
+
+            var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
+            var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
+
+            var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
+            c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
+            if (cancellation_eq) {
+                // traitement si egaux
+                var question = "You decide to keep the same reason of cancellation. Do you confirm ?"
+                modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
+            } else {
+                confirm_OK();
+            }
         } else {
-            confirm_OK();
-        }
-    } else {
-        confirm_OK();
+            confirm_OK(); 
+        }            
     }
 }
+
 
 // prepare engineer data screen
 function load_data_for_engineer_screen()
@@ -288,7 +310,6 @@ function load_data_for_engineer_screen()
     set_required_visits();
 
 }
-
 // retrieve data following the engineer's intervention and decide to close or plan a new one
 function prepare_data_for_closure()
 {
@@ -297,6 +318,21 @@ function prepare_data_for_closure()
 
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
 
+    // Timestamp of the actual date
+    my_date = new Date();  
+    currentTime = Math.round(my_date.getTime()/ 1000);  
+
+    // get the arrival date picked and transform it into an integer
+    var access_date_arrival = "id_my_intervention_" + RMPApplication.get("visit_counter")  + ".id_arrival_time";
+    var date_eta_arrival = eval(access_date_arrival).getValue();
+    var date_eta_parse_arrival = parseInt(date_eta_arrival);
+
+    // get the arrival date picked and transform it into an integer
+    var access_date_end = "id_my_intervention_" + RMPApplication.get("visit_counter")  + ".id_end_time";
+    var date_eta_end = eval(access_date_end).getValue();
+    var date_eta_parse_end = parseInt(date_eta_end);
+
+
     // set "delivery_done" variable before to continue process
     var id_intervention_num_finished = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_intervention_finished";
     var current_intervention_finished = eval(id_intervention_num_finished).getSelectedValue();
@@ -304,7 +340,7 @@ function prepare_data_for_closure()
     RMPApplication.set("delivery_done", current_intervention_finished);
     c_debug(dbug.function, "=> prepare_data_for_closure: delivery_done = ", current_intervention_finished);
 
-    // POP up if current pc = current pc confirm 
+    // Modal appears if current pc = current pc confirm 
     var obj_initial = {};
     var obj_final = {};
 
@@ -340,12 +376,23 @@ function prepare_data_for_closure()
     c_debug(dbug.function, "=> prepare_data_for_closure: obj_final = ", obj_final);
     c_debug(dbug.function, "=> prepare_data_for_closure: cw_equals = ", cw_equals);
 
-    if (cw_equals == true) {
-        var question = "You decide to keep the same user's info PC. Do you confirm ?"
-        modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
-    } else {
-        confirm_OK();
-    }
+
+
+    if ( (date_eta_parse_arrival < currentTime) || (date_eta_parse_end < currentTime) || (date_eta_parse_end < date_eta_parse_arrival) ){
+        var title = "Warning";
+        var content = "The date choosen is in the past or the arrival date is after the end date!";
+        dialog_warning(title, content); 
+    } else { 
+        if (cw_equals == true) {
+            var question = "You decide to keep the same user's info PC. Do you confirm ?"
+            modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
+        } else {
+            confirm_OK();
+        }
+    }            
+
+
+    
     
     function confirm_OK()
     {
@@ -362,6 +409,6 @@ function prepare_data_for_closure()
 function close_request()
 {
     c_debug(dbug.function, "=> begin close_request");
-
+    document.getElementById("id_process_to_closed").click();
 
 }
