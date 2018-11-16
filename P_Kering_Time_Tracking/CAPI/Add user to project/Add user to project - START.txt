@@ -1,0 +1,3 @@
+Output variables
+project                 ${project_l}
+user                    ${user}

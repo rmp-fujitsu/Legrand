@@ -1,0 +1,10 @@
+Provider        RunMyProcess Server
+Process name    Kering - Time Tracking | sub - export all data
+
+Input variables
+P_mode      ${P_mode}
+P_version   ${P_version}
+
+Output variables
+j_params        ${j_params}
+Exported file   ${File}

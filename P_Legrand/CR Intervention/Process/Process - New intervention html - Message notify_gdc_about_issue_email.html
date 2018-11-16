@@ -1,0 +1,25 @@
+
+Dear GDC team,
+
+<strong>An Engineer on site - ${my_location.country}</strong> has encountered an issue and the max of 3 visits has been reached.
+That means you have to close the whole actual process and could possibility order a new one if new visit should be planned!
+
+<u>Request details</u> :
+- Request Date: <strong>${submission_date}</strong>
+- Legrand ref.: <strong>${legrand_ref}</strong>
+- Project: <strong>${project_title}</strong>
+- Priority: <strong>${priority}</strong>
+- Last visit #${visit_counter} Date: <strong>${last_visit_date}</strong>
+<hr><#if visit_counter?number != 1>
+- Cancellation's reason giver by the enginerr : <em>(mettre la raison donnée par le technicien)</em></#if>
+- Installation type: <strong>${installation_type}</strong>
+- PC Name: <strong>${my_current_pc_initial.pc_name}</strong><#if installation_type == "computer_swap">
+--- New PC Name: <strong>${pc_swap_name}</strong></#if>
+- Site Name: <strong>${location_site_name}</strong>
+- User: <strong>${user_name}</strong>
+- Mode: <strong>${P_mode}</strong>
+
+Please click <a href="${get_next_url(19, false)}">here</a> to proceed and close the present request.
+
+Best regards,
+<strong><em>Engineer on site - ${my_location.country}</em></strong>

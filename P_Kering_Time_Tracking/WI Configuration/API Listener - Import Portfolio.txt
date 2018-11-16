@@ -1,0 +1,9 @@
+Launch event:           Listened variable changed
+Listen to variables:    import_activities
+
+Listened events:
+Started:        id_spinner.setVisible(true);
+
+Completed       id_spinner.setVisible(false);
+                alert("Portfolio elements have been imported!");
+                id_report.refresh();

@@ -1,0 +1,15 @@
+To              ${P_initiator.login}
+Language        null
+Attached file   ${file_id}
+
+Message         Dear User, 
+
+                Please find in attachment your export for ${month_s}  ${year} .
+
+                Best regards;
+
+Input variables
+ts              ${now("yyyy_MM_dd_HH_mm")}
+file_id         ${create_file(month_s + "_" + year + "_" + ts +  ".xls", csv_content)}
+
+Output variables

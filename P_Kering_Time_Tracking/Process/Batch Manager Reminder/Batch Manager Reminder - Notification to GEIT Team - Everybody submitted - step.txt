@@ -1,0 +1,15 @@
+To              Giovanni.Carpenetti@ts.fujitsu.com
+CC              Philippe.Molaro.external@ts.fujitsu.com
+Language        null
+
+Subject         Weekly Time Sheet - GEIT Report
+
+Message         Dear Manager, 
+
+                All users submitted their timesheet this Week.
+
+                Best regards.
+
+Input variables
+
+Output variables

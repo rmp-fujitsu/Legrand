@@ -1,0 +1,60 @@
+Provider        RMP Admin
+Connector       Kering - Time Tracking | Get anything (xml ouput V1)
+Loop            Type: Multi-instance     Array: ${requests}          MI Ordering: Sequential
+
+Input variables
+request_id      ${requests[P_index]}
+rmp_url         live/112501412000161590/request/${request_id}
+
+Output variables
+                <#assign j_initial_params = {}>
+                <#assign j_computed_params = {}>
+                <#assign j_params = {}>
+                <#assign j_path = {}>
+
+                <#assign entries = P_to_array(P_result.feed,"entry")>
+                <#list entries as x>
+                    <#if x.title = "Initial parameters">
+                        <#assign j_initial_params = x.content.P_value>
+                    <#elseif x.title = "Computed parameters">
+                        <#assign j_computed_params = x.content.P_value>
+                    <#elseif x.title = "Execution path">
+                        <#assign j_path = x.content.P_value>
+                    </#if>
+                </#list>
+
+                <#assign j_params = j_initial_params>
+                <#list j_computed_params?keys as x>
+                    <#assign j_params = P_json_put(j_params,x,j_computed_params[x]?default(""))>
+                </#list>
+
+                <#assign hub = {}>
+                <#assign hub = P_json_put(hub,"j_params",j_params)>
+                ${hub}
+        
+csv_content     <#assign csv_content = csv_content + "\n">
+                <#if j_params.array.workload?? && j_params.array.project_l??>
+                    <#list 0..j_params.array.workload?size-1 as i>
+                        <#if j_params.array.project_l[i]??>
+                            <#if j_params.array.project_l[i]!= "" && j_params.array.project_l[i] != "null">
+                                <#assign user = j_params.initiator >
+                                <#assign date = j_params.array.date_s[i]>
+                                <#assign activity = j_params.array.project_l[i]>
+                                <#assign workload = j_params.array.workload[i]?replace(".",",")>
+                                <#assign status = j_params.status>
+                                <#if j_params.array.comments??>
+                                    <#if j_params.array.comments[i]?? && j_params.array.comments[i] != "null">
+                                        <#assign comment = j_params.array.comments[i]?replace("\n"," ") >
+                                        <#assign comment = comment?replace("\r"," ") >
+                                    <#else>
+                                        <#assign comment = "">
+                                    </#if>
+                                <#else>
+                                    <#assign comment = "">
+                                </#if>
+                                <#assign csv_content = csv_content + user + ";" + date + ";" + activity + ";" + workload + ";" + status + ";" + comment + "\n" >
+                            </#if>
+                        </#if>
+                    </#list>	
+                </#if>
+                ${csv_content}

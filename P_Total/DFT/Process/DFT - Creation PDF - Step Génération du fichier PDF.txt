@@ -1,0 +1,76 @@
+Type: PDF Transformation
+Url: live/112501412000161590/file/b4e9a7b0-15e3-11e6-be43-02b3a23437c9/testmaquette.xsl?P_mode={P_mode}&P_version={P_version}
+Data source variable: ${var_datat_pdf}
+New file name: mypdf
+
+[ Intput variables ]
+====================
+all img private to public       <#list array_all_file as x>
+                                    ${save_file_desc(x, {"visibility":"PUBLIC"})}
+                                </#list>
+
+var_data_pdf            { "my_var_main":
+    {
+        "code_implant":"${code_implant}",
+        "nom_station":"${nom_station}",
+        "adresse":"${adresse_station}",
+        "telservice":"${telservice}",
+        "users_array":${images_centrale_alarme},
+        "images_clavier_principal":${images_clavier_principal},
+        "images_detecteur_irp":${images_detecteur_irp},
+        "images_detecteur_mouvement":${images_detecteur_mouvement},
+        "images_detecteur_ouverture":${images_detecteur_ouverture},
+        "images_bouton_huf":${images_bouton_huf},
+        "images_medaillon_alerte":${images_medaillon_alerte},
+        "images_pedale":${images_pedale},
+        "images_amplificateur":${images_amplificateur},
+        "images_digicode":${images_digicode},
+        "images_centrale_interphonie":${images_centrale_interphonie},
+        "images_interphone":${images_interphone},
+        "images_sirene_interieure":${images_sirene_interieure},
+        "images_sirene_exterieure":${images_sirene_exterieure},
+        "images_sabot":${images_sabot},
+        "images_detecteur_choc":${images_detecteur_choc},
+        "images_camera_interieure":${images_camera_interieure},
+        "images_camera_exterieure":${images_camera_exterieure},
+        "images_moniteur_bureau":${images_moniteur_bureau},
+        "images_moniteur_caisse":${images_moniteur_caisse},
+        "images_uc_tls":${images_uc_tls},
+        "images_nas":${images_nas},
+        "images_hp":${images_hp},
+        "images_switch_tls":${images_switch_tls},
+        "images_boitier_plexo":${images_boitier_plexo},
+        "images_injecteur_rackable":${images_injecteur_rackable},
+        "images_injecteur_unitaires":${images_injecteur_unitaires},
+        "images_adhesifs":${images_adhesifs},
+        "images_antenne":${images_antenne},
+        "images_dac":${images_dac},
+        "images_controleur":${images_controleur},
+        "images_detecteur_irp_simple":${images_detecteur_irp_simple},
+        "images_detecteur_fumee":${images_detecteur_fumee},
+        "date_realisation":"${date_realisation}",
+        "nom_personne":"${nom_personne}",
+        "nature_traveaux":"${nature_traveaux}",
+        "numeros_serie":${numeros_serie}
+    }
+}
+
+
+[ Output variables ]
+====================
+pdf_id          ${P_result.id} 
+
+size            <#assign a = pdf_id>
+                <#assign size= file_size(a)>
+                <#assign size= size?number/1024>
+                ${size?string("#,##0.00")} Mo
+
+collection      <#assign name = "Module import photographies">
+                <#assign published = "${date_string}">
+                <#assign id_pdf = "${pdf_id}">
+                <#assign taille_pdf = "${size}">
+                <#assign name_pdf = "${code_implant}${date_creation_pdf_int}DFT_TLS_${ville}_${nom_personne}@https://live.runmyprocess.com/live/112501412000161590/upload/${pdf_id}/${code_implant}${date_creation_pdf_int}DFT_TLS_${ville}_${nom_personne}.pdf?P_mode=&method=GET">
+                <#assign my_object>
+                    {"name":"${name}","Nom du fichier pdf":"${name_pdf}","published":"${published}","id_pdf":"${id_pdf}","Taille du fichier":"${taille_pdf}"}
+                </#assign>
+                ${save_object(my_object,"data_csv_raport")}

@@ -1,0 +1,17 @@
+To              Philippe.Molaro.external@ts.fujitsu.com
+CC              Giovanni.Carpenetti@ts.fujitsu.com
+Language        null
+
+Subject         Weekly Time Sheet - BUILD Report
+
+Message         Dear Manager, 
+
+                The following users have not submitted their weekly TimeSheet:
+
+                ${content2}
+
+                Best regards.
+
+Input variables
+
+Output variables
