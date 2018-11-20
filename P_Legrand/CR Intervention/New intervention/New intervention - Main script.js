@@ -201,7 +201,21 @@ function prepare_data_for_country_desk()
     visit_counter = 0;      // initialize # of visit
     RMPApplication.set("visit_counter", visit_counter);
 
-    document.getElementById("id_process_to_cd_btn").click();
+    // Check the required values
+    for (i=0; i <=13 ;i++) {
+        var required_label = document.getElementsByClassName("LabelVariable required")[i].id;
+        var clean_id = required_label.substr(0, required_label.length-6);
+        var clean_id_value = eval(clean_id).getValue();
+    }   
+        // continue the process and transfer to the engineer
+        if ((clean_id_value == null) || (clean_id_value == "") ){
+            var title = "Warning";
+            var content = "Required fields empty !";
+            dialog_warning(title, content); 
+        }
+        else {
+            document.getElementById("id_process_to_cd_btn").click();
+        };
 }
 
 // fill or not the last visit's reason of cancellation
@@ -211,7 +225,7 @@ function load_data_for_country_desk_screen()
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
 
     // set Required some fileds of #CW-Visit
-    set_required_visits();
+    // set_required_visits();
     
     // following #visit
     if (visit_counter > 0) {
@@ -266,29 +280,43 @@ function prepare_data_for_engineer()
     var date_eta_parse = parseInt(date_eta);
 
 
-    if (date_eta_parse < currentTime) {
+    // Check the required values
+    for (i=0; i <=9 ;i++) {
+        var required_label = document.getElementsByClassName("LabelVariable required")[i].id;
+        var clean_id = required_label.substr(0, required_label.length-6);
+        var clean_id_value = eval(clean_id).getValue();
+    }   
+
+    if ((clean_id_value == null) || (clean_id_value == "") ){
         var title = "Warning";
-        var content = "The date choosen is in the past !";
+        var content = "Required fields empty !";
         dialog_warning(title, content); 
-    } else { 
+    }
+    else {
+        if (date_eta_parse < currentTime) {
+            var title = "Warning";
+            var content = "The date choosen is in the past !";
+            dialog_warning(title, content); 
+        } else { 
 
-        if (visit_counter > 0) {
+            if (visit_counter > 0) {
 
-            var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
-            var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
+                var last_cancellation_str = RMPApplication.get("my_issue_intervention.last_cancellation_reason");
+                var new_cancellation_str = RMPApplication.get("my_issue_intervention.new_cancellation_reason");
 
-            var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
-            c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
-            if (cancellation_eq) {
-                // traitement si egaux
-                var question = "You decide to keep the same reason of cancellation. Do you confirm ?"
-                modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
+                var cancellation_eq = string_compare(last_cancellation_str, new_cancellation_str);
+                c_debug(dbug.function, "=> prepare_data_for_engineer: cancellation_eq = ", cancellation_eq);
+                if (cancellation_eq) {
+                    // traitement si egaux
+                    var question = "You decide to keep the same reason of cancellation. Do you confirm ?"
+                    modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
+                } else {
+                    confirm_OK();
+                }
             } else {
-                confirm_OK();
-            }
-        } else {
-            confirm_OK(); 
-        }            
+                confirm_OK(); 
+            }   
+        }         
     }
 }
 
@@ -314,8 +342,6 @@ function load_data_for_engineer_screen()
 function prepare_data_for_closure()
 {
     c_debug(dbug.function, "=> begin prepare_data_for_closure");
-    // var confirmation = true;
-
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
 
     // Timestamp of the actual date
@@ -331,7 +357,6 @@ function prepare_data_for_closure()
     var access_date_end = "id_my_intervention_" + RMPApplication.get("visit_counter")  + ".id_end_time";
     var date_eta_end = eval(access_date_end).getValue();
     var date_eta_parse_end = parseInt(date_eta_end);
-
 
     // set "delivery_done" variable before to continue process
     var id_intervention_num_finished = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_intervention_finished";
@@ -355,7 +380,19 @@ function prepare_data_for_closure()
         "serial_number" : "serial_number",
         "software_installed" : "software_installed"
     };
-    
+
+    // intervention is not finished value 
+    var intervention_value = id_my_intervention_1.id_intervention_finished.getSelectedValue();
+    var intervention_reason = id_my_intervention_1.id_reason.getValue();
+
+    function confirm_OK()
+    {
+        // continue the process and transfer to the engineer
+        document.getElementById("id_process_visit_btn").click();
+    }
+
+    function cancel_KO() {}
+
     for (key in keys) {
         c_debug(dbug.function, "=========================");
         c_debug(dbug.function, "=> prepare_data_for_closure: KEY = ", key);
@@ -377,32 +414,38 @@ function prepare_data_for_closure()
     c_debug(dbug.function, "=> prepare_data_for_closure: cw_equals = ", cw_equals);
 
 
-
-    if ( (date_eta_parse_arrival < currentTime) || (date_eta_parse_end < currentTime) || (date_eta_parse_end < date_eta_parse_arrival) ){
+    // Check the required values
+    for (i=0; i <=13 ;i++) {
+        var required_label = document.getElementsByClassName("LabelVariable required")[i].id;
+        var clean_id = required_label.substr(0, required_label.length-6);
+        var clean_id_value = eval(clean_id).getValue();
+    }   
+  
+   // Make the alert appears if a required value is missing
+    if ((clean_id_value == null) || (clean_id_value == "")) {
+        var title = "Warning";
+        var content = "Required fields empty !";
+        dialog_warning(title, content); 
+    } else if ( intervention_value == null ) {
+        var title = "Warning";
+        var content = "Required fields empty !";
+        dialog_warning(title, content); 
+    } else if (( intervention_value == "no") && (intervention_reason == null || intervention_reason == "")) {
+        var title = "Warning";
+        var content = "Required fields empty !";
+        dialog_warning(title, content); 
+    } else if ( (date_eta_parse_arrival < currentTime) || (date_eta_parse_end < currentTime) || (date_eta_parse_end <= date_eta_parse_arrival) ){
         var title = "Warning";
         var content = "The date choosen is in the past or the arrival date is after the end date!";
         dialog_warning(title, content); 
-    } else { 
-        if (cw_equals == true) {
-            var question = "You decide to keep the same user's info PC. Do you confirm ?"
-            modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
-        } else {
-            confirm_OK();
-        }
-    }            
-
-
-    
-    
-    function confirm_OK()
-    {
-        // continue the process and transfer to the engineer
-        document.getElementById("id_process_visit_btn").click();
-    }
-
-    function cancel_KO() {}
-    
-}
+    } else if (cw_equals == true) {
+        var question = "You decide to keep the same user's info PC. Do you confirm ?"
+        modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
+    } else {
+        confirm_OK();
+            }
+        
+};
 
 
 // 
@@ -412,3 +455,67 @@ function close_request()
     document.getElementById("id_process_to_closed").click();
 
 }
+
+function testswitch(){
+
+    if ($("#id_close_request_btn").is(":visible")) {
+        $("#id_title1").css("color","#33CA33");
+        $("#id_label1").css("color","white");
+        $("#id_circle1").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar1").css("background-color","#33CA33");
+        $("#id_title2").css("color","#33CA33");
+        $("#id_label2").css("color","white");
+        $("#id_circle2").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar2").css("background-color","#33CA33");
+        $("#id_bar3").css("background-color","#33CA33");
+        $("#id_title3").css("color","#33CA33");
+        $("#id_label3").css("color","white");
+        $("#id_circle3").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar4").css("background-color","#33CA33");
+        $("#id_title4").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_label4").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_circle4").css({"border-color":"#69f94c", "background-color":"#d1ffd1"});
+    } else if ($("#id_visit_done_btn").is(":visible")) {
+        $("#id_title1").css("color","#33CA33");
+        $("#id_label1").css("color","white");
+        $("#id_circle1").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar1").css("background-color","#33CA33");
+        $("#id_title2").css("color","#33CA33");
+        $("#id_label2").css("color","white");
+        $("#id_circle2").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar2").css("background-color","#33CA33");
+        $("#id_title3").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_label3").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_circle3").css({"border-color":"#69f94c", "background-color":"#d1ffd1"});
+    } else if ($("#id_request_to_engineer_btn").is(":visible")) {
+        $("#id_title1").css("color","#33CA33");
+        $("#id_label1").css("color","white");
+        $("#id_circle1").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar1").css("background-color","#33CA33");
+        $("#id_title2").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_label2").css({"color": "#69f94c", "font-weight":"bold"});
+        $("#id_circle2").css({"border-color":"#69f94c", "background-color":"#d1ffd1"});
+    } else if ($("#id_transfer_to_country_btn").is(":visible"))  {
+      $("#id_title1").css({"color": "#69f94c", "font-weight":"bold"});
+      $("#id_label1").css({"color": "#69f94c", "font-weight":"bold"});
+      $("#id_circle1").css({"border-color":"#69f94c", "background-color":"#d1ffd1"});
+    }  else if (($("#id_closed_comments").is(":active")) == false ){
+        $("#id_title1").css("color","#33CA33");
+        $("#id_label1").css("color","white");
+        $("#id_circle1").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar1").css("background-color","#33CA33");
+        $("#id_title2").css("color","#33CA33");
+        $("#id_label2").css("color","white");
+        $("#id_circle2").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar2").css("background-color","#33CA33");
+        $("#id_bar3").css("background-color","#33CA33");
+        $("#id_title3").css("color","#33CA33");
+        $("#id_label3").css("color","white");
+        $("#id_circle3").css({"border-color":"#33CA33","background-color":"#33CA33"});
+        $("#id_bar4").css("background-color","#33CA33");
+        $("#id_title4").css("color","#33CA33");
+        $("#id_label4").css("color","white");
+        $("#id_circle4").css({"border-color":"#33CA33","background-color":"#33CA33"});
+    }   
+}
+
