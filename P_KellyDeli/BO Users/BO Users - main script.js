@@ -7,8 +7,8 @@ RMPApplication.debug ("Application started");
 
 // if "true", logs will be showed on the browser console
 var dbug = {
-    "init": false,
-    "pres": false,
+    "init": true,
+    "pres": true,
     "user_info": true,
     "update": true,
     "report": true
@@ -23,22 +23,22 @@ var user_properties =
 {
     // "company" : "company",               // is fixed - only one value (one company)
     // "affiliate" : "affiliate",           // is fixed - only one value (one affiliate)
-    "name" : "result.user_info.name",
-    "email" : "result.user",
-    "language" : "result.user_info.i18n",
-    "phone" : "result.user_info.extended.phone",
-    "country" : "result.user_info.extended.pays",
-    "timezone" : "result.user_info.extended.timezone",
-    "profil" : "result.user_info.extended.profil",
-    "region" : "result.user_info.extended.region",
-    "main_kiosk" : "result.user_info.extended.code_magasin",
-    "kiosks_list" : "result.user_info.extended.acces_enseignes"
+    "user_name" : "result.user_info.name",
+    "user_email" : "result.user",
+    "user_language" : "result.user_info.i18n",
+    "user_phone" : "result.user_info.extended.phone",
+    "user_country" : "result.user_info.extended.pays",
+    "user_timezone" : "result.user_info.extended.timezone",
+    "user_rights" : "result.user_info.extended.profil",
+    "user_region" : "result.user_info.extended.region",
+    "user_location" : "result.user_info.extended.code_magasin",
+    "user_kiosks_list" : "result.user_info.extended.acces_enseignes"
 };
 
-var root_lvl = ["name", "email", "language"];
-var type_choice_list = ["language", "country", "timezone"];
-var not_copied_field_list = ["name", "email", "phone"];
-var upper_var = ["country", "region", "main_kiosk", "kiosks_list"];
+var root_lvl = ["user_name", "user_email", "user_language"];
+var type_choice_list = ["user_language", "user_country", "user_timezone"];
+var not_copied_field_list = ["user_name", "user_email", "user_phone"];
+var upper_var = ["user_country", "user_region", "user_location", "user_kiosks_list"];
 
 var login = {};
 var selected_user = {};
@@ -124,10 +124,12 @@ function prepare_user_action()
     c_debug(dbug.pres, "=> prepare_user_action: widget_name");
     
     selected_action = RMPApplication.get("user_action");
+    c_debug(dbug.pres, "=> prepare_user_action: selected_action = ", selected_action);
     
     if (!(isEmpty(selected_action))) {
         selected_user.name = RMPApplication.get("existing_account");
         var account_selected = (!isEmpty(selected_user.name));
+        c_debug(dbug.pres, "=> prepare_user_action: account_selected = ", account_selected);
 
         switch (selected_action) {
             case "add_user_action" :
@@ -170,7 +172,7 @@ function prepare_user_action()
         }
 
         set_required_new_user();
-        if (account_selected) {
+        if (account_selected == true) {
             get_user_basic_info();
         }
     } else {
@@ -215,7 +217,7 @@ function set_required_new_user()
     var replace_user_action_selected = (action_selected == "replace_user_action") ? true : false;
     var obj_cw = {
         "id": "id_my_new_user",
-        "widgets_var_list" : ["userid", "name", "email", "language", "country", "timezone"]
+        "widgets_var_list" : ["userid", "user_name", "user_email", "user_language", "user_country", "user_timezone"]
     };
     set_required_option_cw(obj_cw, replace_user_action_selected);
 }
@@ -255,7 +257,7 @@ function set_fields_active(widget_name, bool)
     for (key in user_properties) {
         var id_widget = widget_name + ".id_" + key;
         c_debug(dbug.pres, "=>                  : id_widget = ", id_widget);
-        if (key != "email") {
+        if (key != "user_email") {
             eval(id_widget).setEnabled(bool);
         } else if (action == "update_user_action") {
             eval(id_widget).setEnabled(false);
@@ -330,7 +332,7 @@ function set_user_info(user_object)
         var val_field = user_object[key];
         if (type_choice_list.indexOf(key) > -1) {           // according to the type of input, we use different methods
             var id_field = "id_my_user.id_" + key;
-            if (key == "country") {
+            if (key == "user_country") {
                 val_field = capitalize(user_object[key]);
             }
             eval(id_field).setSelectedValue(val_field);
@@ -367,7 +369,7 @@ function copy_user_info(user_object)
             if (type_choice_list.indexOf(key) > -1) {
                 var id_user_field = "id_my_user.id_" + key;
                 var id_new_user_field = "id_my_new_user.id_" + key;
-                if (key == "country") {
+                if (key == "user_country") {
                     val_field = capitalize(user_object[key]);
                 }
                 eval(id_new_user_field).setSelectedValue(val_field);
@@ -394,7 +396,7 @@ function set_user_metadata_info()
     c_debug(dbug.user_info, "=> set_user_metadata_info"); 
 
     for (key in user_properties) {
-        if (key != "name") {
+        if (key != "user_name") {
             selected_user[key] = (key in selected_user.extended) ? eval(user_properties[key]) : "";
             c_debug(dbug.user_info, "=> get_user_basic_info_ok: key = " + key + " - " + user_properties[key] + " = " + eval(user_properties[key]));
         }
@@ -507,6 +509,20 @@ function update_user()
     c_debug(dbug.update, "=> update_user");
     var my_pattern = {};
     var user = retrieve_info_user(JSON.parse(RMPApplication.get("my_user")));
+    switch (selected_action) {
+        case "add_user_action" :
+            user.action = "ADD";   
+            break;
+        
+        case "delete_user_action" :
+            user.action = "DEL";  
+            break;
+        
+        case "update_user_action" : 
+            user.action = "UPD";  
+            break;
+    }
+    RMPApplication.set("user", user);
     c_debug(dbug.update, "=> update_user: user = ", user);
 
     document.getElementById("id_run_update_user_process_btn").click();
