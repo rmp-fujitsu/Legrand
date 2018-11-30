@@ -625,7 +625,7 @@ function get_installation_type_info()
 function get_pc_initial_info()
 {
     var pc_initial_info = {
-        "windows_version": RMPApplication.get("my_current_pc_initial.windows_version"),
+        "windows_version": id_my_current_pc_initial.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_current_pc_initial.pc_name"),
         "pc_model": RMPApplication.get("my_current_pc_initial.pc_model"),
         "serial_number": RMPApplication.get("my_current_pc_initial.serial_number"),
@@ -639,7 +639,7 @@ function get_pc_initial_info()
 function get_pc_swap_info()
 {
     var pc_swap_info = {
-        "windows_version": RMPApplication.get("my_new_pc_swap.windows_version"),
+        "windows_version": id_my_new_pc_swap.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_new_pc_swap.pc_name"),
         "pc_model": RMPApplication.get("my_new_pc_swap.pc_model"),
         "serial_number": RMPApplication.get("my_new_pc_swap.serial_number"),
@@ -653,7 +653,7 @@ function get_pc_swap_info()
 function get_pc_confirm_info()
 {
     var pc_confirm_info = {
-        "windows_version": RMPApplication.get("my_current_pc_confirm.windows_version"),
+        "windows_version": id_my_current_pc_confirm.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_current_pc_confirm.pc_name"),
         "pc_model": RMPApplication.get("my_current_pc_confirm.pc_model"),
         "serial_number": RMPApplication.get("my_current_pc_confirm.serial_number"),
@@ -667,7 +667,7 @@ function get_pc_confirm_info()
 function get_new_pc_confirm_info()
 {
     var new_pc_confirm_info = {
-        "windows_version": RMPApplication.get("my_new_pc_confirm.windows_version"),
+        "windows_version": id_my_new_pc_confirm.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_new_pc_confirm.pc_name"),
         "pc_model": RMPApplication.get("my_new_pc_confirm.pc_model"),
         "serial_number": RMPApplication.get("my_new_pc_confirm.serial_number"),
@@ -705,45 +705,61 @@ function get_issue_intervention_info()
 }
 
 // save datas from intervention1_info CW
-function get_intervention1_info()
-{
-    var intervention1_info = {
-        "arrival_time_str": RMPApplication.get("my_intervention_1.arrival_time_str"),
-        "end_time": RMPApplication.get("my_intervention_1.end_time"),
-        "actions_done": RMPApplication.get("my_intervention_1.actions_done"),
-        "intervention_finished": id_my_intervention_1.id_intervention_finished.getSelectedLabel(),
-        "reason": RMPApplication.get("my_intervention_1.reason")
-    };
-    // stocke ident dans le widget var_ident
-    RMPApplication.set("var_intervention1_info", JSON.stringify(intervention1_info));
-}
+// function get_intervention1_info()
+// {
+//     var intervention1_info = {
+//         "arrival_date": (RMPApplication.get("my_intervention_1.arrival_time_str").substr(0,10)),
+//         "arrival_time": (RMPApplication.get("my_intervention_1.arrival_time_str").substr(11)),
+//         "end_time": (RMPApplication.get("my_intervention_1.end_time_str").substr(11)),
+//         "actions_done": RMPApplication.get("my_intervention_1.actions_done"),
+//         "intervention_finished": id_my_intervention_1.id_intervention_finished.getSelectedLabel(),
+//         "reason": RMPApplication.get("my_intervention_1.reason")
+//     };
+//     // stocke ident dans le widget var_ident
+//     RMPApplication.set("var_intervention1_info", JSON.stringify(intervention1_info));
+// }
 
-// save datas from intervention2 CW
-function get_intervention2_info()
-{
-    var intervention2_info = {
-        "arrival_time_str": RMPApplication.get("my_intervention_2.arrival_time_str"),
-        "end_time": RMPApplication.get("my_intervention_2.end_time"),
-        "actions_done": RMPApplication.get("my_intervention_2.actions_done"),
-        "intervention_finished": id_my_intervention_2.id_intervention_finished.getSelectedLabel(),
-        "reason": RMPApplication.get("my_intervention_2.reason")
-    };
-    // stocke ident dans le widget var_ident
-    RMPApplication.set("var_intervention2_info", JSON.stringify(intervention2_info));
-}
+// // save datas from intervention2 CW
+// function get_intervention2_info()
+// {
+//     var intervention2_info = {
+//         "arrival_time_str": RMPApplication.get("my_intervention_2.arrival_time_str"),
+//         "end_time": RMPApplication.get("my_intervention_2.end_time"),
+//         "actions_done": RMPApplication.get("my_intervention_2.actions_done"),
+//         "intervention_finished": id_my_intervention_2.id_intervention_finished.getSelectedLabel(),
+//         "reason": RMPApplication.get("my_intervention_2.reason")
+//     };
+//     // stocke ident dans le widget var_ident
+//     RMPApplication.set("var_intervention2_info", JSON.stringify(intervention2_info));
+// }
 
-// save datas from intervention3 CW
-function get_intervention3_info()
+// // save datas from intervention3 CW
+// function get_intervention3_info()
+// {
+//     var intervention3_info = {
+//         "arrival_time_str": RMPApplication.get("my_intervention_3.arrival_time_str"),
+//         "end_time": RMPApplication.get("my_intervention_3.end_time"),
+//         "actions_done": RMPApplication.get("my_intervention_3.actions_done"),
+//         "intervention_finished": id_my_intervention_3.id_intervention_finished.getSelectedLabel(),
+//         "reason": RMPApplication.get("my_intervention_3.reason")
+//     };
+//     // stocke ident dans le widget var_ident
+//     RMPApplication.set("var_intervention3_info", JSON.stringify(intervention3_info));
+// }
+
+
+function get_last_intervention_info()
 {
-    var intervention3_info = {
-        "arrival_time_str": RMPApplication.get("my_intervention_3.arrival_time_str"),
-        "end_time": RMPApplication.get("my_intervention_3.end_time"),
-        "actions_done": RMPApplication.get("my_intervention_3.actions_done"),
-        "intervention_finished": id_my_intervention_3.id_intervention_finished.getSelectedLabel(),
-        "reason": RMPApplication.get("my_intervention_3.reason")
+    var last_intervention_info = {
+        "arrival_date": (RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10)),
+        "arrival_time": (RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(11)),
+        "end_time": (RMPApplication.get("my_intervention_" + visit_counter + ".end_time_str").substr(11)),
+        "actions_done": RMPApplication.get("my_intervention_" + visit_counter + ".actions_done")
+        // "intervention_finished": ("my_intervention_" + visit_counter + "id_intervention_finished").getSelectedLabel(),
+        // "reason": RMPApplication.get("my_intervention_" + visit_counter + ".reason")
     };
     // stocke ident dans le widget var_ident
-    RMPApplication.set("var_intervention3_info", JSON.stringify(intervention3_info));
+    RMPApplication.set("var_last_intervention_info", JSON.stringify(last_intervention_info));
 }
 
 
@@ -752,33 +768,33 @@ function get_intervention3_info()
 function get_pc_check_info()
 {
     var pc_check_info = {
-        "my_document": RMPApplication.get("my_pc_check.my_document"),
-        "desktop": RMPApplication.get("my_pc_check.desktop"),
-        "favorite_internet": RMPApplication.get("my_pc_check.favorite_internet"),
-        "favorite_google_chrome": RMPApplication.get("my_pc_check.favorite_google_chrome"),
-        "lotus_notes_backup": RMPApplication.get("my_pc_check.lotus_notes_backup"),
-        "office_template": RMPApplication.get("my_pc_check.office_template"),
-        "other_local_data": RMPApplication.get("my_pc_check.other_local_data"),
-        "bios_password": RMPApplication.get("my_pc_check.bios_password"),
-        "software_installation": RMPApplication.get("my_pc_check.software_installation"),
-        "office_version": RMPApplication.get("my_pc_check.office_version"),
-        "domain_integration": RMPApplication.get("my_pc_check.domain_integration"),
-        "software_detail": RMPApplication.get("my_pc_check.software_detail"),
-        "software_configuration": RMPApplication.get("my_pc_check.software_configuration"),
-        "one_drive_data": RMPApplication.get("my_pc_check.one_drive_data"),
-        "skype": RMPApplication.get("my_pc_check.skype"),
-        "lotus_notes_configuration": RMPApplication.get("my_pc_check.lotus_notes_configuration"),
-        "printers_installation": RMPApplication.get("my_pc_check.printers_installation"),
-        "login_user_profil": RMPApplication.get("my_pc_check.login_user_profil"),
-        "wifi_connection": RMPApplication.get("my_pc_check.wifi_connection"),
-        "dialeg_intranet_acces": RMPApplication.get("my_pc_check.dialeg_intranet_acces"),
-        "office365_access": RMPApplication.get("my_pc_check.office365_access"),
-        "arp_login": RMPApplication.get("my_pc_check.arp_login"),
-        "skype_working": RMPApplication.get("my_pc_check.skype_working"),
-        "lotus_notes": RMPApplication.get("my_pc_check.lotus_notes"),
-        "printing_test": RMPApplication.get("my_pc_check.printing_test"),
-        "show_sofwtare_center": RMPApplication.get("my_pc_check.show_sofwtare_center"),
-        "password_changed": RMPApplication.get("my_pc_check.password_changed")
+        "my_document": (isEmpty(RMPApplication.get("my_pc_check.my_document"))) ? "" : "true",
+        "desktop": (isEmpty(RMPApplication.get("my_pc_check.desktop"))) ? "" : "true",
+        "favorite_internet": (isEmpty(RMPApplication.get("my_pc_check.favorite_internet"))) ? "" : "true",
+        "favorite_google_chrome": (isEmpty(RMPApplication.get("my_pc_check.favorite_google_chrome"))) ? "" : "true",
+        "lotus_notes_back_up": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_back_up"))) ? "" : "true",
+        "office_template": (isEmpty(RMPApplication.get("my_pc_check.office_template"))) ? "" : "true",
+        "other_local_data": (isEmpty(RMPApplication.get("my_pc_check.other_local_data"))) ? "" : "true",
+        "bios_password": (isEmpty(RMPApplication.get("my_pc_check.bios_password"))) ? "" : "true",
+        "software_installation": (isEmpty(RMPApplication.get("my_pc_check.software_installation"))) ? "" : "true",
+        "office_version": (isEmpty(RMPApplication.get("my_pc_check.office_version"))) ? "" : "true",
+        "domain_integration": (isEmpty(RMPApplication.get("my_pc_check.domain_integration"))) ? "" : "true",
+        "software_detail": (isEmpty(RMPApplication.get("my_pc_check.software_detail"))) ? "" : "true",
+        "software_configuration": (isEmpty(RMPApplication.get("my_pc_check.software_configuration"))) ? "" : "true",
+        "one_drive_data": (isEmpty(RMPApplication.get("my_pc_check.one_drive_data"))) ? "" : "true",
+        "skype": (isEmpty(RMPApplication.get("my_pc_check.skype"))) ? "" : "true",
+        "lotus_notes_configuration": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_configuration"))) ? "" : "true",
+        "printers_installation": (isEmpty(RMPApplication.get("my_pc_check.printers_installation"))) ? "" : "true",
+        "login_user_profil": (isEmpty(RMPApplication.get("my_pc_check.login_user_profil"))) ? "" : "true",
+        "wifi_connection": (isEmpty(RMPApplication.get("my_pc_check.wifi_connection"))) ? "" : "true",
+        "dialeg_intranet_access": (isEmpty(RMPApplication.get("my_pc_check.dialeg_intranet_access"))) ? "" : "true",
+        "office365_access": (isEmpty(RMPApplication.get("my_pc_check.office365_access"))) ? "" : "true",
+        "arp_login": (isEmpty(RMPApplication.get("my_pc_check.arp_login"))) ? "" : "true",
+        "skype_working": (isEmpty(RMPApplication.get("my_pc_check.skype_working"))) ? "" : "true",
+        "lotus_notes_test": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_test"))) ? "" : "true",
+        "printing_test": (isEmpty(RMPApplication.get("my_pc_check.printing_test"))) ? "" : "true",
+        "show_software_center": (isEmpty(RMPApplication.get("my_pc_check.show_software_center"))) ? "" : "true",
+        "password_changed": (isEmpty(RMPApplication.get("my_pc_check.password_changed"))) ? "" : "true"
     };
     // stocke ident dans le widget var_ident
     RMPApplication.set("var_pc_check_info", JSON.stringify(pc_check_info));
@@ -797,9 +813,7 @@ function prepare_data()
     get_new_pc_confirm_info();
     get_gdc_details_info();
     get_issue_intervention_info();
-    get_intervention1_info();
-    get_intervention2_info();
-    get_intervention3_info();
+    get_last_intervention_info();
     get_pc_check_info();
 
     setTimeout (consolide_data, 1000);
@@ -820,9 +834,7 @@ function consolide_data()
     "new_pc_confirm_info": JSON.parse(RMPApplication.get("var_new_pc_confirm_info")),
     "gdc_details_info": JSON.parse(RMPApplication.get("var_gdc_details_info")),
     "issue_intervention_info": JSON.parse(RMPApplication.get("var_issue_intervention_info")),
-    "intervention1_info": JSON.parse(RMPApplication.get("var_intervention1_info")),
-    "intervention2_info": JSON.parse(RMPApplication.get("var_intervention2_info")),
-    "intervention3_info": JSON.parse(RMPApplication.get("var_intervention3_info")),
+    "last_intervention_info": JSON.parse(RMPApplication.get("var_last_intervention_info")),
     "pc_check_info": JSON.parse(RMPApplication.get("var_pc_check_info"))
     };
 
