@@ -71,7 +71,7 @@ function fill_all_cw_pc()
         "id_my_current_pc_initial" : "Current user's PC",
         "id_my_new_pc_swap" : "New PC in case of swap requested",
         "id_my_current_pc_confirm" : "Confirmation of the user's PC",
-        "id_my_new_pc_confirm" : "New PC"
+        "id_my_new_pc_confirm" : "Confirmation of the user's New PC"
     };
     // Do a loop for all the Title
     for (key in var_newTitle) {
@@ -480,11 +480,6 @@ function prepare_data_for_closure()
 
 function load_data_closure(){
     // set the current PC field inactive for the country desk 
-    id_my_current_pc_initial.id_windows_version.setActive(false);
-    id_my_current_pc_initial.id_pc_name.setActive(false);
-    id_my_current_pc_initial.id_pc_model.setActive(false);
-    id_my_current_pc_initial.id_serial_number.setActive(false);
-    id_my_current_pc_initial.id_software_installed.setActive(false);
 }
 
 // When the GDC close an intervention 
@@ -841,3 +836,12 @@ function consolide_data()
 
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
+
+
+// Modify the name of the PDF 
+// function myFunction(){
+//     var arrival_date_test = RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10);
+//     var first_result = arrival_date_test.replace("/", '-');
+//     var date_modified = first_result.replace("/", '-');
+// }
+
