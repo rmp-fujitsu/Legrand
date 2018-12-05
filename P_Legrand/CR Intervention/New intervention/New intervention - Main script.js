@@ -260,7 +260,10 @@ function load_data_for_country_desk_screen()
     	id_my_new_pc_swap.id_pc_name.setActive(false);
     	id_my_new_pc_swap.id_pc_model.setActive(false);
     	id_my_new_pc_swap.id_serial_number.setActive(false);
-    	id_my_new_pc_swap.id_software_installed.setActive(false);
+        id_my_new_pc_swap.id_software_installed.setActive(false);
+    // set the widget my_new_pc_confirm not visible for the country desk 
+        id_my_new_pc_confirm.setVisible(false);
+ 
 
     // set Required some fileds of #CW-Visit
     // set_required_visits();
@@ -347,7 +350,17 @@ function load_data_for_engineer_screen()
     c_debug(dbug.function, "=> begin load_data_for_engineer_screen");
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
     c_debug(dbug.function, "=> load_data_for_engineer_screen: visit_counter = ", visit_counter);
+
+
+    var date_modified;
+
+    // Modify the name of the PDF 
+    function date_transform(){
+      var arrival_date_test = RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10);
+      date_modified = arrival_date_test.replace(/\//g, '-');
+    }
     
+    RMPApplication.set("date_last_transform", date_modified);
 
     // let the Country Desk define a new "readable" comment intended to the customer
     id_my_issue_intervention.id_last_cancellation_reason.setVisible(false);
@@ -479,7 +492,8 @@ function prepare_data_for_closure()
 
 
 function load_data_closure(){
-    // set the current PC field inactive for the country desk 
+    // set the current PC field inactive for the country desk
+    id_my_pc_check.setVisible(true); 
 }
 
 // When the GDC close an intervention 
@@ -763,33 +777,33 @@ function get_last_intervention_info()
 function get_pc_check_info()
 {
     var pc_check_info = {
-        "my_document": (isEmpty(RMPApplication.get("my_pc_check.my_document"))) ? "" : "true",
-        "desktop": (isEmpty(RMPApplication.get("my_pc_check.desktop"))) ? "" : "true",
-        "favorite_internet": (isEmpty(RMPApplication.get("my_pc_check.favorite_internet"))) ? "" : "true",
-        "favorite_google_chrome": (isEmpty(RMPApplication.get("my_pc_check.favorite_google_chrome"))) ? "" : "true",
-        "lotus_notes_back_up": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_back_up"))) ? "" : "true",
-        "office_template": (isEmpty(RMPApplication.get("my_pc_check.office_template"))) ? "" : "true",
-        "other_local_data": (isEmpty(RMPApplication.get("my_pc_check.other_local_data"))) ? "" : "true",
-        "bios_password": (isEmpty(RMPApplication.get("my_pc_check.bios_password"))) ? "" : "true",
-        "software_installation": (isEmpty(RMPApplication.get("my_pc_check.software_installation"))) ? "" : "true",
-        "office_version": (isEmpty(RMPApplication.get("my_pc_check.office_version"))) ? "" : "true",
-        "domain_integration": (isEmpty(RMPApplication.get("my_pc_check.domain_integration"))) ? "" : "true",
-        "software_detail": (isEmpty(RMPApplication.get("my_pc_check.software_detail"))) ? "" : "true",
-        "software_configuration": (isEmpty(RMPApplication.get("my_pc_check.software_configuration"))) ? "" : "true",
-        "one_drive_data": (isEmpty(RMPApplication.get("my_pc_check.one_drive_data"))) ? "" : "true",
-        "skype": (isEmpty(RMPApplication.get("my_pc_check.skype"))) ? "" : "true",
-        "lotus_notes_configuration": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_configuration"))) ? "" : "true",
-        "printers_installation": (isEmpty(RMPApplication.get("my_pc_check.printers_installation"))) ? "" : "true",
-        "login_user_profil": (isEmpty(RMPApplication.get("my_pc_check.login_user_profil"))) ? "" : "true",
-        "wifi_connection": (isEmpty(RMPApplication.get("my_pc_check.wifi_connection"))) ? "" : "true",
-        "dialeg_intranet_access": (isEmpty(RMPApplication.get("my_pc_check.dialeg_intranet_access"))) ? "" : "true",
-        "office365_access": (isEmpty(RMPApplication.get("my_pc_check.office365_access"))) ? "" : "true",
-        "arp_login": (isEmpty(RMPApplication.get("my_pc_check.arp_login"))) ? "" : "true",
-        "skype_working": (isEmpty(RMPApplication.get("my_pc_check.skype_working"))) ? "" : "true",
-        "lotus_notes_test": (isEmpty(RMPApplication.get("my_pc_check.lotus_notes_test"))) ? "" : "true",
-        "printing_test": (isEmpty(RMPApplication.get("my_pc_check.printing_test"))) ? "" : "true",
-        "show_software_center": (isEmpty(RMPApplication.get("my_pc_check.show_software_center"))) ? "" : "true",
-        "password_changed": (isEmpty(RMPApplication.get("my_pc_check.password_changed"))) ? "" : "true"
+        "my_document": (RMPApplication.get("my_pc_check.my_document") == '["done"]') ? "true" : "",
+        "desktop": (RMPApplication.get("my_pc_check.desktop") == '["done"]') ? "true" : "",
+        "favorite_internet": (RMPApplication.get("my_pc_check.favorite_internet") == '["done"]') ? "true" : "",
+        "favorite_google_chrome": (RMPApplication.get("my_pc_check.favorite_google_chrome") == '["done"]') ? "true" : "",
+        "lotus_notes_back_up": (RMPApplication.get("my_pc_check.lotus_notes_back_up") == '["done"]') ? "true" : "",
+        "office_template": (RMPApplication.get("my_pc_check.office_template") == '["done"]') ? "true" : "",
+        "other_local_data": (RMPApplication.get("my_pc_check.other_local_data") == '["done"]') ? "true" : "",
+        "bios_password": (RMPApplication.get("my_pc_check.bios_password") == '["done"]') ? "true" : "",
+        "software_installation": (RMPApplication.get("my_pc_check.software_installation") == '["done"]') ? "true" : "",
+        "office_version": (RMPApplication.get("my_pc_check.office_version") == '["done"]') ? "true" : "",
+        "domain_integration": (RMPApplication.get("my_pc_check.domain_integration") == '["done"]') ? "true" : "",
+        "software_detail": (RMPApplication.get("my_pc_check.software_detail") == '["done"]') ? "true" : "",
+        "software_configuration": (RMPApplication.get("my_pc_check.software_configuration") == '["done"]') ? "true" : "",
+        "one_drive_data": (RMPApplication.get("my_pc_check.one_drive_data") == '["done"]') ? "true" : "",
+        "skype": (RMPApplication.get("my_pc_check.skype") == '["done"]') ? "true" : "",
+        "lotus_notes_configuration": (RMPApplication.get("my_pc_check.lotus_notes_configuration") == '["done"]') ? "true" : "",
+        "printers_installation": (RMPApplication.get("my_pc_check.printers_installation") == '["done"]') ? "true" : "",
+        "login_user_profil": (RMPApplication.get("my_pc_check.login_user_profil") == '["done"]') ? "true" : "",
+        "wifi_connection": (RMPApplication.get("my_pc_check.wifi_connection") == '["done"]') ? "true" : "",
+        "dialeg_intranet_access": (RMPApplication.get("my_pc_check.dialeg_intranet_access") == '["done"]') ? "true" : "",
+        "office365_access": (RMPApplication.get("my_pc_check.office365_access") == '["done"]') ? "true" : "",
+        "arp_login": (RMPApplication.get("my_pc_check.arp_login") == '["done"]') ? "true" : "",
+        "skype_working": (RMPApplication.get("my_pc_check.skype_working") == '["done"]') ? "true" : "",
+        "lotus_notes_test": (RMPApplication.get("my_pc_check.lotus_notes_test") == '["done"]') ? "true" : "",
+        "printing_test": (RMPApplication.get("my_pc_check.printing_test") == '["done"]') ? "true" : "",
+        "show_software_center": (RMPApplication.get("my_pc_check.show_software_center") == '["done"]') ? "true" : "",
+        "password_changed": (RMPApplication.get("my_pc_check.password_changed") == '["done"]') ? "true" : ""
     };
     // stocke ident dans le widget var_ident
     RMPApplication.set("var_pc_check_info", JSON.stringify(pc_check_info));
@@ -837,11 +851,4 @@ function consolide_data()
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
 
-
-// Modify the name of the PDF 
-// function myFunction(){
-//     var arrival_date_test = RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10);
-//     var first_result = arrival_date_test.replace("/", '-');
-//     var date_modified = first_result.replace("/", '-');
-// }
 
