@@ -14,17 +14,17 @@
                 xmlns:aml="http://schemas.microsoft.com/aml/2001/core" 
                 xmlns:w10="urn:schemas-microsoft-com:office:word" 
                 xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
-                <fo:simple-page-master master-name="section1-first-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="20pt" margin-bottom="20pt" margin-right="55pt" margin-left="45pt">
+                <fo:simple-page-master master-name="section1-first-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="10pt" margin-bottom="10pt" margin-right="55pt" margin-left="45pt">
                     <fo:region-body margin-top="0pt" margin-bottom="10pt"></fo:region-body>
                     <fo:region-before region-name="first-page-header" extent="11in"></fo:region-before>
                     <fo:region-after region-name="first-page-footer" extent="11in" display-align="after"></fo:region-after>
                 </fo:simple-page-master>
-                <fo:simple-page-master master-name="section1-odd-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="20pt" margin-bottom="20pt" margin-right="55pt" margin-left="45pt">
+                <fo:simple-page-master master-name="section1-odd-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="10pt" margin-bottom="10pt" margin-right="55pt" margin-left="45pt">
                     <fo:region-body margin-top="0pt" margin-bottom="10pt"></fo:region-body>
                     <fo:region-before region-name="odd-page-header" extent="11in"></fo:region-before>
                     <fo:region-after region-name="odd-page-footer" extent="11in" display-align="after"></fo:region-after>
                 </fo:simple-page-master>
-                <fo:simple-page-master master-name="section1-even-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="20pt" margin-bottom="20pt" margin-right="55pt" margin-left="45pt">
+                <fo:simple-page-master master-name="section1-even-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="10pt" margin-bottom="10pt" margin-right="55pt" margin-left="45pt">
                     <fo:region-body margin-top="0pt" margin-bottom="10pt"></fo:region-body>
                     <fo:region-before region-name="even-page-header" extent="11in"></fo:region-before>
                     <fo:region-after region-name="even-page-footer" extent="11in" display-align="after"></fo:region-after>
@@ -83,12 +83,12 @@
 <!-- Bas de pages impaires -->
                         <fo:marker marker-class-name="odd-page-footer" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" text-align="center">
+                            <!-- <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" text-align="center">
                                 <fo:inline>
                                     <fo:leader leader-length="0pt" />
                                     <fo:page-number /> / <fo:page-number-citation ref-id="IDLVLY4KOR0VQVJPLQT4KBHZHWAFLUFZDV3C3RQFKJAWOMBNALHW3D" />
                                 </fo:inline>
-                            </fo:block>
+                            </fo:block> -->
                         </fo:marker>
 <!-- Entête de pages paires -->
                         <fo:marker marker-class-name="even-page-header" 
@@ -96,12 +96,12 @@
 <!-- Bas de pages paires -->
                         <fo:marker marker-class-name="even-page-footer" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" text-align="center">
+                            <!-- <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" text-align="center">
                                 <fo:inline>
                                     <fo:leader leader-length="0pt" />
                                     <fo:page-number /> / <fo:page-number-citation ref-id="IDLVLY4KOR0VQVJPLQT4KBHZHWAFLUFZDV3C3RQFKJAWOMBNALHW3D" />
                                 </fo:inline>
-                            </fo:block>
+                            </fo:block> -->
                         </fo:marker>
 
 <!-- Bandeau Logos -->
@@ -125,7 +125,7 @@
                         </fo:table>
 
 <!-- Titre de page -->
-                        <fo:block space-before="10pt" space-after="20pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" text-align="center">
+                        <fo:block space-before="10pt" space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" text-align="center">
 
                             <fo:inline font-family="Arial" font-weight="bold" font-size="18pt">
                                 <fo:leader leader-length="0pt" />ACCEPTANCE REPORT
@@ -153,37 +153,37 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />Location :
                                             </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
                                                 <fo:leader leader-length="0pt" />
                                                 <xsl:value-of select="location_info_site_name"/>
                                             </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />Date : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
                                                 <fo:leader leader-length="0pt" /><xsl:value-of select="last_intervention_info_arrival_date"/> </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>        
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />Start Hour : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
                                                 <fo:leader leader-length="0pt" /><xsl:value-of select="last_intervention_info_arrival_time"/> </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />End Hour : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
                                                 <fo:leader leader-length="0pt" /><xsl:value-of select="last_intervention_info_end_time"/> </fo:inline> 
@@ -191,106 +191,105 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />User Name :</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="5" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="5" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
-                                                <fo:leader leader-length="0pt" /> <xsl:value-of select="user_info_name"/> </fo:inline>
+                                                <fo:leader leader-length="0pt" /><xsl:value-of select="user_info_name"/> </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
-                                            <fo:inline font-family="Arial" font-size="8pt">
-                                                <fo:leader leader-length="0pt" />Legrand ref.</fo:inline>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                            <!-- <fo:inline font-family="Arial" font-size="8pt">
+                                                <fo:leader leader-length="0pt" />Legrand ref.</fo:inline> -->
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
-                                            <fo:leader /> <xsl:value-of select="basic_info_legrand_ref"/>
-                                        </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />CRQ : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
-                                                <fo:leader leader-length="0pt" /><xsl:value-of select="basic_info_legrand_ref"/></fo:inline>
-                                        </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
-                                            <fo:inline font-family="Arial" font-size="8pt">
-                                                <fo:leader leader-length="0pt" />INC : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
-                                                <fo:leader leader-length="0pt" /><xsl:value-of select="basic_info_legrand_ref"/></fo:inline>
-                                        </fo:block>
-                                    </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
-                                                <fo:leader leader-length="0pt" />OSS ref.: </fo:inline>
-                                            <fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
-                                                <fo:leader leader-length="0pt" /><xsl:value-of select="issue_intervention_info_oss_ref"/>
+                                                <fo:leader leader-length="0pt" /><xsl:if test="basic_info_type = 'crq'"> <xsl:value-of select="basic_info_legrand_ref" /></xsl:if>
                                             </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                            <fo:inline font-family="Arial" font-size="8pt">
+                                                <fo:leader leader-length="0pt" />INC : </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
+                                                <fo:leader leader-length="0pt" /><xsl:if test="basic_info_type = 'inc'"> <xsl:value-of select="basic_info_legrand_ref" /></xsl:if> </fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
+                                                <fo:leader leader-length="0pt" />OSS ref.: </fo:inline><fo:inline font-family="Arial" font-size="8pt" font-weight="bold">
+                                                <fo:leader leader-length="0pt" /><xsl:value-of select="issue_intervention_info_oss_ref"/></fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
-                                             <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
-                                             <xsl:call-template name="select_RadioButton">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'NEW computer installation'" />
+                                            <xsl:call-template name="select_RadioButton">
                                                 <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />New computer installation</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
-                                             <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_swap" select="$variable_value_test" />
+                                            <xsl:variable name="test_value" select="'Computer SWAP'" />
+                                            <xsl:call-template name="select_RadioButton">
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt">
-                                                <fo:leader leader-length="0pt" />Computer swap</fo:inline>
+                                                <fo:leader leader-length="0pt" />Computer SWAP</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
+                                           <xsl:variable name="test_value" select="'Computer REIMAGING'" />
                                              <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_reimaging" select="$variable_value_test" />
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />Computer Reimaging</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'PC issue'" />
                                              <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_issue" select="$variable_value_test" />
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />PC issue</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="FR">
                                             <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_installation_type" /></xsl:variable>
-                                             <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_other" select="$variable_value_test" />
+                                            <xsl:variable name="test_value" select="'Other issue'" />
+                                            <xsl:call-template name="select_RadioButton">
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt">
                                                 <fo:leader leader-length="0pt" />Other issue</fo:inline>
@@ -298,47 +297,55 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" number-columns-spanned="2" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
-                                                <fo:leader leader-length="0pt" />Old PC status</fo:inline>
+                                                <fo:leader leader-length="0pt" />Old PC status: </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_old_pc_status" /></xsl:variable>
+                                           <xsl:variable name="test_value" select="'End of life'" />
                                              <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_end" select="$variable_value_test" />
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />End of life</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_old_pc_status" /></xsl:variable>
+                                           <xsl:variable name="test_value" select="'Dell Repair'" />
                                              <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_dell" select="$variable_value_test" />
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Dell Repair</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_old_pc_status" /></xsl:variable>
+                                           <xsl:variable name="test_value" select="'Spare'" />
                                              <xsl:call-template name="select_RadioButton">
-                                                <xsl:with-param name="radiobutton_value_spare" select="$variable_value_test" />
+                                                <xsl:with-param name="radiobutton_value" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Spare</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                            <xsl:variable name="variable_value_test"><xsl:value-of select="installation_type_info_old_pc_status" /></xsl:variable>
+                                           <xsl:variable name="test_value" select="'Other'" />
                                              <xsl:call-template name="select_RadioButton">
                                                 <xsl:with-param name="radiobutton_value_status_other" select="$variable_value_test" />
+                                                <xsl:with-param name="tested_value" select="$test_value" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Other</fo:inline>
@@ -347,9 +354,9 @@
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
-                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" 
+                        <fo:block space-after="5pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:leader />
+                            <fo:leader leader-length="0pt" />
                         </fo:block>
 
 <!-- User Data Backup -->                          
@@ -370,8 +377,8 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="4" background-color="#FFFFFF">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="10pt" language="EN-US" font-weight="bold">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="4" background-color="#FFFFFF">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="10pt" language="EN-US" font-weight="bold">
                                             <fo:inline font-family="Arial" font-weight="bold" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Place all user’s data in Onedrive. Wait for the synchronization to succeed. </fo:inline>
                                             <fo:inline font-family="Arial" font-weight="bold" font-size="8pt" language="EN-US">
@@ -381,10 +388,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_my_document" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -393,10 +400,10 @@
                                                 <fo:leader leader-length="0pt" />My documents</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_lotus_notes_back_up" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -405,10 +412,10 @@
                                                 <fo:leader leader-length="0pt" />If used : Lotus Notes</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_desktop" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -417,10 +424,10 @@
                                                 <fo:leader leader-length="0pt" />Desktop</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_office_template" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -431,10 +438,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_favorite_explorer" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -443,10 +450,10 @@
                                                 <fo:leader leader-length="0pt" />Favorites Internet Explorer</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_other_local_data" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -455,10 +462,10 @@
                                                 <fo:leader leader-length="0pt" />Other local data (check with the user)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_favorite_google_chrome" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -467,23 +474,17 @@
                                                 <fo:leader leader-length="0pt" />Favorites Google Chrome</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
+                                            <fo:leader leader-length="0pt" />
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
-                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="EN-US" start-indent="35.4pt" text-align="right" font-weight="bold" 
+                        <fo:block space-after="5pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:inline font-weight="bold" language="EN-US">
-                                <fo:leader leader-pattern="space" leader-length="NaNpt" />
-                            </fo:inline>
-                            <fo:inline font-weight="bold" language="EN-US">
-                                <fo:leader leader-pattern="space" leader-length="NaNpt" />
-                                <fo:leader leader-length="0pt" />
-                            </fo:inline>
+                            <fo:leader leader-length="0pt" />
                         </fo:block>
 
 <!-- Table PC Configuration -->                          
@@ -504,10 +505,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_bios_password" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -516,10 +517,10 @@
                                                 <fo:leader leader-length="0pt" />BIOS password (for laptops)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_software_detail" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -528,10 +529,10 @@
                                                 <fo:leader leader-length="0pt" />Software Detail</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_lotus_notes_configuration" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -540,10 +541,10 @@
                                                 <fo:leader leader-length="0pt" />Lotus Notes (if required)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_software_configuration" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -554,10 +555,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_software_installation" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -566,10 +567,10 @@
                                                 <fo:leader leader-length="0pt" />Software Installation (if required)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_one_drive_data" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -578,10 +579,10 @@
                                                 <fo:leader leader-length="0pt" />One Drive data restore</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_domain_integration" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -590,10 +591,10 @@
                                                 <fo:leader leader-length="0pt" />Domain integration</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_skype" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -604,10 +605,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_printers_installation" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -616,10 +617,10 @@
                                                 <fo:leader leader-length="0pt" />Printers Installation </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_office_version" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -628,22 +629,22 @@
                                                 <fo:leader leader-length="0pt" />Office version </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <fo:leader leader-length="0pt" />
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
+                                            <fo:leader leader-length="0pt" />
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
-                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="EN-US" font-weight="bold" 
+                        <fo:block space-after="5pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:leader />
+                            <fo:leader leader-length="0pt" />
                         </fo:block>
 
 <!-- Table Test with the user -->                        
@@ -664,8 +665,8 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="4" background-color="#FFFFFF">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="10pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="4" background-color="#FFFFFF">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="10pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-weight="bold" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Check if all application are presents.</fo:inline>
                                             <fo:inline font-family="Arial" font-size="7pt" language="EN-US">
@@ -675,10 +676,10 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_login_user_profil" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -687,10 +688,10 @@
                                                 <fo:leader leader-length="0pt" />Login with user’s profile</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_wifi_connection" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -699,10 +700,10 @@
                                                 <fo:leader leader-length="0pt" />WIFI connection</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_lotus_notes_test" /></xsl:variable>
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
                                                 <xsl:with-param name="tested_value" select="$test_value" />
@@ -711,9 +712,9 @@
                                                 <fo:leader leader-length="0pt" />Lotus Notes (archives, database)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_software_configuration" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -725,9 +726,9 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_dialeg_intranet_access" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -737,9 +738,9 @@
                                                 <fo:leader leader-length="0pt" />Dialeg Intranet Access</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_office365_access" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -749,9 +750,9 @@
                                                 <fo:leader leader-length="0pt" />Office365 mail Access (with chrome)</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_show_software_center" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -761,9 +762,9 @@
                                                 <fo:leader leader-length="0pt" />Show Software Center</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_printing_test" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -775,9 +776,9 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_arp_login" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -787,9 +788,9 @@
                                                 <fo:leader leader-length="0pt" />AS400 login </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_skype_working" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -799,9 +800,9 @@
                                                 <fo:leader leader-length="0pt" />Skype is working</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <xsl:variable name="test_value"><xsl:value-of select='true' /></xsl:variable>
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <xsl:variable name="test_value" select="'true'" />
                                             <xsl:variable name="variable_value"><xsl:value-of select="pc_check_info_password_changed" /></xsl:variable>
                                             <xsl:call-template name="select_CheckBox">
                                                 <xsl:with-param name="checkbox_value" select = "$variable_value" />
@@ -811,16 +812,17 @@
                                                 <fo:leader leader-length="0pt" />User password was changed </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                            <fo:leader leader-length="0pt" />
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
-                        <fo:block page-break-before="always" space-after="8pt" space-after.conditionality="retain" line-height="1.2378041666666666" font-family="Arial" font-size="12pt" language="FR" font-weight="bold" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:leader />
+                        <fo:block space-after="4pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="FR" font-weight="bold" 
+                            xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
+                            <fo:leader leader-length="0pt" />
                         </fo:block>
 
 <!-- Table CMDB Database Information -->
@@ -841,94 +843,95 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" text-align="center" font-weight="bold">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" text-align="center" font-weight="bold">
                                             <fo:inline font-family="Arial" font-weight="bold" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Current PC info</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" text-align="center" font-weight="bold">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="2" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" text-align="center" font-weight="bold">
                                             <fo:inline font-family="Arial" font-weight="bold" font-size="8pt" language="EN-US">
-                                                <fo:leader leader-length="0pt" />New PC info</fo:inline>
+                                                <fo:leader leader-length="0pt" />New PC info<xsl:if test="installation_type_info_installation_type != 'Computer SWAP'"> (Not Applicable)</xsl:if>
+                                            </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Current PC name:</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader leader-length="0pt" /> <xsl:value-of select="pc_confirm_info_pc_name"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="pc_confirm_info_pc_name"/> 
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />New PC name :</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader /> <xsl:value-of select="new_pc_confirm_info_pc_name"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="new_pc_confirm_info_pc_name"/> 
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Current PC model:</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader /> <xsl:value-of select="pc_confirm_info_pc_model"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="pc_confirm_info_pc_model"/> 
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />New PC model:</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader /> <xsl:value-of select="new_pc_confirm_info_pc_model"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="new_pc_confirm_info_pc_model"/> 
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Current PC serial number:</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader /> <xsl:value-of select="pc_confirm_info_serial_number"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="pc_confirm_info_serial_number"/> 
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />New PC serial number :</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US" font-weight="bold">
-                                            <fo:leader /> <xsl:value-of select="new_pc_confirm_info_serial_number"/> 
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="new_pc_confirm_info_serial_number"/> 
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                              <xsl:variable name="variable_value_test"><xsl:value-of select="pc_confirm_info_windows_version" /></xsl:variable>
                                              <xsl:call-template name="set_version_radiobutton">
                                                 <xsl:with-param name="radiobutton_current_value_wind7" select="$variable_value_test" />
@@ -937,18 +940,18 @@
                                                 <fo:leader leader-length="0pt" />Windows 7 </fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <xsl:variable name="variable_value_test"><xsl:value-of select="pc_confirm_info_windows_version" /></xsl:variable>
                                              <xsl:call-template name="set_version_radiobutton">
                                                 <xsl:with-param name="radiobutton_current_value_wind10" select="$variable_value_test" />
                                             </xsl:call-template>
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
-                                                <fo:leader leader-length="0pt" />Windows 10</fo:inline>
+                                                <fo:leader leader-length="0pt" />Windows 10</fo:inline>             
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                              <xsl:variable name="variable_value_test"><xsl:value-of select="new_pc_confirm_info_windows_version" /></xsl:variable>
                                              <xsl:call-template name="set_version_radiobutton">
                                                 <xsl:with-param name="radiobutton_new_value_wind7" select="$variable_value_test" />
@@ -957,8 +960,8 @@
                                                 <fo:leader leader-length="0pt" />Windows 7</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                              <xsl:variable name="variable_value_test"><xsl:value-of select="new_pc_confirm_info_windows_version" /></xsl:variable>
                                              <xsl:call-template name="set_version_radiobutton">
                                                 <xsl:with-param name="radiobutton_new_value_wind10" select="$variable_value_test" />
@@ -969,29 +972,27 @@
                                     </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row text-align="left">
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
+                                    <fo:table-cell padding-top="4pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" background-color="#FFFFFF" display-align="center">
+                                        <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
                                             <fo:inline font-family="Arial" font-size="8pt" language="EN-US">
                                                 <fo:leader leader-length="0pt" />Remarks :</fo:inline>
                                         </fo:block>
                                     </fo:table-cell>
-                                    <fo:table-cell padding-top="3pt" padding-left="5.4pt" padding-bottom="0pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="3" background-color="#FFFFFF" display-align="center">
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                        </fo:block>
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader />  <fo:leader /> <xsl:value-of select="last_intervention_info_actions_done"/> 
-                                        </fo:block>
-                                        <fo:block space-after="10pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" language="EN-US">
-                                            <fo:leader />
+                                    <fo:table-cell padding-top="5pt" padding-left="5.4pt" padding-bottom="5pt" padding-right="5.4pt" border-left-style="solid" border-right-style="solid" border-left-color="black" border-right-color="black" border-left-width="0.25pt" border-right-width="0.25pt" border-top-style="solid" border-bottom-style="solid" border-top-color="black" border-bottom-color="black" border-top-width="0.25pt" border-bottom-width="0.25pt" number-columns-spanned="3" background-color="#FFFFFF" display-align="center">
+                                        <fo:block text-align="left" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="8pt" font-weight="bold" language="EN-US">
+                                            <fo:leader leader-length="0pt" /><xsl:value-of select="last_intervention_info_actions_done"/> 
                                         </fo:block>
                                     </fo:table-cell>
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
+                        <!-- <fo:block page-break-before="always" space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="EN-US"  xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
+                            <fo:leader leader-length="0pt" />
+                        </fo:block> -->
                         <fo:block space-after="0pt" space-after.conditionality="retain" line-height="1.147" font-family="Arial" font-size="11pt" language="EN-US" 
                             xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
-                            <fo:leader />
-                        </fo:block>
+                            <fo:leader leader-length="0pt" />
+                        </fo:block>                        
                     </fo:block>
                     <fo:block id="IDLVLY4KOR0VQVJPLQT4KBHZHWAFLUFZDV3C3RQFKJAWOMBNALHW3D" />
                 </fo:flow>
@@ -1006,12 +1007,24 @@
         <xsl:param name = "checkbox_value" />
         <xsl:param name = "tested_value" />
         <xsl:choose>
-            <xsl:when test="$checkbox_value = 'true' ">
+            <xsl:when test="$checkbox_value = $tested_value">
                 <xsl:call-template name="CheckBox_On" />
             </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="CheckBox_Off" />
             </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- Template: affiche legrand ref dans crq ou inc -->
+    <xsl:template name = "select_type" >
+        <xsl:param name = "type_value" />
+        <xsl:param name = "tested_value" />
+        <xsl:param name = "legrand_value" />
+        <xsl:choose>
+            <xsl:when test="$type_value=$tested_value">
+                    <xsl:value-of select="$legrand_value"/>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
 
@@ -1043,40 +1056,9 @@
 <!-- Template: affiche RadioButton_On_Off selon valeur -->
     <xsl:template name = "select_RadioButton" >
         <xsl:param name = "radiobutton_value" />
-        <xsl:param name = "radiobutton_value_swap" />
-        <xsl:param name = "radiobutton_value_reimaging" />
-        <xsl:param name = "radiobutton_value_issue" />
-        <xsl:param name = "radiobutton_value_other" />
-        <xsl:param name = "radiobutton_value_end" />
-        <xsl:param name = "radiobutton_value_dell" />
-        <xsl:param name = "radiobutton_value_spare" />
-        <xsl:param name = "radiobutton_value_status_other" />
+        <xsl:param name = "tested_value" />
         <xsl:choose>
-            <xsl:when test="$radiobutton_value = 'NEW computer installation'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_swap = 'computer SWAP'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_reimaging = 'Computer REIMAGING'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_issue = 'PC issue'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_other = 'Other issue'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_end = 'End of life'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_dell = 'Dell Repair'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_spare = 'Spare'">
-                <xsl:call-template name="RadioButton_On" />
-            </xsl:when>
-            <xsl:when test="$radiobutton_value_status_other = 'Other'">
+            <xsl:when test="$radiobutton_value = $tested_value">
                 <xsl:call-template name="RadioButton_On" />
             </xsl:when>
             <xsl:otherwise>
