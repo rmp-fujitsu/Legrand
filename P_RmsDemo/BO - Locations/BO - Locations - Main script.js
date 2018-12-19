@@ -115,7 +115,7 @@ function add_ko(error)
 {
     //Error while adding item in the collection
     RMPApplication.debug("begin add_ko");
-    c_debug(dbug.item, "=> update_ko: error = ", error);
+    c_debug(dbug.item, "=> add_ko: error = ", error);
     var error_msg = ${P_quoted(i18n("add_ko_msg", "Sauvegarde impossible du site !"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug("end add_ko");
