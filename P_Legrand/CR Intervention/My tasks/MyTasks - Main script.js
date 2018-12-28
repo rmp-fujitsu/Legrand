@@ -8,10 +8,9 @@ RMPApplication.debug("MyTasks : Application started");
 // ========================
 // if "true", logs will be showed on the browser console
 var dbug = {
-    "init" : true,
-    "function" : true,
+    "init" : false,
+    "function" : false,
 };
-
 
 var login = {};					// metadata user
 
@@ -35,7 +34,6 @@ function init()
     check_user_lanes();
 }
 
-
 // ====================================================================================
 //   Check if user belong to different VIVARTE lanes
 // ====================================================================================
@@ -53,8 +51,6 @@ function check_user_lanes()
     c_debug(dbug.function, "end check_user_lanes");
 }
 
-
-
 function check_user_lanes_ok(result) 
 {
 	RMPApplication.debug("begin check_user_lanes_ok: result =  " + JSON.stringify(result));
@@ -63,6 +59,7 @@ function check_user_lanes_ok(result)
 	login.is_gdc = (result.is_gdc == "true") ? true : false;
 	login.is_country_desk = (result.is_country_desk == "true") ? true : false;
 	login.is_engineer = (result.is_engineer == "true") ? true : false;
+	login.is_sdmo = (result.is_sdmo == "true") ? true : false;
     c_debug(dbug.function, "=>check user lanes ok: login =  " + login);
 
 	set_tab_visibility();
@@ -111,7 +108,6 @@ function set_tab_visibility()
     else if (login.is_engineer == true) {
         id_tabs_my_tasks.setSelectedTabIndex(0);		// My tasks
 	}
-    
     
     RMPApplication.debug("end set_tab_visibility");
     c_debug(dbug.function, "=> end set_tab_visibility");
