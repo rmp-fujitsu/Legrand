@@ -9,9 +9,9 @@ RMPApplication.debug("New Intervention : Application started");
 
 // if "true", logs will be showed on the browser console
 var dbug = {
-    "init" : true,
-    "function" : true,
-    "visibility" : true
+    "init" : false,
+    "function" : false,
+    "visibility" : false
 };
 
 var selected_item = "rmpoption0_1"; // Retrieve the id of the tab to assign it a color / background color inside ready.js
@@ -389,6 +389,7 @@ function prepare_data_for_closure()
     function confirm_OK()
     {
         // continue the process and transfer to the engineer
+        prepare_data();
         document.getElementById("id_process_visit_btn").click();
     }
 
@@ -448,6 +449,7 @@ function prepare_data_for_closure()
     for (key in keys) {
         c_debug(dbug.function, "=========================");
         c_debug(dbug.function, "=> prepare_data_for_closure: KEY = ", key);
+        
         var prop_initial = cw_widget_initial + "." + key;
         obj_initial[key] = (isEmpty(RMPApplication.get(prop_initial))) ? "" : RMPApplication.get(prop_initial);
         c_debug(dbug.function, "=> prepare_data_for_closure: obj_initial = ", obj_initial);
@@ -469,17 +471,17 @@ function prepare_data_for_closure()
     // Check the required values
     for (i=10; i <=13 ;i++) {
         var required_label = document.getElementsByClassName("LabelVariable required")[i].id;
+        console.log(required_label)
         var clean_id = required_label.substr(0, required_label.length-6);
+        console.log(clean_id)
         var clean_id_value = eval(clean_id).getValue();
         c_debug(dbug.function, "=> check the required value = ", clean_id_value);
     }   
-  
-    prepare_data();
 
    // Make the alert appears if a required value is missing or if the date's rules are not respected or if the PC info are equals
     if ( (clean_id_value == null) || (clean_id_value == "") || (intervention_value == null) || (( intervention_value == "no") && (intervention_reason == null || intervention_reason == "")) ) {
         alert_field_empty();
-        c_debug(dbug.function, "=> check the required value = ", intervention_value, intervention_reason);
+        // c_debug(dbug.function, "=> check the required value = ", intervention_value, intervention_reason);
     } else if ( (date_eta_parse_arrival <= demiday) || (date_eta_parse_end <= demiday) || (date_eta_parse_end <= date_eta_parse_arrival) ){
         alert_date_selected();
     } else if (cw_equals == true) {           
@@ -487,7 +489,7 @@ function prepare_data_for_closure()
     } else {
         confirm_OK();
     }
-                
+    
 };
 
 
@@ -826,7 +828,6 @@ function prepare_data()
     get_pc_check_info();
 
     setTimeout (consolide_data, 1000);
-
 }
 
 function consolide_data()
@@ -847,8 +848,5 @@ function consolide_data()
     "pc_check_info": JSON.parse(RMPApplication.get("var_pc_check_info"))
     };
 
-
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
-
-
