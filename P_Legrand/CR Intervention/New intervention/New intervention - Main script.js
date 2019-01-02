@@ -828,7 +828,6 @@ function prepare_data()
     get_pc_check_info();
 
     setTimeout (consolide_data, 1000);
-
 }
 
 function consolide_data()
@@ -849,8 +848,5 @@ function consolide_data()
     "pc_check_info": JSON.parse(RMPApplication.get("var_pc_check_info"))
     };
 
-
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
-
-

@@ -1,25 +1,11 @@
 // ============================
 //   BO - Notifications - MAIN
 // ============================
-RMPApplication.debug("BO - Notifications: Application started");
 
 // ========================
 // Variables declaration
 // ========================
-
-// if "true", logs will be showed on the browser console
-var dbug = {
-	"hidden": false,
-    "init": false,
-	"email_notif": false,
-	"country": false,
-	"popup": false
-};
-
 var itemName = "Country";      // what kind of item ?
-var collectionid = "col_legrand_notifications_cri";		// name of collection
-var selected_item = "rmpoption0_2"; // Retrieve the id of the tab to assign it a color / background color inside ready.js
-
 var country_var_list =
 {
     "country": "country",
@@ -49,11 +35,7 @@ var country_modal = $('[id="' + id_obj + '"]').dialog({
 	title: 'Country Information'
 });
 
-var success_title_notify = ${P_quoted(i18n("success_title_notify", "Success"))};
-var error_title_notify = ${P_quoted(i18n("error_title_notify", "Error"))};
-var error_thanks_notify = ${P_quoted(i18n("error_thanks_notify", "Thanks to report this issue!"))};
-
-// Fill country box when opening the page
+// Fill country box
 get_entries();
 
 // ==============================
@@ -127,8 +109,7 @@ function add_country_ok(result)
     // Close and clean popup box
     popup_cancel();
     
-	// with this new country addition, we need to update the list of countries
-	selected_country_info = {};
+    // with this new country addition, we need to update the list of countries
     get_entries();
     RMPApplication.debug ("end add_country_ok");
 }
@@ -288,22 +269,9 @@ function set_email_notifications()
                         RMPApplication.set(eval("\"" + my_notif_var + "." + "live_email_cc" + "\""), notif_entries[i].notifications[j].live_email_cc);
                         RMPApplication.set(eval("\"" + my_notif_var + "." + "acceptance_email_to" + "\""), notif_entries[i].notifications[j].acceptance_email_to);
                     }
-                } 
-            } else {
-				// we need to reset all notification fields
-				for (key in notifications) {
-					var my_notif_var = "my_" + key;
-					if (key == "notif_test_mode") {
-						RMPApplication.set("test_email_to", "");
-					} else {
-						RMPApplication.set(eval("\"" + my_notif_var + "." + "live_email_to" + "\""), "");
-						RMPApplication.set(eval("\"" + my_notif_var + "." + "live_email_cc" + "\""), "");
-						RMPApplication.set(eval("\"" + my_notif_var + "." + "acceptance_email_to" + "\""), "");
-					}
-					c_debug(dbug.email_notif, "=> set_email_notifications: all fields are resseted");
-				}
-			}
-			break;			// we don't need to continue as we find the selected country
+                }
+                break;
+            }
         }
     }
     RMPApplication.debug ("end set_email_notifications_ok");
@@ -366,22 +334,4 @@ function save_changes_ko(error)
     var error_msg = ${P_quoted(i18n("save_changes_ko_msg", "No changes are applied!"))};
     notify_error(error_title_notify, error_msg + ' ' + error_thanks_notify);
     RMPApplication.debug ("end save_changes_ko");
-}
-
-// ==============================
-// Generates a unique ID
-// ==============================
-function uniqueId()
-{
-	var idstr = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
-	do {
-		// between numbers and characters (48 is 0 and 90 is Z (42-48 = 90)
-		var ascicode = Math.floor((Math.random() * 42) + 48);
-		if (ascicode < 58 || ascicode > 64) {
-			// exclude all chars between : (58) and @ (64)
-			idstr += String.fromCharCode(ascicode);
-		}
-	} while (idstr.length < 32);
-	
-	return (idstr);
 }

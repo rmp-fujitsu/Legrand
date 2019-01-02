@@ -3,24 +3,24 @@
 	<div class="container-fluid">
 		<div class="row text-center">
 			<div class = "panel panel-primary" style="margin-bottom:0px">
-					<div class = "panel-heading">
-						<table width="100%">
-							<tr>
-								<td width="100%" style="text-align: center">
-									<h1 class = "panel-title"><i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; ${i18n('panel_title_issue_id', 'Issue information - Country Desk ')}</h1>
+				<div class = "panel-heading">
+					<table width="100%">
+						<tr>
+							<td width="100%" style="text-align: center">
+								<h1 class = "panel-title"><i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; ${i18n('panel_title_issue_id', 'Issue information - Country Desk ')}</h1>
+							</td>
+							<td style="text-align: right">
+								<a href="#global"> <button id="btn_issue_global" type="button" class="btn btn-default displayme_${has_right('452638')=='true' || has_right('452695')=='true' || has_right('452593')=='true' || has_right('452558')=='true'}" style="direction: ltr;">${i18n('button_global', 'Go to Global')}</button> </a>
 								</td>
-								<td style="text-align: right">
-									<a href="#global"> <button id="btn_anchor" type="button" class="btn btn-default displayme_${has_right('452638')=='true' || has_right('452695')=='true' || has_right('452593')=='true' || has_right('452558')=='true'} " style="direction: ltr;">${i18n('buttom_back', 'Go to Global')}</button> </a>
-									</td>
-								<td style="text-align: right">
-									<a href="#intervention"> <button id="btn_anchor" type="button" class="btn btn-default displayme_${has_right('452695')=='true' || has_right('452593')=='true' ||has_right('452558')=='true' } " style="direction: ltr;">${i18n('buttom_back', 'Go to Intervention')}</button> </a>
-								</td>
-								<td style="text-align: right">
-									<a href="#closure"> <button id="btn_anchor"  type="button" class="btn btn-default displayme_${has_right('452558')=='true' || has_right('452695')=='true'} " style="direction: ltr;">${i18n('buttom_back', 'Go to Closure')}</button> </a>
-								</td>
-							</tr>
-						</table>
-					</div>
+							<td style="text-align: right">
+								<a href="#intervention"> <button id="btn_issue_intervention" type="button" class="btn btn-default displayme_${has_right('452695')=='true' || has_right('452593')=='true' ||has_right('452558')=='true'}" style="direction: ltr;">${i18n('button_intervention', 'Go to Intervention')}</button> </a>
+							</td>
+							<td style="text-align: right">
+								<a href="#closure"> <button id="btn_issue_closure"  type="button" class="btn btn-default displayme_${has_right('452558')=='true' || has_right('452695')=='true'}" style="direction: ltr;">${i18n('button_closure', 'Go to Closure')}</button> </a>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
