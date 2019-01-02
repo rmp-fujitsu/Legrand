@@ -5,5 +5,20 @@
         <h1 class = "panel-title"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; ${i18n('panel_title_id1', "Email Notifications")}</h1>
       </div>
     </div>
-  </div>
+</div>
+<div class="container bkg-light-blue">
+	<div id="id_rowCountryDetails" class="row">
+    	<div class="col-sm-5 col-md-4 col-lg-3">
+			<div class="input-group has-success" data-toggle="tooltip" data-placement="top" title="${i18n('tooltip_country', 'Select a country')}">
+                <span class="input-group-addon">
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                </span>
+                <select id="id_countryFilter" name="countryFilter" class="form-control" type="text" size="1"></select>
+			</div>
+		</div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+            <button onClick="javascript:add_new_country();" type="button" class="btn btn-warning"><i class="fa fa-plus-circle fa-lg"></i>&nbsp;&nbsp; ${i18n("add_btn_txt", "Create a new country")}</button>
+        </div>
+    </div>
+</div>
   

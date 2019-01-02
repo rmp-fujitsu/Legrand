@@ -1,0 +1,1978 @@
+[
+	{
+		"country": "ALGERIA",
+		"iso_country": "DZA",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "helpdesk.dz@ts.fujitsu.com,ali.ferhat@ts.fujitsu.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,ete.abri@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,ete.abri@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "helpdesk.dz@ts.fujitsu.com,ali.ferhat@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+	{
+		"country": "AUSTRALIA",
+		"iso_country": "AUS",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "response.centre@au.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "response.centre@au.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "AUSTRIA",
+		"iso_country": "AUT",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "dispatch@osiatis.at",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "dispatch@osiatis.at",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "BELGIUM",
+		"iso_country": "BEL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "info@questforpeople.eu",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "info@questforpeople.eu",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "BRAZIL",
+		"iso_country": "BRA",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "legrand.brasil@br.fujitsu.com,csc@algartech.com,alex.oliveira@br.fujitsu.com,sdc.fujitsu@algartech.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "legrand.brasil@br.fujitsu.com,csc@algartech.com,alex.oliveira@br.fujitsu.com,sdc.fujitsu@algartech.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "CHILE",
+		"iso_country": "CHL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "legrand@mysupport24x7.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,legrand@mysupport24x7.com,matias.castillo@fujitsutech.com,henry.mieres@grupofsc.com,cliford.demosthenes@fujitsutech.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,legrand@mysupport24x7.com,matias.castillo@fujitsutech.com,henry.mieres@grupofsc.com,cliford.demosthenes@fujitsutech.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "legrand@mysupport24x7.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "CHINA",
+		"iso_country": "CHN",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "chen.ning@cn.fujitsu.com,ivanhu_f1@cn.fujitsu.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com,niwasini.gopalkrishnan@ts.fujitsu.com,yoonthim.thang@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com,niwasini.gopalkrishnan@ts.fujitsu.com,yoonthim.thang@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "chen.ning@cn.fujitsu.com,ivanhu_f1@cn.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "COLOMBIA",
+		"iso_country": "COL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "soporte.imac.co@sonda.com",
+				"live_email_cc": "gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "soporte.imac.co@sonda.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "COSTA RICA",
+		"iso_country": "CRI",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "tms@soportexperto.com,soporte@soportexperto.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},diego.montano@ts.fujitsu.com,gerard.mevel@ts.fujitsu.com,gilda.pimenta@legrand-ext.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},diego.montano@ts.fujitsu.com,gerard.mevel@ts.fujitsu.com,gilda.pimenta@legrand-ext.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "tms@soportexperto.com,soporte@soportexperto.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "CZECH REPUBLIC",
+		"iso_country": "CZE",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "ccd.cz@ts.fujitsu.com",
+				"live_email_cc": "jiri.charbusky@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "jiri.charbusky@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "ccd.cz@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "DENMARK",
+		"iso_country": "DNK",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "ccd@dk.fujitsu.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "ccd@dk.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "SAUDI ARABIA",
+		"iso_country": "SAU",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "helpdesk-me@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "helpdesk-me@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "DUBAI",
+		"iso_country": "ARE",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "helpdesk-me@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "helpdesk-me@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "EGYPT",
+		"iso_country": "EGY",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "moustafa.ghonim@ts.fujitsu.com,osama.elleithy@ts.fujitsu.com,cairohelpdesk@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "moustafa.ghonim@ts.fujitsu.com,osama.elleithy@ts.fujitsu.com,cairohelpdesk@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "GERMANY",
+		"iso_country": "EGY",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "info@microx-computer.de,manuel.meuser@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,ralf.beinenz@ts.fujitsu.com,michael.strauch@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,ralf.beinenz@ts.fujitsu.com,michael.strauch@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "info@microx-computer.de,manuel.meuser@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "GREECE",
+		"iso_country": "GRC",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "itsupport@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "itsupport@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "HUNGARY",
+		"iso_country": "HUN",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "itservhun@ts.fujitsu.com,servicedesk.hu@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,ugyfelszolgalat@delta.hu,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,ugyfelszolgalat@delta.hu,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "itservhun@ts.fujitsu.com,servicedesk.hu@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "INDONESIA",
+		"iso_country": "IDN",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "helpdesk@hgt-services.com",
+				"live_email_cc": "fomy@hgt-services.com,${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "fomy@hgt-services.com,${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "helpdesk@hgt-services.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "KAZAKHSTAN",
+		"iso_country": "KAZ",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "support@skp.kz",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "support@skp.kz",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "MEXICO",
+		"iso_country": "MEX",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "callcenter_support@tibaitservices.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "callcenter_support@tibaitservices.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "MAROC",
+		"iso_country": "MAR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "service.client@apsir.ma",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,meddeb.med@apsir.ma,meriem.hadri@apsir.ma,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,meddeb.med@apsir.ma,meriem.hadri@apsir.ma,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "service.client@apsir.ma",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "MYANMAR",
+		"iso_country": "MMR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "customerservice@ruby32.com,info@ruby32.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,minzawoo@ruby32.com,admin.it@ruby32.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,minzawoo@ruby32.com,admin.it@ruby32.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "customerservice@ruby32.com,info@ruby32.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "NETHERLANDS",
+		"iso_country": "NLD",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "info@questforpeople.eu",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "info@questforpeople.eu",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "PERU",
+		"iso_country": "PER",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "contratos@atsac.com.pe,fujitsu@atsac.com.pe",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},diego.montano@ts.fujitsu.com,gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},diego.montano@ts.fujitsu.com,gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "contratos@atsac.com.pe,fujitsu@atsac.com.pe",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "PHILIPPINES",
+		"iso_country": "PHL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "fpi_servicedesk@ph.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,j.mirasol@ph.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,r.deguzman@ph.fujitsu.com,e.rabara@ph.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,j.mirasol@ph.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,r.deguzman@ph.fujitsu.com,e.rabara@ph.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "fpi_servicedesk@ph.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "POLAND",
+		"iso_country": "POL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "calldesk.pl@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "calldesk.pl@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "PORTUGAL",
+		"iso_country": "POR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "helpdesk.portugal@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@fr.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "helpdesk.portugal@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "ROMANIA",
+		"iso_country": "ROU",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "sdro@kapsch.net",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "sdro@kapsch.net",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "RUSSIA",
+		"iso_country": "RUS",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "eurodesk@icl-services.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "eurodesk@icl-services.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "SINGAPORE",
+		"iso_country": "SGP",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "mazlan.binithnin@sg.faplccc.net,gohwm@sg.fujitsu.com,steven.png@sg.faplccc.net,pochlanzelott.fernandez@sg.faplccc.net,poch.fernandez@sg.fujitsu.com,jinghang.fong@sg.faplccc.net,qiming.gao@sg.faplccc.net",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "mazlan.binithnin@sg.faplccc.net,gohwm@sg.fujitsu.com,steven.png@sg.faplccc.net,pochlanzelott.fernandez@sg.faplccc.net,poch.fernandez@sg.fujitsu.com,jinghang.fong@sg.faplccc.net,qiming.gao@sg.faplccc.net",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "SLOVAKIA",
+		"iso_country": "SVK",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "ccd.cz@ts.fujitsu.com",
+				"live_email_cc": "jiri.charbusky@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "jiri.charbusky@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "ccd.cz@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "SPAIN",
+		"iso_country": "ESP",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "ccd.es@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,adrian.perez@legrandgroup.es,sandra.chacon@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,adrian.perez@legrandgroup.es,sandra.chacon@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "ccd.es@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "SWITZERLAND",
+		"iso_country": "CHE",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "servicedesk.ch@ts.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,flavia.lanz@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,flavia.lanz@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "servicedesk.ch@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "TURKEY",
+		"iso_country": "TUR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "servicedesk_tr@ts.fujitsu.com",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,burcin.oz@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "legrandservicecontrol@ts.fujitsu.com,${gdc_email},gerard.mevel@fr.fujitsu.com,burcin.oz@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "servicedesk_tr@ts.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "UKRAINE",
+		"iso_country": "UKR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "apostol@entercom.ua",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "apostol@entercom.ua",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "UNITED KINGDOM",
+		"iso_country": "GBR",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "cmc.helpdesk@uk.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "cmc.helpdesk@uk.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "IRELAND",
+		"iso_country": "IRL",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "cmc.helpdesk@uk.fujitsu.com",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+user@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "${gdc_email},gerard.mevel@ts.fujitsu.com,legrandservicecontrol@ts.fujitsu.com,anabelabento.antunes@ts.fujitsu.com,frederico.roda@ts.fujitsu.com,ete.abri@ts.fujitsu.com,christos.tsigaros@ts.fujitsu.com",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "cmc.helpdesk@uk.fujitsu.com",
+				"live_email_cc": "",
+				"acceptance_email_to": "rmptestingemail+country@gmail.com,issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    },
+    {
+		"country": "Z_TEST",
+		"iso_country": "TST",
+		"notifications": [
+			{
+				"notification_step": "notif_new_request_to_country",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_eta",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_inform_legrand_next_intervention",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_legrand_about_closure",
+				"live_email_to": "${user_contact_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_closure",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_gdc_about_issue",
+				"live_email_to": "${gdc_email}",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_country_plan_new_intervention",
+				"live_email_to": "",
+				"live_email_cc": "",
+				"acceptance_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			},
+			{
+				"notification_step": "notif_test_mode",
+				"test_email_to": "issindou.t+legrand@gmail.com,laurepeufuji+legrand@gmail.com"
+			}
+        ]
+    }
+]

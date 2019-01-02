@@ -1,0 +1,5 @@
+Name                    Type        Value
+Nom du fichier PDF      Link        ${code_implant}${date_creation_pdf_int}DFT_TLS_${ville}_${nom_personne}@https://live.runmyprocess.com/live/112501412000161590/upload/${pdf_id}/${code_implant}${date_creation_pdf_int}DFT_TLS_${ville}_${nom_personne}.pdf?P_mode=&method=GET
+id_pdf                  Text        ${pdf_id}
+Taille du fichier       Text        ${size}
+Code Implant            Text        ${code_implant}

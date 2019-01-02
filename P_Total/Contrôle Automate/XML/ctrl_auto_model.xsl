@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" exclude-result-prefixes="fo">
     <xsl:output method="xml" version="1.0" omit-xml-declaration="no" indent="yes"/>
-    <xsl:template match="my_var_main">
+    
         <fo:root font-family="Arial" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml">
             <fo:layout-master-set xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint" xmlns:aml="http://schemas.microsoft.com/aml/2001/core" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
                 <fo:simple-page-master master-name="section1-first-page" page-width="8.268055555555555in" page-height="11.693055555555556in" margin-top="21.25pt" margin-bottom="35.45pt" margin-right="56.7pt" margin-left="56.7pt">
@@ -50,6 +50,7 @@
                         <fo:leader leader-pattern="rule" leader-length="144pt" rule-thickness="0.5pt" rule-style="solid" color="gray" />
                     </fo:block>
                 </fo:static-content>
+
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block widows="2" orphans="2" font-size="10pt" line-height="1.147" white-space-collapse="false">
                         <fo:marker marker-class-name="first-page-header" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
@@ -4931,6 +4932,8 @@
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
+
+<!-- Footer -->
                         <fo:block space-after="8pt" space-after.conditionality="retain" line-height="1.2378041666666666" font-family="Arial" font-size="12pt" language="FR" xmlns:st1="urn:schemas-microsoft-com:office:smarttags">
                             <fo:leader leader-length="0pt" />
                         </fo:block>

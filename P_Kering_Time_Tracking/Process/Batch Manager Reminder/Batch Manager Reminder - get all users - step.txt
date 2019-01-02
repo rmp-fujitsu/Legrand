@@ -1,0 +1,66 @@
+Provider        RMP Admin
+Connector       Kering - Time Tracking | Get anything (xml ouput V1)
+
+
+Input variables
+all_users       <#assign tmp = get_lane_users(115923,326185)>
+                <#assign users = []>
+                <#list tmp as x>
+                    <#if get_user_metadata(x.login).time_tracking_manager??>
+                        <#assign users = users + [x.login]>
+                    </#if>
+                </#list>
+                ${users}
+monday          ${get_date((get_time(now("dd/MM/yyyy"),"dd/MM/yyyy")- 345600),"dd/MM/yyyy")?string}
+monday_url      ${monday?url}
+rmp_url         live/112501412000161590/request?nb=300&first=0&column=name%20status%20events%20published%20updated&operator=EE%20EE%20EE%20EE%20IS%20EE&value=148817%20LIVE%20${monday_url}%20Submitted%20NULL%20162658&filter=PROJECT%20MODE%20MEASURE_3%20MEASURE_2%20PARENT%20PROCESS
+
+
+Output variables
+submitted_users         <#assign entries = P_to_array(P_result.feed,"entry")>
+                        <#assign submitted_users = []>
+                        <#list entries as x>	
+                            <#assign submitted_users = submitted_users + [x.author.email]>
+                        </#list>
+                        ${submitted_users}
+                        
+users_to_remind         <#assign users_to_remind = []>
+                        <#list all_users as x>
+                            <#if submitted_users?seq_contains(x)>
+                            <#else>
+                                <#assign users_to_remind = users_to_remind +[x]>
+                            </#if>
+                        </#list>
+                        ${users_to_remind}
+
+[none]                  <#assign content = "">
+                        <#assign hub = {}>
+                        <#assign geit_team = []>
+                        <#assign project_team = []>
+
+                        <#list users_to_remind as x>
+                            <#if get_user_metadata(x).time_tracking_manager == "Philippe.Molaro.external@ts.fujitsu.com">
+                                <#assign project_team = project_team + [x]>
+                            <#elseif get_user_metadata(x).time_tracking_manager == "Giovanni.Carpenetti@ts.fujitsu.com">
+                                <#assign geit_team = geit_team + [x]>
+                            </#if>
+                        </#list>
+                        <#assign hub = P_json_put(hub, "project_team", project_team)>
+                        <#assign hub = P_json_put(hub, "geit_team", geit_team)>
+                        ${hub}
+
+content1                <#assign content = "">
+                        <#if geit_team?size != 0>
+                            <#list geit_team as x >
+                                <#assign content = content + x + "\n">
+                            </#list>
+                        </#if>
+                        ${content}
+                    
+content2                <#assign content = "">
+                        <#if project_team?size != 0>
+                            <#list project_team as x >
+                                <#assign content = content + x + "\n">
+                            </#list>
+                        </#if>
+                        ${content}

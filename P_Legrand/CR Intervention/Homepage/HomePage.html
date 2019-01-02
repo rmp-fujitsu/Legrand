@@ -1,66 +1,52 @@
-<!-- HomePage LEGRAND Projects -->
-<div class="container text-center nav_img">
-    <div class="row row-centered">
-
-        <!-- New intervention module-->
-        <div id="id_newIntervention" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('452695')=='true' || has_right('452558')=='true'}">
-            <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395541?P_mode=${P_mode}&P_language=${P_language}">
-                <div class="well col-centered">
-                    <div class="homeThumbnail">
-                        <span class="homeTitle">${i18n('text_newIntervention', 'New intervention')}</span>
+<div class="container text-center">
+        <!-- <img class= "img-responsive center-block" src="https://live.runmyprocess.com/live/112501480325272109/upload/bcee6b10-b831-11e8-81c5-0619bd984419/Image1.jpg?P_mode=">
+        <br> -->
+            <div class="welcome row row-centered">
+                <!-- New intervention module-->
+                <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395541?P_mode=${P_mode}&P_language=${P_language}" >
+                    <div id="id_newIntervention" class="col-md-3 col-sm-4 col-xs-6 displayme_${has_right('452695')=='true' || has_right('452558')=='true'}">
+                        <img class="card-img-top" src="https://image.flaticon.com/icons/svg/1086/1086714.svg" height="100px" width="91px" alt="Card image cap">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">${i18n('text_newIntervention', 'New intervention')}</h5> -->
+                                <!-- <p class="card-text">Create a new intervention form</p> -->
+                                <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395541?P_mode=${P_mode}&P_language=${P_language}" class="btn-intervention">New intervention </a>
+                            </div> 
                     </div>
-                    <br>
-                    <i class="homeImage">
-                        <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/3fb62230-25c7-11e7-8331-0639651b3341/tracking_200.png" title="New intervention" />
-                    </i>
-                </div>
-            </a>
-        </div>
-
-        <!-- My Tasks module-->
-        <div id="id_myTasks" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('452637')=='false' && has_right('453483')=='false'}">
-            <a href="https://live.runmyprocess.com/live/112501480325272109/appli/396333?P_mode=${P_mode}&P_language=${P_language}">
-                <div class="well col-centered">
-                    <div class="homeThumbnail">
-                        <span class="homeTitle">${i18n('text_myTasks', 'My tasks')}</span>
+                </a>    
+        
+                <!-- My Tasks module-->
+                <a href="https://live.runmyprocess.com/live/112501480325272109/appli/396333?P_mode=${P_mode}&P_language=${P_language}">
+                    <div id="id_myTasks" class="col-md-3 col-sm-4 col-xs-6 displayme_${has_right('452637')=='false' && has_right('453483')=='false'}">
+                        <img class="card-img-top" src="https://image.flaticon.com/icons/svg/748/748926.svg" height="100px" width="91px"  alt="Card image cap">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">${i18n('text_myTasks', 'My tasks')}</h5> -->
+                                <!-- <p class="card-text">Access to my tasks</p> -->
+                                <a href="https://live.runmyprocess.com/live/112501480325272109/appli/396333?P_mode=${P_mode}&P_language=${P_language}" class="btn-tasks">My tasks</a>
+                            </div>
                     </div>
-                    <br>
-                    <i class="homeImage">
-                        <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/3fb62230-25c7-11e7-8331-0639651b3341/tracking_200.png" title="My Tasks" />
-                    </i>
-                </div>
-            </a>
-        </div>
-
-        <!-- Dashboard module -->
-        <div id="id_dashboard" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('452637')=='false' && has_right('453483')=='false' && has_right('452638')=='false' && has_right('452593')=='false'}">
-            <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}">
-                <div class="well col-centered ">
-                <div class="homeThumbnail">
-                    <span class="homeTitle">${i18n('text_dashboard', 'Dashboard')}</span>
-                </div>
-                <br>
-                <i class="homeImage">
-                    <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/37b72ac0-25c7-11e7-9176-0619bd984419/reporting_200.png" title="Dashboard" />
-                </i>
-                </div>
-            </a>
-        </div>
-
-        <!-- Account Management module -->
-        <div id="id_accountManagement" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('452695')=='true' || has_right('453117')=='true' || has_right('452558')=='true'}">
-            <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395704?P_mode=${P_mode}&P_language=${P_language}">
-                <div class="well col-centered">
-                    <div class="homeThumbnail">
-                        <span class="homeTitle">${i18n('text_accountManagement', 'Account Management')}</span>
+                </a>
+        
+                <!-- Dashboard module -->
+                <!-- <div id="id_dashboard" class="col-md-2 col-sm-4 col-xs-6 displayme_${has_right('452637')=='false' && has_right('453483')=='false' && has_right('452638')=='true' && has_right('452593')=='false'}">
+                    <img class="card-img-top" src="https://image.flaticon.com/icons/svg/748/748938.svg" height="100px" width="91px" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${i18n('text_dashboard', 'Dashboard')}</h5> -->
+                            <!-- <p class="card-text"> Access to my dashboard</p> -->
+                            <!-- <a href="https://live.runmyprocess.com/live/112501480325272109/appli/XXXXXX?P_mode=${P_mode}&P_language=${P_language}" class="btn btn-primary">Let's go</a>
+                        </div>
+                </div> -->
+                
+                <!-- Account Management module -->
+                <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395704?P_mode=${P_mode}&P_language=${P_language}">
+                    <div id="id_accountManagement" class="col-md-3 col-sm-4 col-xs-6 displayme_${has_right('452695')=='true' || has_right('453117')=='true' || has_right('452558')=='true'}">
+                            <img class="card-img-top" src="https://image.flaticon.com/icons/svg/762/762699.svg" height="100px" width="91px" alt="Card image cap">
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title">${i18n('text_accountManagement', 'Account Mgt')}</h5> -->
+                                    <!-- <p class="card-text"> Access to the account management</p> -->
+                                    <a href="https://live.runmyprocess.com/live/112501480325272109/appli/395704?P_mode=${P_mode}&P_language=${P_language}" class="btn-bo">Account Management</a>
+                                </div>
                     </div>
-                    <br>
-                    <i class="homeImage">
-                        <img class="homeIcon img-thumbnail" src="https://live.runmyprocess.com/live/112501480325272109/upload/51124180-25c7-11e7-869b-02b3a23437c9/user_management_200.png" title="Account Management" />
-                    </i>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-
-    </div>
-</div>
+        

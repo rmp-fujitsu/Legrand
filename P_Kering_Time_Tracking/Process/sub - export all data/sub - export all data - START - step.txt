@@ -1,0 +1,3 @@
+Output variables
+csv_content     <#assign csv_content = "User;Date;Activity;Workload (in hours);Status;Comments">
+                ${csv_content}

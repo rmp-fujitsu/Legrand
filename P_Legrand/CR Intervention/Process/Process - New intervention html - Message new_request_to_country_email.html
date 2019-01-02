@@ -1,18 +1,21 @@
 
 Dear Country Desk team,
 
-${P_initiator.name} has submitted a request <strong>${request_id} - ${project_title}</strong>, ready to be planned from you.
+${P_initiator.name} from Global GDC has submitted a new request <strong>${request_id} - ${project_title}</strong>, ready to be planned by you.
 
 <u>Request details</u> :
 - Request Date: <strong>${submission_date}</strong>
 - Project: <strong>${project_title}</strong>
 - Legrand ref.: <strong>${legrand_ref}</strong>
+- Priority: <strong>${priority}</strong>
+- Installation type: <strong>${installation_type}</strong>
+- PC Name: <strong>${my_current_pc_initial.pc_name}</strong><#if installation_type == "computer_swap">
+--- New PC Name: <strong>${pc_swap_name}</strong></#if>
 - Site Name: <strong>${location_site_name}</strong>
 - User: <strong>${user_name}</strong>
-- Contact email: <strong>${user_contact_email}</strong>
 - Mode: <strong>${P_mode}</strong>
 
-Please click <a href="${get_next_url(1, false)}">here</a> to access to the request form where you can plan the next intervention.
+Please click <a href="${get_next_url(3, false)}">here</a> to access to the request form where you can plan the next intervention.
 
 Best regards,
 <strong><em>Fujitsu GDC team</em></strong>

@@ -1,0 +1,27 @@
+<!-- Intervention -->
+<div id="intervention">
+	<div class="container-fluid">
+		<div class="row text-center">
+			<div class = "panel panel-primary" style="margin-bottom:0px">
+				<div class = "panel-heading">
+					<table width="100%">
+						<tr>
+							<td width="100%" style="text-align: center">
+								<h1 class = "panel-title"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; ${i18n('panel_title_intervention_id', 'Intervention - Engineer')}</h1>
+							</td>
+							<td style="text-align: right">
+								<a href="#global"> <button id="btn_intervention_global" type="button" class="btn btn-default displayme_${has_right('452593')=='true' || has_right('452695')=='true' || has_right('452558')=='true'}" style="direction: ltr;">${i18n('button_global', 'Go to Global')}</button> </a>
+							</td>
+							<td style="text-align: right">
+								<a href="#issue"> <button id="btn_intervention_issue" type="button" class="btn btn-default displayme_${has_right('452593')=='true' || has_right('452695')=='true' || has_right('452558')=='true'}" style="direction: ltr;">${i18n('button_issue', 'Go to Issue')}</button> </a>
+							</td>
+							<td style="text-align: right">
+								<a href="#closure"> <button id="btn_intervention_closure" type="button" class="btn btn-default displayme_${has_right('452558')=='true' || has_right('452695')=='true'}" style="direction: ltr;">${i18n('button_closure', 'Go to Closure')}</button> </a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

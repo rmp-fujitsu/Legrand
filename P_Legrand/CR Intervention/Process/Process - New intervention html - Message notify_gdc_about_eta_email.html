@@ -1,0 +1,24 @@
+
+Dear GDC team,
+
+<strong>Country Desk - ${my_location.country}</strong> has planned a new visit and an engineer should intervene soon on site.
+
+<u>Request details</u> :
+- Request Date: <strong>${submission_date}</strong>
+- Legrand ref.: <strong>${legrand_ref}</strong>
+- Project: <strong>${project_title}</strong>
+- Priority: <strong>${priority}</strong>
+- Estimated Visit #${visit_counter} Date: <strong>${my_issue_intervention.info_eta_str}</strong>
+<hr><#if visit_counter?number != 1>
+- Cancellation's reason of last visit : <em>${my_issue_intervention.new_cancellation_reason?default("New PC missing")}</em></#if>
+- Installation type: <strong>${installation_type}</strong>
+- PC Name: <strong>${my_current_pc_initial.pc_name}</strong><#if installation_type == "computer_swap">
+--- New PC Name: <strong>${pc_swap_name}</strong></#if>
+- Site Name: <strong>${location_site_name}</strong>
+- User: <strong>${user_name}</strong>
+- Mode: <strong>${P_mode}</strong>
+
+Please click <a href="${get_next_url(9, false)}">here</a> for more information.
+
+Best regards,
+<strong><em>Country Desk - ${my_location.country}</em></strong>
