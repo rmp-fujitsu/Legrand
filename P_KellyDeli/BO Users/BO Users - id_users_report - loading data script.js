@@ -1,7 +1,9 @@
 // the input object is used by the composite API to retrieve, paginate, filter and sort data by calling a third party connector
 var input = {};
-input.pageSize = 30;
+P_first = 0;
+input.pageSize = 20;
 input.first = P_first;
+all_users_array = [];
 
 // sortedColumns looks like [{"order": "name", "orderby": "desc"},...]
 if (id_users_report.getSortedColumns() == []) {
@@ -13,27 +15,31 @@ if (id_users_report.getSortedColumns() == []) {
 // currentFilters looks like [{"filter": "name", "value": "untel", "operator": "CONTAINS"},...]
 input.currentFilters = id_users_report.getFilters();
 
-c_debug(dbug.report, "=> CAPI id_get_all_users_api: input = ", input);
+// displays the report spinner while loading data
 id_users_report.setLoading(true);
+c_debug(dbug.report, "=> CAPI id_get_all_users_api: input = ", input);
 id_get_all_users_api.trigger(input, {}, get_all_users_ok, get_all_users_ko);
 
 function get_all_users_ok(result)
 {
 	RMPApplication.debug("begin get_all_users_ok");
 	c_debug(dbug.report, "=> begin get_all_users_ok: result = ", result);
+
+	all_users_array = result.data;
+	var users_array = [];
+
 	var reportOptions = {
-		// count of the available data items (mandatory)
-		// if the count of data items is not known you should use RMP_Report.DYNAMIC_COUNT here
-		count: Number(result.data.length),
-		// pagination index (mandatory)
-		first: P_first
-		// A text that may be displayed in the report pager if data items' count is not known (optional)
-		// pagerCount: "xxx"
+		count: Number(all_users_array.length),					// count of the available data items (mandatory)
+		first: P_first,											// pagination index (mandatory)
+        pagerCount: all_users_array.length,
+        filter: "region",
+        operator: "CONTAINS",
+        value: "KR42"
     };
     c_debug(dbug.report, "=> get_all_users_ok: reportOptions = ", reportOptions);
 
 	// result.data is a json array that should have the same structure configured in step (2)
-	id_users_report.setData(result.data, reportOptions);
+	id_users_report.setData(all_users_array, reportOptions);
 	id_users_report.setLoading(false);
 	RMPApplication.debug("end get_all_users_ok");
 }
