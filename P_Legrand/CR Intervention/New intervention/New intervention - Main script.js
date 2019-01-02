@@ -21,6 +21,7 @@ var int_not_finished = "id_intervention_finished_1";
 var label_reason = "id_reason_label";
 var reason = "id_reason";
 var visit_counter;
+var date_modified;
 
 var login = {};
 var module_selected;
@@ -234,7 +235,6 @@ function prepare_data_for_country_desk()
         c_debug(dbug.function, "=> load_data_for_engineer_screen: required fields = ", clean_id_value);
     }   
         // continue the process and transfer to the engineer
-        
         if ((clean_id_value == null) || (clean_id_value == "") || (type_info == null) || (priority_info == "__##prompt##__") || (intervention_info == null) || (windows_info == null)) {
             alert_field_empty();
         }
@@ -262,10 +262,6 @@ function load_data_for_country_desk_screen()
         id_my_new_pc_swap.id_software_installed.setActive(false);
     // set the widget my_new_pc_confirm not visible for the country desk 
         id_my_new_pc_confirm.setVisible(false);
- 
-
-    // set Required some fileds of #CW-Visit
-    // set_required_visits();
     
     // following #visit
     if (visit_counter > 0) {
@@ -292,6 +288,7 @@ function load_data_for_country_desk_screen()
 // test if 2 strings are equal
 function string_compare(st1, st2)
 {
+    c_debug(dbug.function, "=> begin the string comparaison");
     var string_eq = (st1 === st2) ? true : false;
     return string_eq;
 }
@@ -300,15 +297,15 @@ function string_compare(st1, st2)
 function prepare_data_for_engineer()
 {
     c_debug(dbug.function, "=> begin prepare_data_for_engineer: visit_counter = ", visit_counter);
-
     function confirm_OK()
     {
+        c_debug(dbug.function, "=> begin continue the process and transfer to the engineer");
         // continue the process and transfer to the engineer
         document.getElementById("id_process_to_engineer_btn").click();
     }
 
     function modal_cancellation_reason() 
-    {
+    {   c_debug(dbug.function, "=> begin reason of cancellation same or not");
         var question = "You keep the same reason of cancellation. Do you confirm and continue?"
         modal_confirm(question, "YES", confirm_OK, "NO", cancel_KO);
     }
@@ -346,11 +343,10 @@ function load_data_for_engineer_screen()
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
     c_debug(dbug.function, "=> load_data_for_engineer_screen: visit_counter = ", visit_counter);
 
-
-    var date_modified;
-
     // Modify the name of the PDF 
-    function date_transform(){
+    function date_transform()
+    {
+      c_debug(dbug.function, "=> begin date_transform");
       var arrival_date_test = RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10);
       date_modified = arrival_date_test.replace(/\//g, '-');
     }
@@ -380,7 +376,8 @@ function load_data_for_engineer_screen()
 
 function prepare_data_for_closure()
 {
-
+    c_debug(dbug.function, "=> begin prepare_data_for_closure");
+    
     function confirm_OK()
     {
         // continue the process and transfer to the engineer
@@ -394,8 +391,6 @@ function prepare_data_for_closure()
         modal_confirm(question, "OK", confirm_OK, "No", cancel_KO);
     }
 
-
-    c_debug(dbug.function, "=> begin prepare_data_for_closure");
     visit_counter = parseInt(RMPApplication.get("visit_counter"));
 
     // get the arrival time picked and transform it into an integer
@@ -501,9 +496,8 @@ function close_request()
 }
 
 
-
+// apply colors to the depending of the step achieved 
 function testswitch(){
-
     if ($("#id_close_request_btn").is(":visible")) {
         $("#id_title1").css("color","#33CA33");
         $("#id_label1").css("color","white");
@@ -566,19 +560,19 @@ function testswitch(){
 }
 
 
-
-// save datas from basic info fields
-var var_data_pdf = {};      // data collected ready to be imported in final PDF report
+// data collected ready to be imported in final PDF report
+var var_data_pdf = {};     
 
 
 function get_basic_info()
 {
+    c_debug(dbug.function, "=> begin get_basic_info", basic_info);
     var basic_info = {
         "type": RMPApplication.get("type"),
         "legrand_ref": RMPApplication.get("legrand_ref"),
         "priority": id_priority.getSelectedLabel()
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_basic_info", JSON.stringify(basic_info));
 }
 
@@ -586,43 +580,44 @@ function get_basic_info()
 // save datas from location CW
 function get_location_info()
 {
+    c_debug(dbug.function, "=> begin get_location_info", location_info);
     var location_info = {
         "site_name": RMPApplication.get("my_location.site_name"),
         "site_code": RMPApplication.get("my_location.site_code"),
         "address": RMPApplication.get("my_location.address"),
-        // "town": RMPApplication.get("my_location.town"),
-        // "postal_code": RMPApplication.get("my_location.postal_code"),
         "country": RMPApplication.get("my_location.country"),
         "site_contact": RMPApplication.get("my_location.site_contact"),
         "name_country": RMPApplication.get("my_location.name_country")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_location_info", JSON.stringify(location_info));
 }
 
 // save datas from user CW
 function get_user_info()
 {
+    c_debug(dbug.function, "=> begin get_user_info", user_info);
     var user_info = {
         "name": RMPApplication.get("my_user.name"),
         "fix_mobile_number": RMPApplication.get("my_user.fix_mobile_number"),
         "user_email_unknown": RMPApplication.get("my_user.user_email_unknown"),
         "contact_email": RMPApplication.get("my_user.contact_email")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_user_info", JSON.stringify(user_info));
 }
 
 // save datas from installation_type fields
 function get_installation_type_info()
 {
+    c_debug(dbug.function, "=> begin get installation type info", installation_type_info);
     var installation_type_info = {
         "installation_type": id_installation_type.getSelectedLabel(),
         "reason_issue": RMPApplication.get("reason_issue"),
         "old_pc_status": id_old_pc_status.getSelectedLabel(),
         "reason": RMPApplication.get("reason")
     }; 
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_installation_type_info", JSON.stringify(installation_type_info));
 }
 
@@ -630,6 +625,7 @@ function get_installation_type_info()
 // save datas from pc_initial_info CW
 function get_pc_initial_info()
 {
+    c_debug(dbug.function, "=> begin get_pc_initial_info", pc_initial_info);
     var pc_initial_info = {
         "windows_version": id_my_current_pc_initial.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_current_pc_initial.pc_name"),
@@ -637,13 +633,14 @@ function get_pc_initial_info()
         "serial_number": RMPApplication.get("my_current_pc_initial.serial_number"),
         "software_installed": RMPApplication.get("my_current_pc_initial.software_installed")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_pc_initial_info", JSON.stringify(pc_initial_info));
 }
 
 // save datas from my_new_pc_swap CW
 function get_pc_swap_info()
 {
+    c_debug(dbug.function, "=> begin get_pc_swap_info", pc_swap_info);
     var pc_swap_info = {
         "windows_version": id_my_new_pc_swap.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_new_pc_swap.pc_name"),
@@ -651,13 +648,14 @@ function get_pc_swap_info()
         "serial_number": RMPApplication.get("my_new_pc_swap.serial_number"),
         "software_installed": RMPApplication.get("my_new_pc_swap.software_installed")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_pc_swap_info", JSON.stringify(pc_swap_info));
 }
 
 // save datas from my_current_pc_confirm CW
 function get_pc_confirm_info()
 {
+    c_debug(dbug.function, "=> begin get_pc_confirm_info", get_pc_confirm_info);
     var pc_confirm_info = {
         "windows_version": id_my_current_pc_confirm.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_current_pc_confirm.pc_name"),
@@ -665,13 +663,14 @@ function get_pc_confirm_info()
         "serial_number": RMPApplication.get("my_current_pc_confirm.serial_number"),
         "software_installed": RMPApplication.get("my_current_pc_confirm.software_installed")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_pc_confirm_info", JSON.stringify(pc_confirm_info));
 }
 
 // save datas from my_new_pc_confirm CW
 function get_new_pc_confirm_info()
 {
+    c_debug(dbug.function, "=> begin get_new_pc_confirm_info", get_new_pc_confirm_info);
     var new_pc_confirm_info = {
         "windows_version": id_my_new_pc_confirm.id_windows_version.getSelectedValue(),
         "pc_name": RMPApplication.get("my_new_pc_confirm.pc_name"),
@@ -679,7 +678,7 @@ function get_new_pc_confirm_info()
         "serial_number": RMPApplication.get("my_new_pc_confirm.serial_number"),
         "software_installed": RMPApplication.get("my_new_pc_confirm.software_installed")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_new_pc_confirm_info", JSON.stringify(new_pc_confirm_info));
 }
 
@@ -687,17 +686,19 @@ function get_new_pc_confirm_info()
 // save datas from gdc_details CW
 function get_gdc_details_info()
 {
+    c_debug(dbug.function, "=> begin get_gdc_details_info", get_gdc_details_info);
     var gdc_details_info = {
         "issue_description": RMPApplication.get("my_gdc_details.issue_description"),
         "action_to_be_done": RMPApplication.get("my_gdc_details.action_to_be_done")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_gdc_details_info", JSON.stringify(gdc_details_info));
 }
 
 // save datas from my_issue_intervention CW
 function get_issue_intervention_info()
 {
+    c_debug(dbug.function, "=> begin get_issue_intervention_info", get_issue_intervention_info);
     var issue_intervention_info = {
         "fujitsu_ref": RMPApplication.get("my_issue_intervention.fujitsu_ref"),
         "oss_ref": RMPApplication.get("my_issue_intervention.oss_ref"),
@@ -706,56 +707,13 @@ function get_issue_intervention_info()
         "new_cancellation_reason": RMPApplication.get("my_issue_intervention.new_cancellation_reason"),
         "info_for_this_engineer": RMPApplication.get("my_issue_intervention.info_for_this_engineer")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_issue_intervention_info", JSON.stringify(issue_intervention_info));
 }
 
-// save datas from intervention1_info CW
-// function get_intervention1_info()
-// {
-//     var intervention1_info = {
-//         "arrival_date": (RMPApplication.get("my_intervention_1.arrival_time_str").substr(0,10)),
-//         "arrival_time": (RMPApplication.get("my_intervention_1.arrival_time_str").substr(11)),
-//         "end_time": (RMPApplication.get("my_intervention_1.end_time_str").substr(11)),
-//         "actions_done": RMPApplication.get("my_intervention_1.actions_done"),
-//         "intervention_finished": id_my_intervention_1.id_intervention_finished.getSelectedLabel(),
-//         "reason": RMPApplication.get("my_intervention_1.reason")
-//     };
-//     // stocke ident dans le widget var_ident
-//     RMPApplication.set("var_intervention1_info", JSON.stringify(intervention1_info));
-// }
-
-// // save datas from intervention2 CW
-// function get_intervention2_info()
-// {
-//     var intervention2_info = {
-//         "arrival_time_str": RMPApplication.get("my_intervention_2.arrival_time_str"),
-//         "end_time": RMPApplication.get("my_intervention_2.end_time"),
-//         "actions_done": RMPApplication.get("my_intervention_2.actions_done"),
-//         "intervention_finished": id_my_intervention_2.id_intervention_finished.getSelectedLabel(),
-//         "reason": RMPApplication.get("my_intervention_2.reason")
-//     };
-//     // stocke ident dans le widget var_ident
-//     RMPApplication.set("var_intervention2_info", JSON.stringify(intervention2_info));
-// }
-
-// // save datas from intervention3 CW
-// function get_intervention3_info()
-// {
-//     var intervention3_info = {
-//         "arrival_time_str": RMPApplication.get("my_intervention_3.arrival_time_str"),
-//         "end_time": RMPApplication.get("my_intervention_3.end_time"),
-//         "actions_done": RMPApplication.get("my_intervention_3.actions_done"),
-//         "intervention_finished": id_my_intervention_3.id_intervention_finished.getSelectedLabel(),
-//         "reason": RMPApplication.get("my_intervention_3.reason")
-//     };
-//     // stocke ident dans le widget var_ident
-//     RMPApplication.set("var_intervention3_info", JSON.stringify(intervention3_info));
-// }
-
-
 function get_last_intervention_info()
 {
+    c_debug(dbug.function, "=> begin last_intervention_info", get_last_intervention_info);
     var last_intervention_info = {
         "arrival_date": (RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(0,10)),
         "arrival_time": (RMPApplication.get("my_intervention_" + visit_counter + ".arrival_time_str").substr(11)),
@@ -764,7 +722,7 @@ function get_last_intervention_info()
         // "intervention_finished": ("my_intervention_" + visit_counter + "id_intervention_finished").getSelectedLabel(),
         // "reason": RMPApplication.get("my_intervention_" + visit_counter + ".reason")
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_last_intervention_info", JSON.stringify(last_intervention_info));
 }
 
@@ -773,6 +731,7 @@ function get_last_intervention_info()
 // save datas from my_pc_check CW
 function get_pc_check_info()
 {
+    c_debug(dbug.function, "=> begin pc_check_info");
     var pc_check_info = {
         "my_document": (RMPApplication.get("my_pc_check.my_document") == '["done"]') ? "true" : "",
         "desktop": (RMPApplication.get("my_pc_check.desktop") == '["done"]') ? "true" : "",
@@ -802,13 +761,14 @@ function get_pc_check_info()
         "show_software_center": (RMPApplication.get("my_pc_check.show_software_center") == '["done"]') ? "true" : "",
         "password_changed": (RMPApplication.get("my_pc_check.password_changed") == '["done"]') ? "true" : ""
     };
-    // stocke ident dans le widget var_ident
+    // stock ident dans le widget var_ident
     RMPApplication.set("var_pc_check_info", JSON.stringify(pc_check_info));
 }
 
 
 function prepare_data()
 {
+    c_debug(dbug.function, "=> begin prepare_data",prepare_data);
     get_basic_info();
     get_location_info();
     get_user_info();
@@ -827,6 +787,7 @@ function prepare_data()
 
 function consolide_data()
 {
+    c_debug(dbug.function, "=> begin consolide_data", consolide_data);
     var_data_pdf.my_var_main = 
     {
     "basic_info": JSON.parse(RMPApplication.get("var_basic_info")),
@@ -842,6 +803,5 @@ function consolide_data()
     "last_intervention_info": JSON.parse(RMPApplication.get("var_last_intervention_info")),
     "pc_check_info": JSON.parse(RMPApplication.get("var_pc_check_info"))
     };
-
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
