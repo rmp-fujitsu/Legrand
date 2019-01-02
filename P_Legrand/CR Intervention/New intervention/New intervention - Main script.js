@@ -169,14 +169,13 @@ function set_required_current_pc()
     set_required_option_cw(obj_cw, true);
 }
 
-
 function set_required_swap_pc()
 {
     c_debug(dbug.function, "=> begin set_required_swap_pc");
     var instal_type_val = RMPApplication.get("installation_type");
     var swap_pc_requested = (instal_type_val == "computer_swap") ? true : false;
     var obj_cw = {
-        "id": "id_my_new_pc_swap",
+        "id": "id_my_new_pc_confirm",
         "widgets_var_list" : ["windows_version", "pc_name", "pc_model", "serial_number"]
     };
     set_required_option_cw(obj_cw, swap_pc_requested);
@@ -280,7 +279,6 @@ function load_data_for_country_desk_screen()
         id_my_issue_intervention.id_cancellation_attention.setVisible(true);
         id_my_issue_intervention.id_new_cancellation_reason.setVisible(true);
 
-		
 		// set "delivery_done" variable before to continue process
 		var id_intervention_num_previous = "id_my_intervention_" + RMPApplication.get("visit_counter") + ".id_reason";
 		var last_cancellation_str = eval(id_intervention_num_previous).getValue();
@@ -301,7 +299,6 @@ function string_compare(st1, st2)
 // prepare data from Country Desk to Engineer
 function prepare_data_for_engineer()
 {
-
     c_debug(dbug.function, "=> begin prepare_data_for_engineer: visit_counter = ", visit_counter);
 
     function confirm_OK()
@@ -341,8 +338,6 @@ function prepare_data_for_engineer()
         confirm_OK(); 
     }            
 }
-
-
 
 // prepare engineer data screen
 function load_data_for_engineer_screen()
