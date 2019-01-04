@@ -505,6 +505,7 @@ function close_request()
     document.getElementById("id_process_to_closed").click();
 }
 
+
 function testswitch(){
     if ($("#id_visit_done_btn").is(":visible")) {
         // Engineer => GDC for closure
@@ -536,7 +537,7 @@ function testswitch(){
       $("#id_title1").css({"color": "#69f94c", "font-weight":"bold"});
       $("#id_label1").css({"color": "#69f94c", "font-weight":"bold"});
       $("#id_circle1").css({"border-color":"#69f94c", "background-color":"#d1ffd1"});
-    } else if (id_close_request_btn.isActive() == true) {
+    } else if ((id_close_request_btn.isActive() == true) || (($("#id_close_request_btn").prop("disabled")))&& ($("#id_close_request_btn").is(":hidden"))) {
         // To be closed
         console.log("To be closed");
         $("#id_title1").css("color","#33CA33");
@@ -555,7 +556,7 @@ function testswitch(){
         $("#id_title4").css("color","#69f94c");
         $("#id_label4").css("color","#69f94c");
         $("#id_circle4").css({"border-color":"#69f94c","background-color":"#d1ffd1"});
-        } else if (($("#id_close_request_btn").prop("disabled") == true )) {
+        } else if (($("#id_close_request_btn").prop("disabled")) && ($("#id_close_request_btn").is(":visible"))){
         // Closed
         console.log("Closed");
         $("#id_title1").css("color","#33CA33");
@@ -574,11 +575,10 @@ function testswitch(){
         $("#id_title4").css("color","#33CA33");
         $("#id_label4").css("color","white");
         $("#id_circle4").css({"border-color":"#33CA33","background-color":"#33CA33"});
-        }else {
+    }  else {
         console.log("Pas de traitement");
     }
 }
-
 
 // save datas from basic info fields
 var var_data_pdf = {};      // data collected ready to be imported in final PDF report
@@ -861,4 +861,48 @@ function consolide_data()
     RMPApplication.set("var_data_pdf_front", JSON.stringify(var_data_pdf));
 }
 
+
+function display_anchor(){
+	var visit_counter = parseInt(RMPApplication.get("visit_counter"));
+
+	if ($("#id_close_request_btn").is(":visible")) {
+	    // closure or closed screen
+	    console.log("closure ou closed screen");
+	    ($("#btn_closure_global").show());
+	    ($("#btn_closure_issue").show());
+	    ($("#btn_closure_intervention").show());
+	    ($("#btn_intervention_global").show());
+	    ($("#btn_intervention_issue").show());
+	    ($("#btn_intervention_closure").show());
+	    ($("#btn_issue_global").show());
+	    ($("#btn_issue_intervention").show());
+	    ($("#btn_issue_closure").show());
+	    ($("#btn_global_issue").show());
+	    ($("#btn_global_intervention").show());
+	    ($("#btn_global_closure").show())
+	} else if (visit_counter >= 1)  {
+	    // Engineer screen
+	    console.log("Engineer screen");
+	    ($("#btn_intervention_global").show());
+	    ($("#btn_intervention_issue").show());
+	    ($("#btn_issue_global").show());
+	    ($("#btn_issue_intervention").show());
+	    ($("#btn_global_issue").show());
+	    ($("#btn_global_intervention").show());
+	    ($("#btn_intervention_closure").hide());
+	    ($("#btn_issue_closure").hide());
+	    ($("#btn_global_closure").hide());
+	} else if ((visit_counter == 0 )&& ($("#id_my_issue_intervention").is(":visible"))) {
+	    // Country Desk screen
+	    console.log("Country Desk screen");
+	    ($("#btn_issue_global").show());
+	    ($("#btn_global_issue").show());
+	    ($("#btn_issue_closure").hide());
+        ($("#btn_issue_intervention").hide());
+        ($("#btn_global_closure").hide());
+        ($("#btn_global_intervention").hide());
+    } else {
+        console.log('prout')
+    } 
+}
 
