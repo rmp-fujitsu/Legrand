@@ -589,6 +589,7 @@ function get_basic_info()
     var basic_info = {
         "type": RMPApplication.get("type"),
         "legrand_ref": RMPApplication.get("legrand_ref"),
+        "location_info": RMPApplication.get("location_filter"),
         "priority": id_priority.getSelectedLabel()
     };
     // stocke ident dans le widget var_ident
