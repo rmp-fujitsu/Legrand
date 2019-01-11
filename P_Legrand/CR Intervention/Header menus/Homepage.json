@@ -23,13 +23,33 @@
 ]
 
 
-// 452558  => LEGRAND - Designers
 
-// 452637  => LEGRAND - Users
+
+
+
 // 453483  => LEGRAND - Legrand Desk
 // 452593  => LEGRAND - Onsite Engineers
-// 452638  => LEGRAND - FJ Country Desk
-// 452695  => LEGRAND - FJ GDC
-// 453117  => LEGRAND - FJ SDMO
-// 454989 => LEGRAND - FJ PSE
+
+
 // 454990 => LEGRAND - Observers ( gdc/ country desk / engineer / sdmo)
+
+
+// LEGRAND - All Users => 453185
+// LEGRAND - CRI => 456085 
+// LEGRAND - Designers => 452558  
+// LEGRAND - FJ PSE GDC => 454989
+// LEGRAND - FJ Country Desk => 452638
+// LEGRAND - FJ GDC => 452695
+// LEGRAND - FJ SDMO => 453117
+// LEGRAND - Legrand Desk => 453483
+
+// LEGRAND - Observers - ( Engineer screen => gdc/ country desk / engineer / sdmo) => 454990 
+// LEGRAND - Obervers - ( CD screen => gdc / sdmo / PSE ) => 456893
+// LEGRAND - Obervers - ( BO screen => SDMO) => ) 95
+
+
+// LEGRAND - Obervers - ( GDC screen => gdc / sdmo / PSE )=> 456894
+
+
+// LEGRAND - Onsite Engineers => 452593
+// LEGRAND - Users => 452637
