@@ -1,6 +1,0 @@
-List: Users  => Kering - Time Tracking | Users
-
-Btn: 
-- id_add_new_assignment_btn
-- id_assign_btn
-- id_cancel_btn

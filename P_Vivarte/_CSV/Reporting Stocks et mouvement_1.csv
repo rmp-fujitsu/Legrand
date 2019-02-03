@@ -1,8 +1,0 @@
-Reference;Famille;Description;Stock_Neuf;Stock_Reconditionne;Stock_Conso;En_commande;Reserve;En_attente_traitement;En_attente_traitement_D3E_Test;Seuil;Alerte_seuil
-A;Bundle;Bundle CEC;3;;;4;;;;2;Non
-B;Bundle;Bundle HAV;4;;;;;;;2;Non
-C;Imprimante Ticket;EPSON TMH 6000 III;4;;;;;1;;2;Non
-D;Imprimante Ticket;EPSON TMH 6000 IV;3;;;;1;;;2;Non
-E;POS;Fujitsu TPX;2;;;5;;1;;2;Oui
-F;POS;Fujitsu TPX II;3;;;;1;;;2;Non
-G;Douchette;QuickScan;6;;;;1;1;;2;Non

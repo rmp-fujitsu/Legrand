@@ -1,9 +1,0 @@
-Provider        RunMyProcess Server
-Process name    Kering - Time Tracking | sub - export monthly data
-
-Input variables
-P_mode      ${P_mode}
-P_version   ${P_version}
-
-Output variables
-Exported file   ${File}

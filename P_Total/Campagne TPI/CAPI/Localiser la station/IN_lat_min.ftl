@@ -1,1 +1,0 @@
-${latitude_lower_bound}

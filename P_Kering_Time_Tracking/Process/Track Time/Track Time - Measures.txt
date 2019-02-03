@@ -1,4 +1,0 @@
-Month       ${month}        Text
-Status      ${status}       Text
-Week        ${monday_s}     Text
-times       ${array}        Text

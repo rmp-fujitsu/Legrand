@@ -1,2 +1,0 @@
-Output variables
-File        all_user_data_${ts}.xls@https://live.runmyprocess.com/live/112501412000161590/upload/${file_id}/all_user_data_${ts}.xls?P_mode=

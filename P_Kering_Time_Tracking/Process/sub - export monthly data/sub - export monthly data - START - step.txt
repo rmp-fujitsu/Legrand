@@ -1,9 +1,0 @@
-Output variables
-csv_content     <#assign csv_content = "User;Date;Activity;Level 1;Level 2;Workload (in hours);Status;Comments">
-                ${csv_content}
-month           ${month}
-year            ${year}
-month_s         ${month_s}
-count           100
-requests        []
-pointeur        pointeur

@@ -1,1 +1,0 @@
-${longitude_lower_bound}

@@ -1,7 +1,0 @@
-List: Export
-
-List: Months
-
-List: Year
-
-Btn: id_tab_exports_export_btn

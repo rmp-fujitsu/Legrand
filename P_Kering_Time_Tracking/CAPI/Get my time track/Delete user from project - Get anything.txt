@@ -1,5 +1,0 @@
-Input variables
-rmp_url             ${rmp_url}
-
-Output variables
-P_result            ${P_result}
